@@ -1,28 +1,28 @@
 import { NextResponse } from "next/server"
+import nodemailer from "nodemailer"
 import { company } from "@/lib/company"
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const MAX_FROM = 120
-const MAX_QUERY = 5000
 const TOPICS = new Set([
-  "Quantavex",
+  "Company",
+  "Investor",
+  "Partnership",
   "Research",
   "Quantrion",
   "Vdoc",
   "ExoraX",
-  "Partnership",
 ])
 
-function contactInbox() {
-  return process.env.CONTACT_TO_EMAIL?.trim() || company.founder.email
+function inbox() {
+  return process.env.CONTACT_TO_EMAIL?.trim() || company.companyEmail
 }
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as {
     from?: string
-    inbox?: string
+    email?: string
     topic?: string
-    query?: string
+    message?: string
     website?: string
   } | null
 
@@ -35,52 +35,68 @@ export async function POST(request: Request) {
   }
 
   const from = body.from?.trim() ?? ""
-  const inbox = body.inbox?.trim() ?? ""
-  const topic = TOPICS.has(body.topic?.trim() ?? "")
-    ? body.topic!.trim()
-    : "Quantavex"
-  const query = body.query?.trim() ?? ""
+  const email = body.email?.trim() ?? ""
+  const topic = TOPICS.has(body.topic?.trim() ?? "") ? body.topic!.trim() : "Company"
+  const message = body.message?.trim() ?? ""
 
-  if (!from || from.length > MAX_FROM) {
+  if (!from || from.length > 120) {
     return NextResponse.json({ error: "Add a name." }, { status: 400 })
   }
-  if (!EMAIL_RE.test(inbox)) {
+  if (!EMAIL_RE.test(email)) {
     return NextResponse.json({ error: "Add an email." }, { status: 400 })
   }
-  if (!query || query.length > MAX_QUERY) {
+  if (!message || message.length > 5000) {
     return NextResponse.json({ error: "Write a message." }, { status: 400 })
   }
 
-  const to = contactInbox()
-  const response = await fetch(
-    `https://formsubmit.co/ajax/${encodeURIComponent(to)}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        inbox,
-        topic,
-        query,
-        _subject: `Contact · ${topic} · ${from}`,
-        _template: "table",
-        _captcha: "false",
-        _replyto: inbox,
-      }),
-    }
-  )
+  const to = inbox()
+  const subject = `Quantavex · ${topic} · ${from}`
+  const text = `Topic: ${topic}\nFrom: ${from}\nReply to: ${email}\n\n${message}`
 
-  if (!response.ok) {
-    const detail = await response.text().catch(() => "")
-    console.error("Contact delivery failed", response.status, detail)
-    return NextResponse.json(
-      { error: "Could not send." },
-      { status: 502 }
-    )
+  const smtpPass = process.env.SMTP_PASS?.replace(/\s/g, "")
+  if (smtpPass) {
+    try {
+      const user = process.env.SMTP_USER?.trim() || to
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST?.trim() || "smtp.gmail.com",
+        port: Number(process.env.SMTP_PORT || 587),
+        secure: false,
+        auth: { user, pass: smtpPass },
+      })
+      await transporter.sendMail({
+        from: `"Quantavex" <${user}>`,
+        to,
+        replyTo: `${from} <${email}>`,
+        subject,
+        text,
+      })
+      return NextResponse.json({ ok: true })
+    } catch (error) {
+      console.error("SMTP contact failed", error)
+    }
   }
 
-  return NextResponse.json({ ok: true })
+  try {
+    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        name: from,
+        email,
+        topic,
+        message,
+        _subject: subject,
+        _template: "table",
+        _captcha: "false",
+        _replyto: email,
+      }),
+    })
+    if (response.ok) {
+      return NextResponse.json({ ok: true })
+    }
+  } catch (error) {
+    console.error("FormSubmit contact failed", error)
+  }
+
+  return NextResponse.json({ error: "Could not send." }, { status: 502 })
 }

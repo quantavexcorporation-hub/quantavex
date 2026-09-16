@@ -10,6 +10,7 @@ import { useDashboard } from "@/components/dashboard/dashboard-provider"
 import { QuantavexLogo } from "@/components/brand/quantavex-logo"
 import { PlatformAtlas } from "@/components/dashboard/platform-atlas"
 import { CompanyBrief } from "@/components/dashboard/company-brief"
+import { CompanyContact } from "@/components/dashboard/company-contact"
 
 export function OverviewView() {
   const { snapshot, isLoading, error } = useDashboard()
@@ -36,6 +37,8 @@ export function OverviewView() {
       </div>
 
       <GlobalIntelligenceMap compact data={snapshot?.regions} lastSyncSeconds={snapshot?.lastSyncSeconds ?? 0} />
+
+      <CompanyContact />
     </div>
   )
 }

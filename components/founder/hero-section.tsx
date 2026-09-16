@@ -76,10 +76,10 @@ export function HeroSection() {
               <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border/60 bg-secondary/30 px-7 py-3 text-sm font-semibold text-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-secondary/50 sm:w-auto sm:px-8 sm:py-3.5"
             >
-              Get in Touch
+              Write to Quantavex
             </a>
           </div>
         </div>

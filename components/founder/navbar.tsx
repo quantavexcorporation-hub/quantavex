@@ -12,7 +12,6 @@ const navLinks = [
   { label: "Research", href: "#research" },
   { label: "Ventures", href: "#ventures" },
   { label: "Vision", href: "#vision" },
-  { label: "Contact", href: "#contact" },
 ]
 
 export function Navbar() {

@@ -13,6 +13,7 @@ import {
   ChevronLeft,
   ChevronRight,
   User,
+  Mail,
 } from "lucide-react"
 
 type NavItem = {
@@ -29,7 +30,10 @@ const navGroups: { label: string; items: NavItem[] }[] = [
   },
   {
     label: "Company",
-    items: [{ href: "/", label: "Overview", icon: LayoutDashboard }],
+    items: [
+      { href: "/", label: "Overview", icon: LayoutDashboard },
+      { href: "/#contact", label: "Contact", icon: Mail },
+    ],
   },
   {
     label: "Platforms",
@@ -105,6 +109,13 @@ export function Sidebar() {
                     key={item.href}
                     href={item.href}
                     title={item.label}
+                    onClick={() => {
+                      if (item.href.includes("#contact")) {
+                        requestAnimationFrame(() =>
+                          document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+                        )
+                      }
+                    }}
                     className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-all duration-200 ${
                       isActive
                         ? "border-cyan-400/30 bg-cyan-400/10 text-cyan-300 shadow-[inset_0_0_18px_rgba(34,211,238,0.08)]"
