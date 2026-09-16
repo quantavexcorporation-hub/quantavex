@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Zap } from "lucide-react"
+import { Menu, X } from "lucide-react"
+import { QuantavexLogo } from "@/components/brand/quantavex-logo"
 import { trackAction } from "@/lib/track-action"
 
 const navItems = [
@@ -42,13 +43,8 @@ export function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Zap className="w-5 h-5 text-background" />
-              </div>
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-neon-cyan to-neon-purple blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-            </div>
+          <a href="#" className="flex items-center gap-3 group">
+            <QuantavexLogo size={40} priority className="transition-transform group-hover:scale-105" />
             <span className="text-xl font-bold">Quantavex</span>
           </a>
 

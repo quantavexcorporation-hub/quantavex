@@ -5,7 +5,7 @@ export interface KPIItem {
   suffix: string
   range: string
   trend: number
-  color: "cyan" | "purple" | "emerald"
+  color: "cyan" | "purple" | "emerald" | "amber"
 }
 
 export interface RealtimePoint {

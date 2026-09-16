@@ -1,102 +1,141 @@
 "use client"
 
-import { useState } from "react"
+import { createContext, useContext, useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { motion } from "framer-motion"
+import { QuantavexLogo } from "@/components/brand/quantavex-logo"
+import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import {
   LayoutDashboard,
-  Brain,
-  Film,
-  ShoppingCart,
   Zap,
-  DollarSign,
+  TrendingUp,
   ChevronLeft,
   ChevronRight,
   User,
 } from "lucide-react"
-const menuItems: {
-  id: string
-  label: string
-  icon: React.ElementType
-}[] = [
-  { id: "portfolio", label: "Udit Gour", icon: User },
-  { id: "overview", label: "Overview", icon: LayoutDashboard },
-  { id: "quantrion", label: "Quantrion AI", icon: Brain },
-  { id: "vdoc", label: "Vdoc AI", icon: Film },
-  { id: "exorax", label: "ExoraX AI", icon: ShoppingCart },
-  { id: "intelligence", label: "Intelligence", icon: Zap },
-  { id: "fundraising", label: "Fund Raising", icon: DollarSign },
-]
 
-interface SidebarProps {
-  activeTab: string
-  onTabChange: (tab: string) => void
+type NavItem = {
+  href: string
+  label: string
+  icon?: React.ElementType
+  product?: ProductId
 }
 
-export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
+const navGroups: { label: string; items: NavItem[] }[] = [
+  {
+    label: "Founder",
+    items: [{ href: "/portfolio", label: "Udit Gour", icon: User }],
+  },
+  {
+    label: "Company",
+    items: [{ href: "/", label: "Overview", icon: LayoutDashboard }],
+  },
+  {
+    label: "Platforms",
+    items: [
+      { href: "/quantrion", label: "Quantrion", product: "quantrion" },
+      { href: "/vdoc", label: "Vdoc", product: "vdoc" },
+      { href: "/exorax", label: "ExoraX", product: "exorax" },
+    ],
+  },
+  {
+    label: "Insights",
+    items: [
+      { href: "/intelligence", label: "Priority markets", icon: Zap },
+      { href: "/forecasting", label: "Fundraising", icon: TrendingUp },
+    ],
+  },
+]
+
+const SidebarState = createContext({
+  collapsed: false,
+  setCollapsed: (_value: boolean) => {},
+})
+
+export function useSidebarState() {
+  return useContext(SidebarState)
+}
+
+export function SidebarProvider({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false)
+  return (
+    <SidebarState.Provider value={{ collapsed, setCollapsed }}>
+      {children}
+    </SidebarState.Provider>
+  )
+}
+
+export function Sidebar() {
+  const pathname = usePathname()
+  const { collapsed, setCollapsed } = useSidebarState()
 
   return (
     <motion.aside
       initial={false}
-      animate={{ width: collapsed ? 64 : 220 }}
-      className="fixed left-0 top-0 h-screen bg-[#08080c] border-r border-cyan-500/10 z-50 flex flex-col"
+      animate={{ width: collapsed ? 76 : 248 }}
+      className="relative z-40 flex h-screen shrink-0 flex-col border-r border-cyan-500/10 bg-[#07070c]"
     >
-      {/* Logo */}
-      <div className="h-14 flex items-center px-4 border-b border-cyan-500/10">
-        <div className="flex items-center gap-2 overflow-hidden">
-          <div className="w-8 h-8 rounded bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-            <span className="text-white font-bold text-sm">Q</span>
-          </div>
+      <div className="flex h-16 items-center gap-3 border-b border-cyan-500/10 px-4">
+        <Link href="/" className="flex min-w-0 items-center gap-3" title="Quantavex">
+          <QuantavexLogo size={collapsed ? 40 : 44} priority className="shrink-0" />
           {!collapsed && (
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="font-semibold text-white tracking-tight"
-            >
-              Quantavex
-            </motion.span>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold tracking-tight text-white">Quantavex</p>
+              <p className="truncate text-[10px] uppercase tracking-[0.18em] text-cyan-400/70">Company OS</p>
+            </div>
           )}
-        </div>
+        </Link>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 py-4 px-2 space-y-1 overflow-y-auto">
-        {menuItems.map((item) => {
-          const Icon = item.icon
-          const isActive = activeTab === item.id
-          return (
-            <button
-              key={item.id}
-              onClick={() => onTabChange(item.id)}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded transition-all duration-200 group ${
-                isActive
-                  ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/30"
-                  : "text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"
-              }`}
-            >
-              <Icon
-                className={`w-5 h-5 flex-shrink-0 ${
-                  isActive ? "text-cyan-400" : "text-gray-500 group-hover:text-cyan-400"
-                }`}
-              />
-              {!collapsed && (
-                <span className="text-sm font-medium truncate">{item.label}</span>
-              )}
-              {isActive && !collapsed && (
-                <div className="ml-auto w-1.5 h-1.5 rounded-full bg-cyan-400" />
-              )}
-            </button>
-          )
-        })}
+      <nav className="flex-1 space-y-5 overflow-y-auto px-3 py-5">
+        {navGroups.map((group) => (
+          <div key={group.label}>
+            {!collapsed && (
+              <p className="mb-2 px-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-gray-500">
+                {group.label}
+              </p>
+            )}
+            <div className="space-y-1">
+              {group.items.map((item) => {
+                const Icon = item.icon
+                const isActive = pathname === item.href
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    title={item.label}
+                    className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-all duration-200 ${
+                      isActive
+                        ? "border-cyan-400/30 bg-cyan-400/10 text-cyan-300 shadow-[inset_0_0_18px_rgba(34,211,238,0.08)]"
+                        : "border-transparent text-gray-400 hover:border-white/5 hover:bg-white/[0.04] hover:text-white"
+                    }`}
+                  >
+                    {item.product ? (
+                      <ProductLogo product={item.product} size={28} />
+                    ) : Icon ? (
+                      <Icon className={`h-5 w-5 shrink-0 ${isActive ? "text-cyan-300" : "text-gray-500 group-hover:text-cyan-400"}`} />
+                    ) : null}
+                    {!collapsed && (
+                      <span className="text-sm font-medium leading-tight">{item.label}</span>
+                    )}
+                    {isActive && !collapsed && (
+                      <span className="ml-auto h-1.5 w-1.5 rounded-full bg-cyan-300" />
+                    )}
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        ))}
       </nav>
 
-      {/* Collapse Toggle */}
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="h-12 flex items-center justify-center border-t border-cyan-500/10 text-gray-500 hover:text-cyan-400 transition-colors"
+        className="flex h-12 items-center justify-center border-t border-cyan-500/10 text-gray-500 transition-colors hover:text-cyan-400"
+        aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
-        {collapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
+        {collapsed ? <ChevronRight className="h-5 w-5" /> : <ChevronLeft className="h-5 w-5" />}
       </button>
     </motion.aside>
   )

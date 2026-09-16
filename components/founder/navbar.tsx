@@ -1,8 +1,11 @@
 "use client"
 
 import { useState } from "react"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+import { FOUNDER_PORTFOLIO_PATH } from "@/lib/site"
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -14,13 +17,22 @@ const navLinks = [
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  // The portfolio also renders inside the dashboard shell, where the logo should
+  // pop the site out on its own. On the standalone route it just scrolls to top.
+  const isStandalone = usePathname() === FOUNDER_PORTFOLIO_PATH
 
   return (
     // Sticky rather than fixed: the portfolio renders inside the dashboard's
     // scroll container, so viewport-fixed positioning would cover the shell.
     <nav className="sticky top-0 z-40 border-b border-border/50 bg-background/60 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#" className="font-mono text-lg font-bold tracking-tight text-foreground">
+        <a
+          href={isStandalone ? "#" : FOUNDER_PORTFOLIO_PATH}
+          target={isStandalone ? undefined : "_blank"}
+          rel={isStandalone ? undefined : "noopener noreferrer"}
+          aria-label={isStandalone ? "Back to top" : "Open the Udit Gour portfolio in a new tab"}
+          className="font-mono text-lg font-bold tracking-tight text-foreground transition-opacity hover:opacity-80"
+        >
           UG<span className="text-primary">.</span>
         </a>
 

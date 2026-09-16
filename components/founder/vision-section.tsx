@@ -5,27 +5,24 @@ import { Reveal } from "@/components/founder/reveal"
 const visionPoints = [
   {
     number: "01",
-    title: "Democratize AI Access",
+    label: "Quantrion",
+    title: "Space economy",
     description:
-      "Making advanced AI tools and infrastructure accessible to businesses of every size — not just Big Tech. The future is decentralized intelligence.",
+      "The space economy is value created by exploring, building, and using space — satellites, launch, ground systems, and Earth-side services: communications, navigation, and observation. Growth is reach into logistics, climate, and finance. By 2035 this is projected near $1.8 trillion. Quantrion is aimed at that intelligence.",
   },
   {
     number: "02",
-    title: "Human-Centric Intelligence",
+    label: "Vdoc",
+    title: "Virtual economy",
     description:
-      "Building AI systems that augment human capability rather than replace it. Technology should amplify creativity, judgment, and empathy.",
+      "A virtual economy is a market that lives inside a world — people produce, price, trade, and own digital goods: identities, land, assets, and creator work. Value follows supply and demand, with paths into real money. Virtual goods already pass $100 billion. Vdoc is aimed at worlds where ownership is part of the experience.",
   },
   {
     number: "03",
-    title: "Ethical by Design",
+    label: "ExoraX",
+    title: "Trade economy",
     description:
-      "Embedding fairness, transparency, and accountability into every layer of AI development. Responsible innovation is non-negotiable.",
-  },
-  {
-    number: "04",
-    title: "Convergence of AI & Business",
-    description:
-      "Creating a future where AI isn't a separate department — it's the operating system of every enterprise, seamlessly integrated into decision-making.",
+      "A trade economy is how goods, services, and capital move — across borders, platforms, and books. Digital trade is commerce and trading on networks: stocks, crypto, commodities, forex, and portfolios. Global trade is about $35 trillion. ExoraX is aimed at a correct decision before value moves — product, price, and risk.",
   },
 ]
 
@@ -40,31 +37,37 @@ export function VisionSection() {
             Vision
           </span>
           <h2 className="mt-3 font-mono text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-            <span className="text-balance">Shaping the Future of Artificial Intelligence</span>
+            <span className="text-balance">The next layer of the world</span>
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base md:text-lg">
-            {"\"The next decade of AI will be defined not by what machines can do, but by how wisely we choose to deploy them.\""}
+            The present market is not the destination. Value will be created
+            beyond Earth, inside worlds people inhabit, and in how goods,
+            services, and capital move on networks. That is the horizon
+            Quantavex is aimed at — a company built for the economy that is
+            still forming.
           </p>
-          <span className="mt-2 block text-xs text-primary sm:text-sm">— Udit Gour</span>
         </Reveal>
 
-        <Reveal className="grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-2" delayMs={120}>
+        <Reveal className="grid gap-4 sm:gap-6 md:grid-cols-3" delayMs={120}>
           {visionPoints.map((point) => (
             <div
               key={point.number}
-              className="group relative flex gap-4 rounded-xl border border-border/50 bg-card/20 p-5 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:bg-card/40 sm:gap-6 sm:p-8"
+              className="group relative flex flex-col rounded-xl border border-border/50 bg-card/20 p-5 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:bg-card/40 sm:p-8"
             >
-              <span className="font-mono text-2xl font-bold text-primary/20 transition-colors duration-500 group-hover:text-primary/40 sm:text-4xl">
-                {point.number}
-              </span>
-              <div className="min-w-0 flex-1">
-                <h3 className="mb-1.5 font-mono text-base font-semibold text-foreground sm:mb-2 sm:text-lg">
-                  {point.title}
-                </h3>
-                <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                  {point.description}
-                </p>
+              <div className="flex items-baseline justify-between gap-3">
+                <span className="font-mono text-2xl font-bold text-primary/20 transition-colors duration-500 group-hover:text-primary/40 sm:text-3xl">
+                  {point.number}
+                </span>
+                <span className="text-[10px] font-medium tracking-widest text-primary uppercase sm:text-xs">
+                  {point.label}
+                </span>
               </div>
+              <h3 className="mt-4 font-mono text-base font-semibold text-foreground sm:text-lg">
+                {point.title}
+              </h3>
+              <p className="mt-2 min-h-[8.5rem] text-xs leading-relaxed text-muted-foreground sm:min-h-[7.5rem] sm:text-sm">
+                {point.description}
+              </p>
             </div>
           ))}
         </Reveal>

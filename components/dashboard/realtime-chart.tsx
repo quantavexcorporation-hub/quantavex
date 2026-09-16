@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react"
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   Tooltip,
@@ -11,7 +9,6 @@ import {
   Area,
   AreaChart,
 } from "recharts"
-import { motion } from "framer-motion"
 import { DashboardSnapshot } from "@/lib/dashboard-types"
 
 type DataPoint = DashboardSnapshot["chart"][number]
@@ -33,12 +30,14 @@ export function RealtimeChart({
   data: serverData,
   loading,
   error,
+  chartHeight = 180,
 }: {
   data?: DashboardSnapshot["chart"]
   loading?: boolean
   error?: string | null
+  chartHeight?: number
 }) {
-  const [data, setData] = useState<DataPoint[]>(generateInitialData())
+  const [data, setData] = useState<DataPoint[]>([])
   const [activeMetric, setActiveMetric] = useState<"all" | "learning" | "engagement" | "conversion">("all")
 
   useEffect(() => {
@@ -47,6 +46,7 @@ export function RealtimeChart({
       return
     }
 
+    setData(generateInitialData())
     const interval = setInterval(() => {
       setData((prev) => {
         const newData = [...prev.slice(1)]
@@ -71,15 +71,11 @@ export function RealtimeChart({
   ]
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-[#0c0c14] border border-cyan-500/10 rounded p-4 h-full"
-    >
+    <div className="bg-[#101018] border border-white/5 rounded-xl p-4 h-full">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-sm font-medium text-white">Real-time Analytics</h3>
-          <p className="text-xs text-gray-500">Live performance metrics</p>
+          <h3 className="text-sm font-medium text-white">Revenue Generated</h3>
+          <p className="text-xs text-gray-500">Live learning, entertainment, and commerce yield</p>
         </div>
         <div className="flex gap-1">
           {metrics.map((m) => (
@@ -98,7 +94,7 @@ export function RealtimeChart({
         </div>
       </div>
 
-      <div className="h-[180px]">
+      <div style={{ height: chartHeight }}>
         {loading && !serverData && <p className="text-xs text-gray-500 mb-2">Loading chart data...</p>}
         {error && !serverData && <p className="text-xs text-red-400 mb-2">Chart error: {error}</p>}
         <ResponsiveContainer width="100%" height="100%">
@@ -188,6 +184,6 @@ export function RealtimeChart({
         </div>
         <span className="text-[10px] font-mono text-gray-500">LIVE</span>
       </div>
-    </motion.div>
+    </div>
   )
 }

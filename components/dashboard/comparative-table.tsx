@@ -7,33 +7,27 @@ import { DashboardSnapshot } from "@/lib/dashboard-types"
 const fallbackComparisons = [
   {
     category: "Learning",
-    traditional: "Static Content",
-    quantavex: "Adaptive Pathways",
-    improvement: "+48-88%",
+    traditional: "Static content",
+    quantavex: "Adaptive intelligence",
+    improvement: "+48–88%",
   },
   {
-    category: "Engagement",
-    traditional: "Passive Viewing",
-    quantavex: "Interactive AI",
-    improvement: "2-5x",
+    category: "Entertainment",
+    traditional: "Passive viewing",
+    quantavex: "Interactive AI-driven",
+    improvement: "2x–5x",
   },
   {
     category: "Commerce",
-    traditional: "Manual Browsing",
-    quantavex: "Purchase Intelligence",
-    improvement: "+20-35%",
+    traditional: "Static browsing",
+    quantavex: "Immersive decision systems",
+    improvement: "+20–35%",
   },
   {
-    category: "Personalization",
-    traditional: "Segment-based",
-    quantavex: "Individual AI",
-    improvement: "Real-time",
-  },
-  {
-    category: "Scalability",
-    traditional: "Linear Cost",
-    quantavex: "Zero Marginal",
-    improvement: "Infinite",
+    category: "Cost shape",
+    traditional: "Linear content cost",
+    quantavex: "Low marginal cost per user",
+    improvement: "Architecture",
   },
 ]
 
@@ -47,8 +41,8 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
     >
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-sm font-medium text-white">Comparative Analysis</h3>
-          <p className="text-xs text-gray-500">Traditional vs Quantavex AI</p>
+          <h3 className="text-sm font-medium text-white">Category contrast</h3>
+          <p className="text-xs text-gray-500">Incumbent software versus Quantavex architecture</p>
         </div>
       </div>
 

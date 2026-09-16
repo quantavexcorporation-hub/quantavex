@@ -159,6 +159,7 @@ const FloatingDataCard = memo(function FloatingDataCard({
           r={isHovered ? 20 : 12}
           fill={intensityColors[data.intensity]}
           opacity={0.3}
+          initial={false}
           animate={{
             r: isHovered ? [20, 25, 20] : [12, 16, 12],
             opacity: [0.3, 0.1, 0.3],
@@ -175,6 +176,7 @@ const FloatingDataCard = memo(function FloatingDataCard({
           fill={intensityColors[data.intensity]}
           stroke="#0a0a0f"
           strokeWidth={2}
+          initial={false}
           animate={{
             scale: isHovered ? 1.2 : 1,
           }}
@@ -224,7 +226,7 @@ const NetworkLines = memo(function NetworkLines({
 }) {
   return (
     <>
-      {connections.map((conn, i) => {
+      {connections.map((conn) => {
         const from = regionData[conn.from]
         const to = regionData[conn.to]
         if (!from || !to) return null
@@ -234,14 +236,9 @@ const NetworkLines = memo(function NetworkLines({
             key={`${conn.from}-${conn.to}`}
             from={from.coordinates}
             to={to.coordinates}
-            stroke="url(#lineGradient)"
+            stroke="#22d3ee"
             strokeWidth={1}
             strokeLinecap="round"
-            strokeDasharray="4 2"
-            style={{
-              opacity: 0.4,
-              animation: `dash ${3 + i * 0.5}s linear infinite`,
-            }}
           />
         )
       })}
@@ -357,9 +354,11 @@ const RegionItem = memo(function RegionItem({
 export function GlobalIntelligenceMap({
   data,
   lastSyncSeconds = 2,
+  compact = false,
 }: {
   data?: DashboardSnapshot["regions"]
   lastSyncSeconds?: number
+  compact?: boolean
 }) {
   const regionData = data ?? fallbackRegionData
   const [activeMetric, setActiveMetric] = useState<MetricType>("learning")
@@ -367,6 +366,11 @@ export function GlobalIntelligenceMap({
   const [particles, setParticles] = useState<
     { id: number; x: number; y: number; opacity: number }[]
   >([])
+  const [mapReady, setMapReady] = useState(false)
+
+  useEffect(() => {
+    setMapReady(true)
+  }, [])
 
   // Generate floating particles
   useEffect(() => {
@@ -408,22 +412,22 @@ export function GlobalIntelligenceMap({
       {/* Header */}
       <div className="p-4 border-b border-cyan-500/10 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-          <h2 className="text-lg font-semibold text-white">
-            Global Intelligence Map
+          <div className="w-2 h-2 rounded-full bg-cyan-400" />
+          <h2 className={`${compact ? "text-sm font-medium" : "text-lg font-semibold"} text-white`}>
+            {compact ? "Priority markets" : "Priority markets"}
           </h2>
           <span className="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">
-            LIVE
+            GTM focus
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-400">Last sync: {lastSyncSeconds}s ago</span>
+          <span className="text-xs text-gray-400">Priority index · not live telemetry</span>
         </div>
       </div>
 
       <div className="flex">
         {/* Map Container */}
-        <div className="flex-1 relative h-[500px] overflow-hidden">
+        <div className={`flex-1 relative overflow-hidden ${compact ? "h-[280px]" : "h-[500px]"}`}>
           {/* Grid overlay */}
           <div
             className="absolute inset-0 pointer-events-none opacity-10"
@@ -450,6 +454,7 @@ export function GlobalIntelligenceMap({
           ))}
 
           {/* Map */}
+          {mapReady ? (
           <ComposableMap
             projection="geoMercator"
             projectionConfig={{
@@ -529,7 +534,7 @@ export function GlobalIntelligenceMap({
             </Geographies>
 
             {/* Network connection lines */}
-            <NetworkLines connections={connections} regionData={regionData} />
+            {mapReady ? <NetworkLines connections={connections} regionData={regionData} /> : null}
 
             {/* Data markers */}
             {Object.entries(regionData).map(([code, data]) => (
@@ -541,11 +546,14 @@ export function GlobalIntelligenceMap({
               />
             ))}
           </ComposableMap>
+          ) : (
+            <div className="flex h-full items-center justify-center text-xs text-gray-500">Loading geography...</div>
+          )}
 
           {/* Legend */}
           <div className="absolute bottom-4 left-4 bg-[#0f0f18]/90 backdrop-blur-sm border border-white/10 rounded-lg p-3">
             <p className="text-[10px] text-gray-400 mb-2 uppercase tracking-wider">
-              Activity Intensity
+              Priority intensity
             </p>
             <div className="flex items-center gap-4">
               {(["low", "medium", "high"] as const).map((level) => (
@@ -567,6 +575,7 @@ export function GlobalIntelligenceMap({
         </div>
 
         {/* Side Panel */}
+        {!compact ? (
         <div className="w-72 border-l border-cyan-500/10 bg-[#0a0a0f]">
           {/* Metric Toggle */}
           <div className="p-4 border-b border-cyan-500/10">
@@ -612,6 +621,7 @@ export function GlobalIntelligenceMap({
             </div>
           </div>
         </div>
+        ) : null}
       </div>
 
       {/* Animated dash keyframes */}

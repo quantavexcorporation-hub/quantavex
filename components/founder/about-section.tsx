@@ -1,66 +1,85 @@
 "use client"
 
-import { Brain, BarChart3, Lightbulb, Target } from "lucide-react"
+import {
+  Brain,
+  BarChart3,
+  Lightbulb,
+  Target,
+  GraduationCap,
+  Compass,
+} from "lucide-react"
 import { Carousel3D } from "@/components/founder/carousel-3d"
 import { Reveal } from "@/components/founder/reveal"
 
 const highlights = [
   {
     icon: Brain,
-    title: "AI Research",
+    title: "Research",
     description:
-      "Deep expertise in machine learning, neural networks, and large language models.",
+      "Original monographs that specify the architecture before the software machine is built.",
   },
   {
     icon: BarChart3,
-    title: "Business Analytics",
+    title: "Product",
     description:
-      "Data-driven strategies turning complex insights into actionable business outcomes.",
+      "Three platforms: competitive learning, interactive entertainment, and decision commerce.",
   },
   {
     icon: Lightbulb,
-    title: "Innovation",
+    title: "Systems",
     description:
-      "Bridging cutting-edge research with practical, scalable technology solutions.",
+      "AI is the engine across the platforms. Data is required for correct information.",
   },
   {
     icon: Target,
-    title: "Leadership",
+    title: "Company",
     description:
-      "Building and leading high-performance teams at the forefront of AI development.",
+      "Founder-led. One operating system, three industries.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Knowledge",
+    description:
+      "Interdisciplinary fields: psychology and resources, finance, AI and data, media, growth, and product strategy.",
+  },
+  {
+    icon: Compass,
+    title: "Vision",
+    description:
+      "The next layer of the world — value beyond Earth, markets inside worlds, and the movement of capital. That is the horizon Quantavex is aimed at.",
   },
 ]
 
 const carouselImages = [
   {
     src: "/images/carousel-1.jpg",
-    alt: "Udit Gour speaking at AI conference",
-    label: "Keynote Speaker",
+    alt: "Udit Gour presenting Quantavex work",
+    label: "Presentation",
   },
   {
     src: "/images/carousel-2.jpg",
-    alt: "AI development and coding",
-    label: "Deep Research",
+    alt: "Research and product development",
+    label: "Research",
   },
   {
     src: "/images/carousel-3.jpg",
-    alt: "Quantavex startup office",
-    label: "Quantavex HQ",
+    alt: "Quantavex workspace",
+    label: "Studio",
   },
   {
     src: "/images/carousel-4.jpg",
-    alt: "Neural network visualization",
-    label: "Neural Systems",
+    alt: "Systems and models",
+    label: "Systems",
   },
   {
     src: "/images/carousel-5.jpg",
-    alt: "Team strategy meeting",
-    label: "Team Leadership",
+    alt: "Working session",
+    label: "Build",
   },
   {
     src: "/images/carousel-6.jpg",
-    alt: "AI infrastructure and servers",
-    label: "AI Infrastructure",
+    alt: "Infrastructure planning",
+    label: "Infrastructure",
   },
 ]
 
@@ -77,7 +96,7 @@ export function AboutSection() {
             About
           </span>
           <h2 className="mt-3 font-mono text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-            <span className="text-balance">The Mind Behind the Mission</span>
+            <span className="text-balance">Founder of Quantavex</span>
           </h2>
         </div>
 
@@ -87,31 +106,28 @@ export function AboutSection() {
           <div className="w-full flex-1 lg:max-w-[50%]">
             <div className="flex flex-col gap-5 sm:gap-6">
               <p className="text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg">
-                Udit Gour is an AI researcher and business strategist operating
-                at the intersection of artificial intelligence, data science,
-                and scalable enterprise systems. He focuses on turning complex
-                theoretical concepts into practical, high-impact technologies
-                that address real-world industry challenges.
+                Udit Gour is a business researcher and visionary leader. He writes the
+                architecture first — as a monograph — then builds the software
+                machine the paper specifies. In that machine, AI works as the
+                engine across every platform, and data is what keeps the
+                information correct.
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg">
-                As the Founder & CEO of Quantavex, Udit is building a
-                next-generation AI company focused on intelligent infrastructure,
-                predictive analytics, and autonomous decision systems. Quantavex
-                aims to empower businesses across sectors by delivering
-                data-driven solutions that improve efficiency, unlock new revenue
-                streams, and create long-term competitive advantage.
+                At Quantavex he is specifying three platforms on one operating
+                system: Quantrion for competitive learning, Vdoc for interactive
+                entertainment, and ExoraX for decision commerce. The company is
+                founder-led.
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg">
-                His vision is to position Quantavex as a global leader in applied
-                AI—bridging cutting-edge research with commercial execution to
-                drive meaningful, large-scale innovation.
+                The work is to take those systems from paper into private alpha,
+                with design partners, and then into products people actually use.
               </p>
 
               {/* Stats row */}
               <div className="mt-2 flex items-center gap-4 sm:mt-4 sm:gap-6">
                 <div className="flex flex-col">
                   <span className="font-mono text-2xl font-bold text-primary sm:text-3xl">
-                    3+
+                    3
                   </span>
                   <span className="text-xs text-muted-foreground sm:text-sm">
                     Research Papers
@@ -123,18 +139,36 @@ export function AboutSection() {
                     3
                   </span>
                   <span className="text-xs text-muted-foreground sm:text-sm">
-                    AI Products
+                    Platforms
                   </span>
                 </div>
                 <div className="h-10 w-px bg-border/50 sm:h-12" />
                 <div className="flex flex-col">
                   <span className="font-mono text-2xl font-bold text-primary sm:text-3xl">
-                    3+
+                    1
                   </span>
                   <span className="text-xs text-muted-foreground sm:text-sm">
-                    Years Leading
+                    Venture · Quantavex
                   </span>
                 </div>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-1.5 sm:mt-5">
+                {[
+                  "Human Psychology & Resources",
+                  "Finance & Economics",
+                  "AI & Data Science",
+                  "Media & Content",
+                  "Sales & Digital Marketing",
+                  "Product & Business Strategy",
+                ].map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-md border border-border/50 bg-secondary/40 px-2 py-0.5 text-[10px] text-muted-foreground sm:text-xs"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
 

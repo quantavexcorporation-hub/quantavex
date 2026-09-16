@@ -1,73 +1,53 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import { TrendingUp, Users, ShoppingCart, ArrowUpRight } from "lucide-react"
+import { Brain, Users, ShoppingCart, Activity, ArrowUpRight } from "lucide-react"
 import { DashboardSnapshot, KPIItem } from "@/lib/dashboard-types"
 
 const fallbackKpis: KPIItem[] = [
-  {
-    id: "learning",
-    label: "Learning Efficiency",
-    value: 48,
-    suffix: "%",
-    range: "+48–88%",
-    trend: 12.4,
-    color: "cyan",
-  },
-  {
-    id: "engagement",
-    label: "Engagement Rate",
-    value: 2,
-    suffix: "x",
-    range: "2x–5x",
-    trend: 8.2,
-    color: "purple",
-  },
-  {
-    id: "conversion",
-    label: "Conversion Lift",
-    value: 20,
-    suffix: "%",
-    range: "+20–35%",
-    trend: 15.7,
-    color: "emerald",
-  },
+  { id: "learning", label: "Learning Efficiency", value: 67, suffix: "%", range: "Adaptive lift", trend: 12.4, color: "cyan" },
+  { id: "engagement", label: "Engagement Rate", value: 4, suffix: "x", range: "Session multiplier", trend: 8.2, color: "purple" },
+  { id: "conversion", label: "Conversion Lift", value: 29, suffix: "%", range: "Checkout yield", trend: 15.7, color: "emerald" },
+  { id: "traffic", label: "Platform Traffic", value: 184, suffix: "K", range: "Live sessions", trend: 21.4, color: "amber" },
 ]
 
 const iconMap: Record<string, React.ElementType> = {
-  learning: TrendingUp,
+  learning: Brain,
   engagement: Users,
   conversion: ShoppingCart,
+  traffic: Activity,
+}
+
+const tone = {
+  cyan: { border: "border-l-cyan-400", icon: "bg-cyan-400/15 text-cyan-300", bar: "bg-cyan-400" },
+  purple: { border: "border-l-purple-400", icon: "bg-purple-400/15 text-purple-300", bar: "bg-purple-400" },
+  emerald: { border: "border-l-emerald-400", icon: "bg-emerald-400/15 text-emerald-300", bar: "bg-emerald-400" },
+  amber: { border: "border-l-amber-400", icon: "bg-amber-400/15 text-amber-300", bar: "bg-amber-400" },
+}
+
+function formatValue(value: number, suffix: string) {
+  if (suffix === "x") return `${value}x`
+  if (suffix === "%") return `+${value}%`
+  return `${value}${suffix}`
 }
 
 function AnimatedValue({ target, suffix }: { target: number; suffix: string }) {
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(target)
 
   useEffect(() => {
-    const duration = 2000
+    const duration = 900
     const startTime = Date.now()
-
+    const start = 0
     const animate = () => {
-      const elapsed = Date.now() - startTime
-      const progress = Math.min(elapsed / duration, 1)
+      const progress = Math.min((Date.now() - startTime) / duration, 1)
       const eased = 1 - Math.pow(1 - progress, 3)
-      setValue(Math.round(target * eased))
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      }
+      setValue(Math.round(start + (target - start) * eased))
+      if (progress < 1) requestAnimationFrame(animate)
     }
-
     animate()
   }, [target])
 
-  return (
-    <span>
-      {suffix === "x" ? value : `+${value}`}
-      {suffix}
-    </span>
-  )
+  return <span>{formatValue(value, suffix)}</span>
 }
 
 export function KPICards({
@@ -81,83 +61,48 @@ export function KPICards({
 }) {
   const kpis = data ?? fallbackKpis
 
-  if (loading && !data) {
-    return <div className="grid grid-cols-3 gap-4 text-xs text-gray-500">Loading KPI metrics...</div>
-  }
-
   if (error && !data) {
     return (
-      <div className="grid grid-cols-1 gap-4 text-xs text-red-400 border border-red-500/20 rounded p-3 bg-red-500/5">
+      <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-3 text-xs text-red-400">
         Unable to load KPI metrics: {error}
       </div>
     )
   }
 
   return (
-    <div className="grid grid-cols-3 gap-4">
-      {kpis.map((kpi, index) => {
-        const Icon = iconMap[kpi.id] ?? TrendingUp
-        const colorClasses = {
-          cyan: "from-cyan-500/20 to-cyan-500/5 border-cyan-500/30 text-cyan-400",
-          purple: "from-purple-500/20 to-purple-500/5 border-purple-500/30 text-purple-400",
-          emerald: "from-emerald-500/20 to-emerald-500/5 border-emerald-500/30 text-emerald-400",
-        }[kpi.color]
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      {kpis.map((kpi) => {
+        const Icon = iconMap[kpi.id] ?? Activity
+        const style = tone[kpi.color]
+        const progress = Math.min(100, Math.max(18, Math.round((kpi.trend / 24) * 100)))
 
         return (
-          <motion.div
+          <div
             key={kpi.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className={`relative bg-gradient-to-br ${colorClasses} border rounded p-4 overflow-hidden group hover:scale-[1.02] transition-transform`}
+            className={`rounded-xl border border-white/5 border-l-4 bg-[#101018] p-4 shadow-[0_12px_40px_rgba(0,0,0,0.22)] ${style.border}`}
           >
-            {/* Glow effect on hover */}
-            <div
-              className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br ${
-                kpi.color === "cyan"
-                  ? "from-cyan-500/10"
-                  : kpi.color === "purple"
-                  ? "from-purple-500/10"
-                  : "from-emerald-500/10"
-              } to-transparent`}
-            />
-
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-3">
-                <Icon className="w-5 h-5 opacity-60" />
-                <div className="flex items-center gap-1 text-xs">
-                  <ArrowUpRight className="w-3 h-3" />
-                  <span>+{kpi.trend}%</span>
-                </div>
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-[0.16em] text-gray-500">{kpi.range}</p>
+                <p className="mt-2 font-mono text-3xl font-semibold text-white">
+                  {loading && !data ? "—" : <AnimatedValue target={kpi.value} suffix={kpi.suffix} />}
+                </p>
               </div>
-
-              <div className="text-3xl font-mono font-bold text-white mb-1">
-                <AnimatedValue target={kpi.value} suffix={kpi.suffix} />
-              </div>
-
-              <div className="text-xs text-gray-400 mb-2">{kpi.label}</div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono text-gray-500">Range: {kpi.range}</span>
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <div
-                      key={i}
-                      className={`w-1 h-3 rounded-sm ${
-                        i < 3
-                          ? kpi.color === "cyan"
-                            ? "bg-cyan-400"
-                            : kpi.color === "purple"
-                            ? "bg-purple-400"
-                            : "bg-emerald-400"
-                          : "bg-white/10"
-                      }`}
-                    />
-                  ))}
-                </div>
+              <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${style.icon}`}>
+                <Icon className="h-5 w-5" />
               </div>
             </div>
-          </motion.div>
+            <div className="mt-4 flex items-center justify-between">
+              <p className="text-sm text-gray-300">{kpi.label}</p>
+              <span className="inline-flex items-center gap-1 text-xs text-emerald-400">
+                <ArrowUpRight className="h-3 w-3" />
+                +{kpi.trend}%
+              </span>
+            </div>
+            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/5">
+              <div className={`h-full rounded-full ${style.bar}`} style={{ width: `${progress}%` }} />
+            </div>
+          </div>
         )
       })}
     </div>

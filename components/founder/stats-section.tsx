@@ -2,20 +2,17 @@
 
 import { useEffect, useState, useRef } from "react"
 import {
-  Brain,
   Rocket,
   FileText,
-  Users,
   Cpu,
+  Star,
   Lightbulb,
-  BookOpen,
-  Tv,
-  ShoppingCart,
-  X,
+  Users,
 } from "lucide-react"
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
@@ -98,7 +95,20 @@ function StatCard({
   return (
     <div
       onClick={onClick}
-      className={`group relative overflow-hidden rounded-xl border border-border/40 bg-card/40 p-5 backdrop-blur-md transition-all duration-700 hover:border-primary/30 hover:bg-card/60 sm:rounded-2xl sm:p-6 lg:p-8 ${
+      role={isClickable ? "button" : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      aria-label={isClickable ? `${label}: view platform stack` : undefined}
+      onKeyDown={
+        isClickable
+          ? (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault()
+                onClick?.()
+              }
+            }
+          : undefined
+      }
+      className={`group relative overflow-hidden rounded-xl border border-border/40 bg-card/40 p-5 text-left backdrop-blur-md transition-all duration-700 hover:border-primary/30 hover:bg-card/60 sm:rounded-2xl sm:p-6 lg:p-8 ${
         visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       } ${isClickable ? "cursor-pointer" : ""}`}
     >
@@ -146,6 +156,9 @@ interface StatHighlightCardProps {
   delay: number
   inView: boolean
   accentGlow: string
+  onClick?: () => void
+  isClickable?: boolean
+  tags?: string[]
 }
 
 function StatHighlightCard({
@@ -155,6 +168,9 @@ function StatHighlightCard({
   delay,
   inView,
   accentGlow,
+  onClick,
+  isClickable,
+  tags,
 }: StatHighlightCardProps) {
   const [visible, setVisible] = useState(false)
 
@@ -166,9 +182,23 @@ function StatHighlightCard({
 
   return (
     <div
-      className={`group relative flex min-h-full flex-col overflow-hidden rounded-xl border border-border/40 bg-card/40 p-5 backdrop-blur-md transition-all duration-700 hover:border-primary/30 hover:bg-card/60 sm:rounded-2xl sm:p-6 lg:p-8 ${
+      onClick={onClick}
+      role={isClickable ? "button" : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      aria-label={isClickable ? `Open ${title}` : undefined}
+      onKeyDown={
+        isClickable
+          ? (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault()
+                onClick?.()
+              }
+            }
+          : undefined
+      }
+      className={`group relative flex min-h-full flex-col overflow-hidden rounded-xl border border-border/40 bg-card/40 p-5 text-left backdrop-blur-md transition-all duration-700 hover:border-primary/30 hover:bg-card/60 sm:rounded-2xl sm:p-6 lg:p-8 ${
         visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-      }`}
+      } ${isClickable ? "cursor-pointer" : ""}`}
     >
       <div
         className={`pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full opacity-0 blur-[80px] transition-opacity duration-500 group-hover:opacity-100 ${accentGlow}`}
@@ -185,6 +215,19 @@ function StatHighlightCard({
       <p className="mt-2.5 flex-1 text-[10px] leading-relaxed text-muted-foreground sm:mt-3 sm:text-xs">
         {sublabel}
       </p>
+
+      {tags && tags.length > 0 ? (
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-md border border-border/50 bg-secondary/40 px-2 py-0.5 text-[10px] text-foreground sm:text-xs"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      ) : null}
 
       <div
         className={`absolute bottom-0 left-0 h-[2px] bg-primary/60 transition-all duration-1000 ease-out ${
@@ -212,51 +255,127 @@ type StatEntry =
       title: string
       sublabel: string
       accentGlow: string
+      tags?: string[]
     }
 
+const learningDomains = [
+  {
+    name: "Human Psychology & Resources",
+    detail: "How people learn, decide, and stay engaged — and how resources are allocated around that.",
+  },
+  {
+    name: "Finance & Economics",
+    detail: "Markets, capital, and how value moves.",
+  },
+  {
+    name: "AI & Data Science",
+    detail: "Models, evidence, and correct information.",
+  },
+  {
+    name: "Media & Content",
+    detail: "Narrative, format, and how attention is held.",
+  },
+  {
+    name: "Sales & Digital Marketing",
+    detail: "Demand, distribution, and conversion.",
+  },
+  {
+    name: "Product & Business Strategy",
+    detail: "What to build, why it matters, and how it becomes a company.",
+  },
+] as const
+
+const inspirationalLeaders = [
+  {
+    name: "Elon Musk",
+    detail: "Building across space, energy, and vehicles at planetary scale.",
+  },
+  {
+    name: "Steve Jobs",
+    detail: "Product as craft — technology made human.",
+  },
+  {
+    name: "Bill Gates",
+    detail: "Software as infrastructure for every desk and every institution.",
+  },
+  {
+    name: "Jeff Bezos",
+    detail: "Customer obsession and compounding over decades.",
+  },
+  {
+    name: "Jensen Huang",
+    detail: "Accelerated computing as the next industrial layer.",
+  },
+  {
+    name: "Sam Altman",
+    detail: "Scaling frontier models into a platform the world can use.",
+  },
+  {
+    name: "Dario Amodei",
+    detail: "Building capable systems with safety as a first constraint.",
+  },
+  {
+    name: "Mark Zuckerberg",
+    detail: "Connecting people at global scale — social systems as infrastructure.",
+  },
+  {
+    name: "Warren Buffett",
+    detail: "Capital allocation and compounding over decades.",
+  },
+] as const
+
 const stats: StatEntry[] = [
-  {
-    kind: "metric",
-    icon: Brain,
-    value: 3,
-    suffix: "+",
-    label: "Years in AI & ML",
-    sublabel: "Deep expertise in neural networks, NLP, and generative models",
-    accentGlow: "bg-primary/30",
-  },
-  {
-    kind: "metric",
-    icon: FileText,
-    value: 3,
-    suffix: "+",
-    label: "Research Papers",
-    sublabel: "AI software intelligence systems",
-    accentGlow: "bg-emerald-500/20",
-  },
   {
     kind: "metric",
     icon: Rocket,
     value: 1,
     suffix: "",
     label: "Venture Founded",
-    sublabel: "Quantavex - pioneering AI-powered enterprise solutions",
+    sublabel: "Quantavex — applied AI across learning, entertainment, and commerce",
     accentGlow: "bg-sky-500/20",
+  },
+  {
+    kind: "metric",
+    icon: FileText,
+    value: 3,
+    suffix: "",
+    label: "Research Papers",
+    sublabel: "Original monographs for Quantrion, Vdoc, and ExoraX",
+    accentGlow: "bg-emerald-500/20",
   },
   {
     kind: "metric",
     icon: Cpu,
     value: 3,
     suffix: "",
-    label: "AI Products Shipped",
-    sublabel: "Production-grade systems serving real-world business needs",
+    label: "Platforms in development",
+    sublabel: "Quantrion, Vdoc, and ExoraX — architectures specified, sites launching",
     accentGlow: "bg-amber-500/20",
   },
   {
     kind: "highlight",
     icon: Users,
-    title: "Inspirational Industry Experts",
-    sublabel:
-      "Perspective and mentorship from leaders who define the frontier of their fields—raising the bar for what ambitious teams can achieve.",
+    title: "Team",
+    sublabel: "The team works these fields. Click to open.",
+    tags: [...learningDomains.map((domain) => domain.name)],
+    accentGlow: "bg-primary/30",
+  },
+  {
+    kind: "highlight",
+    icon: Star,
+    title: "Inspirational leaders",
+    sublabel: "Builders whose work sets the bar. Click to open.",
+    tags: [
+      "Elon Musk",
+      "Steve Jobs",
+      "Bill Gates",
+      "Jeff Bezos",
+      "Jensen Huang",
+      "Sam Altman",
+      "Dario Amodei",
+      "Mark Zuckerberg",
+      "Warren Buffett",
+    ],
     accentGlow: "bg-rose-500/20",
   },
   {
@@ -264,31 +383,29 @@ const stats: StatEntry[] = [
     icon: Lightbulb,
     title: "Vision-Driven Innovation",
     sublabel:
-      "Strategy and product shaped by a long-term north star—where every build advances clarity, impact, and the future we want to create.",
+      "A company is built twice: first as research, then as a software machine. AI is the engine. Data is the truth. That is the path from monograph to products people use.",
+    tags: ["Research first", "AI as engine", "Data as truth"],
     accentGlow: "bg-violet-500/20",
   },
 ]
 
-export function StatsSection() {
+export function StatsSection({ embedded = false }: { embedded?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null)
   const inView = useInView(sectionRef, 0.1)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalKind, setModalKind] = useState<"team" | "leaders" | null>(null)
 
-  const marqueeItems = [
-    "Machine Learning",
-    "Deep Learning",
-    "Natural Language Processing",
-    "Computer Vision",
-    "Generative AI",
-    "Predictive Analytics",
-    "Neural Networks",
-    "Reinforcement Learning",
-    "AI Strategy",
-    "Data Science",
-  ]
+  const marqueeItems = learningDomains.map((domain) => domain.name)
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-20 sm:py-28 lg:py-36">
+    <section
+      ref={sectionRef}
+      id="record"
+      className={
+        embedded
+          ? "relative mt-12 overflow-hidden sm:mt-16 lg:mt-20"
+          : "relative overflow-hidden py-20 sm:py-28 lg:py-36"
+      }
+    >
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-1/2 left-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.03] blur-[100px] sm:h-[600px] sm:w-[800px] sm:blur-[150px]" />
@@ -318,15 +435,15 @@ export function StatsSection() {
         >
           <div>
             <span className="text-xs font-medium tracking-widest text-primary uppercase">
-              Momentum
+              Record
             </span>
             <h2 className="mt-3 font-mono text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-              <span className="text-balance">Research, Execution & Network</span>
+              <span className="text-balance">Research, products, company</span>
             </h2>
           </div>
           <p className="max-w-md text-pretty text-xs leading-relaxed text-muted-foreground sm:text-sm md:text-base">
-            A founder-led path through research depth, product delivery, and the
-            relationships that keep innovation grounded, ambitious, and future-focused.
+            A founder-led path: original research, specified product architectures,
+            and a company operating system.
           </p>
         </div>
 
@@ -337,7 +454,6 @@ export function StatsSection() {
               stat.kind === "metric" ? stat.label : stat.title
             const delay = i * 150
             if (stat.kind === "metric") {
-              const isAIML = stat.label === "Years in AI & ML"
               return (
                 <StatCard
                   key={key}
@@ -349,11 +465,11 @@ export function StatsSection() {
                   delay={delay}
                   inView={inView}
                   accentGlow={stat.accentGlow}
-                  isClickable={isAIML}
-                  onClick={isAIML ? () => setIsModalOpen(true) : undefined}
                 />
               )
             }
+            const opensTeam = stat.title === "Team"
+            const opensLeaders = stat.title === "Inspirational leaders"
             return (
               <StatHighlightCard
                 key={key}
@@ -363,6 +479,15 @@ export function StatsSection() {
                 delay={delay}
                 inView={inView}
                 accentGlow={stat.accentGlow}
+                tags={stat.tags}
+                isClickable={opensTeam || opensLeaders}
+                onClick={
+                  opensTeam
+                    ? () => setModalKind("team")
+                    : opensLeaders
+                      ? () => setModalKind("leaders")
+                      : undefined
+                }
               />
             )
           })}
@@ -382,58 +507,38 @@ export function StatsSection() {
         </div>
       </div>
 
-      {/* AI/ML Expertise Modal */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-2xl border-border/40 bg-card/40 backdrop-blur-md">
+      <Dialog
+        open={modalKind !== null}
+        onOpenChange={(open) => {
+          if (!open) setModalKind(null)
+        }}
+      >
+        <DialogContent className="max-h-[85vh] max-w-3xl overflow-y-auto border-border/40 bg-background">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold">AI & ML Expertise</DialogTitle>
+            <DialogTitle className="text-2xl font-bold">
+              {modalKind === "leaders" ? "Inspirational leaders" : "Team"}
+            </DialogTitle>
+            <DialogDescription className="text-sm leading-relaxed">
+              {modalKind === "leaders"
+                ? "Builders whose work sets the bar for product, scale, and long-term thinking. They are inspirational figures — not advisors, investors, or affiliates of Quantavex."
+                : "The Quantavex team works these fields."}
+            </DialogDescription>
           </DialogHeader>
-          
-          <div className="grid gap-6 py-4">
-            {/* EdTech Domain */}
-            <div className="group rounded-lg border border-border/40 bg-background/40 p-6 transition-all duration-300 hover:border-primary/30 hover:bg-background/60">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-primary/15 bg-primary/[0.08]">
-                  <BookOpen className="h-6 w-6 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-foreground">EdTech</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    Developed AI-powered personalized learning systems and adaptive assessment platforms. Expertise in NLP for automated grading, recommendation engines for course content, and machine learning models for student performance prediction.
-                  </p>
-                </div>
-              </div>
-            </div>
 
-            {/* Entertainment Domain */}
-            <div className="group rounded-lg border border-border/40 bg-background/40 p-6 transition-all duration-300 hover:border-primary/30 hover:bg-background/60">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-primary/15 bg-primary/[0.08]">
-                  <Tv className="h-6 w-6 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-foreground">Entertainment</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    Built content recommendation systems using collaborative filtering and deep learning models. Implemented generative AI for creative content enhancement, computer vision for media analysis, and user engagement prediction models.
+          <div className="grid gap-4 py-2">
+            {(modalKind === "leaders" ? inspirationalLeaders : learningDomains).map(
+              (item) => (
+                <div
+                  key={item.name}
+                  className="rounded-lg border border-border/40 bg-background/40 p-5 transition-all duration-300 hover:border-primary/30 hover:bg-background/60"
+                >
+                  <h3 className="font-semibold text-foreground">{item.name}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    {item.detail}
                   </p>
                 </div>
-              </div>
-            </div>
-
-            {/* E-Commerce Domain */}
-            <div className="group rounded-lg border border-border/40 bg-background/40 p-6 transition-all duration-300 hover:border-primary/30 hover:bg-background/60">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-primary/15 bg-primary/[0.08]">
-                  <ShoppingCart className="h-6 w-6 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-foreground">E-Commerce</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    Created ML pipelines for demand forecasting, dynamic pricing optimization, and fraud detection. Implemented computer vision for product recognition, NLP for review sentiment analysis, and reinforcement learning for inventory optimization.
-                  </p>
-                </div>
-              </div>
-            </div>
+              )
+            )}
           </div>
         </DialogContent>
       </Dialog>

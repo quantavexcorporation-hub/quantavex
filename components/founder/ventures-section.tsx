@@ -1,28 +1,30 @@
 "use client"
 
-import { ArrowUpRight, Cpu, Globe, Shield, Zap } from "lucide-react"
+import { ArrowUpRight, BookOpen, Cpu, Layers } from "lucide-react"
 import { Reveal } from "@/components/founder/reveal"
+import { QuantavexLogo } from "@/components/brand/quantavex-logo"
+import { ProductLogo } from "@/components/brand/product-logo"
+import { productList } from "@/lib/products"
+import { ProductWebsiteLink } from "@/components/brand/product-site"
 
 const features = [
   {
+    icon: BookOpen,
+    title: "From monograph to machine",
+    description:
+      "Each platform is written first as original research. The paper specifies the architecture. The software machine is built from that specification.",
+  },
+  {
     icon: Cpu,
-    title: "AI-First Platform",
-    description: "Intelligent systems built from the ground up with machine learning at their core.",
+    title: "AI as the engine",
+    description:
+      "Inside that machine, AI is the engine across Quantrion, Vdoc, and ExoraX. Data is required for correct information — accurate, complete, and current.",
   },
   {
-    icon: Globe,
-    title: "Global Scale",
-    description: "Infrastructure designed to serve enterprise clients across continents with low-latency AI inference.",
-  },
-  {
-    icon: Shield,
-    title: "Enterprise Security",
-    description: "Bank-grade encryption and compliance frameworks ensuring data sovereignty and trust.",
-  },
-  {
-    icon: Zap,
-    title: "Real-Time Analytics",
-    description: "Sub-second insights powering critical business decisions with predictive intelligence.",
+    icon: Layers,
+    title: "One company, three industries",
+    description:
+      "Quantavex is the venture. The products are competitive learning, interactive entertainment, and decision commerce — three industries, one operating system.",
   },
 ]
 
@@ -40,8 +42,7 @@ export function VenturesSection() {
             <span className="text-balance">Quantavex</span>
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">
-            The flagship venture redefining how businesses harness artificial
-            intelligence — from strategy to deployment.
+            The company operating system behind Quantrion, Vdoc, and ExoraX.
           </p>
         </Reveal>
 
@@ -57,29 +58,27 @@ export function VenturesSection() {
                 <span className="text-[10px] font-medium text-primary sm:text-xs">Founded by Udit Gour</span>
               </div>
               <h3 className="font-mono text-xl font-bold text-foreground sm:text-2xl md:text-3xl">
-                Intelligence, Delivered.
+                Company operating system.
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">
-                Quantavex is an AI-powered analytics and research company that
-                bridges the gap between cutting-edge research and real-world
-                business applications. We build intelligent systems that learn,
-                adapt, and scale — empowering organizations to make smarter
-                decisions faster.
+                Quantavex is a founder-led company. Three product
+                architectures are specified. Three original monographs are
+                public. Live platforms appear here as each site is uploaded.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
                 <span className="flex flex-col">
-                  <span className="font-mono text-lg font-bold text-primary sm:text-2xl">AI-First</span>
-                  <span className="text-[10px] text-muted-foreground sm:text-xs">Approach</span>
+                  <span className="font-mono text-lg font-bold text-primary sm:text-2xl">1</span>
+                  <span className="text-[10px] text-muted-foreground sm:text-xs">Venture</span>
                 </span>
                 <div className="h-8 w-px bg-border/50 sm:h-10" />
                 <span className="flex flex-col">
-                  <span className="font-mono text-lg font-bold text-primary sm:text-2xl">Enterprise</span>
-                  <span className="text-[10px] text-muted-foreground sm:text-xs">Grade</span>
+                  <span className="font-mono text-lg font-bold text-primary sm:text-2xl">3</span>
+                  <span className="text-[10px] text-muted-foreground sm:text-xs">Platforms</span>
                 </span>
                 <div className="h-8 w-px bg-border/50 sm:h-10" />
                 <span className="flex flex-col">
-                  <span className="font-mono text-lg font-bold text-primary sm:text-2xl">Global</span>
-                  <span className="text-[10px] text-muted-foreground sm:text-xs">Reach</span>
+                  <span className="font-mono text-lg font-bold text-primary sm:text-2xl">3</span>
+                  <span className="text-[10px] text-muted-foreground sm:text-xs">Monographs</span>
                 </span>
               </div>
               <a
@@ -91,27 +90,42 @@ export function VenturesSection() {
               </a>
             </div>
 
-            <div className="relative flex items-center justify-center bg-secondary/20 p-8 sm:p-12">
-              {/* Abstract node graphic */}
-              <div className="relative h-48 w-48 sm:h-64 sm:w-64">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="h-16 w-16 rounded-2xl border border-primary/30 bg-primary/10 backdrop-blur-sm sm:h-24 sm:w-24" />
-                </div>
-                <div className="absolute top-4 left-4 h-8 w-8 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm sm:h-12 sm:w-12" />
-                <div className="absolute top-6 right-6 h-7 w-7 rounded-lg border border-primary/20 bg-primary/5 backdrop-blur-sm sm:h-10 sm:w-10" />
-                <div className="absolute bottom-6 left-8 h-7 w-7 rounded-lg border border-primary/20 bg-primary/5 backdrop-blur-sm sm:h-10 sm:w-10" />
-                <div className="absolute right-4 bottom-4 h-10 w-10 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm sm:h-14 sm:w-14" />
-                {/* Center Q */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-mono text-2xl font-bold text-primary sm:text-4xl">Q</span>
-                </div>
-              </div>
+            <div className="relative flex items-center justify-center bg-black p-8 sm:p-12">
+              <QuantavexLogo size={224} />
             </div>
           </div>
         </Reveal>
 
+        <Reveal className="mb-6 grid gap-3 sm:mb-8 sm:grid-cols-3 sm:gap-4" delayMs={140}>
+          {productList.map((product) => (
+            <div
+              key={product.id}
+              className="group rounded-xl border border-border/50 bg-card/30 p-5 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-card/50"
+            >
+              <a href={`/${product.id}`} className="block">
+                <div className="mb-3 flex items-center gap-3">
+                  <ProductLogo product={product.id} size={36} />
+                  <div>
+                    <h4 className="font-mono text-sm font-semibold text-foreground">{product.name}</h4>
+                    <p className="text-[10px] tracking-wider text-primary uppercase">{product.industry}</p>
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed text-muted-foreground">{product.tagline}</p>
+                <p className="mt-2 text-[11px] italic text-muted-foreground/80">{product.manifesto}</p>
+              </a>
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <a href={`/${product.id}`} className="inline-flex items-center gap-1 text-xs font-medium text-primary">
+                  Open dossier
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+                <ProductWebsiteLink productId={product.id} variant="ghost" />
+              </div>
+            </div>
+          ))}
+        </Reveal>
+
         {/* Feature grid */}
-        <Reveal className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4" delayMs={180}>
+        <Reveal className="grid gap-3 sm:grid-cols-3 sm:gap-4" delayMs={180}>
           {features.map((feature) => (
             <div
               key={feature.title}

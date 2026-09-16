@@ -1,21 +1,30 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { Sidebar } from "@/components/dashboard/sidebar"
-import { TopNavbar } from "@/components/dashboard/top-navbar"
-import { KPICards } from "@/components/dashboard/kpi-cards"
-import { RealtimeChart } from "@/components/dashboard/realtime-chart"
-import { AIDecisionFlow } from "@/components/dashboard/ai-decision-flow"
-import { ProductPanels } from "@/components/dashboard/product-panels"
-import { ComparativeTable } from "@/components/dashboard/comparative-table"
-import { MarketVisualization } from "@/components/dashboard/market-visualization"
-import { ActivityFeed } from "@/components/dashboard/activity-feed"
-import { GlobalIntelligenceMap } from "@/components/dashboard/global-intelligence-map"
+import { createContext, useContext, useEffect, useMemo, useState } from "react"
 import { DashboardSnapshot } from "@/lib/dashboard-types"
-import { FounderPortfolio } from "@/components/founder/founder-portfolio"
+import { getForecast, type CapitalMilestone, type ForecastKpi, type ForecastMonth } from "@/lib/forecast-data"
 
-export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState("overview")
+interface DashboardContextValue {
+  snapshot: DashboardSnapshot | null
+  isLoading: boolean
+  error: string | null
+  forecast: {
+    series: ForecastMonth[]
+    kpis: ForecastKpi[]
+    mix: { name: string; value: number; color: string }[]
+    milestones: CapitalMilestone[]
+  }
+  searchResponse: string
+  searchStatus: "idle" | "loading" | "success" | "error"
+  searchError: string | null
+  notificationDot: boolean
+  handleSearch: (query: string) => Promise<void>
+  handleNotificationsClick: () => Promise<void>
+}
+
+const DashboardContext = createContext<DashboardContextValue | null>(null)
+
+export function DashboardProvider({ children }: { children: React.ReactNode }) {
   const [snapshot, setSnapshot] = useState<DashboardSnapshot | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -23,6 +32,7 @@ export default function Dashboard() {
   const [searchStatus, setSearchStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [searchError, setSearchError] = useState<string | null>(null)
   const [notificationDot, setNotificationDot] = useState(true)
+  const forecast = useMemo(() => getForecast(), [])
 
   useEffect(() => {
     let cancelled = false
@@ -72,18 +82,17 @@ export default function Dashboard() {
           throw new Error(`regions request failed (${regionsResponse.status})`)
         }
 
-        const data: DashboardSnapshot = {
-          kpis,
-          chart,
-          activities,
-          markets,
-          comparisons,
-          productPanels,
-          regions: regionsPayload.regions,
-          lastSyncSeconds: regionsPayload.lastSyncSeconds ?? 2,
-        }
         if (!cancelled) {
-          setSnapshot(data)
+          setSnapshot({
+            kpis,
+            chart,
+            activities,
+            markets,
+            comparisons,
+            productPanels,
+            regions: regionsPayload.regions,
+            lastSyncSeconds: regionsPayload.lastSyncSeconds ?? 2,
+          })
           setError(null)
         }
       } catch (fetchError) {
@@ -97,21 +106,14 @@ export default function Dashboard() {
 
     void fetchSnapshot()
 
-    const interval = setInterval(() => {
-      void fetchSnapshot()
-    }, 5000)
-
     return () => {
       cancelled = true
-      clearInterval(interval)
     }
   }, [])
 
   const handleNotificationsClick = async () => {
     const response = await fetch("/api/notifications", { cache: "no-store" })
-    if (response.ok) {
-      setNotificationDot(false)
-    }
+    if (response.ok) setNotificationDot(false)
   }
 
   const handleSearch = async (query: string) => {
@@ -148,74 +150,30 @@ export default function Dashboard() {
     }
   }
 
-  const showOverview = activeTab === "overview"
-  const showPortfolio = activeTab === "portfolio"
-
   return (
-    <div className="min-h-screen bg-[#0a0a0f]">
-      {/* Sidebar */}
-      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
-
-      {/* Main Content */}
-      <div className="ml-[220px] transition-all duration-300">
-        <TopNavbar
-          onNotificationsClick={handleNotificationsClick}
-          onSearch={handleSearch}
-          searchResponse={searchResponse}
-          searchStatus={searchStatus}
-          searchError={searchError}
-        />
-
-        {showPortfolio ? (
-          <main className="h-[calc(100vh-3.5rem)] overflow-y-auto">
-            <FounderPortfolio />
-          </main>
-        ) : (
-        <div className="flex">
-          {/* Main Dashboard Grid */}
-          <main className="flex-1 p-4 space-y-4">
-            {!showOverview && (
-              <div className="border border-cyan-500/20 rounded p-3 bg-cyan-500/5 text-xs text-cyan-300">
-                Viewing `{activeTab}` module data stream.
-              </div>
-            )}
-            {/* Row 1: KPI Cards */}
-            <KPICards data={snapshot?.kpis} loading={isLoading} error={error} />
-
-            {/* Row 2: Charts */}
-            <div className="grid grid-cols-2 gap-4">
-              <RealtimeChart data={snapshot?.chart} loading={isLoading} error={error} />
-              <AIDecisionFlow />
-            </div>
-
-{/* Row 3: Product Panels */}
-            {(showOverview || activeTab === "quantrion" || activeTab === "vdoc" || activeTab === "exorax") && (
-              <ProductPanels data={snapshot?.productPanels} />
-            )}
-
-            {/* Row 4: Global Intelligence Map */}
-            {(showOverview || activeTab === "intelligence") && (
-              <GlobalIntelligenceMap data={snapshot?.regions} lastSyncSeconds={snapshot?.lastSyncSeconds ?? 2} />
-            )}
-
-            {/* Row 5: Comparative + Market */}
-            {(showOverview || activeTab === "fundraising") && (
-              <div className="grid grid-cols-2 gap-4">
-                <ComparativeTable data={snapshot?.comparisons} />
-                <MarketVisualization data={snapshot?.markets} />
-              </div>
-            )}
-          </main>
-
-          {/* Right Panel: Activity Feed */}
-          <aside className="w-72 p-4 border-l border-cyan-500/10">
-            <div className={notificationDot ? "" : "opacity-95"}>
-              <ActivityFeed data={snapshot?.activities} loading={isLoading} error={error} />
-            </div>
-          </aside>
-        </div>
-        )}
-      </div>
-    </div>
+    <DashboardContext.Provider
+      value={{
+        snapshot,
+        isLoading,
+        error,
+        forecast,
+        searchResponse,
+        searchStatus,
+        searchError,
+        notificationDot,
+        handleSearch,
+        handleNotificationsClick,
+      }}
+    >
+      {children}
+    </DashboardContext.Provider>
   )
+}
+
+export function useDashboard() {
+  const context = useContext(DashboardContext)
+  if (!context) {
+    throw new Error("useDashboard must be used within DashboardProvider")
+  }
+  return context
 }

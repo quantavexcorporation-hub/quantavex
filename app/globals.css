@@ -317,3 +317,22 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.4 0.05 260);
 }
+
+@keyframes dashboard-page {
+  from {
+    opacity: 0.4;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-page {
+  animation: dashboard-page 0.32s ease-out;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+}

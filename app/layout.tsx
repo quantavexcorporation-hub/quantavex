@@ -9,26 +9,13 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
 
 export const metadata: Metadata = {
-  title: 'Quantavex | Building Intelligence Infrastructure',
-  description: 'Adaptive AI across Learning, Entertainment, and Commerce. Building intelligence infrastructure for an $8T world.',
-  generator: 'v0.app',
-  keywords: ['AI', 'EdTech', 'Entertainment', 'Commerce', 'Machine Learning', 'Adaptive Learning'],
+  title: 'Quantavex | Company operating system',
+  description: 'Quantavex is a founder-led company in India building Quantrion, Vdoc, and ExoraX.',
+  keywords: ['Quantavex', 'Quantrion', 'Vdoc', 'ExoraX', 'EdTech', 'Entertainment', 'Commerce'],
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/quantavex-logo.jpg',
+    shortcut: '/quantavex-logo.jpg',
+    apple: '/quantavex-logo.jpg',
   },
 }
 

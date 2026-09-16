@@ -5,14 +5,13 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 import { DashboardSnapshot } from "@/lib/dashboard-types"
 
 const fallbackMarkets = [
-  { name: "EdTech", value: 400, color: "#22d3ee", growth: "+12.3%" },
-  { name: "Entertainment", value: 2800, color: "#a855f7", growth: "+8.7%" },
-  { name: "E-commerce", value: 6000, color: "#10b981", growth: "+15.2%" },
+    { name: "EdTech", value: 400, color: "#22d3ee", growth: "$400B+" },
+  { name: "Entertainment", value: 2800, color: "#a855f7", growth: "$2.8T+" },
+  { name: "E-commerce", value: 6000, color: "#10b981", growth: "$6T+" },
 ]
 
 export function MarketVisualization({ data }: { data?: DashboardSnapshot["markets"] }) {
   const markets = data ?? fallbackMarkets
-  const totalMarket = markets.reduce((sum, m) => sum + m.value, 0)
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -21,11 +20,11 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
     >
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-sm font-medium text-white">Market Opportunity</h3>
-          <p className="text-xs text-gray-500">Total addressable market by sector</p>
+          <h3 className="text-sm font-medium text-white">Market opportunity</h3>
+          <p className="text-xs text-gray-500">Learning, entertainment, and commerce</p>
         </div>
         <div className="text-right">
-          <div className="text-lg font-mono font-bold text-white">${(totalMarket / 1000).toFixed(1)}T</div>
+          <div className="text-lg font-mono font-bold text-white">$8T+</div>
           <div className="text-[10px] text-gray-500">Combined TAM</div>
         </div>
       </div>
@@ -55,7 +54,7 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
                   borderRadius: "4px",
                   fontSize: "11px",
                 }}
-                formatter={(value: number) => [`$${value}B`, ""]}
+                formatter={(value: number, name: string) => [markets.find((m) => m.name === name)?.growth ?? `$${value}B`, name]}
               />
             </PieChart>
           </ResponsiveContainer>
@@ -74,8 +73,7 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
                   <span className="text-xs text-gray-400">{market.name}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono text-white">${market.value}B</span>
-                  <span className="text-[10px] text-emerald-400">{market.growth}</span>
+                  <span className="text-xs font-mono text-white">{market.growth}</span>
                 </div>
               </div>
               <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">

@@ -2,42 +2,41 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { TrendingUp, DollarSign, Target, Users, Code, Megaphone, Building, ArrowRight } from "lucide-react"
+import { FOUNDER_PORTFOLIO_PATH } from "@/lib/site"
+import { company, investorMailto } from "@/lib/company"
 import { Button } from "@/components/ui/button"
-import { trackAction } from "@/lib/track-action"
 
-const fundAllocation = [
-  { label: "Product Development", percentage: 40, icon: Code, color: "cyan" },
-  { label: "Market Expansion", percentage: 25, icon: Megaphone, color: "purple" },
-  { label: "Team & Operations", percentage: 20, icon: Users, color: "blue" },
-  { label: "Infrastructure", percentage: 15, icon: Building, color: "cyan" },
-]
+const fundColors = {
+  0: "cyan",
+  1: "purple",
+  2: "blue",
+  3: "cyan",
+  4: "purple",
+  5: "blue",
+  6: "cyan",
+} as const
+
+const fundAllocation = company.funds.map((item, index) => ({
+  label: item.label,
+  percentage: item.percentage,
+  icon: [Code, Users, Building, Megaphone, Target, DollarSign, TrendingUp][index] ?? Code,
+  color: fundColors[index as keyof typeof fundColors] ?? "cyan",
+}))
 
 const metrics = [
-  { label: "Target Raise", value: "$1.5M - $3M" },
-  { label: "Valuation", value: "$100M - $120M" },
-  { label: "Stage", value: "Series A" },
+  { label: "Target Raise", value: company.raise },
+  { label: "Valuation", value: company.valuation },
+  { label: "Stage", value: company.round },
 ]
 
 export function Investor() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const [ctaStatus, setCtaStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
-  const [ctaMessage, setCtaMessage] = useState("")
 
-  const handleInvestorAction = async (kind: "deck" | "call") => {
-    setCtaStatus("loading")
-    setCtaMessage(kind === "deck" ? "Requesting investor deck..." : "Scheduling investor call...")
-    try {
-      const ok = await trackAction("investor_cta_click", "investor-section", { kind })
-      if (!ok) throw new Error("tracking_failed")
-      setCtaStatus("success")
-      setCtaMessage(kind === "deck" ? "Deck request submitted successfully." : "Call request submitted successfully.")
-    } catch {
-      setCtaStatus("error")
-      setCtaMessage("Unable to submit request. Please retry.")
-    }
+  const handleInvestorAction = (kind: "deck" | "call") => {
+    window.location.href = investorMailto(kind === "deck" ? "deck" : "conversation")
   }
 
   return (
@@ -70,12 +69,12 @@ export function Investor() {
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-balance">
             Partner With{" "}
             <span className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-              Tomorrow&apos;s Intelligence
+              a company operating system
             </span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Join us in building the infrastructure that will power the next generation
-            of adaptive AI experiences across three trillion-dollar industries.
+            Quantavex is raising a {company.round} round to take three research-backed
+            platforms from architecture into private alpha.
           </p>
         </motion.div>
 
@@ -208,16 +207,16 @@ export function Investor() {
 
             <div className="space-y-4">
               {[
-                { title: "Market Position", desc: "First-mover in unified adaptive AI across 3 industries" },
-                { title: "Technology Moat", desc: "Proprietary intelligence infrastructure with cross-domain learning" },
-                { title: "Revenue Model", desc: "SaaS + Usage-based pricing with 80%+ gross margins" },
+                { title: "Position", desc: "Unified AI infrastructure across EdTech, entertainment, and commerce" },
+                { title: "Round", desc: `${company.round}: ${company.raise} (${company.raiseInr}) for ${company.equity} at ${company.valuation} pre-money` },
+                { title: "Proof of work", desc: "Three original research monographs and three product architectures" },
                 {
                   title: "Team",
-                  desc: "Led by Udit Gour — Founder & CEO. Background across AI research and enterprise strategy.",
-                  href: "/founder",
+                  desc: "Led by Udit Gour — Founder & CEO. Headquarters: India.",
+                  href: FOUNDER_PORTFOLIO_PATH,
                   linkLabel: "View founder portfolio",
                 },
-                { title: "Traction", desc: "3 pilot programs, 50K+ users in beta, 4.8★ NPS" },
+                { title: "TAM", desc: `${company.tam} across EdTech ($400B+), entertainment ($2.8T+), and e-commerce ($6T+)` },
               ].map((item, index) => (
                 <motion.div
                   key={item.title}
@@ -277,19 +276,6 @@ export function Investor() {
                 Schedule Call
               </Button>
             </div>
-            {ctaStatus !== "idle" && (
-              <p
-                className={`mt-4 text-xs ${
-                  ctaStatus === "error"
-                    ? "text-red-400"
-                    : ctaStatus === "loading"
-                      ? "text-cyan-400"
-                      : "text-emerald-400"
-                }`}
-              >
-                {ctaMessage}
-              </p>
-            )}
           </div>
         </motion.div>
       </div>

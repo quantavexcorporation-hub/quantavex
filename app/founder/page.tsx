@@ -4,7 +4,7 @@ import { FounderPortfolio } from "@/components/founder/founder-portfolio"
 export const metadata: Metadata = {
   title: "Udit Gour | Founder & CEO of Quantavex",
   description:
-    "Udit Gour is an AI researcher and founder building applied AI systems for learning, entertainment, and commerce at Quantavex.",
+    "Udit Gour is founder and CEO of Quantavex, specifying intelligence systems for learning, entertainment, and commerce.",
 }
 
 export default function FounderPage() {

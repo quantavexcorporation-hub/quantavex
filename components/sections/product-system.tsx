@@ -3,68 +3,38 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
-import { GraduationCap, Film, ShoppingBag, ArrowRight, Sparkles, Brain, Layers } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { ArrowRight, Sparkles, Layers } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { trackAction } from "@/lib/track-action"
+import { ProductLogo } from "@/components/brand/product-logo"
+import { products as dossiers } from "@/lib/products"
+import { ProductWebsiteLink } from "@/components/brand/product-site"
 
-const products = [
-  {
-    id: "quantrion",
-    name: "Quantrion AI",
-    category: "EdTech",
-    icon: GraduationCap,
-    color: "cyan",
-    tagline: "Adaptive Learning Intelligence",
-    description: "AI-powered curriculum that adapts in real-time to student performance, predicting learning outcomes before they happen.",
-    features: [
-      "Adaptive Learning Graphs",
-      "Performance Prediction",
-      "Knowledge Gap Detection",
-      "Personalized Pathways",
-    ],
-    metrics: { efficiency: "+88%", retention: "3.2x", satisfaction: "96%" },
-    visualization: "learning",
-  },
-  {
-    id: "vdoc",
-    name: "Vdoc AI",
-    category: "Entertainment",
-    icon: Film,
-    color: "purple",
-    tagline: "Generative Storytelling Engine",
-    description: "Transform concepts into immersive narratives with AI-generated scenes, interactive storytelling, and dynamic content creation.",
-    features: [
-      "AI Scene Generation",
-      "Interactive Narratives",
-      "Real-time Adaptation",
-      "Emotional Intelligence",
-    ],
-    metrics: { engagement: "5x", creation: "-80%", reach: "10M+" },
-    visualization: "entertainment",
-  },
-  {
-    id: "exorax",
-    name: "ExoraX AI",
-    category: "Commerce",
-    icon: ShoppingBag,
-    color: "blue",
-    tagline: "Decision Commerce Platform",
-    description: "From browsing to buying, AI that understands intent, visualizes products in 3D, and guides purchase decisions intelligently.",
-    features: [
-      "3D Product Visualization",
-      "Intent Prediction",
-      "Smart Recommendations",
-      "Conversion Optimization",
-    ],
-    metrics: { conversion: "+35%", aov: "+42%", returns: "-28%" },
-    visualization: "commerce",
-  },
-]
+const products = (
+  [
+    { id: "quantrion", color: "cyan", visualization: "learning" },
+    { id: "vdoc", color: "purple", visualization: "entertainment" },
+    { id: "exorax", color: "blue", visualization: "commerce" },
+  ] as const
+).map((meta) => {
+  const product = dossiers[meta.id]
+  return {
+    ...meta,
+    name: product.name,
+    category: product.industry,
+    tagline: product.tagline,
+    description: product.description,
+    features: product.groups[1].items.slice(0, 4).map((item) => item.name),
+    metrics: Object.fromEntries(product.metrics.slice(0, 3).map((metric) => [metric.label, metric.value])),
+  }
+})
 
 export function ProductSystem() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [activeProduct, setActiveProduct] = useState(0)
+  const router = useRouter()
 
   const colorClasses = {
     cyan: {
@@ -90,7 +60,7 @@ export function ProductSystem() {
   const handleExploreClick = async () => {
     const product = products[activeProduct]
     await trackAction("product_explore_click", "product-system", { productId: product.id })
-    window.location.href = `/#${product.id}`
+    router.push(`/${product.id}`)
   }
 
   return (
@@ -142,7 +112,7 @@ export function ProductSystem() {
                     : "glass hover:bg-secondary/30"
                 }`}
               >
-                <product.icon className={`w-5 h-5 ${isActive ? colors.text : "text-muted-foreground"}`} />
+                <ProductLogo product={product.id} size={22} />
                 <span className={isActive ? "text-foreground font-medium" : "text-muted-foreground"}>
                   {product.name}
                 </span>
@@ -170,8 +140,8 @@ export function ProductSystem() {
                   const product = products[activeProduct]
                   const colors = colorClasses[product.color as keyof typeof colorClasses]
                   return (
-                    <div className={`p-3 rounded-xl ${colors.bg}`}>
-                      <product.icon className={`w-8 h-8 ${colors.text}`} />
+                    <div className={`overflow-hidden rounded-xl ${colors.bg} p-1`}>
+                      <ProductLogo product={product.id} size={56} />
                     </div>
                   )
                 })()}
@@ -223,17 +193,20 @@ export function ProductSystem() {
               ))}
             </div>
 
-            <Button 
-              className={`${
-                products[activeProduct].color === "cyan" ? "bg-neon-cyan text-background hover:bg-neon-cyan/90" :
-                products[activeProduct].color === "purple" ? "bg-neon-purple text-background hover:bg-neon-purple/90" :
-                "bg-neon-blue text-background hover:bg-neon-blue/90"
-              } font-semibold`}
-              onClick={() => void handleExploreClick()}
-            >
-              Explore {products[activeProduct].name}
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <div className="flex flex-wrap items-center gap-3">
+              <Button 
+                className={`${
+                  products[activeProduct].color === "cyan" ? "bg-neon-cyan text-background hover:bg-neon-cyan/90" :
+                  products[activeProduct].color === "purple" ? "bg-neon-purple text-background hover:bg-neon-purple/90" :
+                  "bg-neon-blue text-background hover:bg-neon-blue/90"
+                } font-semibold`}
+                onClick={() => void handleExploreClick()}
+              >
+                Explore {products[activeProduct].name}
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              <ProductWebsiteLink productId={products[activeProduct].id} variant="ghost" />
+            </div>
           </div>
 
           {/* Product Visualization */}
@@ -415,7 +388,7 @@ function ProductVisualization({ type, color }: { type: string; color: string }) 
               animate={{ scale: [0.95, 1.05, 0.95] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <ShoppingBag className="w-12 h-12 text-neon-blue" />
+              <ProductLogo product="exorax" size={48} />
             </motion.div>
           </div>
 
