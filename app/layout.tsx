@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Inter, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { siteUrl } from '@/lib/site'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -9,9 +10,18 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Quantavex | Company operating system',
-  description: 'Quantavex is a founder-led company in India building Quantrion, Vdoc, and ExoraX.',
+  description: 'Quantavex is a founder-led company building Quantrion, Vdoc, and ExoraX.',
   keywords: ['Quantavex', 'Quantrion', 'Vdoc', 'ExoraX', 'EdTech', 'Entertainment', 'Commerce'],
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    siteName: 'Quantavex',
+    title: 'Quantavex | Company operating system',
+    description: 'Quantavex is a founder-led company building Quantrion, Vdoc, and ExoraX.',
+  },
   icons: {
     icon: '/quantavex-logo.jpg',
     shortcut: '/quantavex-logo.jpg',
