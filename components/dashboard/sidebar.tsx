@@ -86,7 +86,7 @@ export function Sidebar() {
           {!collapsed && (
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold tracking-tight text-white">Quantavex</p>
-              <p className="truncate text-[10px] uppercase tracking-[0.18em] text-cyan-400/70">Company OS</p>
+              <p className="truncate text-[10px] uppercase tracking-[0.18em] text-cyan-400/70">Parent company</p>
             </div>
           )}
         </Link>

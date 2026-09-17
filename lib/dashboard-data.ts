@@ -20,7 +20,7 @@ export function getChart(): DashboardSnapshot["chart"] {
 
 export function getActivities(): DashboardSnapshot["activities"] {
   return [
-    { id: "m1", type: "system", message: "Company OS published as the investor-facing operating record.", timestamp: "Now" },
+    { id: "m1", type: "system", message: "Quantavex parent company record published for Quantrion, Vdoc, and ExoraX.", timestamp: "Now" },
     { id: "m2", type: "learning", message: "Quantrion monograph complete — 99 pages, exam intelligence architecture.", timestamp: "Research" },
     { id: "m3", type: "content", message: "Vdoc monograph complete — 108 pages, interactive entertainment OS.", timestamp: "Research" },
     { id: "m4", type: "commerce", message: "ExoraX monograph complete — 58 pages, decision commerce architecture.", timestamp: "Research" },

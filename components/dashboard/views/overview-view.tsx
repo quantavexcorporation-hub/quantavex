@@ -18,9 +18,9 @@ export function OverviewView() {
   return (
     <div className="space-y-5">
       <PageHeader
-        title="Company operating system"
+        title="Parent company"
         brand="Quantavex"
-        subtitle="Three platforms. One operating system."
+        subtitle="One company. Three platforms — Quantrion, Vdoc, and ExoraX."
         mark={<QuantavexLogo size={48} priority />}
       />
 

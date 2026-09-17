@@ -13,12 +13,12 @@ export function CompanyBrief() {
 
       <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-gray-300 md:text-[15px] md:leading-7">
         <p>
-          Quantavex is a founder-led technology company. The work is to turn
-          high-stakes learning, interactive entertainment, and decision commerce
-          into intelligent systems — not content libraries, catalogs, or
-          storefronts bolted onto chat. We operate where artificial intelligence,
-          data science, human behavior, digital media, and commerce meet, and we
-          treat those fields as one stack, not five slogans.
+          Quantavex is a founder-led parent company. It leads, specifies, and
+          manages three platforms — Quantrion, Vdoc, and ExoraX — for
+          high-stakes learning, interactive entertainment, and decision
+          commerce. Not content libraries, catalogs, or storefronts bolted onto
+          chat. The work sits where artificial intelligence, data science, human
+          behavior, digital media, and commerce meet.
         </p>
         <p>
           The method is research first. Each platform is written as an original
@@ -34,8 +34,7 @@ export function CompanyBrief() {
           enter, shape, and create in, with a virtual economy inside the
           experience. ExoraX is decision commerce: a correct decision before
           value moves — product, price, and risk — including trade across
-          goods, services, and capital. Three platforms. One company operating
-          system.
+          goods, services, and capital. Three platforms. One parent company.
         </p>
         <p>
           Live product websites appear here when each platform is uploaded. Until

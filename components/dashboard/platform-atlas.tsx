@@ -36,7 +36,7 @@ export function PlatformAtlas() {
             Three industries. One intelligence.
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-gray-400">
-            Quantavex is specifying learning, entertainment, and commerce as one operating system.
+            Quantavex is the parent company. Quantrion, Vdoc, and ExoraX are the platforms it leads.
             Product websites appear here the moment each platform is uploaded.
           </p>
         </div>

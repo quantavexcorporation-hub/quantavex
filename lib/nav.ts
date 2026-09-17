@@ -3,8 +3,8 @@ export const pageMeta: Record<
   { title: string; subtitle: string }
 > = {
   "/": {
-    title: "Company OS",
-    subtitle: "Operating record for Quantrion, Vdoc, and ExoraX",
+    title: "Parent company",
+    subtitle: "Quantavex — the company behind Quantrion, Vdoc, and ExoraX",
   },
   "/portfolio": {
     title: "Udit Gour",

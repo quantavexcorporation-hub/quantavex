@@ -11,15 +11,15 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Quantavex | Company operating system',
-  description: 'Quantavex is a founder-led company building Quantrion, Vdoc, and ExoraX.',
+  title: 'Quantavex | Parent company',
+  description: 'Quantavex is the parent company behind Quantrion, Vdoc, and ExoraX.',
   keywords: ['Quantavex', 'Quantrion', 'Vdoc', 'ExoraX', 'EdTech', 'Entertainment', 'Commerce'],
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     url: siteUrl,
     siteName: 'Quantavex',
-    title: 'Quantavex | Company operating system',
+    title: 'Quantavex | Parent company',
     description: 'Quantavex is a founder-led company building Quantrion, Vdoc, and ExoraX.',
   },
   icons: {
