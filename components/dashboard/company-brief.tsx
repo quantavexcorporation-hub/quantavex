@@ -7,37 +7,41 @@ export function CompanyBrief() {
       <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">
         The company
       </p>
-      <h2 className="mt-3 max-w-4xl text-2xl font-semibold tracking-tight text-white md:text-4xl md:leading-tight">
-        Quantavex is one operating system for the industries that will run the next world.
+      <h2 className="mt-3 max-w-4xl text-2xl font-semibold tracking-tight text-white md:text-3xl md:leading-tight">
+        Quantavex builds AI-driven products for how people learn, create, discover, and transact.
       </h2>
 
-      <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-gray-300 md:text-base md:leading-8">
+      <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-gray-300 md:text-[15px] md:leading-7">
         <p>
-          A company is built twice. First as research that can survive the page.
-          Then as a software machine that can survive contact with the world.
-          Quantavex is that sequence — founder-led, written before it is shipped,
-          specified before it is sold.
+          Quantavex is a founder-led technology company. The work is to turn
+          high-stakes learning, interactive entertainment, and decision commerce
+          into intelligent systems — not content libraries, catalogs, or
+          storefronts bolted onto chat. We operate where artificial intelligence,
+          data science, human behavior, digital media, and commerce meet, and we
+          treat those fields as one stack, not five slogans.
         </p>
         <p>
-          Learning, entertainment, and commerce are still treated as three
-          separate markets, three separate stacks, three separate futures. They
-          are not. They are how people become capable, how they inhabit
-          experience, and how value moves. Quantavex holds them on one
-          architecture: Quantrion for competitive learning, Vdoc for interactive
-          entertainment, ExoraX for decision commerce.
+          The method is research first. Each platform is written as an original
+          monograph that specifies the architecture. The software machine is
+          built from that specification. Inside the machine, AI is the engine.
+          Data is required for correct information — accurate, complete, and
+          current. If the data is wrong, the intelligence is wrong. That is the
+          constraint we design against.
         </p>
         <p>
-          Each platform begins as an original monograph. The paper is the
-          specification. The machine is built from that specification. Inside
-          the machine, AI is the engine — not a label on the box, the thing that
-          runs. Data is the truth. If the data is incomplete, outdated, or
-          wrong, the intelligence is theatre. We do not ship theatre.
+          Quantrion is competitive learning: examination intelligence rather than
+          static preparation. Vdoc is interactive entertainment: worlds people
+          enter, shape, and create in, with a virtual economy inside the
+          experience. ExoraX is decision commerce: a correct decision before
+          value moves — product, price, and risk — including trade across
+          goods, services, and capital. Three platforms. One company operating
+          system.
         </p>
         <p>
-          This operating system is the company. Live platforms appear here when
-          each site is uploaded. Until then the work is already visible: three
-          architectures, three papers, one venture. The destination is not a
-          demo. It is products people actually use.
+          Live product websites appear here when each platform is uploaded. Until
+          then the company record is already public: three architectures, three
+          papers, one venture. The aim is not a demonstration. It is products
+          people actually use.
         </p>
       </div>
 

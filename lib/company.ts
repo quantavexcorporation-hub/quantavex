@@ -18,7 +18,7 @@ export const company = {
   paperPdf: "/research/quantavex.pdf",
   tam: "$8T+",
   thesis:
-    "To build a unified AI-powered intelligence infrastructure across learning, entertainment, and commerce ecosystems.",
+    "Quantavex builds AI-driven products for how people learn, create, discover, and transact.",
   proof:
     "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Product websites appear here when each site is uploaded.",
   founder: {
