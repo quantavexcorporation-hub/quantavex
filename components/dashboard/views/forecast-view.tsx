@@ -8,9 +8,9 @@ import { useDashboard } from "@/components/dashboard/dashboard-provider"
 import { company, investorMailto } from "@/lib/company"
 
 const toneClass = {
-  cyan: "from-cyan-500/20 to-cyan-500/5 border-cyan-500/30 text-cyan-300",
-  purple: "from-purple-500/20 to-purple-500/5 border-purple-500/30 text-purple-300",
-  emerald: "from-emerald-500/20 to-emerald-500/5 border-emerald-500/30 text-emerald-300",
+  cyan: "from-teal-500/20 to-teal-500/5 border-teal-500/30 text-teal-300",
+  purple: "from-rose-500/20 to-rose-500/5 border-rose-500/30 text-rose-300",
+  emerald: "from-zinc-500/20 to-zinc-500/5 border-zinc-400/30 text-zinc-300",
   amber: "from-amber-500/20 to-amber-500/5 border-amber-500/30 text-amber-300",
 }
 

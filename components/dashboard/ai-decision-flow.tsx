@@ -168,15 +168,15 @@ export function AIDecisionFlow() {
       <div className="flex items-center justify-between mt-3 pt-3 border-t border-cyan-500/10">
         <div className="flex gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-cyan-600" />
+            <div className="w-3 h-3 rounded-full bg-teal-500" />
             <span className="text-[10px] text-gray-400">Input</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-purple-600" />
+            <div className="w-3 h-3 rounded-full bg-rose-600" />
             <span className="text-[10px] text-gray-400">Process</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-emerald-600" />
+            <div className="w-3 h-3 rounded-full bg-zinc-400" />
             <span className="text-[10px] text-gray-400">Output</span>
           </div>
         </div>

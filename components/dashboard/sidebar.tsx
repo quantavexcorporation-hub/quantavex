@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { QuantavexLogo } from "@/components/brand/quantavex-logo"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
+import { productAccents } from "@/lib/product-accents"
 import {
   LayoutDashboard,
   Zap,
@@ -13,7 +14,6 @@ import {
   ChevronLeft,
   ChevronRight,
   User,
-  Mail,
   X,
 } from "lucide-react"
 
@@ -33,7 +33,6 @@ const navGroups: { label: string; items: NavItem[] }[] = [
     label: "Company",
     items: [
       { href: "/", label: "Overview", icon: LayoutDashboard },
-      { href: "/#contact", label: "Contact", icon: Mail },
     ],
   },
   {
@@ -137,6 +136,7 @@ function NavContent({ onNavigate }: { onNavigate?: () => void }) {
             <div className="space-y-1">
               {group.items.map((item) => {
                 const Icon = item.icon
+                const accent = item.product ? productAccents[item.product] : null
                 const isActive =
                   item.href === "/"
                     ? pathname === "/"
@@ -156,12 +156,21 @@ function NavContent({ onNavigate }: { onNavigate?: () => void }) {
                       }
                       onNavigate?.()
                     }}
-                    className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-all duration-200 ${
+                    className={`group relative flex items-center gap-3 overflow-hidden rounded-lg border px-3 py-2.5 transition-all duration-200 ${
                       isActive
-                        ? "border-cyan-400/30 bg-cyan-400/10 text-cyan-300 shadow-[inset_0_0_18px_rgba(34,211,238,0.08)]"
+                        ? accent?.active ??
+                          "border-cyan-400/30 bg-cyan-400/10 text-cyan-300 shadow-[inset_0_0_18px_rgba(34,211,238,0.08)]"
                         : "border-transparent text-gray-400 hover:border-white/5 hover:bg-white/[0.04] hover:text-white"
                     }`}
                   >
+                    {accent ? (
+                      <span
+                        aria-hidden
+                        className={`absolute inset-y-1.5 left-0 w-[3px] rounded-full ${accent.side} ${
+                          isActive ? "opacity-100" : "opacity-75"
+                        }`}
+                      />
+                    ) : null}
                     {item.product ? (
                       <ProductLogo product={item.product} size={28} />
                     ) : Icon ? (
@@ -173,7 +182,9 @@ function NavContent({ onNavigate }: { onNavigate?: () => void }) {
                     ) : null}
                     {!compact && <span className="text-sm font-medium leading-tight">{item.label}</span>}
                     {isActive && !compact && (
-                      <span className="ml-auto h-1.5 w-1.5 rounded-full bg-cyan-300" />
+                      <span
+                        className={`ml-auto h-1.5 w-1.5 rounded-full ${accent?.activeDot ?? "bg-cyan-300"}`}
+                      />
                     )}
                   </Link>
                 )
@@ -195,7 +206,7 @@ export function Sidebar() {
       <motion.aside
         initial={false}
         animate={{ width: collapsed ? 76 : 248 }}
-        className="relative z-40 hidden h-screen shrink-0 flex-col border-r border-cyan-500/10 bg-[#07070c] lg:flex"
+        className="relative z-40 hidden h-[100dvh] shrink-0 flex-col border-r border-cyan-500/10 bg-[#07070c] lg:flex"
       >
         <NavContent />
         <button

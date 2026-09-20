@@ -5,24 +5,7 @@ import { ArrowRight } from "lucide-react"
 import { ProductLogo } from "@/components/brand/product-logo"
 import { productList } from "@/lib/products"
 import { ProductWebsiteLink } from "@/components/brand/product-site"
-
-const accents = {
-  quantrion: {
-    border: "border-cyan-500/20 hover:border-cyan-400/40",
-    text: "text-cyan-300",
-    glow: "from-cyan-500/12",
-  },
-  vdoc: {
-    border: "border-purple-500/20 hover:border-purple-400/40",
-    text: "text-purple-300",
-    glow: "from-purple-500/12",
-  },
-  exorax: {
-    border: "border-emerald-500/20 hover:border-emerald-400/40",
-    text: "text-emerald-300",
-    glow: "from-emerald-500/12",
-  },
-}
+import { productAccents } from "@/lib/product-accents"
 
 export function PlatformAtlas() {
   return (
@@ -44,13 +27,13 @@ export function PlatformAtlas() {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {productList.map((product) => {
-          const accent = accents[product.id]
+          const accent = productAccents[product.id]
           const live = Boolean(product.liveUrl)
 
           return (
             <article
               key={product.id}
-              className={`relative overflow-hidden rounded-xl border bg-black/25 p-4 transition ${accent.border}`}
+              className={`relative overflow-hidden rounded-xl border bg-black/25 p-4 transition ${accent.borderHover}`}
             >
               <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accent.glow} to-transparent`} />
               <div className="relative">

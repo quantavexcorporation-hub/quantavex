@@ -6,7 +6,6 @@ import { StatsSection } from "@/components/founder/stats-section"
 import { ProductLogo } from "@/components/brand/product-logo"
 import { researchPapers } from "@/lib/research"
 import { productList } from "@/lib/products"
-import { ProductWebsiteLink } from "@/components/brand/product-site"
 
 const researchFields = [
   {
@@ -90,12 +89,11 @@ export function ResearchSection() {
                   </h3>
                   <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-muted-foreground">{paper.subtitle}</p>
                 </a>
-                <div className="mt-3 flex flex-wrap items-center gap-3">
+                <div className="mt-3">
                   <a href={`/${product.id}#research`} className="inline-flex items-center gap-1 text-xs font-medium text-primary">
                     Open monograph
                     <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
-                  <ProductWebsiteLink productId={product.id} variant="ghost" />
                 </div>
               </div>
             )

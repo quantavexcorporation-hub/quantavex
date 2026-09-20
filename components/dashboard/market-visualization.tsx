@@ -5,9 +5,9 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 import { DashboardSnapshot } from "@/lib/dashboard-types"
 
 const fallbackMarkets = [
-    { name: "EdTech", value: 400, color: "#22d3ee", growth: "$400B+" },
-  { name: "Entertainment", value: 2800, color: "#a855f7", growth: "$2.8T+" },
-  { name: "E-commerce", value: 6000, color: "#10b981", growth: "$6T+" },
+  { name: "EdTech", value: 400, color: "#2dd4bf", growth: "$400B+" },
+  { name: "Entertainment", value: 2800, color: "#f43f5e", growth: "$2.8T+" },
+  { name: "E-commerce", value: 6000, color: "#a1a1aa", growth: "$6T+" },
 ]
 
 export function MarketVisualization({ data }: { data?: DashboardSnapshot["markets"] }) {

@@ -65,9 +65,9 @@ export function RealtimeChart({
 
   const metrics = [
     { key: "all", label: "All Metrics", color: "white" },
-    { key: "learning", label: "Learning", color: "#22d3ee" },
-    { key: "engagement", label: "Engagement", color: "#a855f7" },
-    { key: "conversion", label: "Conversion", color: "#10b981" },
+    { key: "learning", label: "Learning", color: "#2dd4bf" },
+    { key: "engagement", label: "Engagement", color: "#f43f5e" },
+    { key: "conversion", label: "Conversion", color: "#a1a1aa" },
   ]
 
   return (
@@ -101,16 +101,16 @@ export function RealtimeChart({
           <AreaChart data={data}>
             <defs>
               <linearGradient id="gradientLearning" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#22d3ee" stopOpacity={0.3} />
-                <stop offset="100%" stopColor="#22d3ee" stopOpacity={0} />
+                <stop offset="0%" stopColor="#2dd4bf" stopOpacity={0.3} />
+                <stop offset="100%" stopColor="#2dd4bf" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="gradientEngagement" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#a855f7" stopOpacity={0.3} />
-                <stop offset="100%" stopColor="#a855f7" stopOpacity={0} />
+                <stop offset="0%" stopColor="#f43f5e" stopOpacity={0.3} />
+                <stop offset="100%" stopColor="#f43f5e" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="gradientConversion" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#10b981" stopOpacity={0.3} />
-                <stop offset="100%" stopColor="#10b981" stopOpacity={0} />
+                <stop offset="0%" stopColor="#a1a1aa" stopOpacity={0.3} />
+                <stop offset="100%" stopColor="#a1a1aa" stopOpacity={0} />
               </linearGradient>
             </defs>
             <XAxis
@@ -139,7 +139,7 @@ export function RealtimeChart({
                 <Area
                   type="monotone"
                   dataKey="learning"
-                  stroke="#22d3ee"
+                  stroke="#2dd4bf"
                   strokeWidth={2}
                   fill="url(#gradientLearning)"
                 />
@@ -149,7 +149,7 @@ export function RealtimeChart({
               <Area
                 type="monotone"
                 dataKey="engagement"
-                stroke="#a855f7"
+                stroke="#f43f5e"
                 strokeWidth={2}
                 fill="url(#gradientEngagement)"
               />
@@ -158,7 +158,7 @@ export function RealtimeChart({
               <Area
                 type="monotone"
                 dataKey="conversion"
-                stroke="#10b981"
+                stroke="#a1a1aa"
                 strokeWidth={2}
                 fill="url(#gradientConversion)"
               />
@@ -170,15 +170,15 @@ export function RealtimeChart({
       <div className="flex items-center justify-between mt-3 pt-3 border-t border-cyan-500/10">
         <div className="flex gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-cyan-400" />
+            <div className="w-2 h-2 rounded-full bg-teal-400" />
             <span className="text-[10px] text-gray-400">Learning</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-purple-400" />
+            <div className="w-2 h-2 rounded-full bg-rose-500" />
             <span className="text-[10px] text-gray-400">Engagement</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-emerald-400" />
+            <div className="w-2 h-2 rounded-full bg-zinc-300" />
             <span className="text-[10px] text-gray-400">Conversion</span>
           </div>
         </div>

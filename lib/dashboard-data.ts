@@ -31,9 +31,9 @@ export function getActivities(): DashboardSnapshot["activities"] {
 
 export function getMarkets(): DashboardSnapshot["markets"] {
   return [
-    { name: "EdTech", value: 400, color: "#22d3ee", growth: "$400B+" },
-    { name: "Entertainment", value: 2800, color: "#a855f7", growth: "$2.8T+" },
-    { name: "E-commerce", value: 6000, color: "#10b981", growth: "$6T+" },
+    { name: "EdTech", value: 400, color: "#2dd4bf", growth: "$400B+" },
+    { name: "Entertainment", value: 2800, color: "#f43f5e", growth: "$2.8T+" },
+    { name: "E-commerce", value: 6000, color: "#a1a1aa", growth: "$6T+" },
   ]
 }
 
@@ -66,7 +66,7 @@ export function getProductPanels(): DashboardSnapshot["productPanels"] {
       subtitle: "Entertainment operating system",
       metrics: [
         { label: "Paper", value: "108 pp" },
-        { label: "Layers", value: "V1–Vydo" },
+        { label: "Layers", value: "3" },
         { label: "Entry", value: "Speak" },
         { label: "Status", value: "In build" },
       ],
@@ -79,7 +79,7 @@ export function getProductPanels(): DashboardSnapshot["productPanels"] {
       metrics: [
         { label: "Paper", value: "58 pp" },
         { label: "Layers", value: "6" },
-        { label: "X1 cats", value: "6" },
+        { label: "Categories", value: "6" },
         { label: "Status", value: "In build" },
       ],
       preview: {

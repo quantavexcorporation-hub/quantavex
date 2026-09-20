@@ -29,9 +29,9 @@ function ShellFrame({ children }: { children: React.ReactNode }) {
   const { handleNotificationsClick, handleSearch, searchResponse, searchStatus, searchError } = useDashboard()
 
   return (
-    <div className="flex min-h-screen min-h-[100dvh] overflow-x-hidden bg-[#08080f]">
+    <div className="flex h-[100dvh] overflow-hidden bg-[#08080f]">
       <Sidebar />
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         {isPortfolio ? (
           <PortfolioMobileBar />
         ) : (
@@ -46,13 +46,13 @@ function ShellFrame({ children }: { children: React.ReactNode }) {
         <main
           className={
             isPortfolio
-              ? "h-[calc(100dvh-3rem)] overflow-y-auto overflow-x-hidden lg:h-screen"
-              : "min-w-0 flex-1 overflow-y-auto overflow-x-hidden p-3 sm:p-5 md:p-6"
+              ? "min-h-0 flex-1 overflow-y-auto overflow-x-hidden lg:h-auto"
+              : "min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden p-3 sm:p-5 md:p-6"
           }
         >
           <div
             key={pathname}
-            className={isPortfolio ? "h-full" : "dashboard-page mx-auto w-full max-w-[1600px]"}
+            className={isPortfolio ? "min-h-full" : "dashboard-page mx-auto w-full max-w-[1600px]"}
           >
             {children}
           </div>

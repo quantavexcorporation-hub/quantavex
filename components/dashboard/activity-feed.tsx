@@ -12,9 +12,9 @@ const iconMap = {
 }
 
 const colorMap = {
-  learning: "text-cyan-400 bg-cyan-500/10",
-  content: "text-purple-400 bg-purple-500/10",
-  commerce: "text-emerald-400 bg-emerald-500/10",
+  learning: "text-teal-400 bg-teal-500/10",
+  content: "text-rose-400 bg-rose-500/10",
+  commerce: "text-zinc-300 bg-zinc-500/10",
   system: "text-gray-400 bg-gray-500/10",
 }
 

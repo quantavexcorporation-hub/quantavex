@@ -10,12 +10,13 @@ import { trackAction } from "@/lib/track-action"
 import { ProductLogo } from "@/components/brand/product-logo"
 import { products as dossiers } from "@/lib/products"
 import { ProductWebsiteLink } from "@/components/brand/product-site"
+import { productAccents } from "@/lib/product-accents"
 
 const products = (
   [
-    { id: "quantrion", color: "cyan", visualization: "learning" },
-    { id: "vdoc", color: "purple", visualization: "entertainment" },
-    { id: "exorax", color: "blue", visualization: "commerce" },
+    { id: "quantrion" as const, visualization: "learning" },
+    { id: "vdoc" as const, visualization: "entertainment" },
+    { id: "exorax" as const, visualization: "commerce" },
   ] as const
 ).map((meta) => {
   const product = dossiers[meta.id]
@@ -36,32 +37,14 @@ export function ProductSystem() {
   const [activeProduct, setActiveProduct] = useState(0)
   const router = useRouter()
 
-  const colorClasses = {
-    cyan: {
-      bg: "bg-neon-cyan/10",
-      text: "text-neon-cyan",
-      border: "border-neon-cyan/30",
-      glow: "neon-glow-cyan",
-    },
-    purple: {
-      bg: "bg-neon-purple/10",
-      text: "text-neon-purple",
-      border: "border-neon-purple/30",
-      glow: "neon-glow-purple",
-    },
-    blue: {
-      bg: "bg-neon-blue/10",
-      text: "text-neon-blue",
-      border: "border-neon-blue/30",
-      glow: "neon-glow-blue",
-    },
-  }
-
   const handleExploreClick = async () => {
     const product = products[activeProduct]
     await trackAction("product_explore_click", "product-system", { productId: product.id })
     router.push(`/${product.id}`)
   }
+
+  const active = products[activeProduct]
+  const accent = productAccents[active.id]
 
   return (
     <section ref={ref} className="relative py-24 md:py-32 overflow-hidden">
@@ -81,7 +64,7 @@ export function ProductSystem() {
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-balance">
             Three Industries.{" "}
-            <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-blue bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-teal-300 via-rose-400 to-zinc-300 bg-clip-text text-transparent">
               One Intelligence.
             </span>
           </h2>
@@ -99,7 +82,7 @@ export function ProductSystem() {
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
           {products.map((product, index) => {
-            const colors = colorClasses[product.color as keyof typeof colorClasses]
+            const colors = productAccents[product.id]
             const isActive = activeProduct === index
 
             return (
@@ -108,7 +91,7 @@ export function ProductSystem() {
                 onClick={() => setActiveProduct(index)}
                 className={`flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 ${
                   isActive
-                    ? `glass-strong ${colors.border} border ${colors.glow}`
+                    ? `glass-strong ${colors.border} border`
                     : "glass hover:bg-secondary/30"
                 }`}
               >
@@ -116,7 +99,7 @@ export function ProductSystem() {
                 <span className={isActive ? "text-foreground font-medium" : "text-muted-foreground"}>
                   {product.name}
                 </span>
-                <span className={`text-xs font-mono px-2 py-0.5 rounded-full ${colors.bg} ${colors.text}`}>
+                <span className={`text-xs font-mono px-2 py-0.5 rounded-full ${colors.chip}`}>
                   {product.category}
                 </span>
               </button>
@@ -136,30 +119,20 @@ export function ProductSystem() {
           <div className="space-y-6">
             <div>
               <div className="flex items-center gap-3 mb-3">
-                {(() => {
-                  const product = products[activeProduct]
-                  const colors = colorClasses[product.color as keyof typeof colorClasses]
-                  return (
-                    <div className={`overflow-hidden rounded-xl ${colors.bg} p-1`}>
-                      <ProductLogo product={product.id} size={56} />
-                    </div>
-                  )
-                })()}
+                <div className={`overflow-hidden rounded-xl ${accent.chip} p-1`}>
+                  <ProductLogo product={active.id} size={56} />
+                </div>
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-bold">{products[activeProduct].name}</h3>
-                  <p className={`text-sm font-mono ${colorClasses[products[activeProduct].color as keyof typeof colorClasses].text}`}>
-                    {products[activeProduct].tagline}
-                  </p>
+                  <h3 className="text-2xl md:text-3xl font-bold">{active.name}</h3>
+                  <p className={`text-sm font-mono ${accent.text}`}>{active.tagline}</p>
                 </div>
               </div>
-              <p className="text-muted-foreground text-lg">
-                {products[activeProduct].description}
-              </p>
+              <p className="text-muted-foreground text-lg">{active.description}</p>
             </div>
 
             {/* Features */}
             <div className="grid grid-cols-2 gap-3">
-              {products[activeProduct].features.map((feature, index) => (
+              {active.features.map((feature, index) => (
                 <motion.div
                   key={feature}
                   initial={{ opacity: 0, x: -20 }}
@@ -167,7 +140,7 @@ export function ProductSystem() {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   className="flex items-center gap-2 text-sm"
                 >
-                  <Sparkles className={`w-4 h-4 ${colorClasses[products[activeProduct].color as keyof typeof colorClasses].text}`} />
+                  <Sparkles className={`w-4 h-4 ${accent.text}`} />
                   <span>{feature}</span>
                 </motion.div>
               ))}
@@ -175,7 +148,7 @@ export function ProductSystem() {
 
             {/* Metrics */}
             <div className="grid grid-cols-3 gap-4">
-              {Object.entries(products[activeProduct].metrics).map(([key, value], index) => (
+              {Object.entries(active.metrics).map(([key, value], index) => (
                 <motion.div
                   key={key}
                   initial={{ opacity: 0, y: 20 }}
@@ -183,47 +156,34 @@ export function ProductSystem() {
                   transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
                   className="glass rounded-xl p-4 text-center"
                 >
-                  <div className={`text-2xl font-bold ${colorClasses[products[activeProduct].color as keyof typeof colorClasses].text}`}>
-                    {value}
-                  </div>
-                  <div className="text-xs font-mono text-muted-foreground uppercase">
-                    {key}
-                  </div>
+                  <div className={`text-2xl font-bold ${accent.text}`}>{value}</div>
+                  <div className="text-xs font-mono text-muted-foreground uppercase">{key}</div>
                 </motion.div>
               ))}
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <Button 
-                className={`${
-                  products[activeProduct].color === "cyan" ? "bg-neon-cyan text-background hover:bg-neon-cyan/90" :
-                  products[activeProduct].color === "purple" ? "bg-neon-purple text-background hover:bg-neon-purple/90" :
-                  "bg-neon-blue text-background hover:bg-neon-blue/90"
-                } font-semibold`}
+              <Button
+                className={`${accent.solid} text-[#061016] hover:opacity-90 font-semibold ${accent.shadow}`}
                 onClick={() => void handleExploreClick()}
               >
-                Explore {products[activeProduct].name}
+                Explore {active.name}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
-              <ProductWebsiteLink productId={products[activeProduct].id} variant="ghost" />
+              <ProductWebsiteLink productId={active.id} variant="ghost" />
             </div>
           </div>
 
           {/* Product Visualization */}
-          <ProductVisualization 
-            type={products[activeProduct].visualization}
-            color={products[activeProduct].color}
-          />
+          <ProductVisualization type={active.visualization} colorHex={accent.hex} />
         </motion.div>
       </div>
     </section>
   )
 }
 
-function ProductVisualization({ type, color }: { type: string; color: string }) {
-  const colorValue = color === "cyan" ? "oklch(0.75 0.18 195)" : 
-                     color === "purple" ? "oklch(0.65 0.2 300)" : 
-                     "oklch(0.7 0.2 250)"
+function ProductVisualization({ type, colorHex }: { type: string; colorHex: string }) {
+  const colorValue = colorHex
 
   return (
     <motion.div

@@ -19,9 +19,9 @@ const iconMap: Record<string, React.ElementType> = {
 }
 
 const tone = {
-  cyan: { border: "border-l-cyan-400", icon: "bg-cyan-400/15 text-cyan-300", bar: "bg-cyan-400" },
-  purple: { border: "border-l-purple-400", icon: "bg-purple-400/15 text-purple-300", bar: "bg-purple-400" },
-  emerald: { border: "border-l-emerald-400", icon: "bg-emerald-400/15 text-emerald-300", bar: "bg-emerald-400" },
+  cyan: { border: "border-l-teal-400", icon: "bg-teal-400/15 text-teal-300", bar: "bg-teal-400" },
+  purple: { border: "border-l-rose-500", icon: "bg-rose-500/15 text-rose-300", bar: "bg-rose-500" },
+  emerald: { border: "border-l-zinc-400", icon: "bg-zinc-400/15 text-zinc-300", bar: "bg-zinc-300" },
   amber: { border: "border-l-amber-400", icon: "bg-amber-400/15 text-amber-300", bar: "bg-amber-400" },
 }
 

@@ -5,7 +5,6 @@ import { Reveal } from "@/components/founder/reveal"
 import { QuantavexLogo } from "@/components/brand/quantavex-logo"
 import { ProductLogo } from "@/components/brand/product-logo"
 import { productList } from "@/lib/products"
-import { ProductWebsiteLink } from "@/components/brand/product-site"
 
 const features = [
   {
@@ -113,12 +112,11 @@ export function VenturesSection() {
                 <p className="text-xs leading-relaxed text-muted-foreground">{product.tagline}</p>
                 <p className="mt-2 text-[11px] italic text-muted-foreground/80">{product.manifesto}</p>
               </a>
-              <div className="mt-4 flex flex-wrap items-center gap-3">
+              <div className="mt-4">
                 <a href={`/${product.id}`} className="inline-flex items-center gap-1 text-xs font-medium text-primary">
                   Open dossier
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
-                <ProductWebsiteLink productId={product.id} variant="ghost" />
               </div>
             </div>
           ))}

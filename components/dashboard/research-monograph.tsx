@@ -4,37 +4,11 @@ import { useEffect, useState } from "react"
 import { Check, Download, FileText, Quote } from "lucide-react"
 import { ProductDossier as Dossier } from "@/lib/products"
 import { getResearch } from "@/lib/research"
-
-const accents: Record<
-  Dossier["id"],
-  { text: string; border: string; chip: string; glow: string; rule: string }
-> = {
-  quantrion: {
-    text: "text-cyan-300",
-    border: "border-cyan-500/25",
-    chip: "bg-cyan-400/10 text-cyan-200",
-    glow: "from-cyan-500/12",
-    rule: "bg-cyan-400",
-  },
-  vdoc: {
-    text: "text-purple-300",
-    border: "border-purple-500/25",
-    chip: "bg-purple-400/10 text-purple-200",
-    glow: "from-purple-500/12",
-    rule: "bg-purple-400",
-  },
-  exorax: {
-    text: "text-emerald-300",
-    border: "border-emerald-500/25",
-    chip: "bg-emerald-400/10 text-emerald-200",
-    glow: "from-emerald-500/12",
-    rule: "bg-emerald-400",
-  },
-}
+import { productAccents } from "@/lib/product-accents"
 
 export function ResearchMonograph({ productId }: { productId: Dossier["id"] }) {
   const paper = getResearch(productId)
-  const accent = accents[productId]
+  const accent = productAccents[productId]
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
@@ -174,7 +148,7 @@ export function ResearchMonograph({ productId }: { productId: Dossier["id"] }) {
               <ol className="space-y-2">
                 {paper.architecture.map((item, index) => (
                   <li key={item.layer} className="flex gap-3 rounded-lg border border-white/5 bg-black/20 px-3 py-2">
-                    <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-[#061016] ${accent.rule}`}>
+                    <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${accent.solidFg}`}>
                       {index + 1}
                     </span>
                     <div>

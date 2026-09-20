@@ -4,6 +4,7 @@ import { Play, Zap } from "lucide-react"
 import { DashboardSnapshot } from "@/lib/dashboard-types"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { ProductWebsiteLink } from "@/components/brand/product-site"
+import { productAccents } from "@/lib/product-accents"
 
 interface ProductPanelProps {
   title: string
@@ -14,11 +15,7 @@ interface ProductPanelProps {
 }
 
 function ProductPanel({ title, subtitle, product, metrics, children }: ProductPanelProps) {
-  const colorClasses = {
-    quantrion: "border-cyan-500/20 hover:border-cyan-500/40",
-    vdoc: "border-purple-500/20 hover:border-purple-500/40",
-    exorax: "border-emerald-500/20 hover:border-emerald-500/40",
-  }[product]
+  const colorClasses = productAccents[product].borderHover
 
   return (
     <div
@@ -51,25 +48,26 @@ function ProductPanel({ title, subtitle, product, metrics, children }: ProductPa
 
 function QuantrionPreview({ bars, highlight }: { bars: number[]; highlight: string }) {
   const learningData = bars
+  const accent = productAccents.quantrion
 
   return (
     <div className="bg-[#08080c] rounded p-3 h-32">
       <div className="flex items-center justify-between mb-2">
         <span className="text-[10px] text-gray-400">Student Progress</span>
-        <span className="text-[10px] font-mono text-cyan-400">{highlight}</span>
+        <span className={`text-[10px] font-mono ${accent.textSoft}`}>{highlight}</span>
       </div>
       <div className="flex items-end gap-1 h-16">
         {learningData.map((value, i) => (
           <div
             key={i}
-            className="flex-1 bg-gradient-to-t from-cyan-500/50 to-cyan-400 rounded-t"
+            className="flex-1 bg-gradient-to-t from-teal-500/50 to-teal-400 rounded-t"
             style={{ height: `${value}%` }}
           />
         ))}
       </div>
       <div className="flex items-center justify-between mt-2">
         <div className="flex items-center gap-1">
-          <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+          <div className={`w-1.5 h-1.5 rounded-full ${accent.side}`} />
           <span className="text-[9px] text-gray-500">Specified loop</span>
         </div>
         <span className="text-[9px] font-mono text-gray-500">8 modules</span>
@@ -79,16 +77,18 @@ function QuantrionPreview({ bars, highlight }: { bars: number[]; highlight: stri
 }
 
 function VdocPreview({ badges, highlight }: { badges: string[]; highlight: string }) {
+  const accent = productAccents.vdoc
+
   return (
     <div className="bg-[#08080c] rounded p-3 h-32 relative overflow-hidden">
       <div className="flex items-center justify-between mb-2">
         <span className="text-[10px] text-gray-400">Content Generation</span>
-        <span className="text-[10px] font-mono text-purple-400">{highlight}</span>
+        <span className={`text-[10px] font-mono ${accent.textSoft}`}>{highlight}</span>
       </div>
 
-      <div className="relative h-16 bg-gradient-to-br from-purple-500/20 to-purple-500/5 rounded flex items-center justify-center">
-        <Play className="w-6 h-6 text-purple-400" />
-        <div className="absolute inset-0 animate-pulse rounded border border-purple-500/30" />
+      <div className="relative h-16 bg-gradient-to-br from-rose-500/20 to-rose-500/5 rounded flex items-center justify-center">
+        <Play className={`w-6 h-6 ${accent.textSoft}`} />
+        <div className="absolute inset-0 animate-pulse rounded border border-rose-500/30" />
       </div>
 
       <div className="flex items-center justify-between mt-2">
@@ -97,7 +97,7 @@ function VdocPreview({ badges, highlight }: { badges: string[]; highlight: strin
             <span
               key={s}
               className={`text-[8px] px-1.5 py-0.5 rounded ${
-                i === 0 ? "bg-purple-500/20 text-purple-400" : "bg-white/5 text-gray-500"
+                i === 0 ? "bg-rose-500/20 text-rose-400" : "bg-white/5 text-gray-500"
               }`}
             >
               {s}
@@ -110,12 +110,13 @@ function VdocPreview({ badges, highlight }: { badges: string[]; highlight: strin
 }
 
 function ExoraXPreview({ products, highlight }: { products: { name: string; score: number }[]; highlight: string }) {
+  const accent = productAccents.exorax
 
   return (
     <div className="bg-[#08080c] rounded p-3 h-32">
       <div className="flex items-center justify-between mb-2">
         <span className="text-[10px] text-gray-400">Purchase Intelligence</span>
-        <span className="text-[10px] font-mono text-emerald-400">{highlight}</span>
+        <span className={`text-[10px] font-mono ${accent.text}`}>{highlight}</span>
       </div>
 
       <div className="space-y-2">
@@ -124,18 +125,18 @@ function ExoraXPreview({ products, highlight }: { products: { name: string; scor
             <span className="text-[9px] text-gray-500 w-16">{p.name}</span>
             <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-emerald-500/50 to-emerald-400 rounded-full"
+                className="h-full bg-gradient-to-r from-zinc-500/50 to-zinc-300 rounded-full"
                 style={{ width: `${p.score}%` }}
               />
             </div>
-            <span className="text-[9px] font-mono text-emerald-400">{p.score}%</span>
+            <span className={`text-[9px] font-mono ${accent.text}`}>{p.score}%</span>
           </div>
         ))}
       </div>
 
       <div className="flex items-center justify-between mt-2">
         <div className="flex items-center gap-1">
-          <Zap className="w-3 h-3 text-emerald-400" />
+          <Zap className={`w-3 h-3 ${accent.text}`} />
           <span className="text-[9px] text-gray-500">Architecture</span>
         </div>
       </div>
