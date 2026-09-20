@@ -57,21 +57,21 @@ export function CompanyContact() {
   }
 
   return (
-    <section id="contact" className="scroll-mt-24 rounded-xl border border-cyan-500/15 bg-[#0c0c14]/90 p-5 md:p-6">
-      <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
-        <div>
+    <section id="contact" className="scroll-mt-20 rounded-xl border border-cyan-500/15 bg-[#0c0c14]/90 p-4 sm:scroll-mt-24 sm:p-5 md:p-6">
+      <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+        <div className="min-w-0">
           <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">Contact</p>
           <h2 className="mt-1 text-xl font-semibold text-white md:text-2xl">Write to Quantavex</h2>
-          <p className="mt-2 max-w-xl text-sm text-gray-400">
+          <p className="mt-2 max-w-xl text-sm text-pretty text-gray-400">
             Company, investor, or partnership. The mail lands in the Quantavex inbox.
           </p>
         </div>
         <a
           href={`mailto:${company.companyEmail}`}
-          className="inline-flex items-center gap-2 text-sm text-cyan-300 hover:text-cyan-200"
+          className="inline-flex max-w-full items-center gap-2 truncate text-sm text-cyan-300 hover:text-cyan-200"
         >
-          <Mail className="h-4 w-4" />
-          {company.companyEmail}
+          <Mail className="h-4 w-4 shrink-0" />
+          <span className="truncate">{company.companyEmail}</span>
         </a>
       </div>
 
@@ -112,7 +112,7 @@ export function CompanyContact() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="inline-flex items-center gap-2 rounded-lg bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-[#061016] hover:bg-cyan-300 disabled:opacity-60"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-[#061016] hover:bg-cyan-300 disabled:opacity-60 sm:w-auto"
         >
           <Send className="h-4 w-4" />
           {status === "sending" ? "Sending…" : "Send"}

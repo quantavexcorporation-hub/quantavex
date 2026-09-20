@@ -21,10 +21,14 @@ export function ForecastView() {
     <div className="space-y-5">
       <PageHeader
         title="Fundraising"
-        subtitle={`${company.stage} · ${company.round} · ${company.raise} (${company.raiseInr}) · ${company.equity} equity · ${company.valuation} pre-money`}
+        subtitle={`${company.stage} · ${company.round} · ${company.raise}`}
         actionLabel="Download company paper"
         actionHref={company.paperPdf}
       />
+
+      <p className="text-xs leading-relaxed text-gray-500 sm:text-sm">
+        {company.raiseInr} · {company.equity} equity · {company.valuation} pre-money
+      </p>
 
       <div className="rounded-xl border border-amber-400/20 bg-amber-400/5 px-4 py-3 text-sm leading-relaxed text-amber-100/90">
         {company.confidentiality}
@@ -50,7 +54,7 @@ export function ForecastView() {
         ))}
       </div>
 
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_340px]">
+      <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,280px)] 2xl:grid-cols-[minmax(0,1fr)_340px]">
         <Panel>
           <PanelHeader title="Twelve-month roadmap" subtitle="From the Quantavex company paper" />
           <DataTable

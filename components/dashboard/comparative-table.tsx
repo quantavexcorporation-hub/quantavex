@@ -46,8 +46,8 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
         </div>
       </div>
 
-      <div className="overflow-hidden">
-        <table className="w-full">
+      <div className="-mx-1 overflow-x-auto">
+        <table className="w-full min-w-[520px]">
           <thead>
             <tr className="border-b border-cyan-500/10">
               <th className="text-left text-[10px] font-mono text-gray-500 pb-2 w-24">CATEGORY</th>

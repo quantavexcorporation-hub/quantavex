@@ -16,12 +16,12 @@ export function OverviewView() {
   const { snapshot, isLoading, error } = useDashboard()
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-4 sm:space-y-5">
       <PageHeader
         title="Parent company"
         brand="Quantavex"
         subtitle="One company. Three platforms — Quantrion, Vdoc, and ExoraX."
-        mark={<QuantavexLogo size={48} priority />}
+        mark={<QuantavexLogo size={40} priority />}
       />
 
       <CompanyBrief />
@@ -30,10 +30,12 @@ export function OverviewView() {
 
       <ProductPanels data={snapshot?.productPanels} />
 
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_320px]">
+      <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(260px,320px)]">
         <ComparativeTable data={snapshot?.comparisons} />
         <MarketVisualization data={snapshot?.markets} />
-        <ActivityFeed data={snapshot?.activities} loading={isLoading} error={error} />
+        <div className="lg:col-span-2 xl:col-span-1">
+          <ActivityFeed data={snapshot?.activities} loading={isLoading} error={error} />
+        </div>
       </div>
 
       <GlobalIntelligenceMap compact data={snapshot?.regions} lastSyncSeconds={snapshot?.lastSyncSeconds ?? 0} />

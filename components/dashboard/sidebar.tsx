@@ -1,9 +1,9 @@
 "use client"
 
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { QuantavexLogo } from "@/components/brand/quantavex-logo"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import {
@@ -14,6 +14,7 @@ import {
   ChevronRight,
   User,
   Mail,
+  X,
 } from "lucide-react"
 
 type NavItem = {
@@ -55,6 +56,8 @@ const navGroups: { label: string; items: NavItem[] }[] = [
 const SidebarState = createContext({
   collapsed: false,
   setCollapsed: (_value: boolean) => {},
+  mobileOpen: false,
+  setMobileOpen: (_value: boolean) => {},
 })
 
 export function useSidebarState() {
@@ -63,39 +66,70 @@ export function useSidebarState() {
 
 export function SidebarProvider({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setMobileOpen(false)
+    }
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : ""
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [mobileOpen])
+
   return (
-    <SidebarState.Provider value={{ collapsed, setCollapsed }}>
+    <SidebarState.Provider value={{ collapsed, setCollapsed, mobileOpen, setMobileOpen }}>
       {children}
     </SidebarState.Provider>
   )
 }
 
-export function Sidebar() {
+function NavContent({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname()
-  const { collapsed, setCollapsed } = useSidebarState()
+  const { collapsed } = useSidebarState()
+  const compact = collapsed && !onNavigate
 
   return (
-    <motion.aside
-      initial={false}
-      animate={{ width: collapsed ? 76 : 248 }}
-      className="relative z-40 flex h-screen shrink-0 flex-col border-r border-cyan-500/10 bg-[#07070c]"
-    >
+    <>
       <div className="flex h-16 items-center gap-3 border-b border-cyan-500/10 px-4">
-        <Link href="/" className="flex min-w-0 items-center gap-3" title="Quantavex">
-          <QuantavexLogo size={collapsed ? 40 : 44} priority className="shrink-0" />
-          {!collapsed && (
+        <Link
+          href="/"
+          className="flex min-w-0 items-center gap-3"
+          title="Quantavex"
+          onClick={onNavigate}
+        >
+          <QuantavexLogo size={compact ? 40 : 44} priority className="shrink-0" />
+          {!compact && (
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold tracking-tight text-white">Quantavex</p>
-              <p className="truncate text-[10px] uppercase tracking-[0.18em] text-cyan-400/70">Parent company</p>
+              <p className="truncate text-[10px] uppercase tracking-[0.18em] text-cyan-400/70">
+                Parent company
+              </p>
             </div>
           )}
         </Link>
+        {onNavigate ? (
+          <button
+            type="button"
+            onClick={onNavigate}
+            className="ml-auto rounded-lg p-2 text-gray-400 hover:bg-white/5 hover:text-white lg:hidden"
+            aria-label="Close menu"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        ) : null}
       </div>
 
       <nav className="flex-1 space-y-5 overflow-y-auto px-3 py-5">
         {navGroups.map((group) => (
           <div key={group.label}>
-            {!collapsed && (
+            {!compact && (
               <p className="mb-2 px-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-gray-500">
                 {group.label}
               </p>
@@ -103,7 +137,12 @@ export function Sidebar() {
             <div className="space-y-1">
               {group.items.map((item) => {
                 const Icon = item.icon
-                const isActive = pathname === item.href
+                const isActive =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : item.href.startsWith("/#")
+                      ? pathname === "/"
+                      : pathname === item.href || pathname.startsWith(`${item.href}/`)
                 return (
                   <Link
                     key={item.href}
@@ -115,6 +154,7 @@ export function Sidebar() {
                           document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
                         )
                       }
+                      onNavigate?.()
                     }}
                     className={`group flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-all duration-200 ${
                       isActive
@@ -125,12 +165,14 @@ export function Sidebar() {
                     {item.product ? (
                       <ProductLogo product={item.product} size={28} />
                     ) : Icon ? (
-                      <Icon className={`h-5 w-5 shrink-0 ${isActive ? "text-cyan-300" : "text-gray-500 group-hover:text-cyan-400"}`} />
+                      <Icon
+                        className={`h-5 w-5 shrink-0 ${
+                          isActive ? "text-cyan-300" : "text-gray-500 group-hover:text-cyan-400"
+                        }`}
+                      />
                     ) : null}
-                    {!collapsed && (
-                      <span className="text-sm font-medium leading-tight">{item.label}</span>
-                    )}
-                    {isActive && !collapsed && (
+                    {!compact && <span className="text-sm font-medium leading-tight">{item.label}</span>}
+                    {isActive && !compact && (
                       <span className="ml-auto h-1.5 w-1.5 rounded-full bg-cyan-300" />
                     )}
                   </Link>
@@ -140,14 +182,56 @@ export function Sidebar() {
           </div>
         ))}
       </nav>
+    </>
+  )
+}
 
-      <button
-        onClick={() => setCollapsed(!collapsed)}
-        className="flex h-12 items-center justify-center border-t border-cyan-500/10 text-gray-500 transition-colors hover:text-cyan-400"
-        aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+export function Sidebar() {
+  const { collapsed, setCollapsed, mobileOpen, setMobileOpen } = useSidebarState()
+
+  return (
+    <>
+      {/* Desktop sidebar */}
+      <motion.aside
+        initial={false}
+        animate={{ width: collapsed ? 76 : 248 }}
+        className="relative z-40 hidden h-screen shrink-0 flex-col border-r border-cyan-500/10 bg-[#07070c] lg:flex"
       >
-        {collapsed ? <ChevronRight className="h-5 w-5" /> : <ChevronLeft className="h-5 w-5" />}
-      </button>
-    </motion.aside>
+        <NavContent />
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className="flex h-12 items-center justify-center border-t border-cyan-500/10 text-gray-500 transition-colors hover:text-cyan-400"
+          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+        >
+          {collapsed ? <ChevronRight className="h-5 w-5" /> : <ChevronLeft className="h-5 w-5" />}
+        </button>
+      </motion.aside>
+
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {mobileOpen ? (
+          <>
+            <motion.button
+              type="button"
+              aria-label="Close menu backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.aside
+              initial={{ x: -280 }}
+              animate={{ x: 0 }}
+              exit={{ x: -280 }}
+              transition={{ type: "spring", stiffness: 320, damping: 32 }}
+              className="fixed inset-y-0 left-0 z-50 flex w-[min(280px,86vw)] flex-col border-r border-cyan-500/10 bg-[#07070c] shadow-2xl lg:hidden"
+            >
+              <NavContent onNavigate={() => setMobileOpen(false)} />
+            </motion.aside>
+          </>
+        ) : null}
+      </AnimatePresence>
+    </>
   )
 }

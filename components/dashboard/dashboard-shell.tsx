@@ -1,9 +1,27 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import { Sidebar, SidebarProvider } from "@/components/dashboard/sidebar"
+import { Menu } from "lucide-react"
+import { Sidebar, SidebarProvider, useSidebarState } from "@/components/dashboard/sidebar"
 import { TopNavbar } from "@/components/dashboard/top-navbar"
 import { DashboardProvider, useDashboard } from "@/components/dashboard/dashboard-provider"
+
+function PortfolioMobileBar() {
+  const { setMobileOpen } = useSidebarState()
+  return (
+    <div className="sticky top-0 z-40 flex h-12 items-center gap-3 border-b border-cyan-500/10 bg-[#08080c]/95 px-3 backdrop-blur-md lg:hidden">
+      <button
+        type="button"
+        onClick={() => setMobileOpen(true)}
+        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 text-gray-300"
+        aria-label="Open menu"
+      >
+        <Menu className="h-5 w-5" />
+      </button>
+      <p className="text-sm font-medium text-white">Udit Gour</p>
+    </div>
+  )
+}
 
 function ShellFrame({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -11,10 +29,12 @@ function ShellFrame({ children }: { children: React.ReactNode }) {
   const { handleNotificationsClick, handleSearch, searchResponse, searchStatus, searchError } = useDashboard()
 
   return (
-    <div className="flex min-h-screen bg-[#08080f]">
+    <div className="flex min-h-screen min-h-[100dvh] overflow-x-hidden bg-[#08080f]">
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col">
-        {!isPortfolio && (
+        {isPortfolio ? (
+          <PortfolioMobileBar />
+        ) : (
           <TopNavbar
             onNotificationsClick={handleNotificationsClick}
             onSearch={handleSearch}
@@ -23,10 +43,16 @@ function ShellFrame({ children }: { children: React.ReactNode }) {
             searchError={searchError}
           />
         )}
-        <main className={isPortfolio ? "h-screen overflow-y-auto" : "flex-1 overflow-y-auto p-5 md:p-6"}>
+        <main
+          className={
+            isPortfolio
+              ? "h-[calc(100dvh-3rem)] overflow-y-auto overflow-x-hidden lg:h-screen"
+              : "min-w-0 flex-1 overflow-y-auto overflow-x-hidden p-3 sm:p-5 md:p-6"
+          }
+        >
           <div
             key={pathname}
-            className={isPortfolio ? "h-full" : "dashboard-page mx-auto max-w-[1600px]"}
+            className={isPortfolio ? "h-full" : "dashboard-page mx-auto w-full max-w-[1600px]"}
           >
             {children}
           </div>

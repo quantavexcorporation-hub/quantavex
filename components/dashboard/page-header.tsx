@@ -27,26 +27,26 @@ export function PageHeader({
   extra?: React.ReactNode
 }) {
   return (
-    <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-      <div className="min-w-0">
+    <div className="mb-4 flex flex-wrap items-end justify-between gap-3 sm:mb-6 sm:gap-4">
+      <div className="min-w-0 flex-1">
         {brand && mark ? (
           <>
-            <div className="flex items-center gap-3">
-              {mark}
-              <p className="text-xl font-semibold tracking-tight text-white md:text-2xl">{brand}</p>
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <span className="shrink-0">{mark}</span>
+              <p className="truncate text-lg font-semibold tracking-tight text-white sm:text-xl md:text-2xl">{brand}</p>
             </div>
-            <h1 className="mt-2 text-2xl font-semibold tracking-tight text-white md:text-[2rem]">{title}</h1>
+            <h1 className="mt-2 text-xl font-semibold tracking-tight text-white sm:text-2xl md:text-[2rem]">{title}</h1>
           </>
         ) : (
           <>
             <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">Quantavex</p>
-            <div className="mt-1 flex items-center gap-3">
-              {mark}
-              <h1 className="text-2xl font-semibold tracking-tight text-white md:text-[2rem]">{title}</h1>
+            <div className="mt-1 flex items-center gap-2.5 sm:gap-3">
+              {mark ? <span className="shrink-0">{mark}</span> : null}
+              <h1 className="text-xl font-semibold tracking-tight text-white sm:text-2xl md:text-[2rem]">{title}</h1>
             </div>
           </>
         )}
-        <p className="mt-1 max-w-3xl text-sm text-gray-400">{subtitle}</p>
+        <p className="mt-1 max-w-3xl text-pretty text-sm text-gray-400">{subtitle}</p>
       </div>
       {(actionLabel || extra) && (
         <div className="flex flex-wrap items-center gap-2">

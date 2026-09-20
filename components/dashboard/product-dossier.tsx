@@ -39,15 +39,15 @@ export function ProductDossier({ product }: { product: Dossier }) {
   return (
     <div className="space-y-5">
       <section
-        className={`relative overflow-hidden rounded-xl border ${accent.border} bg-[#0c0c14]/90 p-5 md:p-6`}
+        className={`relative overflow-hidden rounded-xl border ${accent.border} bg-[#0c0c14]/90 p-4 sm:p-5 md:p-6`}
       >
         <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accent.glow} to-transparent`} />
         <div className="relative grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-          <div>
+          <div className="min-w-0">
             <p className={`text-[10px] font-semibold uppercase tracking-[0.28em] ${accent.text}`}>
               {product.category}
             </p>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-gray-300 md:text-[15px]">
+            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-pretty text-gray-300 md:text-[15px]">
               {product.description}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">

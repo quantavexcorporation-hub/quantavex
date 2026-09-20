@@ -26,23 +26,23 @@ const accents = {
 
 export function PlatformAtlas() {
   return (
-    <section className="overflow-hidden rounded-xl border border-cyan-500/10 bg-[#0c0c14]/90 p-5 md:p-6">
+    <section className="overflow-hidden rounded-xl border border-cyan-500/10 bg-[#0c0c14]/90 p-4 sm:p-5 md:p-6">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">
             Company platforms
           </p>
           <h2 className="mt-1 text-xl font-semibold tracking-tight text-white md:text-2xl">
             Three industries. One intelligence.
           </h2>
-          <p className="mt-1 max-w-2xl text-sm text-gray-400">
+          <p className="mt-1 max-w-2xl text-sm text-pretty text-gray-400">
             Quantavex is the parent company. Quantrion, Vdoc, and ExoraX are the platforms it leads.
             Product websites appear here the moment each platform is uploaded.
           </p>
         </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {productList.map((product) => {
           const accent = accents[product.id]
           const live = Boolean(product.liveUrl)

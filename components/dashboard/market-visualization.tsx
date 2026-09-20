@@ -29,9 +29,9 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
         </div>
       </div>
 
-      <div className="flex gap-6">
+      <div className="flex flex-col gap-5 sm:flex-row sm:gap-6">
         {/* Pie Chart */}
-        <div className="w-32 h-32 flex-shrink-0">
+        <div className="mx-auto h-32 w-32 shrink-0 sm:mx-0">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -61,7 +61,7 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
         </div>
 
         {/* Market Bars */}
-        <div className="flex-1 space-y-3">
+        <div className="min-w-0 flex-1 space-y-3">
           {markets.map((market, index) => (
             <div key={market.name}>
               <div className="flex items-center justify-between mb-1">

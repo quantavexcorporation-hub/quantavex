@@ -3,15 +3,15 @@ import { company } from "@/lib/company"
 
 export function CompanyBrief() {
   return (
-    <section className="overflow-hidden rounded-xl border border-cyan-500/15 bg-[#0c0c14]/90 p-5 md:p-8">
+    <section className="overflow-hidden rounded-xl border border-cyan-500/15 bg-[#0c0c14]/90 p-4 sm:p-5 md:p-8">
       <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">
         The company
       </p>
-      <h2 className="mt-3 max-w-4xl text-2xl font-semibold tracking-tight text-white md:text-3xl md:leading-tight">
+      <h2 className="mt-3 max-w-4xl text-xl font-semibold tracking-tight text-balance text-white sm:text-2xl md:text-3xl md:leading-tight">
         Quantavex builds AI-driven products for how people learn, create, discover, and transact.
       </h2>
 
-      <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-gray-300 md:text-[15px] md:leading-7">
+      <div className="mt-5 max-w-3xl space-y-4 text-sm leading-relaxed text-pretty text-gray-300 sm:mt-6 md:text-[15px] md:leading-7">
         <p>
           Quantavex is a founder-led parent company. It leads, specifies, and
           manages three platforms — Quantrion, Vdoc, and ExoraX — for
