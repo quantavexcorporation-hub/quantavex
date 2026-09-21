@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { ProductLogo } from "@/components/brand/product-logo"
+import { ProductWebsiteLink } from "@/components/brand/product-site"
 import { productList } from "@/lib/products"
 import { productAccents } from "@/lib/product-accents"
 import {
@@ -95,7 +96,7 @@ export function PlatformAtlas() {
                   ))}
                 </dl>
 
-                <div className="mt-4 pt-1">
+                <div className="mt-4 flex flex-wrap items-center gap-2 pt-1">
                   <Link
                     href={`/${product.id}`}
                     className="inline-flex items-center gap-1.5 rounded-lg bg-white/8 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-white/12"
@@ -103,6 +104,7 @@ export function PlatformAtlas() {
                     Open dossier
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
+                  <ProductWebsiteLink productId={product.id} variant="chip" />
                 </div>
               </div>
             </article>
