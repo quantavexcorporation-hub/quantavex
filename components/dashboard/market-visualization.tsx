@@ -16,9 +16,9 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-[#0c0c14] border border-cyan-500/10 rounded p-4"
+      className="flex h-full flex-col overflow-hidden rounded border border-cyan-500/10 bg-[#0c0c14] p-4"
     >
-      <div className="flex items-center justify-between mb-4">
+      <div className="mb-4 flex shrink-0 items-center justify-between">
         <div>
           <h3 className="text-sm font-medium text-white">Market opportunity</h3>
           <p className="text-xs text-gray-500">Learning, entertainment, and commerce</p>
@@ -29,7 +29,7 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
         </div>
       </div>
 
-      <div className="flex flex-col gap-5 sm:flex-row sm:gap-6">
+      <div className="flex min-h-0 flex-1 flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
         {/* Pie Chart */}
         <div className="mx-auto h-32 w-32 shrink-0 sm:mx-0">
           <ResponsiveContainer width="100%" height="100%">

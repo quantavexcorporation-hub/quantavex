@@ -30,6 +30,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 })
   }
 
+  // Honeypot — bots only
   if (body.website?.trim()) {
     return NextResponse.json({ ok: true })
   }
@@ -54,49 +55,40 @@ export async function POST(request: Request) {
   const text = `Topic: ${topic}\nFrom: ${from}\nReply to: ${email}\n\n${message}`
 
   const smtpPass = process.env.SMTP_PASS?.replace(/\s/g, "")
-  if (smtpPass) {
-    try {
-      const user = process.env.SMTP_USER?.trim() || to
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST?.trim() || "smtp.gmail.com",
-        port: Number(process.env.SMTP_PORT || 587),
-        secure: false,
-        auth: { user, pass: smtpPass },
-      })
-      await transporter.sendMail({
-        from: `"Quantavex" <${user}>`,
-        to,
-        replyTo: `${from} <${email}>`,
-        subject,
-        text,
-      })
-      return NextResponse.json({ ok: true })
-    } catch (error) {
-      console.error("SMTP contact failed", error)
-    }
+  if (!smtpPass) {
+    return NextResponse.json(
+      {
+        error:
+          "Mail is not configured yet. Add SMTP_PASS (Gmail app password) in Vercel env, or write quantavexcorporation@gmail.com directly.",
+      },
+      { status: 503 }
+    )
   }
 
   try {
-    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        name: from,
-        email,
-        topic,
-        message,
-        _subject: subject,
-        _template: "table",
-        _captcha: "false",
-        _replyto: email,
-      }),
+    const user = process.env.SMTP_USER?.trim() || to
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST?.trim() || "smtp.gmail.com",
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: false,
+      auth: { user, pass: smtpPass },
     })
-    if (response.ok) {
-      return NextResponse.json({ ok: true })
-    }
+    await transporter.sendMail({
+      from: `"Quantavex Contact" <${user}>`,
+      to,
+      replyTo: `${from} <${email}>`,
+      subject,
+      text,
+    })
+    return NextResponse.json({ ok: true })
   } catch (error) {
-    console.error("FormSubmit contact failed", error)
+    console.error("SMTP contact failed", error)
+    return NextResponse.json(
+      {
+        error:
+          "Could not send through Gmail. Check SMTP_USER / SMTP_PASS (app password), or mail the company address directly.",
+      },
+      { status: 502 }
+    )
   }
-
-  return NextResponse.json({ error: "Could not send." }, { status: 502 })
 }

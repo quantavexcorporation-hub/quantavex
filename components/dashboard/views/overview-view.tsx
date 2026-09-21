@@ -1,9 +1,9 @@
 "use client"
 
 import { PageHeader } from "@/components/dashboard/page-header"
-import { ProductPanels } from "@/components/dashboard/product-panels"
 import { ComparativeTable } from "@/components/dashboard/comparative-table"
 import { MarketVisualization } from "@/components/dashboard/market-visualization"
+import { EconomyHorizons } from "@/components/dashboard/economy-horizons"
 import { ActivityFeed } from "@/components/dashboard/activity-feed"
 import { GlobalIntelligenceMap } from "@/components/dashboard/global-intelligence-map"
 import { useDashboard } from "@/components/dashboard/dashboard-provider"
@@ -28,15 +28,19 @@ export function OverviewView() {
 
       <PlatformAtlas />
 
-      <ProductPanels data={snapshot?.productPanels} />
-
-      <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(260px,320px)]">
-        <ComparativeTable data={snapshot?.comparisons} />
-        <MarketVisualization data={snapshot?.markets} />
-        <div className="lg:col-span-2 xl:col-span-1">
+      <div className="grid items-stretch gap-4 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="h-[300px] xl:h-[320px]">
+          <ComparativeTable data={snapshot?.comparisons} />
+        </div>
+        <div className="h-[300px] xl:h-[320px]">
+          <MarketVisualization data={snapshot?.markets} />
+        </div>
+        <div className="h-[300px] lg:col-span-2 xl:col-span-1 xl:h-[320px]">
           <ActivityFeed data={snapshot?.activities} loading={isLoading} error={error} />
         </div>
       </div>
+
+      <EconomyHorizons />
 
       <GlobalIntelligenceMap compact data={snapshot?.regions} lastSyncSeconds={snapshot?.lastSyncSeconds ?? 0} />
 

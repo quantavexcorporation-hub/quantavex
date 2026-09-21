@@ -15,93 +15,15 @@ import {
   ResponsiveContainer,
 } from "recharts"
 import { DashboardSnapshot } from "@/lib/dashboard-types"
+import { getPriorityRegions, priorityMarketConnections } from "@/lib/priority-markets"
 
 type RegionMap = DashboardSnapshot["regions"]
 type RegionValue = RegionMap[string]
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
 
-// Region data with coordinates and metrics
-const fallbackRegionData: Record<string, {
-  name: string
-  coordinates: [number, number]
-  metrics: {
-    learning: number
-    engagement: number
-    commerce: number
-  }
-  trend: number[]
-  intensity: "low" | "medium" | "high"
-}> = {
-  USA: {
-    name: "United States",
-    coordinates: [-95.7129, 37.0902],
-    metrics: { learning: 65, engagement: 350, commerce: 42 },
-    trend: [30, 45, 38, 52, 48, 60, 55, 68, 72, 78],
-    intensity: "high",
-  },
-  IND: {
-    name: "India",
-    coordinates: [78.9629, 20.5937],
-    metrics: { learning: 72, engagement: 280, commerce: 35 },
-    trend: [25, 32, 45, 52, 58, 65, 70, 75, 80, 85],
-    intensity: "high",
-  },
-  GBR: {
-    name: "United Kingdom",
-    coordinates: [-3.436, 55.3781],
-    metrics: { learning: 58, engagement: 220, commerce: 38 },
-    trend: [28, 35, 42, 48, 55, 52, 58, 62, 65, 68],
-    intensity: "medium",
-  },
-  DEU: {
-    name: "Germany",
-    coordinates: [10.4515, 51.1657],
-    metrics: { learning: 52, engagement: 195, commerce: 28 },
-    trend: [22, 28, 32, 38, 42, 45, 48, 52, 55, 58],
-    intensity: "medium",
-  },
-  JPN: {
-    name: "Japan",
-    coordinates: [138.2529, 36.2048],
-    metrics: { learning: 48, engagement: 175, commerce: 32 },
-    trend: [20, 25, 30, 35, 40, 45, 48, 52, 55, 58],
-    intensity: "medium",
-  },
-  BRA: {
-    name: "Brazil",
-    coordinates: [-51.9253, -14.235],
-    metrics: { learning: 42, engagement: 145, commerce: 25 },
-    trend: [18, 22, 28, 32, 38, 42, 45, 48, 50, 52],
-    intensity: "low",
-  },
-  AUS: {
-    name: "Australia",
-    coordinates: [133.7751, -25.2744],
-    metrics: { learning: 55, engagement: 185, commerce: 30 },
-    trend: [25, 30, 35, 42, 48, 52, 55, 58, 62, 65],
-    intensity: "medium",
-  },
-  SGP: {
-    name: "Singapore",
-    coordinates: [103.8198, 1.3521],
-    metrics: { learning: 68, engagement: 320, commerce: 45 },
-    trend: [35, 42, 50, 58, 65, 72, 78, 82, 85, 88],
-    intensity: "high",
-  },
-}
-
-// Network connections between regions
-const connections = [
-  { from: "USA", to: "GBR" },
-  { from: "USA", to: "JPN" },
-  { from: "USA", to: "IND" },
-  { from: "GBR", to: "DEU" },
-  { from: "IND", to: "SGP" },
-  { from: "JPN", to: "SGP" },
-  { from: "AUS", to: "SGP" },
-  { from: "BRA", to: "USA" },
-]
+const fallbackRegionData = getPriorityRegions()
+const connections = priorityMarketConnections
 
 type MetricType = "learning" | "engagement" | "commerce"
 
@@ -362,7 +284,7 @@ export function GlobalIntelligenceMap({
 }) {
   const regionData = data ?? fallbackRegionData
   const [activeMetric, setActiveMetric] = useState<MetricType>("learning")
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null)
+  const [selectedRegion, setSelectedRegion] = useState<string | null>("IND")
   const [particles, setParticles] = useState<
     { id: number; x: number; y: number; opacity: number }[]
   >([])
@@ -398,10 +320,14 @@ export function GlobalIntelligenceMap({
     return () => clearInterval(interval)
   }, [])
 
-  // Sort regions by active metric
-  const sortedRegions = Object.entries(regionData).sort(
-    ([, a], [, b]) => b.metrics[activeMetric] - a.metrics[activeMetric]
-  )
+  // India first, then high-economy expansion; metric as tie-breaker
+  const sortedRegions = Object.entries(regionData).sort(([, a], [, b]) => {
+    const pa = a.priority ?? 99
+    const pb = b.priority ?? 99
+    if (pa !== pb) return pa - pb
+    return b.metrics[activeMetric] - a.metrics[activeMetric]
+  })
+
 
   const handleRegionClick = useCallback((code: string) => {
     setSelectedRegion((prev) => (prev === code ? null : code))
@@ -417,11 +343,11 @@ export function GlobalIntelligenceMap({
             {compact ? "Priority markets" : "Priority markets"}
           </h2>
           <span className="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">
-            GTM focus
+            Future plan
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-400">Priority index · not live telemetry</span>
+          <span className="text-xs text-gray-400">Ambitious projection · not live data</span>
         </div>
       </div>
 
@@ -553,7 +479,7 @@ export function GlobalIntelligenceMap({
           {/* Legend */}
           <div className="absolute bottom-4 left-4 bg-[#0f0f18]/90 backdrop-blur-sm border border-white/10 rounded-lg p-3">
             <p className="text-[10px] text-gray-400 mb-2 uppercase tracking-wider">
-              Priority intensity
+              Planned intensity
             </p>
             <div className="flex items-center gap-4">
               {(["low", "medium", "high"] as const).map((level) => (
@@ -604,9 +530,12 @@ export function GlobalIntelligenceMap({
           {/* Region Ranking */}
           <div className="p-4">
             <p className="text-xs text-gray-400 mb-3 uppercase tracking-wider">
-              Region Ranking
+              Planned entry order
             </p>
-            <div className="space-y-2 max-h-[380px] overflow-y-auto custom-scrollbar">
+            <p className="mb-3 text-[10px] leading-relaxed text-gray-600">
+              Highly ambitious roadmap scores — predicted fit for the future, not current traffic or revenue.
+            </p>
+            <div className="space-y-2 max-h-[520px] overflow-y-auto custom-scrollbar">
               {sortedRegions.map(([code, data], index) => (
                 <RegionItem
                   key={code}

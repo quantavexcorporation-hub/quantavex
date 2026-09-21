@@ -43,6 +43,8 @@ export interface DashboardSnapshot {
       metrics: { learning: number; engagement: number; commerce: number }
       trend: number[]
       intensity: "low" | "medium" | "high"
+      /** Planned entry order (1 = India first). Scores are ambitious future projections, not live data. */
+      priority: number
     }
   >
   lastSyncSeconds: number

@@ -46,7 +46,7 @@ function ProductPanel({ title, subtitle, product, metrics, children }: ProductPa
   )
 }
 
-function QuantrionPreview({ bars, highlight }: { bars: number[]; highlight: string }) {
+export function QuantrionPreview({ bars, highlight }: { bars: number[]; highlight: string }) {
   const learningData = bars
   const accent = productAccents.quantrion
 
@@ -76,7 +76,7 @@ function QuantrionPreview({ bars, highlight }: { bars: number[]; highlight: stri
   )
 }
 
-function VdocPreview({ badges, highlight }: { badges: string[]; highlight: string }) {
+export function VdocPreview({ badges, highlight }: { badges: string[]; highlight: string }) {
   const accent = productAccents.vdoc
 
   return (
@@ -109,7 +109,7 @@ function VdocPreview({ badges, highlight }: { badges: string[]; highlight: strin
   )
 }
 
-function ExoraXPreview({ products, highlight }: { products: { name: string; score: number }[]; highlight: string }) {
+export function ExoraXPreview({ products, highlight }: { products: { name: string; score: number }[]; highlight: string }) {
   const accent = productAccents.exorax
 
   return (

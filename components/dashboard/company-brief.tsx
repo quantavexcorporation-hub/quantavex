@@ -42,6 +42,12 @@ export function CompanyBrief() {
           papers, one venture. The aim is not a demonstration. It is products
           people actually use.
         </p>
+        <p>
+          Priority markets are a future plan: start in India, then expand across
+          30 high-economy countries beginning with the United States and United
+          Kingdom. The scores shown are highly ambitious predictions for that
+          roadmap — not real traffic, revenue, or live market data.
+        </p>
       </div>
 
       <p className="mt-6 text-xs text-gray-500">
@@ -51,6 +57,8 @@ export function CompanyBrief() {
         </Link>
         {" · "}
         {company.founder.role}
+        {" · HQ "}
+        {company.headquarters}
       </p>
     </section>
   )

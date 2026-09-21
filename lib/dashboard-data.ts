@@ -1,4 +1,5 @@
 import { DashboardSnapshot } from "@/lib/dashboard-types"
+import { getPriorityRegions } from "@/lib/priority-markets"
 
 export function getKpis(): DashboardSnapshot["kpis"] {
   return [
@@ -95,14 +96,6 @@ export function getProductPanels(): DashboardSnapshot["productPanels"] {
 }
 
 export function getRegions(): DashboardSnapshot["regions"] {
-  return {
-    IND: { name: "India", coordinates: [78.9629, 20.5937], metrics: { learning: 92, engagement: 70, commerce: 78 }, trend: [40, 48, 55, 62, 68, 74, 80, 84, 88, 92], intensity: "high" },
-    USA: { name: "United States", coordinates: [-95.7129, 37.0902], metrics: { learning: 78, engagement: 88, commerce: 90 }, trend: [38, 44, 50, 56, 62, 68, 72, 76, 80, 84], intensity: "high" },
-    SGP: { name: "Singapore", coordinates: [103.8198, 1.3521], metrics: { learning: 74, engagement: 80, commerce: 86 }, trend: [35, 42, 50, 56, 62, 68, 72, 76, 80, 84], intensity: "high" },
-    GBR: { name: "United Kingdom", coordinates: [-3.436, 55.3781], metrics: { learning: 66, engagement: 76, commerce: 72 }, trend: [30, 36, 42, 48, 52, 56, 60, 64, 66, 68], intensity: "medium" },
-    DEU: { name: "Germany", coordinates: [10.4515, 51.1657], metrics: { learning: 62, engagement: 70, commerce: 68 }, trend: [28, 32, 38, 42, 46, 50, 54, 58, 60, 62], intensity: "medium" },
-    JPN: { name: "Japan", coordinates: [138.2529, 36.2048], metrics: { learning: 70, engagement: 82, commerce: 74 }, trend: [32, 38, 42, 48, 52, 56, 60, 64, 66, 70], intensity: "medium" },
-    AUS: { name: "Australia", coordinates: [133.7751, -25.2744], metrics: { learning: 64, engagement: 68, commerce: 66 }, trend: [26, 32, 36, 42, 46, 50, 54, 58, 60, 64], intensity: "medium" },
-    BRA: { name: "Brazil", coordinates: [-51.9253, -14.235], metrics: { learning: 58, engagement: 64, commerce: 60 }, trend: [22, 28, 32, 36, 40, 44, 48, 52, 54, 58], intensity: "low" },
-  }
+  return getPriorityRegions()
 }
+

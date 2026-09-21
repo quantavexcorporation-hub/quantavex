@@ -4,13 +4,10 @@ import { useEffect, useState } from "react"
 import { Mail, Send } from "lucide-react"
 import { company } from "@/lib/company"
 
-const TOPICS = ["Company", "Investor", "Partnership", "Research", "Quantrion", "Vdoc", "ExoraX"] as const
-
 const fieldClass =
-  "mt-2 w-full rounded-lg border border-white/10 bg-black/30 px-3.5 py-2.5 text-sm text-white placeholder:text-gray-600 outline-none focus:border-cyan-400/40"
+  "w-full rounded-md border border-white/10 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-gray-600 outline-none focus:border-cyan-400/40"
 
 export function CompanyContact() {
-  const [topic, setTopic] = useState<(typeof TOPICS)[number]>("Company")
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
   const [error, setError] = useState("")
 
@@ -34,7 +31,7 @@ export function CompanyContact() {
     const payload = {
       from: (form.elements.namedItem("from") as HTMLInputElement).value.trim(),
       email: (form.elements.namedItem("email") as HTMLInputElement).value.trim(),
-      topic,
+      topic: "Company",
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim(),
       website: (form.elements.namedItem("website") as HTMLInputElement).value.trim(),
     }
@@ -49,7 +46,6 @@ export function CompanyContact() {
       if (!response.ok) throw new Error(body?.error || "Could not send.")
       setStatus("sent")
       form.reset()
-      setTopic("Company")
     } catch (caught) {
       setStatus("error")
       setError(caught instanceof Error ? caught.message : "Could not send.")
@@ -57,73 +53,64 @@ export function CompanyContact() {
   }
 
   return (
-    <section id="contact" className="scroll-mt-20 rounded-xl border border-cyan-500/15 bg-[#0c0c14]/90 p-4 sm:scroll-mt-24 sm:p-5 md:p-6">
-      <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
-        <div className="min-w-0">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">Contact</p>
-          <h2 className="mt-1 text-xl font-semibold text-white md:text-2xl">Write to Quantavex</h2>
-          <p className="mt-2 max-w-xl text-sm text-pretty text-gray-400">
-            Company, investor, or partnership. The mail lands in the Quantavex inbox.
-          </p>
+    <section
+      id="contact"
+      className="scroll-mt-20 rounded-xl border border-cyan-500/10 bg-[#0c0c14]/90 p-4 sm:scroll-mt-24 sm:p-5"
+    >
+      <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+        <div>
+          <h2 className="text-base font-semibold text-white">Contact</h2>
+          <p className="mt-0.5 text-xs text-gray-500">Write once. We reply by email.</p>
         </div>
         <a
           href={`mailto:${company.companyEmail}`}
-          className="inline-flex max-w-full items-center gap-2 truncate text-sm text-cyan-300 hover:text-cyan-200"
+          className="inline-flex items-center gap-1.5 text-xs text-cyan-300/90 hover:text-cyan-200"
         >
-          <Mail className="h-4 w-4 shrink-0" />
+          <Mail className="h-3.5 w-3.5 shrink-0" />
           <span className="truncate">{company.companyEmail}</span>
         </a>
       </div>
 
-      <form onSubmit={onSubmit} className="space-y-4">
+      <form onSubmit={onSubmit} className="space-y-3">
         <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
-        <div className="flex flex-wrap gap-2">
-          {TOPICS.map((item) => (
-            <button
-              key={item}
-              type="button"
-              onClick={() => setTopic(item)}
-              className={`rounded-full border px-3 py-1.5 text-xs ${
-                topic === item
-                  ? "border-cyan-400/40 bg-cyan-400/15 text-white"
-                  : "border-white/10 text-gray-400 hover:text-white"
-              }`}
-            >
-              {item}
-            </button>
-          ))}
+        <div className="grid gap-3 sm:grid-cols-2">
+          <input name="from" required maxLength={120} autoComplete="name" placeholder="Name" className={fieldClass} />
+          <input
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="Email"
+            className={fieldClass}
+          />
         </div>
 
         <textarea
           name="message"
           required
           maxLength={5000}
-          rows={5}
-          placeholder="Message"
-          className={`${fieldClass} min-h-[8rem] resize-none`}
+          rows={3}
+          placeholder="Your message"
+          className={`${fieldClass} resize-none`}
         />
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          <input name="from" required maxLength={120} autoComplete="name" placeholder="Name" className={fieldClass} />
-          <input name="email" type="email" required autoComplete="email" placeholder="Email" className={fieldClass} />
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-cyan-400 px-4 py-2 text-sm font-semibold text-[#061016] hover:bg-cyan-300 disabled:opacity-60"
+          >
+            <Send className="h-3.5 w-3.5" />
+            {status === "sending" ? "Sending…" : "Send"}
+          </button>
+          {status === "sent" ? <p className="text-xs text-cyan-300">Sent. We will reply.</p> : null}
+          {status === "error" ? (
+            <p className="text-xs text-red-400">
+              {error} Or mail {company.companyEmail}.
+            </p>
+          ) : null}
         </div>
-
-        <button
-          type="submit"
-          disabled={status === "sending"}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-cyan-400 px-4 py-2.5 text-sm font-semibold text-[#061016] hover:bg-cyan-300 disabled:opacity-60 sm:w-auto"
-        >
-          <Send className="h-4 w-4" />
-          {status === "sending" ? "Sending…" : "Send"}
-        </button>
-
-        {status === "sent" ? <p className="text-sm text-cyan-300">Received. We will reply.</p> : null}
-        {status === "error" ? (
-          <p className="text-sm text-red-400">
-            {error} Mail {company.companyEmail} directly if this fails.
-          </p>
-        ) : null}
       </form>
     </section>
   )

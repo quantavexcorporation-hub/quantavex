@@ -21,6 +21,8 @@ export const company = {
     "Quantavex builds AI-driven products for how people learn, create, discover, and transact.",
   proof:
     "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Product websites appear here when each site is uploaded.",
+  geography:
+    "Ambitious future plan — not live market data. India first, then expand across 30 high-economy markets beginning with the USA and UK. Scores are predicted GTM priority for the roadmap ahead.",
   founder: {
     name: "Udit Gour",
     role: "Founder & CEO",
