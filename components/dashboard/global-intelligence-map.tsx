@@ -336,25 +336,28 @@ export function GlobalIntelligenceMap({
   return (
     <div className="bg-[#0a0a0f] rounded-xl border border-cyan-500/10 overflow-hidden">
       {/* Header */}
-      <div className="p-4 border-b border-cyan-500/10 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-2 h-2 rounded-full bg-cyan-400" />
-          <h2 className={`${compact ? "text-sm font-medium" : "text-lg font-semibold"} text-white`}>
-            {compact ? "Priority markets" : "Priority markets"}
+      <div className="flex flex-col gap-2 border-b border-cyan-500/10 p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
+        <div className="flex min-w-0 flex-wrap items-center gap-2 sm:gap-3">
+          <div className="h-2 w-2 shrink-0 rounded-full bg-cyan-400" />
+          <h2 className={`${compact ? "text-sm font-medium" : "text-base font-semibold sm:text-lg"} text-white`}>
+            Priority markets
           </h2>
-          <span className="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded">
+          <span className="rounded bg-white/5 px-2 py-1 text-[10px] text-gray-500 sm:text-xs">
             Future plan
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-400">Ambitious projection · not live data</span>
-        </div>
+        <p className="text-[10px] text-gray-500 sm:text-xs sm:text-gray-400">
+          Ambitious projection · not live data
+        </p>
       </div>
 
-      <div className="flex">
+      <div className="flex flex-col lg:flex-row">
         {/* Map Container */}
-        <div className={`flex-1 relative overflow-hidden ${compact ? "h-[280px]" : "h-[500px]"}`}>
-          {/* Grid overlay */}
+        <div
+          className={`relative min-w-0 flex-1 overflow-hidden ${
+            compact ? "h-[220px] sm:h-[280px]" : "h-[260px] sm:h-[380px] lg:h-[500px]"
+          }`}
+        >          {/* Grid overlay */}
           <div
             className="absolute inset-0 pointer-events-none opacity-10"
             style={{
@@ -477,23 +480,21 @@ export function GlobalIntelligenceMap({
           )}
 
           {/* Legend */}
-          <div className="absolute bottom-4 left-4 bg-[#0f0f18]/90 backdrop-blur-sm border border-white/10 rounded-lg p-3">
-            <p className="text-[10px] text-gray-400 mb-2 uppercase tracking-wider">
+          <div className="absolute bottom-2 left-2 rounded-lg border border-white/10 bg-[#0f0f18]/90 p-2 backdrop-blur-sm sm:bottom-4 sm:left-4 sm:p-3">
+            <p className="mb-1.5 text-[9px] uppercase tracking-wider text-gray-400 sm:mb-2 sm:text-[10px]">
               Planned intensity
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2.5 sm:gap-4">
               {(["low", "medium", "high"] as const).map((level) => (
-                <div key={level} className="flex items-center gap-2">
+                <div key={level} className="flex items-center gap-1.5 sm:gap-2">
                   <div
-                    className="w-3 h-3 rounded-full"
+                    className="h-2.5 w-2.5 rounded-full sm:h-3 sm:w-3"
                     style={{
                       backgroundColor: intensityColors[level],
                       boxShadow: `0 0 8px ${intensityColors[level]}`,
                     }}
                   />
-                  <span className="text-xs text-gray-400 capitalize">
-                    {level}
-                  </span>
+                  <span className="text-[10px] capitalize text-gray-400 sm:text-xs">{level}</span>
                 </div>
               ))}
             </div>
@@ -502,10 +503,10 @@ export function GlobalIntelligenceMap({
 
         {/* Side Panel */}
         {!compact ? (
-        <div className="w-72 border-l border-cyan-500/10 bg-[#0a0a0f]">
+        <div className="w-full border-t border-cyan-500/10 bg-[#0a0a0f] lg:w-72 lg:shrink-0 lg:border-t-0 lg:border-l">
           {/* Metric Toggle */}
-          <div className="p-4 border-b border-cyan-500/10">
-            <p className="text-xs text-gray-400 mb-3 uppercase tracking-wider">
+          <div className="border-b border-cyan-500/10 p-3 sm:p-4">
+            <p className="mb-3 text-xs uppercase tracking-wider text-gray-400">
               Metrics
             </p>
             <div className="flex gap-2">
@@ -514,10 +515,10 @@ export function GlobalIntelligenceMap({
                   <button
                     key={metric}
                     onClick={() => setActiveMetric(metric)}
-                    className={`flex-1 px-2 py-1.5 rounded text-xs font-medium transition-all ${
+                    className={`flex-1 rounded px-2 py-2 text-[11px] font-medium transition-all sm:py-1.5 sm:text-xs ${
                       activeMetric === metric
-                        ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/40"
-                        : "bg-white/5 text-gray-400 border border-transparent hover:border-white/10"
+                        ? "border border-cyan-500/40 bg-cyan-500/20 text-cyan-400"
+                        : "border border-transparent bg-white/5 text-gray-400 hover:border-white/10"
                     }`}
                   >
                     {metric.charAt(0).toUpperCase() + metric.slice(1)}
@@ -528,14 +529,14 @@ export function GlobalIntelligenceMap({
           </div>
 
           {/* Region Ranking */}
-          <div className="p-4">
-            <p className="text-xs text-gray-400 mb-3 uppercase tracking-wider">
+          <div className="p-3 sm:p-4">
+            <p className="mb-2 text-xs uppercase tracking-wider text-gray-400 sm:mb-3">
               Planned entry order
             </p>
             <p className="mb-3 text-[10px] leading-relaxed text-gray-600">
               Highly ambitious roadmap scores — predicted fit for the future, not current traffic or revenue.
             </p>
-            <div className="space-y-2 max-h-[520px] overflow-y-auto custom-scrollbar">
+            <div className="custom-scrollbar max-h-[280px] space-y-2 overflow-y-auto sm:max-h-[360px] lg:max-h-[520px]">
               {sortedRegions.map(([code, data], index) => (
                 <RegionItem
                   key={code}

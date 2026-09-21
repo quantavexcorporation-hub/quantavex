@@ -334,6 +334,26 @@ html {
 
 .dashboard-page {
   animation: dashboard-page 0.32s ease-out;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Mobile-safe structure: no horizontal page scroll, readable touch targets */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@media (max-width: 639px) {
+  .dashboard-page {
+    animation: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
 }
 
 ::selection {

@@ -32,12 +32,12 @@ export function PanelHeader({
   action?: React.ReactNode
 }) {
   return (
-    <div className="mb-4 flex items-start justify-between gap-3">
-      <div>
+    <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+      <div className="min-w-0">
         <h3 className="text-sm font-medium text-white">{title}</h3>
-        {subtitle ? <p className="text-xs text-gray-500">{subtitle}</p> : null}
+        {subtitle ? <p className="text-xs text-pretty text-gray-500">{subtitle}</p> : null}
       </div>
-      {action}
+      {action ? <div className="shrink-0">{action}</div> : null}
     </div>
   )
 }

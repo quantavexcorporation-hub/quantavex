@@ -28,14 +28,14 @@ export function OverviewView() {
 
       <PlatformAtlas />
 
-      <div className="grid items-stretch gap-4 lg:grid-cols-2 xl:grid-cols-3">
-        <div className="h-[300px] xl:h-[320px]">
+      <div className="grid items-stretch gap-3 sm:gap-4 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="h-[260px] sm:h-[300px] xl:h-[320px]">
           <ComparativeTable data={snapshot?.comparisons} />
         </div>
-        <div className="h-[300px] xl:h-[320px]">
+        <div className="h-[260px] sm:h-[300px] xl:h-[320px]">
           <MarketVisualization data={snapshot?.markets} />
         </div>
-        <div className="h-[300px] lg:col-span-2 xl:col-span-1 xl:h-[320px]">
+        <div className="h-[260px] sm:h-[300px] lg:col-span-2 xl:col-span-1 xl:h-[320px]">
           <ActivityFeed data={snapshot?.activities} loading={isLoading} error={error} />
         </div>
       </div>

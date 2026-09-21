@@ -47,12 +47,12 @@ function ShellFrame({ children }: { children: React.ReactNode }) {
           className={
             isPortfolio
               ? "min-h-0 flex-1 overflow-y-auto overflow-x-hidden lg:h-auto"
-              : "min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden p-3 sm:p-5 md:p-6"
+              : "min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:p-5 md:p-6"
           }
         >
           <div
             key={pathname}
-            className={isPortfolio ? "min-h-full" : "dashboard-page mx-auto w-full max-w-[1600px]"}
+            className={isPortfolio ? "min-h-full" : "dashboard-page mx-auto w-full min-w-0 max-w-[1600px]"}
           >
             {children}
           </div>

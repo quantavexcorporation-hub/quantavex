@@ -34,7 +34,7 @@ const previews = {
 export function PlatformAtlas() {
   return (
     <section className="overflow-hidden rounded-xl border border-cyan-500/10 bg-[#0c0c14]/90 p-4 sm:p-5 md:p-6">
-      <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+      <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
         <div className="min-w-0">
           <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">
             Company platforms
@@ -49,7 +49,7 @@ export function PlatformAtlas() {
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         {productList.map((product) => {
           const accent = productAccents[product.id]
 

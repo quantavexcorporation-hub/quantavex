@@ -18,7 +18,7 @@ export function ForecastView() {
   const { forecast } = useDashboard()
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-4 sm:space-y-5">
       <PageHeader
         title="Fundraising"
         subtitle={`${company.stage} · ${company.round} · ${company.raise}`}

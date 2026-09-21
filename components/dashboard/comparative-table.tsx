@@ -105,11 +105,11 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
       className="flex h-full flex-col overflow-hidden rounded border border-cyan-500/10 bg-[#0c0c14] p-4"
     >
       <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
-        <div>
+        <div className="min-w-0">
           <h3 className="text-sm font-medium text-white">Category contrast</h3>
-          <p className="text-xs text-gray-500">Incumbent software versus Quantavex architecture</p>
+          <p className="hidden text-xs text-gray-500 sm:block">Incumbent software versus Quantavex architecture</p>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-cyan-300">
+        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-cyan-300">
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
@@ -118,7 +118,38 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
         </span>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-x-auto overflow-y-hidden">
+      {/* Mobile: compact stacked cards */}
+      <div className="min-h-0 flex-1 space-y-2 overflow-y-auto sm:hidden">
+        <AnimatePresence mode="popLayout">
+          {rows.map((row, index) => (
+            <motion.div
+              key={`m-${row.category}-${offset}-${index}`}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                backgroundColor: activeRow === index ? "rgba(34,211,238,0.06)" : "rgba(0,0,0,0)",
+              }}
+              className="rounded-lg border border-white/5 p-2.5"
+            >
+              <div className="flex items-center justify-between gap-2">
+                <p className="truncate text-xs font-medium text-white">{row.category}</p>
+                <span className="shrink-0 font-mono text-[10px] text-teal-300">{row.improvement}</span>
+              </div>
+              <p className="mt-1.5 line-clamp-1 text-[10px] text-gray-500">
+                <X className="mr-1 inline h-2.5 w-2.5 text-red-400" />
+                {row.traditional}
+              </p>
+              <p className="mt-0.5 line-clamp-1 text-[10px] text-cyan-400">
+                <Check className="mr-1 inline h-2.5 w-2.5" />
+                {row.quantavex}
+              </p>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
+      {/* Tablet+ table */}
+      <div className="hidden min-h-0 flex-1 overflow-x-auto overflow-y-hidden sm:block">
         <table className="w-full min-w-[480px] table-fixed">
           <thead>
             <tr className="border-b border-cyan-500/10">

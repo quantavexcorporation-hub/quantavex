@@ -93,7 +93,7 @@ export function EconomyHorizons() {
       animate={{ opacity: 1, y: 0 }}
       className="overflow-hidden rounded-xl border border-cyan-500/10 bg-[#0c0c14]/90 p-4 sm:p-5 md:p-6"
     >
-      <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+      <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
         <div className="min-w-0 max-w-3xl">
           <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">
             Future economies
@@ -107,13 +107,13 @@ export function EconomyHorizons() {
             Quantavex platform is aimed at that layer.
           </p>
         </div>
-        <div className="text-right">
+        <div className="text-left sm:text-right">
           <p className="font-mono text-xl font-bold text-white sm:text-2xl">$36T+</p>
           <p className="text-[10px] uppercase tracking-[0.16em] text-gray-500">Combined horizon scale</p>
         </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 lg:grid-cols-3">
         {economies.map((economy, index) => {
           const accent = productAccents[economy.id]
           return (

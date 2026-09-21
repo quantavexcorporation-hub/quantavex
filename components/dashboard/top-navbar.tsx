@@ -89,9 +89,11 @@ export function TopNavbar({
                 ? investorMailto("conversation")
                 : `mailto:${company.founder.email}`
             }
-            className="max-w-[9.5rem] truncate text-[11px] font-medium text-gray-400 transition hover:text-cyan-300 sm:max-w-none sm:text-xs"
+            className="inline-flex h-9 items-center justify-center rounded-lg border border-white/10 px-2.5 text-[11px] font-medium text-gray-400 transition hover:border-cyan-400/30 hover:text-cyan-300 sm:border-0 sm:px-0 sm:text-xs"
+            title={company.founder.email}
           >
-            {company.founder.email}
+            <span className="sm:hidden">Mail</span>
+            <span className="hidden max-w-[14rem] truncate sm:inline">{company.founder.email}</span>
           </a>
         </div>
       </div>

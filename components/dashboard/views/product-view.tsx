@@ -13,12 +13,12 @@ export function ProductView({ productId }: { productId: ProductId }) {
   const live = Boolean(product.liveUrl)
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-4 sm:space-y-5">
       <PageHeader
         brand={product.name}
         title={product.tagline}
         subtitle={product.manifesto}
-        mark={<ProductLogo product={productId} size={44} />}
+        mark={<ProductLogo product={productId} size={40} />}
         actionLabel={live ? "Visit website" : "Website launching soon"}
         actionHref={live ? product.liveUrl : undefined}
         actionDisabled={!live}

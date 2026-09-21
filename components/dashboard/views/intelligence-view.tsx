@@ -34,7 +34,7 @@ export function IntelligenceView() {
   const tableRows = rows.length ? rows : fallbackRows
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-4 sm:space-y-5">
       <PageHeader
         title="Priority markets"
         subtitle="30-country future expansion plan. India first, then USA, UK, and high-economy peers. Numbers are ambitious predicted priority — not real market data."
@@ -45,17 +45,19 @@ export function IntelligenceView() {
           title="Planned regional priority"
           subtitle="Roadmap scores for learning, entertainment, and commerce fit — predictive and highly ambitious, not live telemetry"
         />
-        <DataTable
-          rows={tableRows}
-          columns={[
-            { key: "region", label: "Region" },
-            { key: "learning", label: "Learning", align: "right" },
-            { key: "engagement", label: "Engagement", align: "right" },
-            { key: "commerce", label: "Commerce", align: "right" },
-            { key: "intensity", label: "Intensity" },
-            { key: "trend", label: "Trend", align: "right" },
-          ]}
-        />
+        <div className="-mx-1 overflow-x-auto sm:mx-0">
+          <DataTable
+            rows={tableRows}
+            columns={[
+              { key: "region", label: "Region" },
+              { key: "learning", label: "Learning", align: "right" },
+              { key: "engagement", label: "Engagement", align: "right" },
+              { key: "commerce", label: "Commerce", align: "right" },
+              { key: "intensity", label: "Intensity" },
+              { key: "trend", label: "Trend", align: "right" },
+            ]}
+          />
+        </div>
       </Panel>
     </div>
   )
