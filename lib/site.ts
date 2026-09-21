@@ -13,5 +13,5 @@ export const siteUrl = (
 export const productLiveUrls = {
   quantrion: (process.env.NEXT_PUBLIC_QUANTRION_URL || "https://quantrion-ai.vercel.app").replace(/\/$/, ""),
   vdoc: (process.env.NEXT_PUBLIC_VDOC_URL || "https://vdoc-ai.vercel.app").replace(/\/$/, ""),
-  exorax: process.env.NEXT_PUBLIC_EXORAX_URL ?? "",
+  exorax: (process.env.NEXT_PUBLIC_EXORAX_URL || "https://exorax-ai.vercel.app").replace(/\/$/, ""),
 } as const
