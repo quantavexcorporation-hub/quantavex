@@ -40,7 +40,7 @@ export function ProductWebsiteLink({
         className={cn(styles[variant], className)}
       >
         <ExternalLink className={variant === "header" || variant === "row" ? "h-4 w-4 shrink-0" : "h-3.5 w-3.5 shrink-0"} />
-        <span className="truncate">{variant === "row" ? displayHost(product.liveUrl) : "Visit website"}</span>
+        <span className="truncate">{variant === "row" ? displayHost(product.liveUrl) : "View software machine"}</span>
       </a>
     )
   }

@@ -19,7 +19,7 @@ export function ProductView({ productId }: { productId: ProductId }) {
         title={product.tagline}
         subtitle={product.manifesto}
         mark={<ProductLogo product={productId} size={40} />}
-        actionLabel={live ? "Visit website" : "Website launching soon"}
+        actionLabel={live ? "View software machine" : "Website launching soon"}
         actionHref={live ? product.liveUrl : undefined}
         actionDisabled={!live}
       />
