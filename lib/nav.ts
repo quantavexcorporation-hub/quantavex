@@ -24,7 +24,7 @@ export const pageMeta: Record<
   },
   "/intelligence": {
     title: "Priority markets",
-    subtitle: "Geographic focus for learning, entertainment, and commerce — not live telemetry",
+    subtitle: "India first. Thirty markets. One order of operations.",
   },
   "/forecasting": {
     title: "Fundraising",

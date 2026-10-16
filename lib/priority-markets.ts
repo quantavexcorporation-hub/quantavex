@@ -14,6 +14,13 @@ function intensityFor(priority: number): Region["intensity"] {
   return "low"
 }
 
+export function marketBand(priority: number) {
+  if (priority === 1) return "Home"
+  if (priority <= 10) return "Core"
+  if (priority <= 22) return "Next"
+  return "Later"
+}
+
 /** India first, then USA / UK / high-economy expansion (30 markets).
  * Scores are an ambitious future GTM plan / predicted priority — not live data. */
 const markets: {
