@@ -4,7 +4,6 @@ import { PageHeader } from "@/components/dashboard/page-header"
 import { GlobalIntelligenceMap } from "@/components/dashboard/global-intelligence-map"
 import { useDashboard } from "@/components/dashboard/dashboard-provider"
 import { getPriorityRegions, marketBand } from "@/lib/priority-markets"
-import { TargetBanner } from "@/components/dashboard/target-note"
 
 function pad(n: number) {
   return String(n).padStart(2, "0")
@@ -26,7 +25,6 @@ export function IntelligenceView() {
         title="Priority markets"
         subtitle="Build in India. Expand into high-economy countries in a fixed order. This is the operating sequence — not traffic, revenue, or live telemetry."
       />
-      <TargetBanner />
 
       <div className="grid grid-cols-3 border border-white/10">
         {[

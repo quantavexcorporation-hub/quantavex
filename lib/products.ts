@@ -40,9 +40,9 @@ export const products: Record<ProductId, ProductDossier> = {
       { title: "Career explorers", detail: "Career AI routes signals across exams, future of industries, and skill curricula." },
     ],
     metrics: [
-      { label: "Target learning improvement", value: "+48–88%", note: "Goal — not yet achieved" },
-      { label: "Target retention", value: "3.2x", note: "Goal — not yet achieved" },
-      { label: "Target satisfaction", value: "96%", note: "Goal — not yet achieved" },
+      { label: "Target learning improvement", value: "+48–88%", note: "Research target" },
+      { label: "Target retention", value: "3.2x", note: "Research target" },
+      { label: "Target satisfaction", value: "96%", note: "Research target" },
       { label: "Exam atlas", value: "150+", note: "Specified in the monograph" },
     ],
     loop: [
@@ -120,10 +120,10 @@ export const products: Record<ProductId, ProductDossier> = {
       { title: "Studio partners", detail: "Co-author series, branch endings, and Creator Stage Pass on Live Universe." },
     ],
     metrics: [
-      { label: "Target engagement", value: "5x", note: "Goal — not yet achieved" },
-      { label: "Target creation time", value: "−80%", note: "Goal — not yet achieved" },
-      { label: "Target retention rate", value: "90%", note: "Goal — not yet achieved" },
-      { label: "Target quality", value: "94%", note: "Goal — not yet achieved" },
+      { label: "Target engagement", value: "5x", note: "Research target" },
+      { label: "Target creation time", value: "−80%", note: "Research target" },
+      { label: "Target retention rate", value: "90%", note: "Research target" },
+      { label: "Target quality", value: "94%", note: "Research target" },
     ],
     loop: [
       { step: "Speak", detail: "Natural language, voice, or mood as the entry command." },
@@ -199,10 +199,10 @@ export const products: Record<ProductId, ProductDossier> = {
       { title: "Creators and advertisers", detail: "Presenters, live shopping, Adcontex, Luxelle." },
     ],
     metrics: [
-      { label: "Target conversion uplift", value: "+35%", note: "Goal — not yet achieved" },
-      { label: "Target AOV", value: "+42%", note: "Goal — not yet achieved" },
-      { label: "Target return rate", value: "30% → 10%", note: "Goal — not yet achieved" },
-      { label: "Target decision time", value: "10×", note: "Goal — not yet achieved" },
+      { label: "Target conversion uplift", value: "+35%", note: "Research target" },
+      { label: "Target AOV", value: "+42%", note: "Research target" },
+      { label: "Target return rate", value: "30% → 10%", note: "Research target" },
+      { label: "Target decision time", value: "10×", note: "Research target" },
     ],
     loop: [
       { step: "Search", detail: "Natural language intent, voice, or visual query." },

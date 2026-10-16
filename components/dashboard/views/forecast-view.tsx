@@ -7,7 +7,6 @@ import { Panel, PanelHeader } from "@/components/dashboard/panel"
 import { useDashboard } from "@/components/dashboard/dashboard-provider"
 import Link from "next/link"
 import { company, investorMailto } from "@/lib/company"
-import { TargetBanner } from "@/components/dashboard/target-note"
 
 const toneClass = {
   cyan: "from-teal-500/20 to-teal-500/5 border-teal-500/30 text-teal-300",
@@ -27,8 +26,6 @@ export function ForecastView() {
         actionLabel="Download company paper"
         actionHref={company.paperPdf}
       />
-
-      <TargetBanner />
 
       <p className="text-xs leading-relaxed text-gray-500 sm:text-sm">
         Raise discussed as {company.raise} ({company.raiseInr}). Equity and valuation are not published as a mark — they are for conversation.

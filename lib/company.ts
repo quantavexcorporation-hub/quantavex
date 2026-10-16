@@ -23,7 +23,6 @@ export const company = {
     "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Product websites appear here when each site is uploaded.",
   geography:
     "Ambitious future plan — not live market data. India first, then expand across 30 high-economy markets beginning with the USA and UK. Scores are predicted GTM priority for the roadmap ahead.",
-  targetDisclaimer: "Target — not yet achieved. Figures on this site are goals, not current results.",
   founder: {
     name: "Udit Gour",
     role: "Founder & CEO",

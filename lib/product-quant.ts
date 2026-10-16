@@ -34,7 +34,7 @@ export const productQuant: Record<ProductId, ProductQuantDeck> = {
     headline: "Examination intelligence — quantitative reading of the Quantrion monograph",
     premise:
       "Static content systems plateau. Adaptive closed-loop systems compound. The charts below translate the Quantrion research into comparable efficiency, lift, and readiness scores.",
-    disclaimer: "Target — not yet achieved · not live cohort results",
+    disclaimer: "Architecture scores · not live cohort results",
     kpis: [
       { label: "Monograph", value: "99 pp", delta: "original research", interpretation: "Exam intelligence architecture on record" },
       { label: "Loop", value: "4-phase", delta: "diagnose → predict", interpretation: "Specified closed loop, not live scores" },
@@ -102,7 +102,7 @@ export const productQuant: Record<ProductId, ProductQuantDeck> = {
     headline: "Interactive entertainment — quantitative reading of the Vdoc monograph",
     premise:
       "Attention extraction peaks early. Experience depth compounds. The reading below is the Vdoc architecture — not industry TAM and not live audience numbers.",
-    disclaimer: "Target — not yet achieved · not live audience results",
+    disclaimer: "Architecture scores · not live audience results",
     kpis: [
       { label: "Monograph", value: "108 pp", delta: "original research", interpretation: "Entertainment OS specified on record" },
       { label: "Loop", value: "Speak → Own", delta: "four steps", interpretation: "Entry command through ownership" },
@@ -170,7 +170,7 @@ export const productQuant: Record<ProductId, ProductQuantDeck> = {
     headline: "Decision commerce — quantitative reading of the ExoraX monograph",
     premise:
       "Returns are a pre-purchase information failure. Confidence before checkout is the independent variable. Charts below encode return compression, conversion lift, and architecture intensity.",
-    disclaimer: "Target — not yet achieved · not live commerce results",
+    disclaimer: "Architecture scores · not live commerce results",
     kpis: [
       { label: "Monograph", value: "58 pp", delta: "original research", interpretation: "Decision commerce specified on record" },
       { label: "Problem", value: "Guessing", delta: "photos and copy", interpretation: "Wrong-item purchases as information failure" },

@@ -17,7 +17,6 @@ import {
 import type { ProductId } from "@/components/brand/product-logo"
 import { productAccents } from "@/lib/product-accents"
 import { getProductQuant, quantChartColor } from "@/lib/product-quant"
-import { TargetBanner } from "@/components/dashboard/target-note"
 
 const tooltipStyle = {
   background: "#0b0b12",
@@ -70,11 +69,10 @@ export function ResearchAnalyticsDeck({ productId }: { productId: ProductId }) {
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-gray-400">{deck.premise}</p>
             </div>
-            <span className="rounded-md border border-amber-400/20 bg-amber-400/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-amber-200/90">
+            <span className="rounded-md border border-white/10 bg-black/40 px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-zinc-400">
               {deck.disclaimer}
             </span>
           </div>
-          <TargetBanner className="relative mt-4" />
         </div>
       </div>
 
@@ -96,7 +94,7 @@ export function ResearchAnalyticsDeck({ productId }: { productId: ProductId }) {
       <div className="grid gap-4 xl:grid-cols-2">
         <ChartCard
           title="Efficiency ladder"
-          subtitle="Target scores — not yet achieved. Traditional stack → proposed architecture"
+          subtitle="Traditional stack → proposed architecture"
         >
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -127,7 +125,7 @@ export function ResearchAnalyticsDeck({ productId }: { productId: ProductId }) {
 
         <ChartCard
           title="Traditional vs proposed"
-          subtitle="Target factor scores from the monograph (0–100) — not yet achieved"
+          subtitle="Factor scores from the monograph comparison matrix (0–100)"
         >
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
@@ -223,7 +221,7 @@ export function ResearchAnalyticsDeck({ productId }: { productId: ProductId }) {
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
         <ChartCard
           title="Research delta matrix"
-          subtitle="Target structural shift — before / after goals, not measured lift"
+          subtitle="Structural shift — before / after from the monograph"
         >
           <div className="overflow-x-auto">
             <table className="w-full min-w-[520px] text-left text-xs">
@@ -258,7 +256,7 @@ export function ResearchAnalyticsDeck({ productId }: { productId: ProductId }) {
           </div>
         </ChartCard>
 
-        <ChartCard title="Module readiness" subtitle="Target specification depth by module — not live telemetry">
+        <ChartCard title="Module readiness" subtitle="Specification depth by architecture module">
           <ul className="space-y-3">
             {deck.modules.map((mod) => (
               <li key={mod.module}>

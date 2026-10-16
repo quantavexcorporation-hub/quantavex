@@ -5,7 +5,6 @@ import { DashboardSnapshot } from "@/lib/dashboard-types"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { ProductWebsiteLink } from "@/components/brand/product-site"
 import { productAccents } from "@/lib/product-accents"
-import { TargetNote } from "@/components/dashboard/target-note"
 
 interface ProductPanelProps {
   title: string
@@ -43,7 +42,6 @@ function ProductPanel({ title, subtitle, product, metrics, children }: ProductPa
           </div>
         ))}
       </div>
-      <TargetNote className="mt-2 text-center" />
     </div>
   )
 }

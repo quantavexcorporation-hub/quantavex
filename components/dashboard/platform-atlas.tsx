@@ -4,7 +4,6 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { ProductLogo } from "@/components/brand/product-logo"
 import { ProductWebsiteLink } from "@/components/brand/product-site"
-import { TargetNote } from "@/components/dashboard/target-note"
 import { productList } from "@/lib/products"
 import { productAccents } from "@/lib/product-accents"
 import {
@@ -96,7 +95,6 @@ export function PlatformAtlas() {
                     </div>
                   ))}
                 </dl>
-                <TargetNote className="mt-2" />
 
                 <div className="mt-4 flex flex-wrap items-center gap-2 pt-1">
                   <Link

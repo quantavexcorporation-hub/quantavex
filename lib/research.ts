@@ -43,12 +43,12 @@ export const researchPapers: Record<ProductId, ResearchPaper> = {
     contribution:
       "Quantrion is proposed as a comprehensive Examination Intelligence Engine: AI-powered pathways, adaptive testing, predictive performance analytics, and cross-exam standardization — a closed loop where assessment informs learning and learning informs assessment.",
     findings: [
-      { label: "Target Q1 efficiency", value: "88%", detail: "Goal — not yet achieved" },
-      { label: "Target adaptive lift", value: "+48–88%", detail: "Goal — not yet achieved" },
-      { label: "Target time reduction", value: "up to 55%", detail: "Goal — not yet achieved" },
-      { label: "Target test performance", value: "+54%", detail: "Goal — not yet achieved" },
-      { label: "Target concept clarity", value: "65%", detail: "Goal — not yet achieved" },
-      { label: "Target latency", value: "< 1.5s", detail: "Goal — not yet achieved" },
+      { label: "Target Q1 efficiency", value: "88%", detail: "Versus static and hybrid stacks" },
+      { label: "Target adaptive lift", value: "+48–88%", detail: "Versus static content systems" },
+      { label: "Target time reduction", value: "up to 55%", detail: "Adaptive learning insight" },
+      { label: "Target test performance", value: "+54%", detail: "AI-powered vs traditional" },
+      { label: "Target concept clarity", value: "65%", detail: "Understanding with tutoring loop" },
+      { label: "Target latency", value: "< 1.5s", detail: "Response-time architecture bound" },
     ],
     comparison: [
       { factor: "Learning path", traditional: "Uniform for all students", proposed: "Personalized and adaptive" },
@@ -152,9 +152,9 @@ export const researchPapers: Record<ProductId, ResearchPaper> = {
       "ExoraX is a six-layer intelligent commerce architecture: interface, AI intelligence, product data, 3D/AR experience, interactive content and presenters, then transaction and feedback. Intent is detected, products are ranked, the user inspects in 3D/AR, presenters explain, and the purchase is made with high confidence. Asset-light 3PL aggregation coordinates logistics without owning fleets.",
     findings: [
       { label: "Return rates today", value: "20–35%", detail: "Fashion and electronics — systemic pre-purchase failure" },
-      { label: "Target returns", value: "30% → 10%", detail: "Goal — not yet achieved" },
-      { label: "Target conversion", value: "+20–35%", detail: "Goal — not yet achieved" },
-      { label: "Target engagement", value: "2×–3×", detail: "Goal — not yet achieved" },
+      { label: "Target returns", value: "30% → 10%", detail: "After 3D, AR, and decision intelligence" },
+      { label: "Target conversion", value: "+20–35%", detail: "Confidence-driven purchase lift" },
+      { label: "Target engagement", value: "2×–3×", detail: "Time on product understanding" },
       { label: "X1 categories", value: "6", detail: "Electronics, fashion, food, health, home, gaming" },
       { label: "Architecture", value: "6 layers", detail: "From interface through feedback into the AI loop" },
     ],

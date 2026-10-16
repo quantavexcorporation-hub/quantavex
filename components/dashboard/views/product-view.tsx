@@ -7,7 +7,6 @@ import { ProductDossier } from "@/components/dashboard/product-dossier"
 import { downloadCsv } from "@/lib/ledger"
 import { getProduct } from "@/lib/products"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
-import { TargetBanner } from "@/components/dashboard/target-note"
 
 export function ProductView({ productId }: { productId: ProductId }) {
   const product = getProduct(productId)
@@ -24,8 +23,6 @@ export function ProductView({ productId }: { productId: ProductId }) {
         actionHref={live ? product.liveUrl : undefined}
         actionDisabled={!live}
       />
-
-      <TargetBanner />
 
       <ProductDossier product={product} />
 
