@@ -32,8 +32,40 @@ export const company = {
   },
   team: {
     posture: "Founder-led",
-    note: "Quantavex is built by Udit Gour. Hiring for engineering, product, and AI follows the raise — there is not a built-out team yet.",
-    hiring: "25% of the round is allocated to engineering and product hires.",
+    note: "Quantavex is built by Udit Gour. The six seats below are the people this round is meant to hire — not a team already in place.",
+    hiring: "Each field is a required hire after funding.",
+    seats: [
+      {
+        field: "Human Psychology & Resources",
+        role: "To hire",
+        detail: "How people learn, decide, and stay engaged — and how people and resources are allocated.",
+      },
+      {
+        field: "Finance & Economics",
+        role: "To hire",
+        detail: "Markets, capital, and how value moves.",
+      },
+      {
+        field: "AI & Data Science",
+        role: "To hire",
+        detail: "Models, evidence, and correct information.",
+      },
+      {
+        field: "Media & Content",
+        role: "To hire",
+        detail: "Narrative, format, and how attention is held.",
+      },
+      {
+        field: "Sales & Digital Marketing",
+        role: "To hire",
+        detail: "Demand, distribution, and conversion.",
+      },
+      {
+        field: "Product & Business Strategy",
+        role: "To hire",
+        detail: "What to build, why it matters, and how it becomes a company.",
+      },
+    ],
   },
   companyEmail: "quantavexcorporation@gmail.com",
   facts: [

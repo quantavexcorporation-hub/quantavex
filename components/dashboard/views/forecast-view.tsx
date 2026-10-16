@@ -104,22 +104,36 @@ export function ForecastView() {
         </Panel>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <Panel>
-          <PanelHeader title="Team" subtitle={company.team.posture} />
-          <p className="text-sm font-medium text-white">{company.founder.name}</p>
-          <p className="mt-1 text-xs text-gray-400">
-            {company.founder.role} · Headquarters {company.headquarters}
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-gray-300">{company.team.note}</p>
-          <p className="mt-2 text-[11px] text-gray-500">{company.team.hiring}</p>
+      <Panel>
+        <PanelHeader title="Team" subtitle={`${company.team.posture} · six field hires needed`} />
+        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-sm font-medium text-white">{company.founder.name}</p>
+            <p className="mt-1 text-xs text-gray-400">
+              {company.founder.role} · Headquarters {company.headquarters}
+            </p>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-300">{company.team.note}</p>
+            <p className="mt-1 text-[11px] text-gray-500">{company.team.hiring}</p>
+          </div>
           <Link
             href={company.founder.path}
-            className="mt-4 inline-flex text-sm text-cyan-300 hover:text-cyan-200"
+            className="shrink-0 text-sm text-cyan-300 hover:text-cyan-200"
           >
             Founder record
           </Link>
-        </Panel>
+        </div>
+        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {company.team.seats.map((seat) => (
+            <li key={seat.field} className="rounded-lg border border-white/8 bg-black/25 p-3">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-amber-200/80">{seat.role}</p>
+              <p className="mt-1.5 text-sm font-medium text-white">{seat.field}</p>
+              <p className="mt-1 text-[11px] leading-relaxed text-gray-500">{seat.detail}</p>
+            </li>
+          ))}
+        </ul>
+      </Panel>
+
+      <div className="grid gap-4 lg:grid-cols-2">
         <Panel>
           <PanelHeader title="Industries" subtitle={company.tam} />
           <ul className="space-y-3">
