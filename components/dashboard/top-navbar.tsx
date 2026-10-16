@@ -39,7 +39,7 @@ export function TopNavbar({
         <button
           type="button"
           onClick={() => setMobileOpen(true)}
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 text-gray-300 transition hover:border-cyan-400/30 hover:text-cyan-300 lg:hidden"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 text-gray-300 transition hover:border-white/25 hover:text-white lg:hidden"
           aria-label="Open menu"
         >
           <Menu className="h-5 w-5" />
@@ -67,7 +67,7 @@ export function TopNavbar({
             />
           </form>
           <div className="mt-1 min-h-4">
-            {searchStatus === "loading" && <p className="text-[10px] text-cyan-400">Searching…</p>}
+            {searchStatus === "loading" && <p className="text-[10px] text-zinc-500">Searching…</p>}
             {searchStatus === "error" && searchError && (
               <p className="truncate text-[10px] text-red-400">{searchError}</p>
             )}
@@ -79,7 +79,7 @@ export function TopNavbar({
 
         <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
           {pathname === "/forecasting" ? (
-            <span className="hidden rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2.5 py-1 text-[10px] font-medium tracking-wider text-cyan-300 uppercase sm:inline">
+            <span className="hidden border border-white/15 px-2.5 py-1 text-[10px] font-medium tracking-[0.16em] text-zinc-400 uppercase sm:inline">
               {company.stage}
             </span>
           ) : null}
@@ -89,7 +89,7 @@ export function TopNavbar({
                 ? investorMailto("conversation")
                 : `mailto:${company.founder.email}`
             }
-            className="inline-flex h-9 items-center justify-center rounded-lg border border-white/10 px-2.5 text-[11px] font-medium text-gray-400 transition hover:border-cyan-400/30 hover:text-cyan-300 sm:border-0 sm:px-0 sm:text-xs"
+            className="inline-flex h-9 items-center justify-center rounded-lg border border-white/10 px-2.5 text-[11px] font-medium text-gray-400 transition hover:border-white/25 hover:text-white sm:border-0 sm:px-0 sm:text-xs"
             title={company.founder.email}
           >
             <span className="sm:hidden">Mail</span>

@@ -65,7 +65,7 @@ export function DataTable<T extends Record<string, string | number>>({
       <div className="overflow-x-auto">
         <table className="w-full min-w-[640px]">
           <thead>
-            <tr className="border-b border-cyan-500/10">
+            <tr className="border-b border-white/10">
               {columns.map((column) => (
                 <th
                   key={String(column.key)}
@@ -74,7 +74,7 @@ export function DataTable<T extends Record<string, string | number>>({
                   }`}
                 >
                   <button
-                    className="inline-flex items-center gap-1 hover:text-cyan-400"
+                    className="inline-flex items-center gap-1 hover:text-white"
                     onClick={() => {
                       if (sortKey === column.key) {
                         setSortDir((dir) => (dir === "asc" ? "desc" : "asc"))
@@ -129,7 +129,7 @@ export function DataTable<T extends Record<string, string | number>>({
             type="button"
             disabled={currentPage === 0}
             onClick={() => setPage((value) => Math.max(0, value - 1))}
-            className="rounded-md border border-white/10 p-1.5 text-gray-300 transition hover:border-cyan-400/40 hover:text-white disabled:opacity-30"
+            className="border border-white/10 p-1.5 text-gray-300 transition hover:border-white/30 hover:text-white disabled:opacity-30"
             aria-label="Previous page"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -141,7 +141,7 @@ export function DataTable<T extends Record<string, string | number>>({
             type="button"
             disabled={currentPage >= pageCount - 1}
             onClick={() => setPage((value) => Math.min(pageCount - 1, value + 1))}
-            className="rounded-md border border-white/10 p-1.5 text-gray-300 transition hover:border-cyan-400/40 hover:text-white disabled:opacity-30"
+            className="border border-white/10 p-1.5 text-gray-300 transition hover:border-white/30 hover:text-white disabled:opacity-30"
             aria-label="Next page"
           >
             <ChevronRight className="h-4 w-4" />

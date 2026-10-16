@@ -39,7 +39,7 @@ export function ProductView({ productId }: { productId: ProductId }) {
                   product.ops.map((row) => [row.module, row.owner, row.status, row.latency, row.load])
                 )
               }
-              className="text-xs font-medium text-cyan-300 transition hover:text-cyan-200"
+              className="text-xs font-medium text-white underline decoration-white/25 underline-offset-4 hover:decoration-white/60"
             >
               Download architecture
             </button>

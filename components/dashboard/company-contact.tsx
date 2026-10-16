@@ -5,7 +5,7 @@ import { Mail, Send } from "lucide-react"
 import { company } from "@/lib/company"
 
 const fieldClass =
-  "w-full rounded-md border border-white/10 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-gray-600 outline-none focus:border-cyan-400/40"
+  "w-full border border-white/10 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-gray-600 outline-none focus:border-white/25"
 
 export function CompanyContact() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
@@ -104,7 +104,7 @@ export function CompanyContact() {
             <Send className="h-3.5 w-3.5" />
             {status === "sending" ? "Sending…" : "Send"}
           </button>
-          {status === "sent" ? <p className="text-xs text-cyan-300">Sent. We will reply.</p> : null}
+          {status === "sent" ? <p className="text-xs text-zinc-300">Sent. We will reply.</p> : null}
           {status === "error" ? (
             <p className="text-xs text-red-400">
               {error} Or mail {company.companyEmail}.

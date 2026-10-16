@@ -140,7 +140,7 @@ export function ForecastView() {
                   <p className="text-sm text-white">{market.name}</p>
                   <p className="text-[11px] text-gray-500">{market.note}</p>
                 </div>
-                <p className="font-mono text-sm text-cyan-300">{market.size}</p>
+                <p className="font-mono text-sm text-zinc-200">{market.size}</p>
               </li>
             ))}
           </ul>

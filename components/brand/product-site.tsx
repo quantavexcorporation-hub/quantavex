@@ -28,8 +28,8 @@ export function ProductWebsiteLink({
       header:
         "inline-flex items-center gap-2 border border-white/20 bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-zinc-200",
       chip: "inline-flex items-center gap-1.5 rounded-lg bg-white/8 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-white/12",
-      ghost: "inline-flex items-center gap-1.5 text-xs font-medium text-cyan-300 transition hover:text-cyan-200",
-      row: "inline-flex min-w-0 items-center gap-2 rounded-lg border border-cyan-400/25 bg-cyan-400/10 px-3 py-2 text-sm text-cyan-200 transition hover:bg-cyan-400/15",
+      ghost: "inline-flex items-center gap-1.5 text-xs font-medium text-white underline decoration-white/25 underline-offset-4 transition hover:decoration-white/60",
+      row: "inline-flex min-w-0 items-center gap-2 border border-white/15 bg-white/[0.04] px-3 py-2 text-sm text-zinc-200 transition hover:border-white/30 hover:text-white",
     }
 
     return (

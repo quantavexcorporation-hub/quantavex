@@ -123,7 +123,7 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
-                backgroundColor: activeRow === index ? "rgba(34,211,238,0.06)" : "rgba(0,0,0,0)",
+                backgroundColor: activeRow === index ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0)",
               }}
               className="rounded-lg border border-white/5 p-2.5"
             >
@@ -135,7 +135,7 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
                 <X className="mr-1 inline h-2.5 w-2.5 text-red-400" />
                 {row.traditional}
               </p>
-              <p className="mt-0.5 line-clamp-1 text-[10px] text-cyan-400">
+              <p className="mt-0.5 line-clamp-1 text-[10px] text-zinc-300">
                 <Check className="mr-1 inline h-2.5 w-2.5" />
                 {row.quantavex}
               </p>
@@ -148,7 +148,7 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
       <div className="hidden min-h-0 flex-1 overflow-x-auto overflow-y-hidden sm:block">
         <table className="w-full min-w-[480px] table-fixed">
           <thead>
-            <tr className="border-b border-cyan-500/10">
+            <tr className="border-b border-white/10">
               <th className="w-[18%] pb-2 text-left text-[10px] font-mono text-gray-500">CATEGORY</th>
               <th className="w-[28%] pb-2 text-left text-[10px] font-mono text-gray-500">
                 <span className="flex items-center gap-1">
@@ -159,7 +159,7 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
               <th className="w-8 pb-2 text-center text-[10px] font-mono text-gray-500" />
               <th className="w-[28%] pb-2 text-left text-[10px] font-mono text-gray-500">
                 <span className="flex items-center gap-1">
-                  <Check className="h-3 w-3 text-cyan-400" />
+                  <Check className="h-3 w-3 text-zinc-300" />
                   QUANTAVEX
                 </span>
               </th>
@@ -174,7 +174,7 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
                   initial={{ opacity: 0 }}
                   animate={{
                     opacity: 1,
-                    backgroundColor: activeRow === index ? "rgba(34,211,238,0.06)" : "rgba(0,0,0,0)",
+                    backgroundColor: activeRow === index ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0)",
                   }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.25 }}
@@ -187,10 +187,10 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
                     </span>
                   </td>
                   <td className="py-2 text-center">
-                    <ArrowRight className="inline-block h-4 w-4 text-gray-600 transition-colors group-hover:text-cyan-400" />
+                    <ArrowRight className="inline-block h-4 w-4 text-gray-600 transition-colors group-hover:text-white" />
                   </td>
                   <td className="py-2">
-                    <span className="line-clamp-1 rounded bg-cyan-500/10 px-2 py-0.5 text-xs text-cyan-400">
+                    <span className="line-clamp-1 bg-white/[0.06] px-2 py-0.5 text-xs text-zinc-200">
                       {row.quantavex}
                     </span>
                   </td>
