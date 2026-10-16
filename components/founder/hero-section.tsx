@@ -130,7 +130,7 @@ export function HeroSection() {
 
             {/* Floating accent elements */}
             <div className="absolute -top-3 -right-3 flex h-14 w-14 items-center justify-center rounded-xl border border-primary/20 bg-primary/[0.08] backdrop-blur-sm sm:-top-4 sm:-right-4 sm:h-20 sm:w-20 sm:rounded-2xl">
-              <span className="font-mono text-[10px] font-bold text-primary sm:text-xs">QG</span>
+              <span className="font-mono text-[10px] font-bold text-primary sm:text-xs">UG</span>
             </div>
           </div>
         </div>
