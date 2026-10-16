@@ -40,10 +40,10 @@ export const products: Record<ProductId, ProductDossier> = {
       { title: "Career explorers", detail: "Career AI routes signals across exams, future of industries, and skill curricula." },
     ],
     metrics: [
-      { label: "Learning lift", value: "+48–88%", note: "Research target · monograph" },
-      { label: "Retention", value: "3.2x", note: "Research target · closed-loop practice" },
-      { label: "Satisfaction", value: "96%", note: "Cited cohort signal" },
-      { label: "Exam atlas", value: "150+", note: "Specified global pathways" },
+      { label: "Target learning improvement", value: "+48–88%", note: "Goal — not yet achieved" },
+      { label: "Target retention", value: "3.2x", note: "Goal — not yet achieved" },
+      { label: "Target satisfaction", value: "96%", note: "Goal — not yet achieved" },
+      { label: "Exam atlas", value: "150+", note: "Specified in the monograph" },
     ],
     loop: [
       { step: "Diagnose", detail: "Map strengths, gaps, and confidence into Knowledge DNA." },
@@ -120,10 +120,10 @@ export const products: Record<ProductId, ProductDossier> = {
       { title: "Studio partners", detail: "Co-author series, branch endings, and Creator Stage Pass on Live Universe." },
     ],
     metrics: [
-      { label: "Engagement", value: "5x", note: "Research target · interactive vs passive" },
-      { label: "Creation time", value: "−80%", note: "Research target · director + engine" },
-      { label: "Retention", value: "90%", note: "Research target · emotional continuity" },
-      { label: "Quality", value: "94%", note: "Research target · generation score" },
+      { label: "Target engagement", value: "5x", note: "Goal — not yet achieved" },
+      { label: "Target creation time", value: "−80%", note: "Goal — not yet achieved" },
+      { label: "Target retention rate", value: "90%", note: "Goal — not yet achieved" },
+      { label: "Target quality", value: "94%", note: "Goal — not yet achieved" },
     ],
     loop: [
       { step: "Speak", detail: "Natural language, voice, or mood as the entry command." },
@@ -199,10 +199,10 @@ export const products: Record<ProductId, ProductDossier> = {
       { title: "Creators and advertisers", detail: "Presenters, live shopping, Adcontex, Luxelle." },
     ],
     metrics: [
-      { label: "Conversion", value: "+35%", note: "Research target · confidence to purchase" },
-      { label: "AOV", value: "+42%", note: "Research target · guided decisions" },
-      { label: "Returns", value: "30% → 10%", note: "Research target · fewer wrong-item buys" },
-      { label: "Decision time", value: "10×", note: "Research target · path to purchase" },
+      { label: "Target conversion uplift", value: "+35%", note: "Goal — not yet achieved" },
+      { label: "Target AOV", value: "+42%", note: "Goal — not yet achieved" },
+      { label: "Target return rate", value: "30% → 10%", note: "Goal — not yet achieved" },
+      { label: "Target decision time", value: "10×", note: "Goal — not yet achieved" },
     ],
     loop: [
       { step: "Search", detail: "Natural language intent, voice, or visual query." },

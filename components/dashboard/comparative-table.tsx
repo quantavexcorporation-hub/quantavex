@@ -10,19 +10,19 @@ const wire: DashboardSnapshot["comparisons"] = [
     category: "Learning",
     traditional: "Static content",
     quantavex: "Adaptive intelligence",
-    improvement: "+48–88%",
+    improvement: "Architecture",
   },
   {
     category: "Entertainment",
     traditional: "Passive viewing",
     quantavex: "Interactive AI-driven",
-    improvement: "2x–5x",
+    improvement: "Agency",
   },
   {
     category: "Commerce",
     traditional: "Static browsing",
     quantavex: "Immersive decision systems",
-    improvement: "+20–35%",
+    improvement: "Clarity",
   },
   {
     category: "Cost shape",
@@ -50,27 +50,27 @@ const wire: DashboardSnapshot["comparisons"] = [
   },
   {
     category: "Returns",
-    traditional: "20–35% wrong-item",
+    traditional: "Guess from photos",
     quantavex: "Know it before it arrives",
-    improvement: "30% → 10%",
+    improvement: "Confidence",
   },
   {
     category: "Space",
     traditional: "Earth-only curricula",
     quantavex: "Intelligence for harder economies",
-    improvement: "$1.8T horizon",
+    improvement: "Horizon",
   },
   {
     category: "Virtual",
     traditional: "Skins as add-ons",
     quantavex: "Ownership in-world",
-    improvement: "$100B+ goods",
+    improvement: "Ownership",
   },
   {
     category: "Trade",
     traditional: "Shelf → checkout",
     quantavex: "Trading-grade clarity",
-    improvement: "$35T scale",
+    improvement: "Intent",
   },
 ]
 
@@ -114,7 +114,7 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
           </span>
-          Live
+          Plan
         </span>
       </div>
 

@@ -6,6 +6,7 @@ import { DataTable } from "@/components/dashboard/data-table"
 import { Panel, PanelHeader } from "@/components/dashboard/panel"
 import { useDashboard } from "@/components/dashboard/dashboard-provider"
 import { getPriorityRegions } from "@/lib/priority-markets"
+import { TargetBanner } from "@/components/dashboard/target-note"
 
 const fallbackRows = Object.values(getPriorityRegions())
   .sort((a, b) => a.priority - b.priority)
@@ -37,8 +38,9 @@ export function IntelligenceView() {
     <div className="space-y-4 sm:space-y-5">
       <PageHeader
         title="Priority markets"
-        subtitle="30-country future expansion plan. India first, then USA, UK, and high-economy peers. Numbers are ambitious predicted priority — not real market data."
+        subtitle="India first. Other countries are a planned order of entry — not live traffic, sales, or valuation."
       />
+      <TargetBanner />
       <GlobalIntelligenceMap data={snapshot?.regions} lastSyncSeconds={snapshot?.lastSyncSeconds ?? 0} />
       <Panel>
         <PanelHeader

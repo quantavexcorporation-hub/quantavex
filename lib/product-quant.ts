@@ -25,7 +25,7 @@ export interface ProductQuantDeck {
 
 /**
  * Quantitative decks derived from each platform monograph.
- * Values are research targets / architecture scores — not live production telemetry.
+ * Values are research targets / goals — not yet achieved, not live production telemetry.
  * Internal division codes stay inside the monograph only.
  */
 export const productQuant: Record<ProductId, ProductQuantDeck> = {
@@ -34,14 +34,14 @@ export const productQuant: Record<ProductId, ProductQuantDeck> = {
     headline: "Examination intelligence — quantitative reading of the Quantrion monograph",
     premise:
       "Static content systems plateau. Adaptive closed-loop systems compound. The charts below translate the Quantrion research into comparable efficiency, lift, and readiness scores.",
-    disclaimer: "Monograph targets · architecture scores · not live cohort telemetry",
+    disclaimer: "Target — not yet achieved · not live cohort results",
     kpis: [
-      { label: "Efficiency index", value: "88", delta: "vs 45 traditional", interpretation: "Normalized learning–practice–assessment yield" },
-      { label: "Adaptive lift", value: "+48–88%", delta: "vs static content", interpretation: "Research band from adaptive sequencing" },
-      { label: "Time compression", value: "−55%", delta: "study hours to mastery", interpretation: "AI adaptive learning insight ceiling" },
-      { label: "Test performance", value: "+54%", delta: "vs traditional rooms", interpretation: "AI-powered environment lift" },
-      { label: "Latency target", value: "<1.5s", delta: "92%+ accuracy", interpretation: "Response SLA for intelligence loop" },
-      { label: "Exam atlas", value: "150+", delta: "global pathways", interpretation: "Specified competitive coverage" },
+      { label: "Monograph", value: "99 pp", delta: "original research", interpretation: "Exam intelligence architecture on record" },
+      { label: "Loop", value: "4-phase", delta: "diagnose → predict", interpretation: "Specified closed loop, not live scores" },
+      { label: "Exam atlas", value: "150+", delta: "pathways named", interpretation: "Specified competitive coverage" },
+      { label: "Status", value: "In build", delta: "software machine linked", interpretation: "Pre-seed product, not a live cohort" },
+      { label: "Engine", value: "Adaptive", delta: "vs static content", interpretation: "Architecture claim, not measured lift" },
+      { label: "HQ", value: "India", delta: "first market", interpretation: "Build here, then expand" },
     ],
     efficiency: [
       { name: "Traditional", value: 45, note: "Content-heavy, delayed feedback" },
@@ -101,15 +101,15 @@ export const productQuant: Record<ProductId, ProductQuantDeck> = {
     id: "vdoc",
     headline: "Interactive entertainment — quantitative reading of the Vdoc monograph",
     premise:
-      "Attention extraction peaks early. Experience depth compounds. These figures map industry TAM, engagement multipliers, and the shift from linear media to generative ecosystems.",
-    disclaimer: "Monograph targets · ecosystem architecture scores · not live audience telemetry",
+      "Attention extraction peaks early. Experience depth compounds. The reading below is the Vdoc architecture — not industry TAM and not live audience numbers.",
+    disclaimer: "Target — not yet achieved · not live audience results",
     kpis: [
-      { label: "Entertainment TAM", value: "$2.8T+", delta: "2024 global", interpretation: "Industry envelope Vdoc addresses" },
-      { label: "Overlap estimate", value: "$3–4T", delta: "interactive stack", interpretation: "Monograph addressable overlay" },
-      { label: "Engagement lift", value: "5×", delta: "vs passive view", interpretation: "Interactive participation target" },
-      { label: "Creation time", value: "−80%", delta: "director + engine", interpretation: "Creation OS execution compression" },
-      { label: "Retention target", value: "90%", delta: "emotional continuity", interpretation: "Afterglow / world thread thesis" },
-      { label: "Generation quality", value: "94%", delta: "score band", interpretation: "Research quality target" },
+      { label: "Monograph", value: "108 pp", delta: "original research", interpretation: "Entertainment OS specified on record" },
+      { label: "Loop", value: "Speak → Own", delta: "four steps", interpretation: "Entry command through ownership" },
+      { label: "Layers", value: "3", delta: "audience · creation · economy", interpretation: "One visual language" },
+      { label: "Status", value: "In build", delta: "software machine linked", interpretation: "Pre-seed product, not live GMV" },
+      { label: "Form", value: "Interactive", delta: "vs passive catalog", interpretation: "Architecture claim, not measured lift" },
+      { label: "HQ", value: "India", delta: "first market", interpretation: "Build here, then expand" },
     ],
     efficiency: [
       { name: "Linear TV / film", value: 32, note: "Passive, scheduled" },
@@ -152,8 +152,8 @@ export const productQuant: Record<ProductId, ProductQuantDeck> = {
     ],
     interpretation: [
       {
-        title: "TAM is not the product",
-        body: "$2.8T describes the industry. The research claim is structural: move from maximizing watch time to maximizing experience depth and co-creation.",
+        title: "Industry size is not the product",
+        body: "The research claim is structural: move from maximizing watch time to maximizing experience depth and co-creation. That is a design thesis, not a revenue figure.",
       },
       {
         title: "Story as a graph, not a reel",
@@ -170,14 +170,14 @@ export const productQuant: Record<ProductId, ProductQuantDeck> = {
     headline: "Decision commerce — quantitative reading of the ExoraX monograph",
     premise:
       "Returns are a pre-purchase information failure. Confidence before checkout is the independent variable. Charts below encode return compression, conversion lift, and architecture intensity.",
-    disclaimer: "Monograph targets · decision architecture scores · not live GMV telemetry",
+    disclaimer: "Target — not yet achieved · not live commerce results",
     kpis: [
-      { label: "Return rates today", value: "20–35%", delta: "fashion / electronics", interpretation: "Systemic pre-purchase failure" },
-      { label: "Projected returns", value: "30% → 10%", delta: "after 3D / AR / AI", interpretation: "Confidence purchase thesis" },
-      { label: "Conversion lift", value: "+20–35%", delta: "decision clarity", interpretation: "Purchase confidence band" },
-      { label: "AOV lift", value: "+42%", delta: "guided decisions", interpretation: "Research commercial target" },
-      { label: "Engagement", value: "2–3×", delta: "understand, not scroll", interpretation: "Time on product truth" },
-      { label: "Architecture", value: "6 layers", delta: "full stack", interpretation: "Interface → feedback loop" },
+      { label: "Monograph", value: "58 pp", delta: "original research", interpretation: "Decision commerce specified on record" },
+      { label: "Problem", value: "Guessing", delta: "photos and copy", interpretation: "Wrong-item purchases as information failure" },
+      { label: "Method", value: "Inspect first", delta: "3D · AR · presenters", interpretation: "Confidence before checkout" },
+      { label: "Status", value: "In build", delta: "software machine linked", interpretation: "Pre-seed product, not live GMV" },
+      { label: "Architecture", value: "6 layers", delta: "interface → loop", interpretation: "Specified stack, not measured conversion" },
+      { label: "HQ", value: "India", delta: "first market", interpretation: "Build here, then expand" },
     ],
     efficiency: [
       { name: "2D listings", value: 34, note: "Images + text only" },

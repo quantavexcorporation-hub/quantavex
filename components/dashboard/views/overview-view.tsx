@@ -10,6 +10,7 @@ import { QuantavexLogo } from "@/components/brand/quantavex-logo"
 import { PlatformAtlas } from "@/components/dashboard/platform-atlas"
 import { CompanyBrief } from "@/components/dashboard/company-brief"
 import { CompanyContact } from "@/components/dashboard/company-contact"
+import { TargetBanner } from "@/components/dashboard/target-note"
 
 export function OverviewView() {
   const { snapshot, isLoading, error } = useDashboard()
@@ -22,6 +23,8 @@ export function OverviewView() {
         subtitle="One company. Three platforms — Quantrion, Vdoc, and ExoraX."
         mark={<QuantavexLogo size={40} priority />}
       />
+
+      <TargetBanner />
 
       <CompanyBrief />
 

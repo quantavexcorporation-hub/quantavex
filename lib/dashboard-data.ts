@@ -25,24 +25,24 @@ export function getActivities(): DashboardSnapshot["activities"] {
     { id: "m2", type: "learning", message: "Quantrion monograph complete — 99 pages, exam intelligence architecture.", timestamp: "Research" },
     { id: "m3", type: "content", message: "Vdoc monograph complete — 108 pages, interactive entertainment OS.", timestamp: "Research" },
     { id: "m4", type: "commerce", message: "ExoraX monograph complete — 58 pages, decision commerce architecture.", timestamp: "Research" },
-    { id: "m5", type: "system", message: "Three product dossiers specified. Live sites pending upload.", timestamp: "Build" },
+    { id: "m5", type: "system", message: "Three platforms specified. Software machines linked from each dossier.", timestamp: "Build" },
     { id: "m6", type: "system", message: "Founder-led company behind Quantrion, Vdoc, and ExoraX.", timestamp: "Company" },
   ]
 }
 
 export function getMarkets(): DashboardSnapshot["markets"] {
   return [
-    { name: "EdTech", value: 400, color: "#2dd4bf", growth: "$400B+" },
-    { name: "Entertainment", value: 2800, color: "#f43f5e", growth: "$2.8T+" },
-    { name: "E-commerce", value: 6000, color: "#a1a1aa", growth: "$6T+" },
+    { name: "Learning", value: 1, color: "#2dd4bf", growth: "Quantrion" },
+    { name: "Entertainment", value: 1, color: "#f43f5e", growth: "Vdoc" },
+    { name: "Commerce", value: 1, color: "#a1a1aa", growth: "ExoraX" },
   ]
 }
 
 export function getComparisons(): DashboardSnapshot["comparisons"] {
   return [
-    { category: "Learning", traditional: "Static content", quantavex: "Adaptive intelligence", improvement: "+48–88%" },
-    { category: "Entertainment", traditional: "Passive viewing", quantavex: "Interactive AI-driven", improvement: "2x–5x" },
-    { category: "Commerce", traditional: "Static browsing", quantavex: "Immersive decision systems", improvement: "+20–35%" },
+    { category: "Learning", traditional: "Static content", quantavex: "Adaptive intelligence", improvement: "Architecture" },
+    { category: "Entertainment", traditional: "Passive viewing", quantavex: "Interactive worlds", improvement: "Architecture" },
+    { category: "Commerce", traditional: "Static browsing", quantavex: "Decision before buy", improvement: "Architecture" },
     { category: "Cost shape", traditional: "Linear content cost", quantavex: "Low marginal cost per user", improvement: "Architecture" },
   ]
 }

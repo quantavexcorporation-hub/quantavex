@@ -28,7 +28,7 @@ export const pageMeta: Record<
   },
   "/forecasting": {
     title: "Fundraising",
-    subtitle: "Pre-seed · Seed / Pre-Series A terms, use of funds, and 12-month roadmap",
+    subtitle: "Pre-seed · use of funds and twelve-month roadmap — terms in conversation",
   },
 }
 

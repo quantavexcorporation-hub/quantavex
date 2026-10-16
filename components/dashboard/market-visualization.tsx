@@ -5,9 +5,9 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 import { DashboardSnapshot } from "@/lib/dashboard-types"
 
 const fallbackMarkets = [
-  { name: "EdTech", value: 400, color: "#2dd4bf", growth: "$400B+" },
-  { name: "Entertainment", value: 2800, color: "#f43f5e", growth: "$2.8T+" },
-  { name: "E-commerce", value: 6000, color: "#a1a1aa", growth: "$6T+" },
+  { name: "Learning", value: 1, color: "#2dd4bf", growth: "Quantrion" },
+  { name: "Entertainment", value: 1, color: "#f43f5e", growth: "Vdoc" },
+  { name: "Commerce", value: 1, color: "#a1a1aa", growth: "ExoraX" },
 ]
 
 export function MarketVisualization({ data }: { data?: DashboardSnapshot["markets"] }) {
@@ -20,12 +20,12 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
     >
       <div className="mb-4 flex shrink-0 items-center justify-between">
         <div>
-          <h3 className="text-sm font-medium text-white">Market opportunity</h3>
-          <p className="text-xs text-gray-500">Learning, entertainment, and commerce</p>
+          <h3 className="text-sm font-medium text-white">Where we work</h3>
+          <p className="text-xs text-gray-500">Three industries. Three platforms. Pre-seed.</p>
         </div>
         <div className="text-right">
-          <div className="text-lg font-mono font-bold text-white">$8T+</div>
-          <div className="text-[10px] text-gray-500">Combined TAM</div>
+          <div className="text-lg font-mono font-bold text-white">3</div>
+          <div className="text-[10px] text-gray-500">Platforms specified</div>
         </div>
       </div>
 
@@ -54,7 +54,10 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
                   borderRadius: "4px",
                   fontSize: "11px",
                 }}
-                formatter={(value: number, name: string) => [markets.find((m) => m.name === name)?.growth ?? `$${value}B`, name]}
+                formatter={(_value: number, name: string) => [
+                  markets.find((m) => m.name === name)?.growth ?? name,
+                  name,
+                ]}
               />
             </PieChart>
           </ResponsiveContainer>
@@ -79,7 +82,7 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
               <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
-                  animate={{ width: `${(market.value / 6000) * 100}%` }}
+                  animate={{ width: "100%" }}
                   transition={{ delay: index * 0.2, duration: 0.8 }}
                   className="h-full rounded-full"
                   style={{ backgroundColor: market.color }}

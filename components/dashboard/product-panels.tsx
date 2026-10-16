@@ -5,6 +5,7 @@ import { DashboardSnapshot } from "@/lib/dashboard-types"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { ProductWebsiteLink } from "@/components/brand/product-site"
 import { productAccents } from "@/lib/product-accents"
+import { TargetNote } from "@/components/dashboard/target-note"
 
 interface ProductPanelProps {
   title: string
@@ -42,6 +43,7 @@ function ProductPanel({ title, subtitle, product, metrics, children }: ProductPa
           </div>
         ))}
       </div>
+      <TargetNote className="mt-2 text-center" />
     </div>
   )
 }
@@ -157,7 +159,7 @@ export function ProductPanels({
       title: "Quantrion",
       subtitle: "AI Global Exam Intelligence Engine",
       metrics: [
-        { label: "Efficiency", value: "+88%" },
+        { label: "Target efficiency", value: "+88%" },
         { label: "Users", value: "—" },
         { label: "Modules", value: "Specified" },
         { label: "Accuracy", value: "Research" },
@@ -181,7 +183,7 @@ export function ProductPanels({
       title: "ExoraX",
       subtitle: "Decision Commerce Platform",
       metrics: [
-        { label: "Conversion", value: "+35%" },
+        { label: "Target conversion uplift", value: "+35%" },
         { label: "Categories", value: "6" },
         { label: "Architecture", value: "6 layers" },
         { label: "Status", value: "In build" },

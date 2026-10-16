@@ -6,6 +6,7 @@ import { DataTable } from "@/components/dashboard/data-table"
 import { Panel, PanelHeader } from "@/components/dashboard/panel"
 import { useDashboard } from "@/components/dashboard/dashboard-provider"
 import { company, investorMailto } from "@/lib/company"
+import { TargetBanner } from "@/components/dashboard/target-note"
 
 const toneClass = {
   cyan: "from-teal-500/20 to-teal-500/5 border-teal-500/30 text-teal-300",
@@ -21,13 +22,15 @@ export function ForecastView() {
     <div className="space-y-4 sm:space-y-5">
       <PageHeader
         title="Fundraising"
-        subtitle={`${company.stage} · ${company.round} · ${company.raise}`}
+        subtitle={`${company.stage} · ${company.round} · conversation, not a public mark`}
         actionLabel="Download company paper"
         actionHref={company.paperPdf}
       />
 
+      <TargetBanner />
+
       <p className="text-xs leading-relaxed text-gray-500 sm:text-sm">
-        {company.raiseInr} · {company.equity} equity · {company.valuation} pre-money
+        Raise discussed as {company.raise} ({company.raiseInr}). Equity and valuation are not published as a mark — they are for conversation.
       </p>
 
       <div className="rounded-xl border border-amber-400/20 bg-amber-400/5 px-4 py-3 text-sm leading-relaxed text-amber-100/90">
@@ -102,7 +105,7 @@ export function ForecastView() {
 
       <div className="grid gap-4 lg:grid-cols-3">
         <Panel>
-          <PanelHeader title="Market opportunity" subtitle={`TAM ${company.tam}`} />
+          <PanelHeader title="Industries" subtitle={company.tam} />
           <ul className="space-y-3">
             {company.markets.map((market) => (
               <li key={market.name} className="flex items-center justify-between border-b border-white/5 pb-3 last:border-0 last:pb-0">
@@ -116,7 +119,7 @@ export function ForecastView() {
           </ul>
         </Panel>
         <Panel>
-          <PanelHeader title="Projected results" subtitle="Early validation from the company paper" />
+          <PanelHeader title="What is specified" subtitle="Research first. No live revenue or cohort claims." />
           <ul className="space-y-3">
             {company.results.map((item) => (
               <li key={item.label} className="rounded-lg border border-white/6 bg-black/25 p-3">

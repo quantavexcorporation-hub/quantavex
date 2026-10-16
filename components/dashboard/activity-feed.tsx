@@ -25,17 +25,17 @@ const newsWire: DashboardSnapshot["activities"] = [
   { id: "n2", type: "learning", message: "Quantrion monograph complete — 99 pages, exam intelligence architecture.", timestamp: "" },
   { id: "n3", type: "content", message: "Vdoc monograph complete — 108 pages, interactive entertainment OS.", timestamp: "" },
   { id: "n4", type: "commerce", message: "ExoraX monograph complete — 58 pages, decision commerce architecture.", timestamp: "" },
-  { id: "n5", type: "system", message: "Three product dossiers specified. Live product sites pending upload.", timestamp: "" },
-  { id: "n6", type: "learning", message: "Space economy horizon noted — ~$1.8T projected by 2035; Quantrion aims at that intelligence layer.", timestamp: "" },
-  { id: "n7", type: "content", message: "Virtual economy signal — virtual goods already $100B+; Vdoc aims at ownership inside experience.", timestamp: "" },
-  { id: "n8", type: "commerce", message: "Trade economy scale — global trade ~$35T; ExoraX aims at decisions before capital moves.", timestamp: "" },
+  { id: "n5", type: "system", message: "Three platforms specified. Software machines are linked from each dossier.", timestamp: "" },
+  { id: "n6", type: "learning", message: "Quantrion is aimed at the intelligence layer for harder learning work — not a claimed market size.", timestamp: "" },
+  { id: "n7", type: "content", message: "Vdoc is aimed at ownership inside experience — audience, creator, and economy in one language.", timestamp: "" },
+  { id: "n8", type: "commerce", message: "ExoraX is aimed at a correct decision before value moves — product, price, and risk.", timestamp: "" },
   { id: "n9", type: "system", message: "Founder-led company behind Quantrion, Vdoc, and ExoraX — research first, then the machine.", timestamp: "" },
   { id: "n10", type: "learning", message: "Exam atlas specified across 150+ competitive pathways inside Quantrion architecture.", timestamp: "" },
   { id: "n11", type: "content", message: "Vdoc loop restated — Speak → Enter → Shape → Own across formats.", timestamp: "" },
   { id: "n12", type: "commerce", message: "ExoraX confidence loop — intent, inspect in 3D/AR, then decide with clarity.", timestamp: "" },
   { id: "n13", type: "system", message: "Operating posture: architecture scores and monograph targets — not live production telemetry.", timestamp: "" },
   { id: "n14", type: "learning", message: "Category contrast refresh — static content vs adaptive examination intelligence.", timestamp: "" },
-  { id: "n15", type: "commerce", message: "Returns thesis restated — 20–35% today in fashion/electronics; design for confidence before buy.", timestamp: "" },
+  { id: "n15", type: "commerce", message: "ExoraX thesis restated — design for confidence before the buy, not after the return.", timestamp: "" },
 ]
 
 function stamp(ageSec: number) {
@@ -97,7 +97,7 @@ export function ActivityFeed({
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
           </span>
-          Live
+          Plan
         </span>
       </div>
 

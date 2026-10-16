@@ -9,20 +9,21 @@ export const company = {
   round: "Seed / Pre-Series A",
   raise: "$1.5–3M",
   raiseInr: "₹12–25 Cr",
-  equity: "1.5–3%",
-  valuation: "$100–120M",
-  valuationNote: "Pre-money, vision-driven",
+  equity: "To be discussed",
+  valuation: "To be discussed",
+  valuationNote: "Not a public company mark",
   instrument: "Equity / convertible",
   instrumentNote: "To be finalized",
   horizon: "12 months",
   paperPdf: "/research/quantavex.pdf",
-  tam: "$8T+",
+  tam: "Learning, entertainment, and commerce",
   thesis:
     "Quantavex builds AI-driven products for how people learn, create, discover, and transact.",
   proof:
     "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Product websites appear here when each site is uploaded.",
   geography:
     "Ambitious future plan — not live market data. India first, then expand across 30 high-economy markets beginning with the USA and UK. Scores are predicted GTM priority for the roadmap ahead.",
+  targetDisclaimer: "Target — not yet achieved. Figures on this site are goals, not current results.",
   founder: {
     name: "Udit Gour",
     role: "Founder & CEO",
@@ -33,8 +34,8 @@ export const company = {
   facts: [
     { label: "Round", value: "Seed / Pre-Series A", note: "India" },
     { label: "Raise", value: "$1.5–3M", note: "₹12–25 Cr" },
-    { label: "Equity", value: "1.5–3%", note: "Equity / convertible" },
-    { label: "Valuation", value: "$100–120M", note: "Pre-money, vision-driven" },
+    { label: "Equity", value: "To be discussed", note: "Equity / convertible" },
+    { label: "Valuation", value: "To be discussed", note: "Conversation, not a public mark" },
   ],
   terms: [
     { label: "Security", value: "Equity / convertible", note: "To be finalized" },
@@ -60,14 +61,14 @@ export const company = {
     { period: "9–12 mo", title: "Scale & optimization", detail: "Performance, cost, and cross-platform loops." },
   ],
   results: [
-    { label: "Learning efficiency", value: "+48–88%", note: "Projected / early validation" },
-    { label: "Engagement", value: "2x–5x", note: "Projected / early validation" },
-    { label: "Conversion", value: "+20–35%", note: "Projected / early validation" },
+    { label: "Learning", value: "Architecture specified", note: "Quantrion monograph — exam intelligence" },
+    { label: "Entertainment", value: "Architecture specified", note: "Vdoc monograph — interactive OS" },
+    { label: "Commerce", value: "Architecture specified", note: "ExoraX monograph — decision commerce" },
   ],
   markets: [
-    { name: "EdTech", size: "$400B+", note: "Learning" },
-    { name: "Entertainment", size: "$2.8T+", note: "Vdoc" },
-    { name: "E-commerce", size: "$6T+", note: "ExoraX" },
+    { name: "Learning", size: "Quantrion", note: "Competitive exams and high-stakes study" },
+    { name: "Entertainment", size: "Vdoc", note: "Worlds people enter, shape, and own in" },
+    { name: "Commerce", size: "ExoraX", note: "A correct decision before value moves" },
   ],
   advantages: [
     "Unified intelligence across three industries",

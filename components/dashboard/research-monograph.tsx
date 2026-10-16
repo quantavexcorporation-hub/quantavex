@@ -5,6 +5,7 @@ import { Check, Download, FileText, Quote } from "lucide-react"
 import { ProductDossier as Dossier } from "@/lib/products"
 import { getResearch } from "@/lib/research"
 import { productAccents } from "@/lib/product-accents"
+import { TargetBanner } from "@/components/dashboard/target-note"
 
 export function ResearchMonograph({ productId }: { productId: Dossier["id"] }) {
   const paper = getResearch(productId)
@@ -94,6 +95,7 @@ export function ResearchMonograph({ productId }: { productId: Dossier["id"] }) {
             </div>
           ))}
         </div>
+        <TargetBanner className="mt-3" />
 
         {paper.model ? (
           <div className="mt-6 rounded-lg border border-white/8 bg-gradient-to-r from-black/50 to-black/20 px-4 py-4 md:px-5">

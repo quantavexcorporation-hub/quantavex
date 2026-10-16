@@ -208,7 +208,7 @@ export function Investor() {
             <div className="space-y-4">
               {[
                 { title: "Position", desc: "Unified AI infrastructure across EdTech, entertainment, and commerce" },
-                { title: "Round", desc: `${company.round}: ${company.raise} (${company.raiseInr}) for ${company.equity} at ${company.valuation} pre-money` },
+                { title: "Round", desc: `${company.round}: raise discussed as ${company.raise} (${company.raiseInr}). Equity and valuation to be discussed.` },
                 { title: "Proof of work", desc: "Three original research monographs and three product architectures" },
                 {
                   title: "Team",
@@ -216,7 +216,7 @@ export function Investor() {
                   href: FOUNDER_PORTFOLIO_PATH,
                   linkLabel: "View founder portfolio",
                 },
-                { title: "TAM", desc: `${company.tam} across EdTech ($400B+), entertainment ($2.8T+), and e-commerce ($6T+)` },
+                { title: "Industries", desc: `${company.tam}. Horizon, not company revenue.` },
               ].map((item, index) => (
                 <motion.div
                   key={item.title}

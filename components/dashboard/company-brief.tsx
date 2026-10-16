@@ -37,16 +37,15 @@ export function CompanyBrief() {
           goods, services, and capital. Three platforms. One parent company.
         </p>
         <p>
-          Live product websites appear here when each platform is uploaded. Until
-          then the company record is already public: three architectures, three
-          papers, one venture. The aim is not a demonstration. It is products
-          people actually use.
+          Each platform has a software machine linked from its dossier. The
+          company record is public: three architectures, three papers, one
+          venture. The aim is not a demonstration. It is products people
+          actually use.
         </p>
         <p>
-          Priority markets are a future plan: start in India, then expand across
-          30 high-economy countries beginning with the United States and United
-          Kingdom. The scores shown are highly ambitious predictions for that
-          roadmap — not real traffic, revenue, or live market data.
+          Entry starts in India. Expansion to other high-economy countries is a
+          plan, not current operations. Nothing on this site is live traffic,
+          revenue, or a company valuation.
         </p>
       </div>
 

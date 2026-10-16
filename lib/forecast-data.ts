@@ -36,7 +36,7 @@ export function getForecast(): {
     kpis: [
       { id: "raise", label: "Investment", value: company.raise, delta: `${company.raiseInr} · ${company.round}`, tone: "cyan" },
       { id: "equity", label: "Equity offered", value: company.equity, delta: company.instrument, tone: "purple" },
-      { id: "valuation", label: "Pre-money", value: company.valuation, delta: company.valuationNote, tone: "emerald" },
+      { id: "valuation", label: "Valuation", value: company.valuation, delta: company.valuationNote, tone: "emerald" },
       { id: "horizon", label: "Roadmap", value: company.horizon, delta: "Quantrion first, then Vdoc and ExoraX", tone: "amber" },
     ],
     mix: company.funds.map((item, index) => ({

@@ -8,21 +8,21 @@ const visionPoints = [
     label: "Quantrion",
     title: "Space economy",
     description:
-      "The space economy is value created by exploring, building, and using space — satellites, launch, ground systems, and Earth-side services: communications, navigation, and observation. Growth is reach into logistics, climate, and finance. By 2035 this is projected near $1.8 trillion. Quantrion is aimed at that intelligence.",
+      "The space economy is value created by exploring, building, and using space — satellites, launch, ground systems, and Earth-side services: communications, navigation, and observation. Growth is reach into logistics, climate, and finance. Quantrion is aimed at the intelligence that work will need — not a claim on that industry’s size.",
   },
   {
     number: "02",
     label: "Vdoc",
     title: "Virtual economy",
     description:
-      "A virtual economy is a market that lives inside a world — people produce, price, trade, and own digital goods: identities, land, assets, and creator work. Value follows supply and demand, with paths into real money. Virtual goods already pass $100 billion. Vdoc is aimed at worlds where ownership is part of the experience.",
+      "A virtual economy is a market that lives inside a world — people produce, price, trade, and own digital goods: identities, land, assets, and creator work. Value follows supply and demand, with paths into real money. Vdoc is aimed at worlds where ownership is part of the experience.",
   },
   {
     number: "03",
     label: "ExoraX",
     title: "Trade economy",
     description:
-      "A trade economy is how goods, services, and capital move — across borders, platforms, and books. Digital trade is commerce and trading on networks: stocks, crypto, commodities, forex, and portfolios. Global trade is about $35 trillion. ExoraX is aimed at a correct decision before value moves — product, price, and risk.",
+      "A trade economy is how goods, services, and capital move — across borders, platforms, and books. Digital trade is commerce and trading on networks: stocks, crypto, commodities, forex, and portfolios. ExoraX is aimed at a correct decision before value moves — product, price, and risk.",
   },
 ]
 
