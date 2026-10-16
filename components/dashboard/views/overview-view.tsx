@@ -3,7 +3,6 @@
 import { PageHeader } from "@/components/dashboard/page-header"
 import { ComparativeTable } from "@/components/dashboard/comparative-table"
 import { MarketVisualization } from "@/components/dashboard/market-visualization"
-import { EconomyHorizons } from "@/components/dashboard/economy-horizons"
 import { ActivityFeed } from "@/components/dashboard/activity-feed"
 import { GlobalIntelligenceMap } from "@/components/dashboard/global-intelligence-map"
 import { useDashboard } from "@/components/dashboard/dashboard-provider"
@@ -39,8 +38,6 @@ export function OverviewView() {
           <ActivityFeed data={snapshot?.activities} loading={isLoading} error={error} />
         </div>
       </div>
-
-      <EconomyHorizons />
 
       <GlobalIntelligenceMap compact data={snapshot?.regions} lastSyncSeconds={snapshot?.lastSyncSeconds ?? 0} />
 
