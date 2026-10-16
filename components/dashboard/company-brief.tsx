@@ -3,11 +3,11 @@ import { company } from "@/lib/company"
 
 export function CompanyBrief() {
   return (
-    <section className="overflow-hidden rounded-xl border border-cyan-500/15 bg-[#0c0c14]/90 p-4 sm:p-5 md:p-8">
-      <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">
+    <section className="overflow-hidden border border-white/10 bg-[#09090b] p-5 sm:p-7 md:p-9">
+      <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500">
         The company
       </p>
-      <h2 className="mt-3 max-w-4xl text-xl font-semibold tracking-tight text-balance text-white sm:text-2xl md:text-3xl md:leading-tight">
+      <h2 className="mt-4 max-w-4xl text-xl font-semibold tracking-tight text-balance text-white sm:text-2xl md:text-[1.85rem] md:leading-snug">
         Quantavex builds AI-driven products for how people learn, create, discover, and transact.
       </h2>
 
@@ -51,7 +51,7 @@ export function CompanyBrief() {
 
       <p className="mt-6 text-xs text-gray-500">
         Founder:{" "}
-        <Link href={company.founder.path} className="text-cyan-300 hover:text-cyan-200">
+        <Link href={company.founder.path} className="text-white underline decoration-white/25 underline-offset-4 hover:decoration-white/60">
           {company.founder.name}
         </Link>
         {" · "}

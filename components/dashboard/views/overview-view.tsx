@@ -15,7 +15,7 @@ export function OverviewView() {
   const { snapshot, isLoading, error } = useDashboard()
 
   return (
-    <div className="space-y-4 sm:space-y-5">
+    <div className="space-y-5 sm:space-y-7">
       <PageHeader
         title="Parent company"
         brand="Quantavex"

@@ -31,7 +31,7 @@ export function ForecastView() {
         Raise discussed as {company.raise} ({company.raiseInr}). Equity and valuation are not published as a mark — they are for conversation.
       </p>
 
-      <div className="rounded-xl border border-amber-400/20 bg-amber-400/5 px-4 py-3 text-sm leading-relaxed text-amber-100/90">
+      <div className="border border-white/10 bg-[#09090b] px-4 py-3 text-sm leading-relaxed text-zinc-400">
         {company.confidentiality}
       </div>
 
@@ -114,7 +114,7 @@ export function ForecastView() {
           </div>
           <Link
             href={company.founder.path}
-            className="shrink-0 text-sm text-cyan-300 hover:text-cyan-200"
+            className="shrink-0 text-sm text-white underline decoration-white/25 underline-offset-4 hover:decoration-white/60"
           >
             Founder record
           </Link>
@@ -177,7 +177,7 @@ export function ForecastView() {
           </ul>
           <a
             href={investorMailto("conversation")}
-            className="mt-4 inline-flex text-sm text-cyan-300 hover:text-cyan-200"
+            className="mt-4 inline-flex text-sm text-white underline decoration-white/25 underline-offset-4 hover:decoration-white/60"
           >
             Discuss terms
           </a>

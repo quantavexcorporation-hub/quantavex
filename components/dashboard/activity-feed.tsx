@@ -86,17 +86,13 @@ export function ActivityFeed({
   }, [])
 
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded border border-cyan-500/10 bg-[#0c0c14] p-4">
+    <div className="flex h-full flex-col overflow-hidden border border-white/10 bg-[#09090b] p-4">
       <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <Zap className="h-4 w-4 text-cyan-400" />
+          <Zap className="h-4 w-4 text-zinc-500" />
           <h3 className="text-sm font-medium text-white">Operating log</h3>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-cyan-300">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
-          </span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">
           Plan
         </span>
       </div>

@@ -16,7 +16,7 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex h-full flex-col overflow-hidden rounded border border-cyan-500/10 bg-[#0c0c14] p-4"
+      className="flex h-full flex-col overflow-hidden border border-white/10 bg-[#09090b] p-4"
     >
       <div className="mb-4 flex shrink-0 items-center justify-between">
         <div>

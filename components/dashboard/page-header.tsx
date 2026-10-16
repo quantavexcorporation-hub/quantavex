@@ -3,7 +3,7 @@
 import { Clock, Download, ExternalLink } from "lucide-react"
 
 const ctaClass =
-  "inline-flex items-center gap-2 rounded-lg bg-cyan-400 px-4 py-2 text-sm font-semibold text-[#061016] shadow-[0_8px_24px_rgba(34,211,238,0.25)] transition hover:bg-cyan-300"
+  "inline-flex items-center gap-2 border border-white/20 bg-white px-4 py-2 text-sm font-semibold text-black transition hover:bg-zinc-200"
 
 export function PageHeader({
   title,
@@ -39,14 +39,14 @@ export function PageHeader({
           </>
         ) : (
           <>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">Quantavex</p>
+            <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500">Quantavex</p>
             <div className="mt-1 flex items-center gap-2.5 sm:gap-3">
               {mark ? <span className="shrink-0">{mark}</span> : null}
               <h1 className="text-xl font-semibold tracking-tight text-balance text-white sm:text-2xl md:text-[2rem]">{title}</h1>
             </div>
           </>
         )}
-        <p className="mt-1 max-w-3xl text-pretty text-sm text-gray-400">{subtitle}</p>
+        <p className="mt-2 max-w-2xl text-pretty text-sm leading-relaxed text-zinc-400">{subtitle}</p>
       </div>
       {(actionLabel || extra) && (
         <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">

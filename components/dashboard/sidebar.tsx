@@ -96,7 +96,7 @@ function NavContent({ onNavigate }: { onNavigate?: () => void }) {
 
   return (
     <>
-      <div className="flex h-16 items-center gap-3 border-b border-cyan-500/10 px-4">
+      <div className="flex h-16 items-center gap-3 border-b border-white/10 px-4">
         <Link
           href="/"
           className="flex min-w-0 items-center gap-3"
@@ -107,7 +107,7 @@ function NavContent({ onNavigate }: { onNavigate?: () => void }) {
           {!compact && (
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold tracking-tight text-white">Quantavex</p>
-              <p className="truncate text-[10px] uppercase tracking-[0.18em] text-cyan-400/70">
+              <p className="truncate text-[10px] uppercase tracking-[0.22em] text-zinc-500">
                 Parent company
               </p>
             </div>
@@ -159,7 +159,7 @@ function NavContent({ onNavigate }: { onNavigate?: () => void }) {
                     className={`group relative flex items-center gap-3 overflow-hidden rounded-lg border px-3 py-2.5 transition-all duration-200 ${
                       isActive
                         ? accent?.active ??
-                          "border-cyan-400/30 bg-cyan-400/10 text-cyan-300 shadow-[inset_0_0_18px_rgba(34,211,238,0.08)]"
+                          "border-white/15 bg-white/[0.07] text-white"
                         : "border-transparent text-gray-400 hover:border-white/5 hover:bg-white/[0.04] hover:text-white"
                     }`}
                   >
@@ -176,14 +176,14 @@ function NavContent({ onNavigate }: { onNavigate?: () => void }) {
                     ) : Icon ? (
                       <Icon
                         className={`h-5 w-5 shrink-0 ${
-                          isActive ? "text-cyan-300" : "text-gray-500 group-hover:text-cyan-400"
+                          isActive ? "text-white" : "text-zinc-500 group-hover:text-zinc-300"
                         }`}
                       />
                     ) : null}
                     {!compact && <span className="text-sm font-medium leading-tight">{item.label}</span>}
                     {isActive && !compact && (
                       <span
-                        className={`ml-auto h-1.5 w-1.5 rounded-full ${accent?.activeDot ?? "bg-cyan-300"}`}
+                        className={`ml-auto h-1 w-1 rounded-full ${accent?.activeDot ?? "bg-white"}`}
                       />
                     )}
                   </Link>
@@ -206,12 +206,12 @@ export function Sidebar() {
       <motion.aside
         initial={false}
         animate={{ width: collapsed ? 76 : 248 }}
-        className="relative z-40 hidden h-[100dvh] shrink-0 flex-col border-r border-cyan-500/10 bg-[#07070c] lg:flex"
+        className="relative z-40 hidden h-[100dvh] shrink-0 flex-col border-r border-white/10 bg-[#07070a] lg:flex"
       >
         <NavContent />
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="flex h-12 items-center justify-center border-t border-cyan-500/10 text-gray-500 transition-colors hover:text-cyan-400"
+          className="flex h-12 items-center justify-center border-t border-white/10 text-zinc-600 transition-colors hover:text-white"
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {collapsed ? <ChevronRight className="h-5 w-5" /> : <ChevronLeft className="h-5 w-5" />}
@@ -236,7 +236,7 @@ export function Sidebar() {
               animate={{ x: 0 }}
               exit={{ x: -280 }}
               transition={{ type: "spring", stiffness: 320, damping: 32 }}
-              className="fixed inset-y-0 left-0 z-50 flex w-[min(280px,86vw)] flex-col border-r border-cyan-500/10 bg-[#07070c] shadow-2xl lg:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-[min(280px,86vw)] flex-col border-r border-white/10 bg-[#07070a] shadow-2xl lg:hidden"
             >
               <NavContent onNavigate={() => setMobileOpen(false)} />
             </motion.aside>

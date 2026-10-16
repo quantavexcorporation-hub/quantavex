@@ -9,7 +9,7 @@ import { DashboardProvider, useDashboard } from "@/components/dashboard/dashboar
 function PortfolioMobileBar() {
   const { setMobileOpen } = useSidebarState()
   return (
-    <div className="sticky top-0 z-40 flex h-12 items-center gap-3 border-b border-cyan-500/10 bg-[#08080c]/95 px-3 backdrop-blur-md lg:hidden">
+    <div className="sticky top-0 z-40 flex h-12 items-center gap-3 border-b border-white/10 bg-[#08080a]/95 px-3 backdrop-blur-md lg:hidden">
       <button
         type="button"
         onClick={() => setMobileOpen(true)}
@@ -29,7 +29,7 @@ function ShellFrame({ children }: { children: React.ReactNode }) {
   const { handleNotificationsClick, handleSearch, searchResponse, searchStatus, searchError } = useDashboard()
 
   return (
-    <div className="flex h-[100dvh] overflow-hidden bg-[#08080f]">
+    <div className="flex h-[100dvh] overflow-hidden bg-[#08080a]">
       <Sidebar />
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         {isPortfolio ? (

@@ -33,13 +33,13 @@ const previews = {
 
 export function PlatformAtlas() {
   return (
-    <section className="overflow-hidden rounded-xl border border-cyan-500/10 bg-[#0c0c14]/90 p-4 sm:p-5 md:p-6">
-      <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+    <section className="overflow-hidden border border-white/10 bg-[#09090b] p-5 sm:p-6 md:p-7">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
         <div className="min-w-0">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400/80">
+          <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500">
             Company platforms
           </p>
-          <h2 className="mt-1 text-xl font-semibold tracking-tight text-white md:text-2xl">
+          <h2 className="mt-2 text-xl font-semibold tracking-tight text-white md:text-2xl">
             Three industries. One intelligence.
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-pretty text-gray-400">

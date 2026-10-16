@@ -102,18 +102,14 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex h-full flex-col overflow-hidden rounded border border-cyan-500/10 bg-[#0c0c14] p-4"
+      className="flex h-full flex-col overflow-hidden border border-white/10 bg-[#09090b] p-4"
     >
       <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
         <div className="min-w-0">
           <h3 className="text-sm font-medium text-white">Category contrast</h3>
           <p className="hidden text-xs text-gray-500 sm:block">Incumbent software versus Quantavex architecture</p>
         </div>
-        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-cyan-300">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
-          </span>
+        <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">
           Plan
         </span>
       </div>

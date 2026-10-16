@@ -55,7 +55,7 @@ export function CompanyContact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-20 rounded-xl border border-cyan-500/10 bg-[#0c0c14]/90 p-4 sm:scroll-mt-24 sm:p-5"
+      className="scroll-mt-20 border border-white/10 bg-[#09090b] p-5 sm:scroll-mt-24 sm:p-6"
     >
       <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
         <div>
@@ -64,7 +64,7 @@ export function CompanyContact() {
         </div>
         <a
           href={`mailto:${company.companyEmail}`}
-          className="inline-flex items-center gap-1.5 text-xs text-cyan-300/90 hover:text-cyan-200"
+          className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white"
         >
           <Mail className="h-3.5 w-3.5 shrink-0" />
           <span className="truncate">{company.companyEmail}</span>
@@ -99,7 +99,7 @@ export function CompanyContact() {
           <button
             type="submit"
             disabled={status === "sending"}
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-cyan-400 px-4 py-2 text-sm font-semibold text-[#061016] hover:bg-cyan-300 disabled:opacity-60"
+            className="inline-flex items-center justify-center gap-2 border border-white/20 bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-zinc-200 disabled:opacity-60"
           >
             <Send className="h-3.5 w-3.5" />
             {status === "sending" ? "Sending…" : "Send"}

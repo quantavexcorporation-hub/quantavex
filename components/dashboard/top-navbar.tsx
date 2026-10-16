@@ -34,7 +34,7 @@ export function TopNavbar({
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-cyan-500/10 bg-[#08080c]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#08080a]/92 backdrop-blur-md">
       <div className="flex h-14 items-center gap-2 px-3 sm:h-16 sm:gap-3 sm:px-5 md:px-6">
         <button
           type="button"
@@ -63,7 +63,7 @@ export function TopNavbar({
               placeholder="Search platforms and research…"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              className="w-full rounded border border-cyan-500/10 bg-white/5 px-10 py-2 text-sm text-white placeholder:text-gray-600 transition-all focus:border-cyan-500/30 focus:ring-1 focus:ring-cyan-500/20 focus:outline-none"
+              className="w-full border border-white/10 bg-white/[0.04] px-10 py-2 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-white/25"
             />
           </form>
           <div className="mt-1 min-h-4">
@@ -106,7 +106,7 @@ export function TopNavbar({
             placeholder="Search…"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            className="w-full rounded border border-cyan-500/10 bg-white/5 px-10 py-2 text-sm text-white placeholder:text-gray-600 focus:border-cyan-500/30 focus:outline-none"
+            className="w-full border border-white/10 bg-white/[0.04] px-10 py-2 text-sm text-white placeholder:text-zinc-600 outline-none focus:border-white/25"
           />
         </form>
       </div>
