@@ -7,7 +7,7 @@ import {
   Cpu,
   Star,
   Lightbulb,
-  Users,
+  User,
 } from "lucide-react"
 import {
   Dialog,
@@ -354,9 +354,9 @@ const stats: StatEntry[] = [
   },
   {
     kind: "highlight",
-    icon: Users,
-    title: "Team",
-    sublabel: "The team works these fields. Click to open.",
+    icon: User,
+    title: "Founder-led",
+    sublabel: "Udit Gour builds Quantavex from original research. Click to open the working fields.",
     tags: [...learningDomains.map((domain) => domain.name)],
     accentGlow: "bg-primary/30",
   },
@@ -392,7 +392,7 @@ const stats: StatEntry[] = [
 export function StatsSection({ embedded = false }: { embedded?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null)
   const inView = useInView(sectionRef, 0.1)
-  const [modalKind, setModalKind] = useState<"team" | "leaders" | null>(null)
+  const [modalKind, setModalKind] = useState<"fields" | "leaders" | null>(null)
 
   const marqueeItems = learningDomains.map((domain) => domain.name)
 
@@ -468,7 +468,7 @@ export function StatsSection({ embedded = false }: { embedded?: boolean }) {
                 />
               )
             }
-            const opensTeam = stat.title === "Team"
+            const opensFields = stat.title === "Founder-led"
             const opensLeaders = stat.title === "Inspirational leaders"
             return (
               <StatHighlightCard
@@ -480,10 +480,10 @@ export function StatsSection({ embedded = false }: { embedded?: boolean }) {
                 inView={inView}
                 accentGlow={stat.accentGlow}
                 tags={stat.tags}
-                isClickable={opensTeam || opensLeaders}
+                isClickable={opensFields || opensLeaders}
                 onClick={
-                  opensTeam
-                    ? () => setModalKind("team")
+                  opensFields
+                    ? () => setModalKind("fields")
                     : opensLeaders
                       ? () => setModalKind("leaders")
                       : undefined
@@ -516,12 +516,12 @@ export function StatsSection({ embedded = false }: { embedded?: boolean }) {
         <DialogContent className="max-h-[85vh] max-w-3xl overflow-y-auto border-border/40 bg-background">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">
-              {modalKind === "leaders" ? "Inspirational leaders" : "Team"}
+              {modalKind === "leaders" ? "Inspirational leaders" : "Working fields"}
             </DialogTitle>
             <DialogDescription className="text-sm leading-relaxed">
               {modalKind === "leaders"
                 ? "Builders whose work sets the bar for product, scale, and long-term thinking. They are inspirational figures — not advisors, investors, or affiliates of Quantavex."
-                : "The Quantavex team works these fields."}
+                : "The founder works these fields. This is craft, not a hired team."}
             </DialogDescription>
           </DialogHeader>
 

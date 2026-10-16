@@ -30,6 +30,11 @@ export const company = {
     email: "quantavexcorporation@gmail.com",
     path: FOUNDER_PORTFOLIO_PATH,
   },
+  team: {
+    posture: "Founder-led",
+    note: "Quantavex is built by Udit Gour. Hiring for engineering, product, and AI follows the raise — there is not a built-out team yet.",
+    hiring: "25% of the round is allocated to engineering and product hires.",
+  },
   companyEmail: "quantavexcorporation@gmail.com",
   facts: [
     { label: "Round", value: "Seed / Pre-Series A", note: "India" },

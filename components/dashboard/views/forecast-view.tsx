@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/dashboard/page-header"
 import { DataTable } from "@/components/dashboard/data-table"
 import { Panel, PanelHeader } from "@/components/dashboard/panel"
 import { useDashboard } from "@/components/dashboard/dashboard-provider"
+import Link from "next/link"
 import { company, investorMailto } from "@/lib/company"
 import { TargetBanner } from "@/components/dashboard/target-note"
 
@@ -103,7 +104,22 @@ export function ForecastView() {
         </Panel>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-4 lg:grid-cols-2">
+        <Panel>
+          <PanelHeader title="Team" subtitle={company.team.posture} />
+          <p className="text-sm font-medium text-white">{company.founder.name}</p>
+          <p className="mt-1 text-xs text-gray-400">
+            {company.founder.role} · Headquarters {company.headquarters}
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-gray-300">{company.team.note}</p>
+          <p className="mt-2 text-[11px] text-gray-500">{company.team.hiring}</p>
+          <Link
+            href={company.founder.path}
+            className="mt-4 inline-flex text-sm text-cyan-300 hover:text-cyan-200"
+          >
+            Founder record
+          </Link>
+        </Panel>
         <Panel>
           <PanelHeader title="Industries" subtitle={company.tam} />
           <ul className="space-y-3">
