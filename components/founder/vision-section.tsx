@@ -40,11 +40,11 @@ export function VisionSection() {
             <span className="text-balance">The next layer of the world</span>
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base md:text-lg">
-            The present market is not the destination. Value will be created
-            beyond Earth, inside worlds people inhabit, and in how goods,
-            services, and capital move on networks. That is the horizon
-            Quantavex is aimed at — a company built for the economy that is
-            still forming.
+            This is the horizon, not the first sale. The investment story starts
+            with India&apos;s competitive-exam students and Quantrion. The longer
+            aim is value created beyond Earth, inside worlds people inhabit, and
+            in how goods, services, and capital move on networks — a company
+            built for the economy that is still forming.
           </p>
         </Reveal>
 

@@ -19,7 +19,7 @@ const previews = {
   },
   vdoc: {
     badges: ["Audience", "Creation", "Economy"],
-    highlight: "In build",
+    highlight: "Alpha",
   },
   exorax: {
     products: [
@@ -40,11 +40,11 @@ export function PlatformAtlas() {
             Company platforms
           </p>
           <h2 className="mt-2 text-xl font-semibold tracking-tight text-white md:text-2xl">
-            Three industries. One intelligence.
+            Quantrion first. Then the company.
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-pretty text-gray-400">
-            Quantavex is the parent company. Quantrion, Vdoc, and ExoraX are the platforms it leads —
-            each card pairs the platform brief with its intelligence surface.
+            Quantrion is the first addressable product — India&apos;s competitive-exam cohort.
+            Vdoc and ExoraX are the next platforms on the same parent company. Each card links a dossier and a product demo.
           </p>
         </div>
       </div>

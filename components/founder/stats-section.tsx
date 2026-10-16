@@ -33,31 +33,6 @@ function useInView(ref: React.RefObject<HTMLElement | null>, threshold = 0.2) {
   return inView
 }
 
-function useCountUp(end: number, duration: number, start: boolean) {
-  const [count, setCount] = useState(0)
-  const frameRef = useRef<number>(0)
-
-  useEffect(() => {
-    if (!start) return
-    let startTime: number | null = null
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp
-      const progress = Math.min((timestamp - startTime) / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 4)
-      setCount(Math.floor(eased * end))
-      if (progress < 1) {
-        frameRef.current = requestAnimationFrame(animate)
-      }
-    }
-
-    frameRef.current = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(frameRef.current)
-  }, [end, duration, start])
-
-  return count
-}
-
 interface StatCardProps {
   icon: React.ElementType
   value: number
@@ -84,7 +59,6 @@ function StatCard({
   isClickable,
 }: StatCardProps) {
   const [visible, setVisible] = useState(false)
-  const count = useCountUp(value, 2000, visible)
 
   useEffect(() => {
     if (!inView) return
@@ -125,7 +99,7 @@ function StatCard({
       {/* Animated number */}
       <div className="flex items-baseline gap-1">
         <span className="font-mono text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-          {count}
+          {value}
         </span>
         <span className="font-mono text-xl font-bold text-primary sm:text-2xl lg:text-3xl">
           {suffix}
@@ -348,8 +322,8 @@ const stats: StatEntry[] = [
     icon: Cpu,
     value: 3,
     suffix: "",
-    label: "Platforms in development",
-    sublabel: "Quantrion, Vdoc, and ExoraX — architectures specified, sites launching",
+    label: "Platforms specified",
+    sublabel: "Quantrion, Vdoc, and ExoraX — three architectures, three alpha interfaces",
     accentGlow: "bg-amber-500/20",
   },
   {

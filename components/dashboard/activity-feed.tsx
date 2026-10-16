@@ -25,7 +25,7 @@ const newsWire: DashboardSnapshot["activities"] = [
   { id: "n2", type: "learning", message: "Quantrion monograph complete — 99 pages, exam intelligence architecture.", timestamp: "" },
   { id: "n3", type: "content", message: "Vdoc monograph complete — 108 pages, interactive entertainment OS.", timestamp: "" },
   { id: "n4", type: "commerce", message: "ExoraX monograph complete — 58 pages, decision commerce architecture.", timestamp: "" },
-  { id: "n5", type: "system", message: "Three platforms specified. Software machines are linked from each dossier.", timestamp: "" },
+  { id: "n5", type: "system", message: "Three platforms specified. Product demos (alpha interfaces) are linked from each dossier.", timestamp: "" },
   { id: "n6", type: "learning", message: "Quantrion is aimed at the intelligence layer for harder learning work — not a claimed market size.", timestamp: "" },
   { id: "n7", type: "content", message: "Vdoc is aimed at ownership inside experience — audience, creator, and economy in one language.", timestamp: "" },
   { id: "n8", type: "commerce", message: "ExoraX is aimed at a correct decision before value moves — product, price, and risk.", timestamp: "" },

@@ -20,8 +20,8 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
     >
       <div className="mb-4 flex shrink-0 items-center justify-between">
         <div>
-          <h3 className="text-sm font-medium text-white">Where we work</h3>
-          <p className="text-xs text-gray-500">Three industries. Three platforms. Pre-seed.</p>
+          <h3 className="text-sm font-medium text-white">Where we start</h3>
+          <p className="text-xs text-gray-500">India competitive exams first. Then entertainment and commerce.</p>
         </div>
         <div className="text-right">
           <div className="text-lg font-mono font-bold text-white">3</div>

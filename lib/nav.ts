@@ -4,7 +4,7 @@ export const pageMeta: Record<
 > = {
   "/": {
     title: "Parent company",
-    subtitle: "Quantavex — the company behind Quantrion, Vdoc, and ExoraX",
+    subtitle: "India competitive exams first — then Vdoc and ExoraX",
   },
   "/portfolio": {
     title: "Udit Gour",
