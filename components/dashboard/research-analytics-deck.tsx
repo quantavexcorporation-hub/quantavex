@@ -152,7 +152,7 @@ export function ResearchAnalyticsDeck({ productId }: { productId: ProductId }) {
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
         <ChartCard
           title="Intelligence loop intensity"
-          subtitle="Target phase scores — goals for how the machine should compound"
+          subtitle="Phase readiness — how the machine compounds through the loop"
         >
           <div className="h-56">
             <ResponsiveContainer width="100%" height="100%">
