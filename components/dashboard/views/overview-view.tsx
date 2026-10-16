@@ -19,7 +19,7 @@ export function OverviewView() {
       <PageHeader
         title="Parent company"
         brand="Quantavex"
-        subtitle="First market: India competitive exams via Quantrion. Vdoc and ExoraX follow."
+        subtitle="One company. Three platforms — Quantrion, Vdoc, and ExoraX."
         mark={<QuantavexLogo size={40} priority />}
       />
 

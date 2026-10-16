@@ -44,7 +44,7 @@ export function PlatformAtlas() {
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-pretty text-gray-400">
             Quantrion is the first addressable product — India&apos;s competitive-exam cohort.
-            Vdoc and ExoraX are the next platforms on the same parent company. Each card links a dossier and a product demo.
+            Vdoc and ExoraX are the next platforms on the same parent company. Each card links a dossier and an alpha interface.
           </p>
         </div>
       </div>

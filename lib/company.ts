@@ -20,7 +20,7 @@ export const company = {
   thesis:
     "First customer: India’s competitive-exam students. First product: Quantrion. Vdoc and ExoraX follow on the same parent company.",
   proof:
-    "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Each dossier links a product demo (alpha interface) you can open — not live production traffic.",
+    "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Each dossier links an alpha interface you can open — not live production traffic.",
   geography:
     "Ambitious future plan — not live market data. India first, then expand across 30 high-economy markets beginning with the USA and UK. Scores are predicted GTM priority for the roadmap ahead.",
   founder: {
