@@ -110,14 +110,14 @@ export function MarketManifest() {
 
       <div className="grid grid-cols-2 border-b border-white/10 sm:grid-cols-4">
         {[
-          { k: "|V| markets", v: String(model.stats.n) },
-          { k: "|E| hops", v: String(model.stats.e) },
-          { k: "Mean hops ḣ", v: model.stats.meanHops.toFixed(2) },
+          { k: "Markets", v: String(model.stats.n) },
+          { k: "Hops", v: String(model.stats.e) },
+          { k: "Mean hops", v: model.stats.meanHops.toFixed(2) },
           { k: "Max d(HQ)", v: formatKm(model.stats.maxKm) },
         ].map((item) => (
-          <div key={item.k} className="border-r border-white/10 px-4 py-3 last:border-r-0 sm:px-5">
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">{item.k}</p>
-            <p className="mt-1 font-mono text-sm text-white sm:text-base">{item.v}</p>
+          <div key={item.k} className="border-b border-r border-white/10 px-3 py-3 even:border-r-0 sm:border-b-0 sm:px-5 sm:even:border-r sm:last:border-r-0">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">{item.k}</p>
+            <p className="mt-1 break-words font-mono text-sm text-white sm:text-base">{item.v}</p>
           </div>
         ))}
       </div>
@@ -138,7 +138,7 @@ export function MarketManifest() {
       </div>
 
       <div className="grid lg:grid-cols-[minmax(0,1fr)_280px]">
-        <div className="relative min-h-[340px] bg-[#07070a] sm:min-h-[420px] lg:min-h-[520px]">
+        <div className="relative min-h-[280px] overflow-x-auto bg-[#07070a] sm:min-h-[420px] lg:min-h-[520px]">
           <svg
             viewBox={`0 0 ${W} ${H}`}
             className="h-full w-full"

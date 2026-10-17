@@ -145,7 +145,7 @@ export function GlobalIntelligenceMap({
       <div className="flex flex-col lg:flex-row">
         <div
           className={`relative min-w-0 flex-1 overflow-hidden ${
-            compact ? "h-[220px] sm:h-[280px]" : "h-[280px] sm:h-[420px] lg:h-[560px]"
+            compact ? "h-[260px] sm:h-[280px]" : "h-[300px] sm:h-[420px] lg:h-[560px]"
           }`}
         >
           {mapReady ? (

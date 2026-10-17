@@ -63,7 +63,7 @@ export function DataTable<T extends Record<string, string | number>>({
         <span className="text-[10px] font-mono text-gray-600">{filtered.length} rows</span>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[640px]">
+        <table className="w-full min-w-[480px] sm:min-w-[640px]">
           <thead>
             <tr className="border-b border-white/10">
               {columns.map((column) => (

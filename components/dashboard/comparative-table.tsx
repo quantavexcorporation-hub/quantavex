@@ -102,7 +102,7 @@ export function ComparativeTable({ data }: { data?: DashboardSnapshot["compariso
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex h-full flex-col overflow-hidden border border-white/10 bg-[#09090b] p-4"
+      className="flex h-auto flex-col overflow-hidden border border-white/10 bg-[#09090b] p-4 sm:h-full"
     >
       <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
         <div className="min-w-0">

@@ -127,15 +127,15 @@ export function ResearchAnalyticsDeck({ productId }: { productId: ProductId }) {
           title="Traditional vs proposed"
           subtitle="Factor scores from the monograph comparison matrix (0–100)"
         >
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={deck.comparison} layout="vertical" margin={{ top: 4, right: 12, left: 8, bottom: 0 }}>
+          <div className="h-64 min-w-0 overflow-x-auto">
+            <ResponsiveContainer width="100%" height="100%" minWidth={280}>
+              <BarChart data={deck.comparison} layout="vertical" margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
                 <CartesianGrid stroke="rgba(255,255,255,0.04)" horizontal={false} />
                 <XAxis type="number" domain={[0, 100]} tick={{ fill: "#6b7280", fontSize: 11 }} axisLine={false} tickLine={false} />
                 <YAxis
                   type="category"
                   dataKey="name"
-                  width={108}
+                  width={72}
                   tick={{ fill: "#9ca3af", fontSize: 11 }}
                   axisLine={false}
                   tickLine={false}
@@ -175,8 +175,8 @@ export function ResearchAnalyticsDeck({ productId }: { productId: ProductId }) {
         </ChartCard>
 
         <ChartCard title="Architecture composition" subtitle="Relative weight across divisions / layers">
-          <div className="flex h-56 items-center gap-3">
-            <div className="h-full w-[55%]">
+          <div className="flex h-auto flex-col items-center gap-3 sm:h-56 sm:flex-row">
+            <div className="h-44 w-full sm:h-full sm:w-[55%]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie

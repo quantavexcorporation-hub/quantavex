@@ -98,7 +98,7 @@ export function TopNavbar({
         </div>
       </div>
 
-      <div className="border-t border-white/5 px-3 py-2 sm:hidden">
+      <div className="border-t border-white/5 px-3 py-1.5 sm:hidden">
         <form className="relative" onSubmit={handleSearchSubmit}>
           <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-500" />
           <input

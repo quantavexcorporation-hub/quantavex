@@ -17,22 +17,24 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex h-full flex-col overflow-hidden border border-white/10 bg-[#09090b] p-4"
+      className="flex h-auto flex-col border border-white/10 bg-[#09090b] p-4 sm:h-full"
     >
-      <div className="mb-4 flex shrink-0 items-center justify-between">
-        <div>
+      <div className="mb-4 flex shrink-0 items-start justify-between gap-3">
+        <div className="min-w-0">
           <h3 className="text-sm font-medium text-white">Global market size</h3>
-          <p className="text-xs text-gray-500">EdTech, entertainment, and commerce — industry scale, not Quantavex revenue.</p>
+          <p className="mt-0.5 text-xs text-pretty text-gray-500">
+            EdTech · entertainment · commerce. Industry scale, not company revenue.
+          </p>
         </div>
-        <div className="text-right">
-          <div className="text-lg font-mono font-bold text-white">$8T+</div>
+        <div className="shrink-0 text-right">
+          <div className="font-mono text-base font-bold text-white sm:text-lg">$8T+</div>
           <div className="text-[10px] text-gray-500">Combined TAM</div>
         </div>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+      <div className="flex flex-1 flex-col gap-4 sm:min-h-0 sm:flex-row sm:items-center sm:gap-6">
         {/* Pie Chart */}
-        <div className="mx-auto h-32 w-32 shrink-0 sm:mx-0">
+        <div className="mx-auto h-36 w-36 shrink-0 sm:mx-0 sm:h-32 sm:w-32">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie

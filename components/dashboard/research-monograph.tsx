@@ -90,7 +90,7 @@ export function ResearchMonograph({ productId }: { productId: Dossier["id"] }) {
             <div key={finding.label} className="rounded-lg border border-white/6 bg-black/30 p-3">
               <p className={`font-mono text-lg font-semibold ${accent.text}`}>{finding.value}</p>
               <p className="mt-1 text-[11px] font-medium text-white">{finding.label}</p>
-              <p className="mt-1 text-[10px] leading-snug text-gray-500">{finding.detail}</p>
+              <p className="mt-1 text-[10px] leading-snug break-words text-gray-500">{finding.detail}</p>
             </div>
           ))}
         </div>
@@ -98,7 +98,7 @@ export function ResearchMonograph({ productId }: { productId: Dossier["id"] }) {
         {paper.model ? (
           <div className="mt-6 rounded-lg border border-white/8 bg-gradient-to-r from-black/50 to-black/20 px-4 py-4 md:px-5">
             <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-gray-500">{paper.model.name}</p>
-            <p className={`mt-2 font-mono text-sm md:text-base ${accent.text}`}>{paper.model.formula}</p>
+            <p className={`mt-2 break-words font-mono text-sm md:text-base ${accent.text}`}>{paper.model.formula}</p>
             <p className="mt-2 text-xs leading-relaxed text-gray-400">{paper.model.meaning}</p>
           </div>
         ) : null}
@@ -108,22 +108,33 @@ export function ResearchMonograph({ productId }: { productId: Dossier["id"] }) {
             <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-gray-500">
               Traditional versus proposed system
             </p>
-            <div className="overflow-hidden rounded-lg border border-white/8">
-              <div className="grid grid-cols-[0.9fr_1fr_1fr] gap-2 bg-white/[0.03] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-gray-500">
-                <span>Factor</span>
-                <span>Incumbent</span>
-                <span className={accent.text}>This research</span>
-              </div>
+            <div className="space-y-2 sm:hidden">
               {paper.comparison.map((row) => (
-                <div
-                  key={row.factor}
-                  className="grid grid-cols-[0.9fr_1fr_1fr] gap-2 border-t border-white/5 px-3 py-2.5 text-xs"
-                >
-                  <span className="font-medium text-gray-300">{row.factor}</span>
-                  <span className="text-gray-500">{row.traditional}</span>
-                  <span className="text-white">{row.proposed}</span>
+                <div key={row.factor} className="rounded-lg border border-white/8 bg-black/25 p-3">
+                  <p className="text-xs font-medium text-white">{row.factor}</p>
+                  <p className="mt-1.5 text-[11px] text-gray-500">Incumbent: {row.traditional}</p>
+                  <p className="mt-0.5 text-[11px] text-gray-200">Proposed: {row.proposed}</p>
                 </div>
               ))}
+            </div>
+            <div className="hidden overflow-x-auto sm:block">
+              <div className="min-w-[28rem] overflow-hidden rounded-lg border border-white/8">
+                <div className="grid grid-cols-[0.9fr_1fr_1fr] gap-2 bg-white/[0.03] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-gray-500">
+                  <span>Factor</span>
+                  <span>Incumbent</span>
+                  <span className={accent.text}>This research</span>
+                </div>
+                {paper.comparison.map((row) => (
+                  <div
+                    key={row.factor}
+                    className="grid grid-cols-[0.9fr_1fr_1fr] gap-2 border-t border-white/5 px-3 py-2.5 text-xs"
+                  >
+                    <span className="font-medium text-gray-300">{row.factor}</span>
+                    <span className="text-gray-500">{row.traditional}</span>
+                    <span className="text-white">{row.proposed}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 

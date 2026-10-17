@@ -23,15 +23,15 @@ export function IntelligenceView() {
         subtitle="Build in India. Expand into high-economy countries in a fixed order. This is the operating sequence — not traffic, revenue, or live telemetry."
       />
 
-      <div className="grid grid-cols-3 border border-white/10">
+      <div className="grid grid-cols-1 divide-y divide-white/10 border border-white/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
         {[
           { k: "Home", v: home?.name ?? "India" },
           { k: "Core expansion", v: String(core) },
           { k: "Full corridor", v: String(total) },
         ].map((item) => (
-          <div key={item.k} className="border-r border-white/10 px-4 py-4 last:border-r-0 sm:px-6 sm:py-5">
-            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-zinc-500">{item.k}</p>
-            <p className="mt-2 font-mono text-xl font-semibold tracking-tight text-white sm:text-2xl">{item.v}</p>
+          <div key={item.k} className="px-4 py-3 sm:px-6 sm:py-5">
+            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500">{item.k}</p>
+            <p className="mt-1.5 font-mono text-lg font-semibold tracking-tight text-white sm:mt-2 sm:text-2xl">{item.v}</p>
           </div>
         ))}
       </div>

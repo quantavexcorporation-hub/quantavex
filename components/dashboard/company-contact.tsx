@@ -67,7 +67,7 @@ export function CompanyContact() {
           className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white"
         >
           <Mail className="h-3.5 w-3.5 shrink-0" />
-          <span className="truncate">{company.companyEmail}</span>
+          <span className="max-w-[14rem] break-all sm:max-w-none">{company.companyEmail}</span>
         </a>
       </div>
 

@@ -86,7 +86,7 @@ export function ActivityFeed({
   }, [])
 
   return (
-    <div className="flex h-full flex-col overflow-hidden border border-white/10 bg-[#09090b] p-4">
+    <div className="flex h-auto flex-col overflow-hidden border border-white/10 bg-[#09090b] p-4 sm:h-full">
       <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <Zap className="h-4 w-4 text-zinc-500" />
@@ -97,7 +97,7 @@ export function ActivityFeed({
         </span>
       </div>
 
-      <div className="min-h-0 flex-1 space-y-2 overflow-hidden">
+      <div className="min-h-0 flex-1 space-y-2 overflow-y-auto">
         {error && !data ? <p className="mb-2 text-xs text-red-400">{error}</p> : null}
         <AnimatePresence initial={false} mode="popLayout">
           {items.map((activity) => {
