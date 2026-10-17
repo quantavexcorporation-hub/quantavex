@@ -98,8 +98,8 @@ export const researchPapers: Record<ProductId, ResearchPaper> = {
       "Vdoc embeds AI as the generative and decision engine. Users move from viewers to participants. Content becomes experience. The platform becomes an ecosystem. Story is modeled as a dynamic graph, not a linear sequence, with persistent memory-based characters and an ethical moderation layer that interrupts harmful content loops.",
     findings: [
       { label: "Experience loop", value: "Closed", detail: "Audience, creation, and economy in one language" },
-      { label: "Generative AI", value: "$4.4T", detail: "McKinsey 2023 annual economic potential" },
-      { label: "Gaming overlay", value: "$250B+", detail: "Interactive layer inside the entertainment stack" },
+      { label: "AI role", value: "Engine", detail: "Generative layer inside the experience — not a later-stage TAM" },
+      { label: "Formats", value: "One loop", detail: "Movies, games, comics, and community in a single system" },
       { label: "Paradigm", value: "3 eras", detail: "Traditional media → digital platforms → AI interactive ecosystems" },
       { label: "User role", value: "Co-creator", detail: "Viewer → participant · consume → experience" },
       { label: "Story model", value: "G = (N, E)", detail: "Nodes are story states; edges are user decisions" },
