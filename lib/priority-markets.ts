@@ -21,6 +21,54 @@ export function marketBand(priority: number) {
   return "Later"
 }
 
+export type MarketBand = ReturnType<typeof marketBand>
+
+const theatres: Record<string, string> = {
+  IND: "South Asia",
+  USA: "North America",
+  CAN: "North America",
+  MEX: "North America",
+  BRA: "South America",
+  GBR: "Europe",
+  DEU: "Europe",
+  FRA: "Europe",
+  CHE: "Europe",
+  NLD: "Europe",
+  SWE: "Europe",
+  NOR: "Europe",
+  ITA: "Europe",
+  ESP: "Europe",
+  IRL: "Europe",
+  BEL: "Europe",
+  AUT: "Europe",
+  DNK: "Europe",
+  FIN: "Europe",
+  POL: "Europe",
+  SGP: "Southeast Asia",
+  MYS: "Southeast Asia",
+  IDN: "Southeast Asia",
+  JPN: "East Asia",
+  KOR: "East Asia",
+  AUS: "Oceania",
+  NZL: "Oceania",
+  ARE: "Middle East",
+  SAU: "Middle East",
+  ISR: "Middle East",
+}
+
+const EARTH_RADIUS_KM = 6371
+
+export function haversineKm(from: [number, number], to: [number, number]) {
+  const toRad = (deg: number) => (deg * Math.PI) / 180
+  const dLat = toRad(to[1] - from[1])
+  const dLon = toRad(to[0] - from[0])
+  const lat1 = toRad(from[1])
+  const lat2 = toRad(to[1])
+  const h =
+    Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2
+  return 2 * EARTH_RADIUS_KM * Math.asin(Math.min(1, Math.sqrt(h)))
+}
+
 /** India first, then USA / UK / high-economy expansion (30 markets).
  * Scores are an ambitious future GTM plan / predicted priority — not live data. */
 const markets: {
@@ -113,3 +161,75 @@ export const priorityMarketConnections = [
   { from: "DEU", to: "AUT" },
   { from: "DEU", to: "POL" },
 ] as const
+
+export type ManifestNode = {
+  code: string
+  name: string
+  coordinates: [number, number]
+  priority: number
+  band: MarketBand
+  theatre: string
+  hops: number
+  degree: number
+  distanceKm: number
+  lon: number
+  lat: number
+}
+
+export type ManifestEdge = { from: string; to: string }
+
+export function getManifestModel() {
+  const hq = markets.find((m) => m.code === "IND")?.coordinates ?? ([78.96, 20.59] as [number, number])
+
+  const adj = new Map<string, string[]>()
+  for (const market of markets) adj.set(market.code, [])
+  for (const edge of priorityMarketConnections) {
+    adj.get(edge.from)?.push(edge.to)
+    adj.get(edge.to)?.push(edge.from)
+  }
+
+  const hops = new Map<string, number>()
+  hops.set("IND", 0)
+  const queue = ["IND"]
+  while (queue.length) {
+    const current = queue.shift()
+    if (!current) break
+    const depth = hops.get(current) ?? 0
+    for (const next of adj.get(current) ?? []) {
+      if (hops.has(next)) continue
+      hops.set(next, depth + 1)
+      queue.push(next)
+    }
+  }
+
+  const nodes: ManifestNode[] = markets.map((market) => ({
+    code: market.code,
+    name: market.name,
+    coordinates: market.coordinates,
+    priority: market.priority,
+    band: marketBand(market.priority),
+    theatre: theatres[market.code] ?? "Global",
+    hops: hops.get(market.code) ?? 99,
+    degree: adj.get(market.code)?.length ?? 0,
+    distanceKm: Math.round(haversineKm(hq, market.coordinates)),
+    lon: market.coordinates[0],
+    lat: market.coordinates[1],
+  }))
+
+  const hopValues = nodes.map((n) => n.hops).filter((h) => h < 99)
+  const meanHops = hopValues.reduce((sum, h) => sum + h, 0) / hopValues.length
+  const maxKm = Math.max(...nodes.map((n) => n.distanceKm))
+
+  return {
+    nodes,
+    edges: priorityMarketConnections.map((edge) => ({ from: edge.from, to: edge.to })) as ManifestEdge[],
+    earthRadiusKm: EARTH_RADIUS_KM,
+    stats: {
+      n: nodes.length,
+      e: priorityMarketConnections.length,
+      meanHops,
+      maxKm,
+      theatres: [...new Set(nodes.map((n) => n.theatre))].length,
+    },
+  }
+}

@@ -2,12 +2,9 @@
 
 import { PageHeader } from "@/components/dashboard/page-header"
 import { GlobalIntelligenceMap } from "@/components/dashboard/global-intelligence-map"
+import { MarketManifest } from "@/components/dashboard/market-manifest"
 import { useDashboard } from "@/components/dashboard/dashboard-provider"
-import { getPriorityRegions, marketBand } from "@/lib/priority-markets"
-
-function pad(n: number) {
-  return String(n).padStart(2, "0")
-}
+import { getPriorityRegions } from "@/lib/priority-markets"
 
 export function IntelligenceView() {
   const { snapshot } = useDashboard()
@@ -41,52 +38,7 @@ export function IntelligenceView() {
 
       <GlobalIntelligenceMap data={snapshot?.regions} lastSyncSeconds={snapshot?.lastSyncSeconds ?? 0} />
 
-      <section className="overflow-hidden border border-white/10">
-        <div className="flex items-end justify-between border-b border-white/10 px-4 py-4 sm:px-6">
-          <div>
-            <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500">Manifest</p>
-            <h3 className="mt-1 text-lg font-semibold tracking-tight text-white">Thirty markets. One order.</h3>
-          </div>
-          <p className="hidden text-[10px] uppercase tracking-[0.16em] text-zinc-500 sm:block">
-            Home · Core · Next · Later
-          </p>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[520px] text-left">
-            <thead>
-              <tr className="border-b border-white/10">
-                <th className="px-4 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 sm:px-6">
-                  Seq
-                </th>
-                <th className="px-4 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 sm:px-6">
-                  Market
-                </th>
-                <th className="px-4 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 sm:px-6">
-                  Band
-                </th>
-                <th className="px-4 py-3 text-right font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-500 sm:px-6">
-                  Status
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {regions.map((region) => {
-                const band = marketBand(region.priority)
-                return (
-                  <tr key={region.name} className="border-b border-white/[0.06] last:border-0">
-                    <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:px-6">{pad(region.priority)}</td>
-                    <td className="px-4 py-3 text-sm font-medium tracking-tight text-white sm:px-6">{region.name}</td>
-                    <td className="px-4 py-3 text-xs uppercase tracking-[0.14em] text-zinc-400 sm:px-6">{band}</td>
-                    <td className="px-4 py-3 text-right text-xs text-zinc-500 sm:px-6">
-                      {region.priority === 1 ? "Build" : "Planned"}
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <MarketManifest />
     </div>
   )
 }
