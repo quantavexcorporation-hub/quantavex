@@ -5,13 +5,14 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 import { DashboardSnapshot } from "@/lib/dashboard-types"
 
 const fallbackMarkets = [
-  { name: "Learning", value: 1, color: "#2dd4bf", growth: "Quantrion" },
-  { name: "Entertainment", value: 1, color: "#f43f5e", growth: "Vdoc" },
-  { name: "Commerce", value: 1, color: "#a1a1aa", growth: "ExoraX" },
+  { name: "EdTech", value: 400, color: "#2dd4bf", growth: "$400B" },
+  { name: "Entertainment", value: 2800, color: "#f43f5e", growth: "$2.8T" },
+  { name: "Commerce", value: 6000, color: "#a1a1aa", growth: "$6T" },
 ]
 
 export function MarketVisualization({ data }: { data?: DashboardSnapshot["markets"] }) {
   const markets = data ?? fallbackMarkets
+  const max = Math.max(...markets.map((market) => market.value), 1)
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -20,12 +21,12 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
     >
       <div className="mb-4 flex shrink-0 items-center justify-between">
         <div>
-          <h3 className="text-sm font-medium text-white">Where we start</h3>
-          <p className="text-xs text-gray-500">India competitive exams first. Then entertainment and commerce.</p>
+          <h3 className="text-sm font-medium text-white">Global market size</h3>
+          <p className="text-xs text-gray-500">EdTech, entertainment, and commerce — industry scale, not Quantavex revenue.</p>
         </div>
         <div className="text-right">
-          <div className="text-lg font-mono font-bold text-white">3</div>
-          <div className="text-[10px] text-gray-500">Platforms specified</div>
+          <div className="text-lg font-mono font-bold text-white">$8T+</div>
+          <div className="text-[10px] text-gray-500">Combined TAM</div>
         </div>
       </div>
 
@@ -82,7 +83,7 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
               <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
+                  animate={{ width: `${(market.value / max) * 100}%` }}
                   transition={{ delay: index * 0.2, duration: 0.8 }}
                   className="h-full rounded-full"
                   style={{ backgroundColor: market.color }}

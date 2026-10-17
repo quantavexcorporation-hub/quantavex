@@ -32,9 +32,9 @@ export function getActivities(): DashboardSnapshot["activities"] {
 
 export function getMarkets(): DashboardSnapshot["markets"] {
   return [
-    { name: "Learning", value: 1, color: "#2dd4bf", growth: "Quantrion" },
-    { name: "Entertainment", value: 1, color: "#f43f5e", growth: "Vdoc" },
-    { name: "Commerce", value: 1, color: "#a1a1aa", growth: "ExoraX" },
+    { name: "EdTech", value: 400, color: "#2dd4bf", growth: "$400B" },
+    { name: "Entertainment", value: 2800, color: "#f43f5e", growth: "$2.8T" },
+    { name: "Commerce", value: 6000, color: "#a1a1aa", growth: "$6T" },
   ]
 }
 

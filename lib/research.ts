@@ -92,12 +92,12 @@ export const researchPapers: Record<ProductId, ResearchPaper> = {
       "Gour, U. (2026). Vdoc: A Futuristic AI-Driven Interactive Entertainment Ecosystem. Vdoc / Quantavex. Case study: V1.",
     pdf: "/research/vdoc.pdf",
     abstract:
-      "The global entertainment industry, valued at over $2.8 trillion (2024), remains constrained by passive consumption and fragmented ecosystems. Vdoc reconceptualizes entertainment as a dynamic, intelligent, participatory system. AI is not a supplementary tool; it is the architectural intelligence layer — enabling real-time generation, adaptive storytelling, and hyper-personalized experience. Movies, games, comics, and community share one closed-loop: user behavior continuously informs content evolution. Economically, Vdoc introduces multi-layer revenue across advertising, adaptive subscription, creator tools, and future virtual economies.",
+      "Entertainment remains constrained by passive consumption and fragmented ecosystems — streaming is linear, short-form is shallow, gaming is pre-scripted, and AI tools sit beside the experience rather than inside it. Vdoc reconceptualizes entertainment as a dynamic, intelligent, participatory system. AI is not a supplementary tool; it is the architectural intelligence layer — enabling real-time generation, adaptive storytelling, and hyper-personalized experience. Movies, games, comics, and community share one closed-loop: user behavior continuously informs content evolution. The architecture is written for multi-layer value across advertising, adaptive subscription, creator tools, and future virtual economies.",
     gap: "The absence of a unified, AI-native, interactive entertainment architecture that integrates content generation, user interaction, and real-time adaptation in a single system. Streaming is linear, short-form is shallow, gaming is pre-scripted, and AI tools remain fragmented. High engagement is not high value — platforms extract attention rather than deepen experience.",
     contribution:
       "Vdoc embeds AI as the generative and decision engine. Users move from viewers to participants. Content becomes experience. The platform becomes an ecosystem. Story is modeled as a dynamic graph, not a linear sequence, with persistent memory-based characters and an ethical moderation layer that interrupts harmful content loops.",
     findings: [
-      { label: "Entertainment TAM", value: "$2.8T+", detail: "2024 global industry; Vdoc overlap estimated $3–4T" },
+      { label: "Experience loop", value: "Closed", detail: "Audience, creation, and economy in one language" },
       { label: "Generative AI", value: "$4.4T", detail: "McKinsey 2023 annual economic potential" },
       { label: "Gaming overlay", value: "$250B+", detail: "Interactive layer inside the entertainment stack" },
       { label: "Paradigm", value: "3 eras", detail: "Traditional media → digital platforms → AI interactive ecosystems" },
