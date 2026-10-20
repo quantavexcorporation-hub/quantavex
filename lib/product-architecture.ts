@@ -1,37 +1,25 @@
 import type { ProductId } from "@/components/brand/product-logo"
-import { researchPapers } from "@/lib/research"
 
 export type ArchitectureLayer = { name: string; role: string; modules: string[] }
-export type ArchitectureService = { name: string; owns: string; contract: string }
-export type ArchitectureStore = { name: string; holds: string }
+export type ArchitectureEquation = { id: string; form: string; meaning: string }
+export type ArchitectureStep = { n: number; title: string; text: string }
 
 export interface ProductArchitecture {
   id: ProductId
-  title: string
-  pattern: string
-  premise: string
-  loop: { name: string; steps: string[]; meaning: string }
+  figure: string
+  loop: { name: string; steps: string[] }
   layers: ArchitectureLayer[]
-  services: ArchitectureService[]
-  data: ArchitectureStore[]
-  interfaces: string[]
-  constraints: string[]
-  later: string[]
-  suitable: string
+  equations: ArchitectureEquation[]
+  instruction: ArchitectureStep[]
 }
 
 export const productArchitecture: Record<ProductId, ProductArchitecture> = {
   quantrion: {
     id: "quantrion",
-    title: "Quantrion examination intelligence — software architecture",
-    pattern: "Closed-loop modular system · Q1 cognitive layer",
-    premise:
-      "From the Quantrion monograph: exam prep is still content delivery. Q1 is specified as a unified learning–practice–assessment machine. Assessment writes the next lesson; the lesson writes the next assessment. That loop is the architecture.",
+    figure: "Q1 — examination intelligence closed loop",
     loop: {
       name: "Intelligence loop",
       steps: ["Diagnose", "Adapt", "Validate", "Predict"],
-      meaning:
-        "Knowledge DNA is updated after every sitting. Sequence, difficulty, and revision intervals move with evidence — not with a static syllabus.",
     },
     layers: [
       {
@@ -80,50 +68,27 @@ export const productArchitecture: Record<ProductId, ProductArchitecture> = {
         ],
       },
     ],
-    services: [
-      { name: "Identity", owns: "Student and educator accounts, exam cohort membership", contract: "Who may sit which atlas pathway" },
-      { name: "Atlas", owns: "150+ named competitive pathways", contract: "Exam → syllabus graph → item pool" },
-      { name: "Pathway", owns: "Adaptive sequences", contract: "DNA + goal → next learn / practice unit" },
-      { name: "Assessment", owns: "Quizzes, mocks, calibrated scoring", contract: "Sitting → scores, mistakes, time" },
-      { name: "DNA", owns: "Mastery, accuracy, speed, retention, temperament", contract: "Event → updated academic identity" },
-      { name: "Predict", owns: "Readiness and rank bands", contract: "DNA + calendar → forecast before the sitting" },
+    equations: [
+      { id: "Q1", form: "Ŝ = αA + βT + γD + δR", meaning: "Predicted score from accuracy, time efficiency, difficulty solved, and revision consistency." },
+      { id: "Q2", form: "L(t) = L₀ (1 − e^{−kt})", meaning: "Learning curve: mastery approaches L₀ at rate k." },
+      { id: "Q3", form: "DNA_{t+1} = U(DNA_t, sitting_t)", meaning: "Knowledge DNA is rewritten after every sitting — not a progress bar." },
+      { id: "Q4", form: "u* = Pathway(DNA, goal)", meaning: "Next learn / practice unit is a function of mastery and exam goal." },
+      { id: "Q5", form: "t_response < 1.5 s", meaning: "Design latency bound from the monograph — not a measured SLA." },
     ],
-    data: [
-      { name: "Knowledge DNA", holds: "Per-student concept mastery graph — not a progress bar" },
-      { name: "Item intelligence", holds: "Difficulty, discrimination, and misuse flags on questions" },
-      { name: "Sitting log", holds: "Answers, latency, confidence, revision marks" },
-      { name: "Pathway state", holds: "Current sequence, exam goal, and next recommended unit" },
+    instruction: [
+      { n: 1, title: "Sit", text: "Student enters Experience: Atlas pathway, learn, practice, mock. LectureCognis is educator-only." },
+      { n: 2, title: "Observe", text: "Assessment writes (A, T, D, R) into the sitting log. This is the evidence vector." },
+      { n: 3, title: "Update", text: "DNA layer applies U(·). Sequence, difficulty, and revision intervals move with evidence." },
+      { n: 4, title: "Adapt", text: "Pathway returns u*. Assessment writes the next lesson; the lesson writes the next assessment." },
+      { n: 5, title: "Predict", text: "Score model Ŝ and rank band fire before the real sitting. Learn → Practice → Analyze → Adapt → Improve → Simulate." },
     ],
-    interfaces: [
-      "Student OS — atlas, learn, practice, DNA, mocks, career",
-      "Educator studio — LectureCognis and test generation only",
-      "Alpha interface — open from the dossier, not live production traffic",
-    ],
-    constraints: [
-      "Architecture latency bound from the paper: responses under 1.5s as a design target, not a measured SLA.",
-      "Personalization is infrastructure, not teacher-hours. Atlas scale only holds if the loop is automatic.",
-      "Q1 is the software being built now. Q2 (frontier-tech expertise) and Qrion (industrial / space deployment) are later layers in the monograph — not this architecture.",
-      "First market is India competitive exams. Other countries are a plan.",
-    ],
-    later: [
-      "Q2 — frontier-tech expertise curricula",
-      "Qrion — cognition into industrial and space systems",
-      "Certification and talent evaluation as a downstream use of the same DNA",
-    ],
-    suitable:
-      "A modular monolith is the right first form: one deployable Q1 with clear service boundaries (Atlas, Pathway, Assessment, DNA, Predict). Split only when a boundary has its own scale or team. Do not start as a mesh of twenty microservices.",
   },
   vdoc: {
     id: "vdoc",
-    title: "Vdoc entertainment OS — software architecture",
-    pattern: "Living closed-loop system · V1 content ecosystem",
-    premise:
-      "From the Vdoc monograph: entertainment is still linear catalogs and siloed tools. Vdoc is specified as one OS in which audience, creation, and a virtual economy share a language. Story is a graph G = (N, E): nodes are states, edges are user decisions. AI is the engine, not a recommend-next-title plugin.",
+    figure: "V1 — living entertainment OS",
     loop: {
-      name: "Living entertainment loop",
+      name: "Living loop",
       steps: ["Speak", "Enter", "Shape", "Own"],
-      meaning:
-        "User → Interaction → AI → Adaptive content → Feedback → Evolution. Data does not sit in analytics — it reshapes the next scene.",
     },
     layers: [
       {
@@ -169,52 +134,27 @@ export const productArchitecture: Record<ProductId, ProductArchitecture> = {
         ],
       },
     ],
-    services: [
-      { name: "Session", owns: "Audience identity and world continuity", contract: "Who is in which world, with which memory" },
-      { name: "Story graph", owns: "N, E, and legal transitions", contract: "State + choice → next state" },
-      { name: "Director", owns: "Agent orchestration", contract: "Intent → specialist jobs → assembled scene" },
-      { name: "Genesis", owns: "Media synthesis jobs", contract: "Brief → video / image / audio / world chunk" },
-      { name: "Signals", owns: "Mood, afterglow, unfinished threads", contract: "Behavior → next command-surface ranking" },
-      { name: "Economy", owns: "Vault, land, limited drops — in-plot ownership", contract: "Asset identity inside the story, not a bolted wallet" },
-      { name: "Ethics", owns: "Risk detection and loop interruption", contract: "Hard stop when a content loop is harmful" },
+    equations: [
+      { id: "V1", form: "G = (N, E)", meaning: "Story is a graph: N are states, E are user decisions — not a linear reel." },
+      { id: "V2", form: "s' = δ(s, a),  a ∈ E", meaning: "A choice is an edge. The next scene is a legal transition on G." },
+      { id: "V3", form: "scene = Director(intent, memory, agents)", meaning: "AI Director assembles specialist generation jobs into one experience." },
+      { id: "V4", form: "U → I → AI → C → F → Evol", meaning: "User, interaction, AI, adaptive content, feedback, evolution. Data reshapes the next scene." },
+      { id: "V5", form: "if risk(s') then interrupt", meaning: "Ethics is a hard stop on the graph, not a policy PDF." },
     ],
-    data: [
-      { name: "Story graph", holds: "Nodes (story states) and edges (user decisions)" },
-      { name: "Character memory", holds: "Persistent traits and prior scenes per world" },
-      { name: "World state", holds: "What the user has entered, shaped, and left unfinished" },
-      { name: "Economy ledger", holds: "Specified ownership records — not a live token market" },
+    instruction: [
+      { n: 1, title: "Speak", text: "User emits intent on the command surface (voice, prompt, rail). That is the start of U." },
+      { n: 2, title: "Enter", text: "Control records the action a. Story graph applies δ(s, a) and moves to s'." },
+      { n: 3, title: "Direct", text: "Director reads character memory and mood. Specialist agents generate the next chunk." },
+      { n: 4, title: "Shape", text: "Generation writes video, image, audio, or world under continuity. The user is inside the scene, not beside a catalog." },
+      { n: 5, title: "Own / evolve", text: "Signals (afterglow, unfinished, vote) feed Evolution. Harmful loops are interrupted before the next edge." },
     ],
-    interfaces: [
-      "Audience OS — speak, enter, shape, own",
-      "Creation OS — Nexus, Genesis, AI Director",
-      "Virtual Economy — vault, marketplace, founders land",
-      "Alpha interface — open from the dossier",
-    ],
-    constraints: [
-      "V1 is the software being built: AI series, games, movies, shorts, comics, community. V2 production layer and Vydo 3D intelligence world are later stages in the paper.",
-      "AI is inside the experience. Do not ship a chat widget beside a catalog and call it Vdoc.",
-      "Ethics is a core service, not a policy PDF. Harmful loops must be interruptible in the graph.",
-      "This is not live audience telemetry or GMV.",
-    ],
-    later: [
-      "V2 — hybrid high-quality production and super-creator depth",
-      "Vydo — persistent 3D intelligence world per user",
-      "Real-money paths for the virtual economy — only after in-plot ownership is real",
-    ],
-    suitable:
-      "Keep one entertainment runtime: Experience client + Story/Director/Genesis services + signal store. Generation is job-based and queued. Do not split Audience, Creation, and Economy into three products — the paper is one OS.",
   },
   exorax: {
     id: "exorax",
-    title: "ExoraX decision commerce — software architecture",
-    pattern: "Six-layer decision system · X1",
-    premise:
-      "From the ExoraX monograph: returns of 20–35% in fashion and electronics are a pre-purchase information failure. ExoraX is specified as six layers so the buyer inspects before value moves. Commerce is a confidence loop, not a listing page.",
+    figure: "X1 — six-layer confidence commerce",
     loop: {
-      name: "Confidence purchase loop",
+      name: "Confidence loop",
       steps: ["Intent", "Filter", "3D / AR", "Presenter", "Decision", "Feedback"],
-      meaning:
-        "Every completed journey trains ranking and explanation. The buy is the last step, not the first screen.",
     },
     layers: [
       {
@@ -274,49 +214,24 @@ export const productArchitecture: Record<ProductId, ProductArchitecture> = {
         ],
       },
     ],
-    services: [
-      { name: "Intent", owns: "Query understanding", contract: "Utterance → structured need and constraints" },
-      { name: "Catalog", owns: "Product truth", contract: "ID → specs, media, stock, 3D asset" },
-      { name: "Rank", owns: "Decision order", contract: "Intent + taste → ordered set + reasons" },
-      { name: "Inspect", owns: "3D / AR session", contract: "Product → inspectable twin" },
-      { name: "Presenter", owns: "Live and recorded demonstration", contract: "Product + question → explanation" },
-      { name: "Order", owns: "Checkout and 3PL handoff", contract: "Decision → fulfillment instruction" },
-      { name: "Feedback", owns: "Returns, fit, satisfaction", contract: "Outcome → rank and catalog updates" },
+    equations: [
+      { id: "X1", form: "need = Intent(utterance)", meaning: "Natural language, voice, or visual query becomes structured constraints." },
+      { id: "X2", form: "π* = arg max_p  Score(p | need, taste)", meaning: "Ranked set with a transparent why — not a keyword listing." },
+      { id: "X3", form: "inspect = Twin(p)", meaning: "True-scale 3D / AR closes listing versus reality before value moves." },
+      { id: "X4", form: "C = g(inspect, presenter)", meaning: "Decision confidence is produced by inspection and demonstration, not by copy." },
+      { id: "X5", form: "buy  ⇔  C ≥ τ", meaning: "Checkout is the last step. 3PL is an adapter — no owned fleet." },
+      { id: "X6", form: "Score_{t+1} ← Outcome(return, fit)", meaning: "Returns of 20–35% are a pre-purchase information gap. Feedback trains rank." },
     ],
-    data: [
-      { name: "Product graph", holds: "Canonical items, variants, 3D assets, presenter packs" },
-      { name: "Taste graph", holds: "Intent history and constraint preferences — not a dark profile" },
-      { name: "Inspect sessions", holds: "What was viewed in 3D/AR before checkout" },
-      { name: "Outcome log", holds: "Purchase, return, and confidence flags for the loop" },
+    instruction: [
+      { n: 1, title: "Intent", text: "Shopper states a need. Interface layer writes utterance → need." },
+      { n: 2, title: "Filter", text: "AI intelligence ranks π* from the product graph and taste. Every recommendation carries a why." },
+      { n: 3, title: "Inspect", text: "3D / AR twin is the product in the user’s space. This is the experiential layer." },
+      { n: 4, title: "Presenter", text: "Flipbook, clipbook, catalogue, or live presenter explains. Interactive content, not static specs." },
+      { n: 5, title: "Decide / train", text: "If C ≥ τ, Order hands to 3PL. Outcome (purchase, return, fit) writes Score_{t+1}." },
     ],
-    interfaces: [
-      "Shopper — search, inspect, presenter, decide",
-      "Merchant — X Atelier, inventory, control center",
-      "Creator / advertiser — presenters, live shopping, Adcontex",
-      "Alpha interface — open from the dossier",
-    ],
-    constraints: [
-      "X1 is six categories only. Luxury (X2), SaaS brand tools at scale, and private-label Exor are later in the paper.",
-      "TradeX (capital markets) is named in the product OS as a later corridor — not the X1 core. Decision commerce for goods is the first machine.",
-      "3PL is aggregated. Do not design a Quantavex-owned logistics fleet into this architecture.",
-      "Targets (returns 30% → 10%, conversion +20–35%) are research goals, not live KPIs.",
-    ],
-    later: [
-      "X2 luxury corridor (Luxelle / Imperial as member checkout)",
-      "SaaS tools for brands at scale",
-      "Deeper 3PL coordination",
-      "Private-label Exor",
-      "TradeX as a separate capital-markets workspace when goods commerce stands",
-    ],
-    suitable:
-      "Implement X1 as one commerce runtime with six layers in-process or as a small set of services (Intent/Rank, Catalog, Inspect, Order). 3D assets and presenters are content pipelines. Logistics is an adapter. That matches the paper and a founder-led build.",
   },
 }
 
 export function getProductArchitecture(id: ProductId) {
   return productArchitecture[id]
-}
-
-export function architectureCitation(id: ProductId) {
-  return researchPapers[id].citation
 }
