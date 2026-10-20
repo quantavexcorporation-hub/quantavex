@@ -1,0 +1,92 @@
+import type { ProductId } from "@/components/brand/product-logo"
+
+export const roadmap = {
+  clock: "6 months after investment",
+  users: "90,000",
+  usersNote: "Company target across three production platforms — not live traffic today.",
+  posture: "Simultaneous",
+  promise:
+    "All three platforms are built in parallel, connected on one API plane, stood up on architecture-faithful infrastructure, run with real operating cost, and brought to production with a 90,000-user target inside six months of investment.",
+} as const
+
+export const months = ["M1", "M2", "M3", "M4", "M5", "M6"] as const
+
+export const tracks: {
+  id: ProductId | "mesh" | "opex"
+  label: string
+  cells: string[]
+}[] = [
+  {
+    id: "quantrion",
+    label: "Quantrion",
+    cells: ["Q1 infra", "DNA loop", "API live", "Student OS", "Harden", "Production"],
+  },
+  {
+    id: "vdoc",
+    label: "Vdoc",
+    cells: ["V1 infra", "Story graph", "API live", "Experience OS", "Harden", "Production"],
+  },
+  {
+    id: "exorax",
+    label: "ExoraX",
+    cells: ["X1 infra", "Confidence loop", "API live", "Commerce OS", "Harden", "Production"],
+  },
+  {
+    id: "mesh",
+    label: "API mesh",
+    cells: ["Identity", "Contracts", "Three-way", "Gateway", "Observe", "Load"],
+  },
+  {
+    id: "opex",
+    label: "Operating cost",
+    cells: ["Cloud", "Inference", "Jobs", "3PL + storage", "Support", "Full burn"],
+  },
+]
+
+export const program = [
+  {
+    n: "01",
+    title: "Build all three at once",
+    text: "Quantrion, Vdoc, and ExoraX leave alpha together. No waiting for one product to finish before the others start.",
+  },
+  {
+    n: "02",
+    title: "Connect on software APIs",
+    text: "One identity plane, one gateway, architecture contracts per platform. Three products, one company machine.",
+  },
+  {
+    n: "03",
+    title: "Infra from the figures",
+    text: "Q1 four-layer loop, V1 story graph, X1 six-layer confidence stack. Infrastructure follows the architecture pages — not a generic cloud template.",
+  },
+  {
+    n: "04",
+    title: "Pay operating cost",
+    text: "Compute, inference, object storage, API mesh, ExoraX 3PL adapter, and ops. Production has a bill. The plan includes it.",
+  },
+  {
+    n: "05",
+    title: "Production-ready",
+    text: "Linked alpha interfaces are not the destination. Month 6 is three platforms that can take real users.",
+  },
+  {
+    n: "06",
+    title: "90,000 users",
+    text: "Company target at the end of the six-month clock. A goal after investment — not a live cohort today.",
+  },
+] as const
+
+export const opex = [
+  { name: "Cloud compute & storage", role: "Sessions, DNA, story state, product graph" },
+  { name: "Model inference", role: "Pathway, Director, intent and rank" },
+  { name: "API mesh & identity", role: "Gateway, accounts, contracts between platforms" },
+  { name: "Generation & object jobs", role: "Lectures, media synthesis, 3D twins" },
+  { name: "3PL adapter", role: "ExoraX fulfillment instruction — no owned fleet" },
+  { name: "Operations", role: "Reliability, support, legal, the people the build needs" },
+] as const
+
+export const mesh = [
+  { from: "Quantrion", via: "Identity + DNA events", to: "Quantavex API" },
+  { from: "Vdoc", via: "Identity + session / world state", to: "Quantavex API" },
+  { from: "ExoraX", via: "Identity + catalog / order events", to: "Quantavex API" },
+] as const

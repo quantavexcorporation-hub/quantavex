@@ -28,7 +28,7 @@ export const pageMeta: Record<
   },
   "/forecasting": {
     title: "Roadmap",
-    subtitle: "Product development — Quantrion first, then Vdoc and ExoraX",
+    subtitle: "Six months after investment — three platforms, one machine, 90,000 users",
   },
   "/quantrion/architecture": {
     title: "Quantrion architecture",

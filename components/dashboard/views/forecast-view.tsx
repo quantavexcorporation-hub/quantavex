@@ -1,236 +1,215 @@
 "use client"
 
 import Link from "next/link"
-import { PageHeader } from "@/components/dashboard/page-header"
-import { Panel, PanelHeader } from "@/components/dashboard/panel"
-import { ProductLogo } from "@/components/brand/product-logo"
-import { ProductWebsiteLink } from "@/components/brand/product-site"
+import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { productAccents } from "@/lib/product-accents"
 import { company } from "@/lib/company"
-import { productList } from "@/lib/products"
-import { researchPapers } from "@/lib/research"
+import { mesh, months, opex, program, roadmap, tracks } from "@/lib/roadmap"
 
-const sequence = [
-  {
-    id: "quantrion" as const,
-    order: "01",
-    when: "Now → 7 months",
-    now: "Monograph complete. Alpha interface open. Architecture specified for examination intelligence.",
-    next: "First working product for India competitive-exam students, then a closed tester group.",
-    customer: "JEE, NEET, UPSC and the rest of the competitive atlas — from India.",
-    problem: "Prep is still static content: overload, delayed feedback, no predictive readiness.",
-  },
-  {
-    id: "vdoc" as const,
-    order: "02",
-    when: "Months 6–8",
-    now: "Monograph complete. Alpha interface open. Entertainment OS specified — speak, enter, shape, own.",
-    next: "Prototype the core engine from the paper. Not a streaming catalog.",
-    customer: "Audience, creators, and studio partners in one visual language.",
-    problem: "Entertainment is still passive, fragmented, and extracted for watch time.",
-  },
-  {
-    id: "exorax" as const,
-    order: "03",
-    when: "Months 7–9",
-    now: "Monograph complete. Alpha interface open. Decision-commerce architecture specified.",
-    next: "Working product: inspect in 3D/AR before value moves — product, price, and risk.",
-    customer: "High-consideration buyers, brands, and creators who need clarity before checkout.",
-    problem: "Commerce still guesses from photos. Returns are an information failure.",
-  },
-] as const
-
-const method = [
-  {
-    step: "01",
-    title: "Research",
-    detail: "Each platform is written as an original monograph that specifies the architecture before the product is built.",
-  },
-  {
-    step: "02",
-    title: "Alpha interface",
-    detail: "A working interface is linked from each dossier so the specification can be opened — not live production traffic.",
-  },
-  {
-    step: "03",
-    title: "Product",
-    detail: "The software is built from that specification. Quantrion is first. Vdoc and ExoraX follow on the same parent company.",
-  },
-]
+const trackAccent: Record<string, string> = {
+  quantrion: "border-teal-500/35 bg-teal-400/10 text-teal-100",
+  vdoc: "border-rose-500/35 bg-rose-500/10 text-rose-100",
+  exorax: "border-zinc-400/35 bg-zinc-400/10 text-zinc-100",
+  mesh: "border-white/20 bg-white/[0.04] text-white",
+  opex: "border-amber-400/25 bg-amber-400/[0.06] text-amber-100",
+}
 
 export function ForecastView() {
   return (
-    <div className="space-y-5 sm:space-y-7">
-      <PageHeader
-        title="Product development roadmap"
-        subtitle="Quantrion first. Then Vdoc. Then ExoraX. Twelve months of build order — not live traffic, revenue, or a company valuation."
-      />
-
-      <div className="grid grid-cols-1 divide-y divide-white/10 border border-white/10 sm:grid-cols-2 sm:divide-x lg:grid-cols-4 lg:divide-y-0">
-        {[
-          { k: "Horizon", v: company.horizon, n: "Build sequence" },
-          { k: "First product", v: "Quantrion", n: "India competitive exams" },
-          { k: "Then", v: "Vdoc", n: "Interactive entertainment" },
-          { k: "Then", v: "ExoraX", n: "Decision commerce" },
-        ].map((item) => (
-          <div key={`${item.k}-${item.v}`} className="px-4 py-4 sm:px-5">
-            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500">{item.k}</p>
-            <p className="mt-2 font-mono text-xl font-semibold tracking-tight text-white">{item.v}</p>
-            <p className="mt-1 text-[11px] text-zinc-500">{item.n}</p>
+    <div className="space-y-8 sm:space-y-10">
+      <section className="relative overflow-hidden border border-white/15 bg-[#050506]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.08),transparent_55%)]" />
+        <div className="relative grid gap-8 p-5 sm:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:p-10">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-zinc-500">Operating program</p>
+            <h1 className="mt-3 max-w-xl text-3xl font-semibold tracking-tight text-white sm:text-5xl sm:leading-[1.05]">
+              Three platforms.
+              <span className="block text-zinc-400">One clock.</span>
+            </h1>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base">
+              {roadmap.promise}
+            </p>
+            <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-600">
+              {roadmap.posture} · {roadmap.clock} · founder-led from {company.headquarters}
+            </p>
           </div>
-        ))}
-      </div>
-
-      <section className="border border-white/10 bg-[#09090b] p-5 sm:p-6">
-        <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500">How we build</p>
-        <h2 className="mt-2 text-lg font-semibold tracking-tight text-white">Research first. Then the product.</h2>
-        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          Quantavex is founder-led from {company.headquarters}. Three platforms, one parent company.
-          The order of development is the investment-relevant fact on this page. Terms stay in conversation,
-          via{" "}
-          <Link href="/#contact" className="text-white underline decoration-white/25 underline-offset-4 hover:decoration-white/60">
-            Contact
-          </Link>
-          .
-        </p>
-        <div className="mt-5 grid gap-3 md:grid-cols-3">
-          {method.map((item) => (
-            <div key={item.step} className="border border-white/10 bg-black/30 p-4">
-              <p className="font-mono text-[10px] tracking-[0.16em] text-zinc-500">{item.step}</p>
-              <p className="mt-2 text-sm font-medium text-white">{item.title}</p>
-              <p className="mt-1.5 text-xs leading-relaxed text-zinc-400">{item.detail}</p>
+          <div className="flex flex-col justify-end border border-white/10 bg-black/40 p-5 sm:p-6">
+            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-500">Month 6 target</p>
+            <p className="mt-2 text-6xl font-semibold tracking-tighter text-white sm:text-7xl">
+              90,000
+            </p>
+            <p className="mt-2 text-sm text-zinc-400">users</p>
+            <p className="mt-3 text-xs leading-relaxed text-zinc-500">{roadmap.usersNote}</p>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 divide-x divide-y divide-white/10 border-t border-white/10 lg:grid-cols-4 lg:divide-y-0">
+          {[
+            { k: "Clock", v: "6 months", n: "After investment" },
+            { k: "Build", v: "Parallel", n: "Quantrion · Vdoc · ExoraX" },
+            { k: "Connect", v: "API mesh", n: "One identity plane" },
+            { k: "Gate", v: "Production", n: "Alpha is not the end" },
+          ].map((item) => (
+            <div key={item.k} className="px-4 py-4 sm:px-6">
+              <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500">{item.k}</p>
+              <p className="mt-2 font-mono text-xl font-semibold text-white">{item.v}</p>
+              <p className="mt-1 text-[11px] text-zinc-500">{item.n}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <div className="grid gap-3 lg:grid-cols-3">
-        {sequence.map((item) => {
-          const product = productList.find((row) => row.id === item.id)
-          const paper = researchPapers[item.id]
-          const accent = productAccents[item.id]
-          if (!product) return null
-          return (
-            <article key={item.id} className={`flex flex-col border bg-[#09090b] p-4 sm:p-5 ${accent.border}`}>
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <ProductLogo product={item.id} size={36} />
-                  <div>
-                    <p className="font-mono text-[10px] tracking-[0.16em] text-zinc-500">{item.order}</p>
-                    <h3 className="text-base font-semibold text-white">{product.name}</h3>
-                  </div>
-                </div>
-                <p className={`text-[10px] uppercase tracking-[0.14em] ${accent.text}`}>{item.when}</p>
-              </div>
-              <p className="mt-3 text-sm text-white">{product.tagline}</p>
-              <p className="mt-1 text-xs italic text-zinc-500">{product.manifesto}</p>
-              <dl className="mt-4 space-y-3 text-xs leading-relaxed">
-                <div>
-                  <dt className="font-mono uppercase tracking-[0.14em] text-zinc-500">Now</dt>
-                  <dd className="mt-1 text-zinc-300">{item.now}</dd>
-                </div>
-                <div>
-                  <dt className="font-mono uppercase tracking-[0.14em] text-zinc-500">Next</dt>
-                  <dd className="mt-1 text-zinc-300">{item.next}</dd>
-                </div>
-                <div>
-                  <dt className="font-mono uppercase tracking-[0.14em] text-zinc-500">Customer</dt>
-                  <dd className="mt-1 text-zinc-300">{item.customer}</dd>
-                </div>
-                <div>
-                  <dt className="font-mono uppercase tracking-[0.14em] text-zinc-500">Problem</dt>
-                  <dd className="mt-1 text-zinc-300">{item.problem}</dd>
-                </div>
-                <div>
-                  <dt className="font-mono uppercase tracking-[0.14em] text-zinc-500">On record</dt>
-                  <dd className="mt-1 text-zinc-300">
-                    {paper.pages} pages · {paper.caseStudy}
-                  </dd>
-                </div>
-              </dl>
-              <div className="mt-4 flex flex-wrap gap-2 pt-1">
-                <Link
-                  href={`/${item.id}`}
-                  className="inline-flex items-center border border-white/15 px-3 py-1.5 text-xs text-white hover:border-white/30"
-                >
-                  Open dossier
-                </Link>
-                <ProductWebsiteLink productId={item.id} variant="chip" />
-              </div>
-            </article>
-          )
-        })}
-      </div>
+      <section>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Figure · six-month parallel clock</p>
+        <div className="overflow-x-auto border border-white/10 bg-[#050506]">
+          <table className="w-full min-w-[720px] border-collapse text-left">
+            <thead>
+              <tr className="border-b border-white/10">
+                <th className="w-36 px-3 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">Track</th>
+                {months.map((month) => (
+                  <th key={month} className="px-2 py-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">
+                    {month}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {tracks.map((track) => (
+                <tr key={track.id} className="border-b border-white/[0.06] last:border-0">
+                  <th className="px-3 py-2.5 text-left text-xs font-medium text-white">
+                    {track.id === "quantrion" || track.id === "vdoc" || track.id === "exorax" ? (
+                      <span className="inline-flex items-center gap-2">
+                        <ProductLogo product={track.id} size={18} />
+                        {track.label}
+                      </span>
+                    ) : (
+                      track.label
+                    )}
+                  </th>
+                  {track.cells.map((cell, index) => (
+                    <td key={`${track.id}-${index}`} className="px-1.5 py-2">
+                      <div className={`border px-2 py-2 text-center font-mono text-[10px] leading-tight sm:text-[11px] ${trackAccent[track.id]}`}>
+                        {cell}
+                      </div>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">
+          Three product tracks run in the same months. Mesh and operating cost are not afterthoughts.
+        </p>
+      </section>
 
-      <Panel>
-        <PanelHeader
-          title="Twelve-month sequence"
-          subtitle="Planned build order. Overlaps are real — Vdoc and ExoraX start after Quantrion is in motion, not after it is finished forever."
-        />
-        <ol className="space-y-0">
-          {company.milestones.map((item, index) => (
+      <section className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+        <figure className="border border-white/10 bg-[#050506] p-4 sm:p-5">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Figure · API mesh</p>
+          <MeshFigure />
+          <figcaption className="mt-3 space-y-1.5">
+            {mesh.map((edge) => (
+              <p key={edge.from} className="font-mono text-[11px] text-zinc-500">
+                {edge.from} → {edge.via} → {edge.to}
+              </p>
+            ))}
+          </figcaption>
+        </figure>
+        <section className="border border-white/10 bg-[#09090b] p-5 sm:p-6">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Instruction</p>
+          <ol className="mt-4 space-y-0">
+            {program.map((step) => (
+              <li key={step.n} className="grid grid-cols-[2.75rem_1fr] gap-3 border-b border-white/[0.06] py-3 last:border-0 last:pb-0">
+                <span className="font-mono text-sm text-zinc-500">{step.n}</span>
+                <div>
+                  <p className="text-sm font-medium text-white">{step.title}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-zinc-400">{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </section>
+
+      <section>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Operating cost</p>
+        <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {opex.map((item) => (
+            <li key={item.name} className="border border-white/10 bg-[#09090b] p-4">
+              <p className="text-sm font-medium text-white">{item.name}</p>
+              <p className="mt-1.5 text-xs leading-relaxed text-zinc-400">{item.role}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-xs text-zinc-600">
+          Categories the company will pay to run production. Not a live burn rate and not a public raise table.
+        </p>
+      </section>
+
+      <section>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Month gates</p>
+        <ol className="border border-white/10 bg-[#09090b]">
+          {company.milestones.map((item) => (
             <li
               key={`${item.period}-${item.title}`}
-              className="grid gap-2 border-b border-white/10 py-4 last:border-0 last:pb-0 sm:grid-cols-[6.5rem_7rem_1fr] sm:items-baseline sm:gap-4"
+              className="grid gap-2 border-b border-white/10 px-4 py-4 last:border-0 sm:grid-cols-[4rem_8rem_1fr] sm:items-baseline sm:gap-4 sm:px-5"
             >
-              <p className="font-mono text-xs text-zinc-500">{item.period}</p>
-              <p className="text-sm font-medium text-white">{item.product}</p>
+              <p className="font-mono text-sm text-white">{item.period}</p>
+              <p className="text-xs uppercase tracking-[0.14em] text-zinc-500">{item.product}</p>
               <div>
                 <p className="text-sm text-white">
                   {item.title}
-                  <span className="ml-2 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">
-                    {item.status}
-                  </span>
+                  <span className="ml-2 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-600">{item.status}</span>
                 </p>
                 <p className="mt-1 text-xs leading-relaxed text-zinc-400">{item.detail}</p>
-                {index === 0 ? (
-                  <p className="mt-1 text-[11px] text-zinc-600">Current focus of the company.</p>
-                ) : null}
               </div>
             </li>
           ))}
         </ol>
-      </Panel>
+      </section>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <Panel>
-          <PanelHeader title="What is already specified" subtitle="On the public record — not live cohorts." />
-          <ul className="space-y-3">
-            {company.results.map((item) => (
-              <li key={item.label} className="border border-white/8 bg-black/25 p-3">
-                <p className="text-sm font-medium text-white">{item.label}</p>
-                <p className="mt-1 font-mono text-xs text-zinc-300">{item.value}</p>
-                <p className="mt-1 text-[11px] text-zinc-500">{item.note}</p>
+        <section className="border border-white/10 bg-[#09090b] p-5">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Already specified</p>
+          <ul className="mt-4 space-y-3">
+            {(["quantrion", "vdoc", "exorax"] as ProductId[]).map((id) => (
+              <li key={id} className="flex items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2 text-sm text-white">
+                  <ProductLogo product={id} size={22} />
+                  {id === "quantrion" ? "Quantrion" : id === "vdoc" ? "Vdoc" : "ExoraX"}
+                </span>
+                <Link
+                  href={`/${id}/architecture`}
+                  className={`text-xs underline decoration-white/20 underline-offset-4 ${productAccents[id].text}`}
+                >
+                  Open architecture
+                </Link>
               </li>
             ))}
           </ul>
-        </Panel>
-        <Panel>
-          <PanelHeader
-            title="Constraints"
-            subtitle="The roadmap is written against these. They are not excuses after the fact."
-          />
-          <ul className="space-y-3 text-sm leading-relaxed text-zinc-300">
+        </section>
+        <section className="border border-white/10 bg-[#09090b] p-5">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Constraints</p>
+          <ul className="mt-4 space-y-2 text-sm leading-relaxed text-zinc-400">
             <li>
-              <span className="text-white">India first.</span> Expansion to other high-economy markets is a plan, not current operations.
+              <span className="text-white">Target, not telemetry.</span> 90,000 users is the month-6 goal after investment.
             </li>
             <li>
-              <span className="text-white">Founder-led.</span> {company.founder.name} builds Quantavex. The six fields below are hires the company needs — not a team already in place.
+              <span className="text-white">Founder-led.</span> {company.founder.name} builds this. The six fields below are hires — not a team already in place.
             </li>
             <li>
-              <span className="text-white">Three platforms, one company.</span> Quantrion, Vdoc, and ExoraX are not three startups. They share one parent.
+              <span className="text-white">India first as market.</span> Build is simultaneous. Geography expansion remains a later plan.
             </li>
             <li>
-              <span className="text-white">Alpha is not production.</span> Linked interfaces can be opened. Nothing here is live traffic or revenue.
+              <span className="text-white">Terms stay private.</span> Write through Contact. This page is the operating program.
             </li>
           </ul>
-        </Panel>
+        </section>
       </div>
 
-      <Panel>
-        <PanelHeader title="What the build needs" subtitle={`${company.team.posture} · six fields`} />
-        <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">{company.team.note}</p>
-        <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      <section className="border border-white/10 bg-[#09090b] p-5 sm:p-6">
+        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">What the build needs</p>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-400">{company.team.note}</p>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {company.team.seats.map((seat) => (
             <li key={seat.field} className="border border-white/8 bg-black/25 p-3">
               <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-500">{seat.role}</p>
@@ -239,50 +218,72 @@ export function ForecastView() {
             </li>
           ))}
         </ul>
-      </Panel>
+      </section>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <Panel>
-          <PanelHeader title="Why this order" subtitle="Execution advantage and the load it creates" />
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Advantage</p>
-          <ul className="mt-2 space-y-2">
-            {company.advantages.map((item) => (
-              <li key={item} className="text-sm leading-relaxed text-zinc-300">
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Risks</p>
-          <ul className="mt-2 space-y-2">
-            {company.risks.map((item) => (
-              <li key={item} className="text-sm leading-relaxed text-zinc-400">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Panel>
-        <Panel>
-          <PanelHeader title="Talk to the company" subtitle="Investors and partners — write once." />
-          <p className="text-sm leading-relaxed text-zinc-400">
-            Product questions belong on each dossier. Company and investment conversation belongs in Contact —
-            not as public terms on this page.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <Link
-              href="/#contact"
-              className="inline-flex border border-white/20 bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-zinc-200"
-            >
-              Contact
-            </Link>
-            <Link
-              href={company.founder.path}
-              className="inline-flex border border-white/15 px-4 py-2 text-sm text-white hover:border-white/30"
-            >
-              Founder
-            </Link>
-          </div>
-        </Panel>
+      <div className="flex flex-wrap gap-2 border border-white/10 bg-[#09090b] p-5">
+        <Link href="/#contact" className="inline-flex border border-white/20 bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-zinc-200">
+          Contact
+        </Link>
+        <Link href={company.founder.path} className="inline-flex border border-white/15 px-4 py-2 text-sm text-white hover:border-white/30">
+          Founder
+        </Link>
       </div>
     </div>
+  )
+}
+
+function MeshFigure() {
+  return (
+    <svg viewBox="0 0 640 340" className="mt-4 h-auto w-full" role="img" aria-label="Quantavex API mesh connecting three platforms">
+      <rect width="640" height="340" fill="#050506" />
+      <circle cx="320" cy="170" r="58" fill="#09090b" stroke="#fafafa" strokeWidth="1.4" />
+      <text x="320" y="164" textAnchor="middle" fill="#fafafa" fontSize="12" fontWeight="600">
+        QUANTAVEX
+      </text>
+      <text x="320" y="182" textAnchor="middle" fill="#a1a1aa" fontSize="10">
+        API plane
+      </text>
+      <Node cx={120} cy={70} label="Quantrion" sub="Q1" stroke="#2dd4bf" />
+      <Node cx={520} cy={70} label="Vdoc" sub="V1" stroke="#f43f5e" />
+      <Node cx={320} cy={290} label="ExoraX" sub="X1" stroke="#d4d4d8" />
+      <line x1="168" y1="92" x2="272" y2="138" stroke="#2dd4bf" strokeWidth="1.2" />
+      <line x1="472" y1="92" x2="368" y2="138" stroke="#f43f5e" strokeWidth="1.2" />
+      <line x1="320" y1="228" x2="320" y2="252" stroke="#d4d4d8" strokeWidth="1.2" />
+      <text x="200" y="128" fill="#5eead4" fontSize="9">
+        identity · DNA
+      </text>
+      <text x="390" y="128" fill="#fda4af" fontSize="9">
+        identity · session
+      </text>
+      <text x="332" y="246" fill="#d4d4d8" fontSize="9">
+        identity · catalog
+      </text>
+    </svg>
+  )
+}
+
+function Node({
+  cx,
+  cy,
+  label,
+  sub,
+  stroke,
+}: {
+  cx: number
+  cy: number
+  label: string
+  sub: string
+  stroke: string
+}) {
+  return (
+    <g>
+      <circle cx={cx} cy={cy} r="38" fill="#09090b" stroke={stroke} strokeWidth="1.4" />
+      <text x={cx} y={cy - 4} textAnchor="middle" fill="#fafafa" fontSize="11" fontWeight="600">
+        {label}
+      </text>
+      <text x={cx} y={cy + 12} textAnchor="middle" fill={stroke} fontSize="10">
+        {sub}
+      </text>
+    </g>
   )
 }
