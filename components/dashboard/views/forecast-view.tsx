@@ -243,9 +243,9 @@ function MeshFigure() {
       <text x="320" y="182" textAnchor="middle" fill="#a1a1aa" fontSize="10">
         API plane
       </text>
-      <Node cx={120} cy={70} label="Quantrion" sub="Q1" stroke="#2dd4bf" />
-      <Node cx={520} cy={70} label="Vdoc" sub="V1" stroke="#f43f5e" />
-      <Node cx={320} cy={290} label="ExoraX" sub="X1" stroke="#d4d4d8" />
+      <Node cx={120} cy={70} label="Quantrion" stroke="#2dd4bf" />
+      <Node cx={520} cy={70} label="Vdoc" stroke="#f43f5e" />
+      <Node cx={320} cy={290} label="ExoraX" stroke="#d4d4d8" />
       <line x1="168" y1="92" x2="272" y2="138" stroke="#2dd4bf" strokeWidth="1.2" />
       <line x1="472" y1="92" x2="368" y2="138" stroke="#f43f5e" strokeWidth="1.2" />
       <line x1="320" y1="228" x2="320" y2="252" stroke="#d4d4d8" strokeWidth="1.2" />
@@ -266,23 +266,18 @@ function Node({
   cx,
   cy,
   label,
-  sub,
   stroke,
 }: {
   cx: number
   cy: number
   label: string
-  sub: string
   stroke: string
 }) {
   return (
     <g>
       <circle cx={cx} cy={cy} r="38" fill="#09090b" stroke={stroke} strokeWidth="1.4" />
-      <text x={cx} y={cy - 4} textAnchor="middle" fill="#fafafa" fontSize="11" fontWeight="600">
+      <text x={cx} y={cy + 4} textAnchor="middle" fill="#fafafa" fontSize="11" fontWeight="600">
         {label}
-      </text>
-      <text x={cx} y={cy + 12} textAnchor="middle" fill={stroke} fontSize="10">
-        {sub}
       </text>
     </g>
   )

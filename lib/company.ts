@@ -94,7 +94,7 @@ export const company = {
       product: "All three",
       title: "Architecture infrastructure",
       status: "Clock starts",
-      detail: "Stand Q1, V1, and X1 infra in parallel from the specified figures — not a generic cloud template.",
+      detail: "Stand exam, entertainment, and commerce infra in parallel from the specified figures — not a generic cloud template.",
     },
     {
       period: "M2",

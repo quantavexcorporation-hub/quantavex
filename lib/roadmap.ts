@@ -19,17 +19,17 @@ export const tracks: {
   {
     id: "quantrion",
     label: "Quantrion",
-    cells: ["Q1 infra", "DNA loop", "API live", "Student OS", "Harden", "Production"],
+    cells: ["Infra", "DNA loop", "API live", "Student OS", "Harden", "Production"],
   },
   {
     id: "vdoc",
     label: "Vdoc",
-    cells: ["V1 infra", "Story graph", "API live", "Experience OS", "Harden", "Production"],
+    cells: ["Infra", "Story graph", "API live", "Experience OS", "Harden", "Production"],
   },
   {
     id: "exorax",
     label: "ExoraX",
-    cells: ["X1 infra", "Confidence loop", "API live", "Commerce OS", "Harden", "Production"],
+    cells: ["Infra", "Confidence loop", "API live", "Commerce OS", "Harden", "Production"],
   },
   {
     id: "mesh",
@@ -57,7 +57,7 @@ export const program = [
   {
     n: "03",
     title: "Infra from the figures",
-    text: "Q1 four-layer loop, V1 story graph, X1 six-layer confidence stack. Infrastructure follows the architecture pages — not a generic cloud template.",
+    text: "Four-layer exam loop, story graph, six-layer confidence stack. Infrastructure follows the architecture pages — not a generic cloud template.",
   },
   {
     n: "04",
