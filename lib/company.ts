@@ -129,7 +129,7 @@ export const company = {
       product: "Grab",
       title: "Six-channel user grab",
       status: "In parallel",
-      detail: "Nine moves on a limited budget — YouTube, direct outreach, free trial, partnerships, communities, organic social, search, referral, page conversion — carried on YouTube, Instagram, X, LinkedIn, WhatsApp, and Reddit.",
+      detail: "Nine moves off the feed — outreach, trial, partnerships, search, page conversion, email, referral, live demonstrations, search ads. Social stays on the six channels.",
     },
     {
       period: "M6",

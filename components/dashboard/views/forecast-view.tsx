@@ -137,8 +137,7 @@ export function ForecastView() {
       <section>
         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">User grab · nine strategies</p>
         <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          Ranked for a founder-led build with a limited marketing budget. Hours go to the moves that return users.
-          Paid ads, email lists, and micro-influencer deals start after people who arrive stay and use the product.
+          Ranked for a limited budget. These nine sit beside the six channels. None of them is a social network.
         </p>
         <ol className="grid gap-2 lg:grid-cols-3">
           {grabStrategies.map((item) => (
@@ -157,7 +156,7 @@ export function ForecastView() {
       <section>
         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Where it runs · six channels</p>
         <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          The nine strategies run on these six. Each mark is the real channel. Hours stay here.
+          Social distribution stays on these six marks. The nine strategies above are the rest of the grab.
         </p>
         <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
           {grab.map((channel) => (
