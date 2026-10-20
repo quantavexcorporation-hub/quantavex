@@ -28,7 +28,7 @@ export const pageMeta: Record<
   },
   "/forecasting": {
     title: "Roadmap",
-    subtitle: "Six months after investment — three platforms, one machine, 90,000 users",
+    subtitle: "Six months after investment — 90,000 users on each platform, 270,000 total",
   },
   "/quantrion/architecture": {
     title: "Quantrion architecture",

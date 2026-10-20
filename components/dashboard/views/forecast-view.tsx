@@ -36,9 +36,12 @@ export function ForecastView() {
           <div className="flex flex-col justify-end border border-white/10 bg-black/40 p-5 sm:p-6">
             <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-500">Month 6 target</p>
             <p className="mt-2 text-6xl font-semibold tracking-tighter text-white sm:text-7xl">
-              90,000
+              {roadmap.users}
             </p>
-            <p className="mt-2 text-sm text-zinc-400">users</p>
+            <p className="mt-2 text-sm text-zinc-400">users · company total</p>
+            <p className="mt-1 font-mono text-xs text-zinc-500">
+              {roadmap.perPlatform} × 3 platforms
+            </p>
             <p className="mt-3 text-xs leading-relaxed text-zinc-500">{roadmap.usersNote}</p>
           </div>
         </div>
@@ -191,7 +194,7 @@ export function ForecastView() {
           <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Constraints</p>
           <ul className="mt-4 space-y-2 text-sm leading-relaxed text-zinc-400">
             <li>
-              <span className="text-white">Target, not telemetry.</span> 90,000 users is the month-6 goal after investment.
+              <span className="text-white">Target, not telemetry.</span> 90,000 users on each platform. 270,000 company total at month 6 after investment.
             </li>
             <li>
               <span className="text-white">Founder-led.</span> {company.founder.name} builds this. The six fields below are hires — not a team already in place.

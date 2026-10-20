@@ -35,7 +35,7 @@ export function getForecast(): {
       { id: "horizon", label: "Horizon", value: "6 months", delta: "After investment — not live operations", tone: "amber" },
       { id: "posture", label: "Build", value: "Simultaneous", delta: "All three platforms in parallel", tone: "cyan" },
       { id: "mesh", label: "Connect", value: "API mesh", delta: "Architecture contracts on one plane", tone: "purple" },
-      { id: "users", label: "Target", value: "90,000", delta: "Users at month 6 — not live traffic", tone: "emerald" },
+      { id: "users", label: "Target", value: "270,000", delta: "90,000 on each platform — not live traffic", tone: "emerald" },
     ],
     mix: [],
     milestones: company.milestones.map((item) => ({

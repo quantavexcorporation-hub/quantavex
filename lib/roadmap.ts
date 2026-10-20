@@ -2,11 +2,12 @@ import type { ProductId } from "@/components/brand/product-logo"
 
 export const roadmap = {
   clock: "6 months after investment",
-  users: "90,000",
-  usersNote: "Company target across three production platforms — not live traffic today.",
+  users: "270,000",
+  perPlatform: "90,000",
+  usersNote: "90,000 users on each platform. 270,000 company total at month 6 — a target, not live traffic today.",
   posture: "Simultaneous",
   promise:
-    "All three platforms are built in parallel, connected on one API plane, stood up on architecture-faithful infrastructure, run with real operating cost, and brought to production with a 90,000-user target inside six months of investment.",
+    "All three platforms are built in parallel, connected on one API plane, stood up on architecture-faithful infrastructure, run with real operating cost, and brought to production with 90,000 users on each platform — 270,000 in total — inside six months of investment.",
 } as const
 
 export const months = ["M1", "M2", "M3", "M4", "M5", "M6"] as const
@@ -71,8 +72,8 @@ export const program = [
   },
   {
     n: "06",
-    title: "90,000 users",
-    text: "Company target at the end of the six-month clock. A goal after investment — not a live cohort today.",
+    title: "90,000 × 3",
+    text: "90,000 users on Quantrion, Vdoc, and ExoraX each. 270,000 company total at the end of the six-month clock — a goal after investment, not a live cohort today.",
   },
 ] as const
 

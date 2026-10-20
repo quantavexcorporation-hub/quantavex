@@ -18,7 +18,7 @@ export const company = {
   paperPdf: "/research/quantavex.pdf",
   tam: "First market: India competitive-exam cohort via Quantrion — not a combined global TAM",
   thesis:
-    "After investment, all three platforms are built in parallel on one API plane. First market remains India. 90,000 users is a six-month production target — not live traffic today.",
+    "After investment, all three platforms are built in parallel on one API plane. First market remains India. 90,000 users on each platform — 270,000 total — is the six-month production target, not live traffic today.",
   proof:
     "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Each dossier links an alpha interface you can open — not live production traffic.",
   geography:
@@ -127,9 +127,9 @@ export const company = {
     {
       period: "M6",
       product: "Quantavex",
-      title: "90,000 users",
+      title: "90,000 users each",
       status: "Target",
-      detail: "Three production platforms. Company user target at the end of the six-month clock — not a live cohort today.",
+      detail: "Quantrion, Vdoc, and ExoraX: 90,000 users on each. 270,000 company total at the end of the six-month clock — not a live cohort today.",
     },
   ],
   results: [
