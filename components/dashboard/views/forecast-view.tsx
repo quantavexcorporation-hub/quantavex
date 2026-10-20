@@ -4,7 +4,7 @@ import Link from "next/link"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { productAccents } from "@/lib/product-accents"
 import { company } from "@/lib/company"
-import { mesh, months, opex, program, roadmap, tracks } from "@/lib/roadmap"
+import { grab, mesh, months, opex, program, roadmap, tracks } from "@/lib/roadmap"
 
 const trackAccent: Record<string, string> = {
   quantrion: "border-teal-500/35 bg-teal-400/10 text-teal-100",
@@ -12,6 +12,7 @@ const trackAccent: Record<string, string> = {
   exorax: "border-zinc-400/35 bg-zinc-400/10 text-zinc-100",
   mesh: "border-white/20 bg-white/[0.04] text-white",
   opex: "border-amber-400/25 bg-amber-400/[0.06] text-amber-100",
+  grab: "border-sky-400/30 bg-sky-400/10 text-sky-100",
 }
 
 export function ForecastView() {
@@ -50,7 +51,7 @@ export function ForecastView() {
             { k: "Clock", v: "6 months", n: "After investment" },
             { k: "Build", v: "Parallel", n: "Quantrion · Vdoc · ExoraX" },
             { k: "Connect", v: "API mesh", n: "One identity plane" },
-            { k: "Gate", v: "Production", n: "Alpha is not the end" },
+            { k: "Grab", v: "6 channels", n: "YouTube to Reddit" },
           ].map((item) => (
             <div key={item.k} className="px-4 py-4 sm:px-6">
               <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500">{item.k}</p>
@@ -134,6 +135,29 @@ export function ForecastView() {
       </section>
 
       <section>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">User grab · six channels</p>
+        <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
+          90,000 users per product is not an accident of launch. These six are high return and worth the hours.
+          Nothing else gets a distribution seat on this clock.
+        </p>
+        <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+          {grab.map((channel) => (
+            <li key={channel.name} className="border border-white/10 bg-[#09090b] p-4">
+              <div className="flex items-baseline justify-between gap-3">
+                <p className="font-mono text-[10px] text-zinc-600">{channel.n}</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">{channel.yield}</p>
+              </div>
+              <p className="mt-2 text-base font-semibold text-white">{channel.name}</p>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-400">{channel.role}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-xs text-zinc-600">
+          Planned distribution. Not live follower counts, paid-reach claims, or current cohorts.
+        </p>
+      </section>
+
+      <section>
         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Operating cost</p>
         <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {opex.map((item) => (
@@ -194,7 +218,7 @@ export function ForecastView() {
           <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Constraints</p>
           <ul className="mt-4 space-y-2 text-sm leading-relaxed text-zinc-400">
             <li>
-              <span className="text-white">Target, not telemetry.</span> 90,000 users on each platform. 270,000 company total at month 6 after investment.
+              <span className="text-white">Target, not telemetry.</span> 90,000 users on each platform via six channels. 270,000 company total at month 6 after investment.
             </li>
             <li>
               <span className="text-white">Founder-led.</span> {company.founder.name} builds this. The six fields below are hires — not a team already in place.

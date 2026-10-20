@@ -125,6 +125,13 @@ export const company = {
       detail: "Inference, storage, mesh, 3PL adapter, support. Production has a bill. The plan pays it.",
     },
     {
+      period: "M4–M6",
+      product: "Grab",
+      title: "Six-channel user grab",
+      status: "In parallel",
+      detail: "YouTube, Instagram, X, LinkedIn, WhatsApp, Reddit — the only six channels the company spends hours on. High return, not a spray of every app.",
+    },
+    {
       period: "M6",
       product: "Quantavex",
       title: "90,000 users each",
