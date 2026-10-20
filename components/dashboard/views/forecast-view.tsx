@@ -4,7 +4,7 @@ import Link from "next/link"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { productAccents } from "@/lib/product-accents"
 import { company } from "@/lib/company"
-import { grab, mesh, months, opex, program, roadmap, tracks } from "@/lib/roadmap"
+import { grab, grabStrategies, mesh, months, opex, program, roadmap, tracks } from "@/lib/roadmap"
 
 const trackAccent: Record<string, string> = {
   quantrion: "border-teal-500/35 bg-teal-400/10 text-teal-100",
@@ -135,19 +135,38 @@ export function ForecastView() {
       </section>
 
       <section>
-        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">User grab · six channels</p>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">User grab · nine strategies</p>
         <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          90,000 users per product is not an accident of launch. These six are high return and worth the hours.
-          Nothing else gets a distribution seat on this clock.
+          Ranked for a founder-led build with a limited marketing budget. Hours go to the moves that return users.
+          Paid ads, email lists, and micro-influencer deals start after people who arrive stay and use the product.
+        </p>
+        <ol className="grid gap-2 lg:grid-cols-3">
+          {grabStrategies.map((item) => (
+            <li key={item.n} className="border border-white/10 bg-[#09090b] p-4">
+              <div className="flex items-baseline justify-between gap-3">
+                <p className="font-mono text-[10px] text-zinc-600">{item.n}</p>
+                <p className="text-right font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">{item.move}</p>
+              </div>
+              <p className="mt-2 text-base font-semibold text-white">{item.name}</p>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-400">{item.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Where it runs · six channels</p>
+        <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
+          The nine strategies run on these six. Each mark is the real channel. Hours stay here.
         </p>
         <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
           {grab.map((channel) => (
             <li key={channel.name} className="border border-white/10 bg-[#09090b] p-4">
-              <div className="flex items-baseline justify-between gap-3">
-                <p className="font-mono text-[10px] text-zinc-600">{channel.n}</p>
+              <div className="flex items-center justify-between gap-3">
+                <img src={`/brands/${channel.slug}.svg`} alt="" width={28} height={28} className="h-7 w-7 shrink-0" />
                 <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">{channel.yield}</p>
               </div>
-              <p className="mt-2 text-base font-semibold text-white">{channel.name}</p>
+              <p className="mt-3 text-base font-semibold text-white">{channel.name}</p>
               <p className="mt-2 text-xs leading-relaxed text-zinc-400">{channel.role}</p>
             </li>
           ))}

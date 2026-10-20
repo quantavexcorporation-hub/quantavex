@@ -129,7 +129,7 @@ export const company = {
       product: "Grab",
       title: "Six-channel user grab",
       status: "In parallel",
-      detail: "YouTube, Instagram, X, LinkedIn, WhatsApp, Reddit — the only six channels the company spends hours on. High return, not a spray of every app.",
+      detail: "Nine moves on a limited budget — YouTube, direct outreach, free trial, partnerships, communities, organic social, search, referral, page conversion — carried on YouTube, Instagram, X, LinkedIn, WhatsApp, and Reddit.",
     },
     {
       period: "M6",
