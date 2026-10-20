@@ -1,11 +1,18 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
+import { ComposableMap, Geographies, Geography, Line, Marker } from "react-simple-maps"
 import {
   getManifestModel,
+  getPriorityRegions,
+  marketBand,
   type ManifestNode,
   type MarketBand,
 } from "@/lib/priority-markets"
+
+const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
+const regionData = getPriorityRegions()
+const modelEdges = getManifestModel().edges
 
 const W = 1000
 const H = 620
@@ -36,12 +43,129 @@ function networkPoint(node: ManifestNode) {
   return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) }
 }
 
-function geoPoint(node: ManifestNode) {
-  const padX = 56
-  const padY = 48
-  const x = padX + ((node.lon + 180) / 360) * (W - padX * 2)
-  const y = padY + (1 - (node.lat + 55) / 125) * (H - padY * 2)
-  return { x, y }
+function ManifestWorldMap({
+  selected,
+  band,
+  onSelect,
+}: {
+  selected: string
+  band: MarketBand | "All"
+  onSelect: (code: string) => void
+}) {
+  const [mapReady, setMapReady] = useState(false)
+
+  useEffect(() => {
+    setMapReady(true)
+  }, [])
+
+  const inBand = (code: string) => {
+    const node = regionData[code]
+    if (!node) return false
+    if (band === "All") return true
+    return marketBand(node.priority) === band
+  }
+
+  if (!mapReady) {
+    return (
+      <div className="flex h-full min-h-[280px] items-center justify-center text-[10px] uppercase tracking-[0.2em] text-zinc-600">
+        Loading geography
+      </div>
+    )
+  }
+
+  return (
+    <ComposableMap
+      projection="geoMercator"
+      projectionConfig={{ scale: 130, center: [20, 20] }}
+      style={{ width: "100%", height: "100%" }}
+    >
+      <Geographies geography={geoUrl}>
+        {({ geographies }) =>
+          geographies.map((geo) => {
+            const regionCode = geo.properties.ISO_A3 as string
+            const isActive = Boolean(regionData[regionCode])
+            const isSelected = selected === regionCode
+            const faded = isActive && !inBand(regionCode) && !isSelected
+
+            return (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                onClick={() => {
+                  if (isActive) onSelect(regionCode)
+                }}
+                style={{
+                  default: {
+                    fill: isActive
+                      ? isSelected
+                        ? "#d4d4d8"
+                        : faded
+                          ? "#18181b"
+                          : "#2a2a2e"
+                      : "#111114",
+                    stroke: isActive ? "#a1a1aa" : "#3f3f46",
+                    strokeWidth: isActive ? 0.6 : 0.25,
+                    outline: "none",
+                    cursor: isActive ? "pointer" : "default",
+                  },
+                  hover: {
+                    fill: isActive ? "#f4f4f5" : "#18181b",
+                    stroke: isActive ? "#fafafa" : "#3f3f46",
+                    strokeWidth: isActive ? 0.8 : 0.3,
+                    outline: "none",
+                  },
+                  pressed: {
+                    fill: isActive ? "#d4d4d8" : "#111114",
+                    outline: "none",
+                  },
+                }}
+              />
+            )
+          })
+        }
+      </Geographies>
+      {modelEdges.map((conn) => {
+        const from = regionData[conn.from]
+        const to = regionData[conn.to]
+        if (!from || !to) return null
+        const hot = conn.from === selected || conn.to === selected
+        const shown = inBand(conn.from) && inBand(conn.to)
+        if (!shown && !hot) return null
+        return (
+          <Line
+            key={`${conn.from}-${conn.to}`}
+            from={from.coordinates}
+            to={to.coordinates}
+            stroke={hot ? "rgba(250,250,250,0.75)" : "rgba(228,228,231,0.28)"}
+            strokeWidth={hot ? 1.2 : 0.7}
+            strokeLinecap="round"
+          />
+        )
+      })}
+      {Object.entries(regionData).map(([code, data]) => {
+        const isSelected = selected === code
+        const faded = !inBand(code) && !isSelected
+        return (
+          <Marker key={code} coordinates={data.coordinates}>
+            <g onClick={() => onSelect(code)} style={{ cursor: "pointer", opacity: faded ? 0.2 : 1 }}>
+              <circle r={isSelected ? 5 : 3} fill="#fafafa" />
+              {isSelected ? (
+                <text
+                  y={-10}
+                  textAnchor="middle"
+                  fill="#fafafa"
+                  fontSize="9"
+                  fontFamily="ui-monospace, monospace"
+                >
+                  {code}
+                </text>
+              ) : null}
+            </g>
+          </Marker>
+        )
+      })}
+    </ComposableMap>
+  )
 }
 
 export function MarketManifest() {
@@ -59,10 +183,10 @@ export function MarketManifest() {
   const points = useMemo(() => {
     const map = new Map<string, { x: number; y: number }>()
     for (const node of model.nodes) {
-      map.set(node.code, mode === "network" ? networkPoint(node) : geoPoint(node))
+      map.set(node.code, networkPoint(node))
     }
     return map
-  }, [model.nodes, mode])
+  }, [model.nodes])
 
   const active = byCode.get(selected) ?? model.nodes[0]
   const focus = hovered ?? selected
@@ -138,15 +262,17 @@ export function MarketManifest() {
       </div>
 
       <div className="grid lg:grid-cols-[minmax(0,1fr)_280px]">
-        <div className="relative min-h-[280px] overflow-x-auto bg-[#07070a] sm:min-h-[420px] lg:min-h-[520px]">
+        <div className="relative h-[300px] overflow-hidden bg-[#07070a] sm:h-[420px] lg:h-[520px]">
+          {mode === "geo" ? (
+            <ManifestWorldMap selected={selected} band={band} onSelect={setSelected} />
+          ) : (
           <svg
             viewBox={`0 0 ${W} ${H}`}
             className="h-full w-full"
             role="img"
             aria-label="Priority market expansion graph"
           >
-            {mode === "network"
-              ? [0.3, 0.54, 0.78].map((radius, index) => (
+            {[0.3, 0.54, 0.78].map((radius, index) => (
                   <circle
                     key={radius}
                     cx={W / 2}
@@ -156,19 +282,7 @@ export function MarketManifest() {
                     stroke="rgba(255,255,255,0.06)"
                     strokeDasharray={index === 2 ? "3 5" : "0"}
                   />
-                ))
-              : (
-                  <>
-                    <line x1="56" y1={H / 2} x2={W - 56} y2={H / 2} stroke="rgba(255,255,255,0.05)" />
-                    <line x1={W / 2} y1="48" x2={W / 2} y2={H - 48} stroke="rgba(255,255,255,0.05)" />
-                    <text x="64" y="36" fill="#52525b" fontSize="11" fontFamily="ui-monospace, monospace">
-                      λ west → east
-                    </text>
-                    <text x="64" y={H - 20} fill="#52525b" fontSize="11" fontFamily="ui-monospace, monospace">
-                      φ south → north
-                    </text>
-                  </>
-                )}
+                ))}
 
             {model.edges.map((edge) => {
               const a = points.get(edge.from)
@@ -238,6 +352,7 @@ export function MarketManifest() {
               )
             })}
           </svg>
+          )}
         </div>
 
         <aside className="border-t border-white/10 lg:border-t-0 lg:border-l">
