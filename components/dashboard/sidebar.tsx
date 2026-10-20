@@ -10,7 +10,7 @@ import { productAccents } from "@/lib/product-accents"
 import {
   LayoutDashboard,
   Zap,
-  TrendingUp,
+  Route,
   ChevronLeft,
   ChevronRight,
   User,
@@ -47,7 +47,7 @@ const navGroups: { label: string; items: NavItem[] }[] = [
     label: "Insights",
     items: [
       { href: "/intelligence", label: "Priority markets", icon: Zap },
-      { href: "/forecasting", label: "Fundraising", icon: TrendingUp },
+      { href: "/forecasting", label: "Roadmap", icon: Route },
     ],
   },
 ]

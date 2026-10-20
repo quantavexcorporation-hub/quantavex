@@ -4,7 +4,7 @@ import { useState } from "react"
 import { usePathname } from "next/navigation"
 import { Menu, Search } from "lucide-react"
 import { getPageMeta } from "@/lib/nav"
-import { company, investorMailto } from "@/lib/company"
+import { company } from "@/lib/company"
 import { useSidebarState } from "@/components/dashboard/sidebar"
 
 interface TopNavbarProps {
@@ -78,17 +78,8 @@ export function TopNavbar({
         </div>
 
         <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
-          {pathname === "/forecasting" ? (
-            <span className="hidden border border-white/15 px-2.5 py-1 text-[10px] font-medium tracking-[0.16em] text-zinc-400 uppercase sm:inline">
-              {company.stage}
-            </span>
-          ) : null}
           <a
-            href={
-              pathname === "/forecasting"
-                ? investorMailto("conversation")
-                : `mailto:${company.founder.email}`
-            }
+            href={`mailto:${company.founder.email}`}
             className="inline-flex h-9 items-center justify-center rounded-lg border border-white/10 px-2.5 text-[11px] font-medium text-gray-400 transition hover:border-white/25 hover:text-white sm:border-0 sm:px-0 sm:text-xs"
             title={company.founder.email}
           >

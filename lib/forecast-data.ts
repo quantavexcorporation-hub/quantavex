@@ -23,8 +23,6 @@ export interface CapitalMilestone {
   outcome: string
 }
 
-const fundColors = ["#22d3ee", "#a855f7", "#10b981", "#f59e0b", "#38bdf8", "#c084fc", "#94a3b8"]
-
 export function getForecast(): {
   series: ForecastMonth[]
   kpis: ForecastKpi[]
@@ -34,20 +32,16 @@ export function getForecast(): {
   return {
     series: [],
     kpis: [
-      { id: "raise", label: "Investment", value: company.raise, delta: `${company.raiseInr} · ${company.round}`, tone: "cyan" },
-      { id: "equity", label: "Equity offered", value: company.equity, delta: company.instrument, tone: "purple" },
-      { id: "valuation", label: "Valuation", value: company.valuation, delta: company.valuationNote, tone: "emerald" },
-      { id: "horizon", label: "Roadmap", value: company.horizon, delta: "Quantrion first, then Vdoc and ExoraX", tone: "amber" },
+      { id: "horizon", label: "Horizon", value: company.horizon, delta: "Build sequence — not live operations", tone: "amber" },
+      { id: "first", label: "First product", value: "Quantrion", delta: "India competitive exams", tone: "cyan" },
+      { id: "second", label: "Then", value: "Vdoc", delta: "Interactive entertainment", tone: "purple" },
+      { id: "third", label: "Then", value: "ExoraX", delta: "Decision commerce", tone: "emerald" },
     ],
-    mix: company.funds.map((item, index) => ({
-      name: item.label,
-      value: item.percentage,
-      color: fundColors[index] ?? "#64748b",
-    })),
+    mix: [],
     milestones: company.milestones.map((item) => ({
       period: item.period,
       title: item.title,
-      capital: company.round,
+      capital: item.product,
       outcome: item.detail,
     })),
   }

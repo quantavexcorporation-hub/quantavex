@@ -14,8 +14,8 @@ const footerLinks = {
   Company: [
     { label: "Overview", href: "/" },
     { label: "Founder", href: FOUNDER_PORTFOLIO_PATH },
-    { label: "Fundraising", href: "/forecasting" },
-    { label: "Company paper", href: company.paperPdf },
+    { label: "Roadmap", href: "/forecasting" },
+    { label: "Priority markets", href: "/intelligence" },
   ],
 }
 

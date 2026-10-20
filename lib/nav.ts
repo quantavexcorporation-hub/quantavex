@@ -27,8 +27,8 @@ export const pageMeta: Record<
     subtitle: "India first. Thirty markets. One order of operations.",
   },
   "/forecasting": {
-    title: "Fundraising",
-    subtitle: "Pre-seed · use of funds and twelve-month roadmap — terms in conversation",
+    title: "Roadmap",
+    subtitle: "Product development — Quantrion first, then Vdoc and ExoraX",
   },
 }
 

@@ -31,8 +31,8 @@ export const company = {
   },
   team: {
     posture: "Founder-led",
-    note: "Quantavex is built by Udit Gour. The six seats below are the people this round is meant to hire — not a team already in place.",
-    hiring: "Each field is a required hire after funding.",
+    note: "Quantavex is built by Udit Gour. The six seats below are the people the company needs to hire to execute this roadmap — not a team already in place.",
+    hiring: "Each field is a required hire as the products are built.",
     seats: [
       {
         field: "Human Psychology & Resources",
@@ -89,12 +89,48 @@ export const company = {
     { label: "Contingency", percentage: 5, detail: "Risk buffer." },
   ],
   milestones: [
-    { period: "0–3 mo", title: "Quantrion MVP", detail: "Exam intelligence platform into first working product." },
-    { period: "3–5 mo", title: "Beta launch", detail: "Users and testing on Quantrion." },
-    { period: "5–7 mo", title: "Early traction", detail: "Iterate from live usage." },
-    { period: "6–8 mo", title: "Vdoc prototype", detail: "Core entertainment AI engine." },
-    { period: "7–9 mo", title: "ExoraX MVP", detail: "Basic decision-commerce version." },
-    { period: "9–12 mo", title: "Scale & optimization", detail: "Performance, cost, and cross-platform loops." },
+    {
+      period: "0–3 mo",
+      product: "Quantrion",
+      title: "Working product",
+      status: "Next",
+      detail: "Turn the exam-intelligence architecture into the first working product for India competitive-exam students.",
+    },
+    {
+      period: "3–5 mo",
+      product: "Quantrion",
+      title: "First testers",
+      status: "Later",
+      detail: "Put Quantrion in front of a closed tester group. Learn from use — not a public launch claim.",
+    },
+    {
+      period: "5–7 mo",
+      product: "Quantrion",
+      title: "Iterate",
+      status: "Later",
+      detail: "Tighten the diagnose → adapt → validate → predict loop from tester feedback.",
+    },
+    {
+      period: "6–8 mo",
+      product: "Vdoc",
+      title: "Prototype",
+      status: "Later",
+      detail: "Build the entertainment OS core from the Vdoc monograph — speak, enter, shape, own.",
+    },
+    {
+      period: "7–9 mo",
+      product: "ExoraX",
+      title: "Working product",
+      status: "Later",
+      detail: "Stand up decision commerce: inspect before value moves — product, price, and risk.",
+    },
+    {
+      period: "9–12 mo",
+      product: "Quantavex",
+      title: "One operating loop",
+      status: "Later",
+      detail: "Harden performance and cost. Keep three platforms on one parent company, not three separate firms.",
+    },
   ],
   results: [
     { label: "Learning", value: "Architecture specified", note: "Quantrion monograph — exam intelligence" },
