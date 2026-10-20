@@ -30,6 +30,18 @@ export const pageMeta: Record<
     title: "Roadmap",
     subtitle: "Product development — Quantrion first, then Vdoc and ExoraX",
   },
+  "/quantrion/architecture": {
+    title: "Quantrion architecture",
+    subtitle: "Examination intelligence — specified software stack",
+  },
+  "/vdoc/architecture": {
+    title: "Vdoc architecture",
+    subtitle: "Entertainment OS — specified software stack",
+  },
+  "/exorax/architecture": {
+    title: "ExoraX architecture",
+    subtitle: "Decision commerce — specified software stack",
+  },
 }
 
 export function getPageMeta(pathname: string) {

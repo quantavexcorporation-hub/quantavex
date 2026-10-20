@@ -1,10 +1,10 @@
 "use client"
 
+import Link from "next/link"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { DataTable } from "@/components/dashboard/data-table"
 import { Panel, PanelHeader } from "@/components/dashboard/panel"
 import { ProductDossier } from "@/components/dashboard/product-dossier"
-import { downloadCsv } from "@/lib/ledger"
 import { getProduct } from "@/lib/products"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 
@@ -31,18 +31,12 @@ export function ProductView({ productId }: { productId: ProductId }) {
           title="Architecture grid"
           subtitle="Specified modules for this platform — not live production telemetry"
           action={
-            <button
-              onClick={() =>
-                downloadCsv(
-                  `quantavex-${productId}.csv`,
-                  ["module", "owner", "status", "focus", "layer"],
-                  product.ops.map((row) => [row.module, row.owner, row.status, row.latency, row.load])
-                )
-              }
+            <Link
+              href={`/${productId}/architecture`}
               className="text-xs font-medium text-white underline decoration-white/25 underline-offset-4 hover:decoration-white/60"
             >
-              Download architecture
-            </button>
+              Open architecture
+            </Link>
           }
         />
         <DataTable

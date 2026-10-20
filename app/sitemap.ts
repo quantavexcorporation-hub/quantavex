@@ -9,6 +9,9 @@ const pages = [
   "/exorax",
   "/intelligence",
   "/forecasting",
+  "/quantrion/architecture",
+  "/vdoc/architecture",
+  "/exorax/architecture",
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
