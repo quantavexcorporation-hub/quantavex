@@ -12,32 +12,52 @@ const names: Record<ProductId, string> = {
 }
 
 export function LaterDisplays() {
+  const [open, setOpen] = useState<ProductId | null>(null)
+  const selected = platformDisplays.find((platform) => platform.id === open)
+
   return (
     <section id="banners" className="space-y-4">
       <div>
-        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Three displays · later</p>
+        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Advertising banners · later</p>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          The same three dashboard displays return on each platform when user grab is on. Intelligence, Spotlight, and the ad rail.
+          Three platforms. Open a card to see the three displays that return on that dashboard when user grab is on.
         </p>
       </div>
-      {platformDisplays.map((platform) => (
-        <article key={platform.id} className={`border bg-[#070708] p-3 sm:p-4 ${productAccents[platform.id].border}`}>
-          <div className="mb-3 flex items-center justify-between gap-3">
-            <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">
-              <ProductLogo product={platform.id} size={22} />
-              {names[platform.id]}
-            </span>
-            <span className={`font-mono text-[10px] uppercase tracking-[0.14em] ${productAccents[platform.id].text}`}>
-              With user grab
-            </span>
-          </div>
-          <div className="grid gap-3 lg:grid-cols-3">
-            <RotatingDisplay label={platform.labels[0]} cards={platform.intelligence} />
-            <SpotlightDisplay label={platform.labels[1]} card={platform.spotlight} />
-            <RotatingDisplay label={platform.labels[2]} cards={platform.ads} sponsored />
-          </div>
-        </article>
-      ))}
+      <div className="grid gap-3 md:grid-cols-3">
+        {platformDisplays.map((platform) => {
+          const active = open === platform.id
+          const accent = productAccents[platform.id]
+          return (
+            <button
+              key={platform.id}
+              type="button"
+              aria-expanded={active}
+              onClick={() => setOpen(active ? null : platform.id)}
+              className={`border bg-[#070708] p-4 text-left transition ${accent.border} ${active ? "bg-white/[0.03]" : "hover:bg-white/[0.02]"}`}
+            >
+              <span className="flex items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                  <ProductLogo product={platform.id} size={28} />
+                  {names[platform.id]}
+                </span>
+                <span className={`font-mono text-[10px] uppercase tracking-[0.14em] ${accent.text}`}>
+                  {active ? "Close" : "Open"}
+                </span>
+              </span>
+              <span className="mt-3 block text-xs leading-relaxed text-zinc-500">
+                {platform.labels.join(" · ")}
+              </span>
+            </button>
+          )
+        })}
+      </div>
+      {selected ? (
+        <div className={`grid gap-3 border bg-[#070708] p-3 sm:p-4 lg:grid-cols-3 ${productAccents[selected.id].border}`}>
+          <RotatingDisplay label={selected.labels[0]} cards={selected.intelligence} />
+          <SpotlightDisplay label={selected.labels[1]} card={selected.spotlight} />
+          <RotatingDisplay label={selected.labels[2]} cards={selected.ads} sponsored />
+        </div>
+      ) : null}
     </section>
   )
 }
