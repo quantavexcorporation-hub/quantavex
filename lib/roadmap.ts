@@ -189,97 +189,87 @@ export const grabStrategies = [
   },
 ] as const
 
-export const laterBanners = [
+export type DisplayCard = {
+  eyebrow: string
+  headline: string
+  body: string
+  cta: string
+  accent: string
+}
+
+export const platformDisplays = [
   {
     id: "quantrion" as const,
-    when: "With user grab",
-    note: "Hologram carousel, spotlight, and sponsored rail. Off the product until people are arriving.",
-    groups: [
-      {
-        kind: "Hologram",
-        items: [
-          "AI Interactive Books",
-          "Knowledge DNA",
-          "Performance IQ",
-          "Smart Library",
-          "AI Tutor",
-          "Future Technology",
-        ],
-      },
-      {
-        kind: "Spotlight",
-        items: ["Neural Exam Arena — living simulation, AI opponents adapt to Progress IQ"],
-      },
-      {
-        kind: "Ad slots",
-        items: [
-          "Unlock Full AI Tutor",
-          "Rank Predictor Live",
-          "Intelligence Books",
-          "Frontier Learning Drop",
-        ],
-      },
-    ],
+    labels: ["Intelligence", "Spotlight", "Ad"] as const,
+    intelligence: [
+      { eyebrow: "Intelligence Book", headline: "AI Interactive Books", body: "Books that explain themselves with AI, 3D visuals, and contextual tutoring.", cta: "Explore", accent: "#60a5fa" },
+      { eyebrow: "Adaptive Profile", headline: "Knowledge DNA", body: "An evolving intelligence profile powered by adaptive learning signals.", cta: "Open Feature", accent: "#a78bfa" },
+      { eyebrow: "Exam Readiness", headline: "Performance IQ", body: "Strengths, weaknesses, and exam readiness with AI clarity.", cta: "Try Now", accent: "#34d399" },
+      { eyebrow: "Living Knowledge", headline: "Smart Library", body: "Interactive books with concept visualization and AI explanations.", cta: "Learn More", accent: "#38bdf8" },
+      { eyebrow: "Always On", headline: "AI Tutor", body: "Ask inside videos, books, notes, and practice sessions.", cta: "Ask Now", accent: "#60a5fa" },
+      { eyebrow: "Frontier Lab", headline: "Future Technology", body: "Frontier learning experiences built for the next generation.", cta: "Read More", accent: "#fbbf24" },
+    ] satisfies DisplayCard[],
+    spotlight: {
+      eyebrow: "Limited drop",
+      headline: "Neural Exam Arena",
+      body: "A living simulation where AI opponents adapt to Progress IQ in real time.",
+      cta: "Enter Arena",
+      accent: "#fbbf24",
+    } satisfies DisplayCard,
+    ads: [
+      { eyebrow: "Quantrion Plus · Sponsored", headline: "Unlock Full AI Tutor", body: "Unlimited explanations, voice mode, and adaptive mocks.", cta: "Upgrade", accent: "#60a5fa" },
+      { eyebrow: "Mock Intelligence · Featured", headline: "Rank Predictor Live", body: "Calibrated mocks with live cohort ranking signals.", cta: "Try Mock", accent: "#34d399" },
+      { eyebrow: "Smart Library · New", headline: "Intelligence Books", body: "3D concepts and page-native AI tutoring inside every chapter.", cta: "Open Library", accent: "#a78bfa" },
+      { eyebrow: "Future Lab · Partner", headline: "Frontier Learning Drop", body: "Early access to next-gen simulation classrooms.", cta: "Explore", accent: "#fbbf24" },
+    ] satisfies DisplayCard[],
   },
   {
     id: "vdoc" as const,
-    when: "With user grab",
-    note: "Feature rail, premiere spotlight, and sponsored slots. Off the product until people are arriving.",
-    groups: [
-      {
-        kind: "Feature",
-        items: [
-          "Speak. Enter. Shape.",
-          "Cities that rewrite",
-          "Signal, live now",
-          "Ownership is the plot",
-          "Under a minute",
-        ],
-      },
-      {
-        kind: "Spotlight",
-        items: ["Neon Harbor Premiere — live world rewrite"],
-      },
-      {
-        kind: "Ad slots",
-        items: [
-          "Unlock infinite creation",
-          "Creator Stage Pass",
-          "Founders land drop",
-          "Co-author a series",
-          "Tired of endless scroll?",
-        ],
-      },
-    ],
+    labels: ["Intelligence", "Spotlight", "Offers"] as const,
+    intelligence: [
+      { eyebrow: "AI Creator", headline: "Speak. Enter. Shape.", body: "Turn one prompt into movies, games, stories, and living worlds.", cta: "Create now", accent: "#67e8f9" },
+      { eyebrow: "Virtual Cities", headline: "Cities that rewrite", body: "Adaptive urban worlds that listen to every choice.", cta: "Enter city", accent: "#a78bfa" },
+      { eyebrow: "Vyra", headline: "Signal, live now", body: "Premieres, interactive events, and creators broadcasting in real time.", cta: "Go live", accent: "#34d399" },
+      { eyebrow: "Virtual Universe", headline: "Ownership is the plot", body: "Collectibles, land, and living assets inside the digital vault.", cta: "Open vault", accent: "#fbbf24" },
+      { eyebrow: "Quick Entertain", headline: "Under a minute", body: "AI shorts generated for the moment — hover to preview, enter to go deeper.", cta: "Watch shorts", accent: "#fb7185" },
+    ] satisfies DisplayCard[],
+    spotlight: {
+      eyebrow: "Limited drop",
+      headline: "Neon Harbor Premiere",
+      body: "A live world rewrite tonight — streets rearrange around every presence.",
+      cta: "Enter premiere",
+      accent: "#fbbf24",
+    } satisfies DisplayCard,
+    ads: [
+      { eyebrow: "VDOC Plus · Sponsored", headline: "Unlock infinite creation", body: "Priority generation, voice mode, and private world branches.", cta: "Upgrade", accent: "#67e8f9" },
+      { eyebrow: "Vyra · Featured", headline: "Creator Stage Pass", body: "Front-row access to interactive premieres and signal events.", cta: "Get pass", accent: "#34d399" },
+      { eyebrow: "Virtual Universe · New", headline: "Founders land drop", body: "Early parcels in Neo Harbor — own the block before it rewrites.", cta: "Explore", accent: "#fbbf24" },
+      { eyebrow: "Studio Partners · Partner", headline: "Co-author a series", body: "Branch endings with featured creators and mint your cut.", cta: "Join thread", accent: "#a78bfa" },
+      { eyebrow: "Intelligence · Need", headline: "Tired of endless scroll?", body: "Mood Match and Top Rated Only — pains catalogs never solved.", cta: "Open Intelligence", accent: "#67e8f9" },
+    ] satisfies DisplayCard[],
   },
   {
     id: "exorax" as const,
-    when: "With user grab",
-    note: "Feature rail, discount spotlight, and sponsored slots. Visuals: orb, prism, grid, wave.",
-    groups: [
-      {
-        kind: "Feature",
-        items: [
-          "Describe. Discover. Decide.",
-          "Stock that predicts",
-          "Commerce meets markets",
-          "The Future of Brand Creation",
-        ],
-      },
-      {
-        kind: "Spotlight",
-        items: ["Heavy Discount Mesh"],
-      },
-      {
-        kind: "Ad slots",
-        items: [
-          "Unlock Personal Shopper",
-          "Sell & brand on ExoraX",
-          "Luxury corridor access",
-          "Sponsor Discover",
-        ],
-      },
-    ],
+    labels: ["Intelligence", "Spotlight", "Sponsored"] as const,
+    intelligence: [
+      { eyebrow: "AI Shopper", headline: "Describe. Discover. Decide.", body: "Natural-language shopping with match scores and a transparent why.", cta: "Ask AI Product Assistant", accent: "#5b8cff" },
+      { eyebrow: "Inventory Intelligence", headline: "Stock that predicts", body: "Demand, fraud risk, and warehouse intelligence in one mesh.", cta: "Open Inventory", accent: "#5b8cff" },
+      { eyebrow: "Trade Exchange", headline: "Commerce meets markets", body: "Countries, products, supply chains, and an opportunity radar.", cta: "Enter Trade", accent: "#fbbf24" },
+      { eyebrow: "X Atelier", headline: "The Future of Brand Creation", body: "Build a maison. Content, engagement, and experience layers.", cta: "X Atelier", accent: "#a78bfa" },
+    ] satisfies DisplayCard[],
+    spotlight: {
+      eyebrow: "Limited drop",
+      headline: "Heavy Discount Mesh",
+      body: "AI-ranked flash deals with price integrity — live inventory windows.",
+      cta: "See deals",
+      accent: "#d4d4d8",
+    } satisfies DisplayCard,
+    ads: [
+      { eyebrow: "ExoraX Plus · Sponsored", headline: "Unlock Personal Shopper", body: "Priority AI ranking, visual search, and private preference memory.", cta: "Upgrade", accent: "#5b8cff" },
+      { eyebrow: "X Atelier · Featured", headline: "Sell & brand on ExoraX", body: "Merchant OS plus Content, Live, and AR layers.", cta: "Open X Atelier", accent: "#5b8cff" },
+      { eyebrow: "ExoraX Imperial · New", headline: "Luxury corridor access", body: "Authenticated high-value inventory and private salon drops.", cta: "Enter Imperial", accent: "#fbbf24" },
+      { eyebrow: "Commerce Partners · Partner", headline: "Sponsor Discover", body: "Appear in AI results, category rails, and sponsored search slots.", cta: "Advertise", accent: "#a78bfa" },
+    ] satisfies DisplayCard[],
   },
 ] as const
 
