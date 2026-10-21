@@ -4,7 +4,7 @@ import Link from "next/link"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { productAccents } from "@/lib/product-accents"
 import { company } from "@/lib/company"
-import { grab, grabStrategies, mesh, months, opex, program, roadmap, tracks } from "@/lib/roadmap"
+import { grab, grabStrategies, laterBanners, mesh, months, opex, program, roadmap, tracks } from "@/lib/roadmap"
 
 const trackAccent: Record<string, string> = {
   quantrion: "border-teal-500/35 bg-teal-400/10 text-teal-100",
@@ -173,6 +173,44 @@ export function ForecastView() {
         <p className="mt-3 text-xs text-zinc-600">
           Planned distribution. Not live follower counts, paid-reach claims, or current cohorts.
         </p>
+      </section>
+
+      <section>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Advertising banners — later</p>
+        <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
+          These futuristic banners come off Quantrion, Vdoc, and ExoraX now. They return in the user-grab window,
+          when people are actually arriving. This list is the memory.
+        </p>
+        <div className="grid gap-3 lg:grid-cols-3">
+          {laterBanners.map((platform) => (
+            <article key={platform.id} className={`border bg-[#09090b] p-4 ${productAccents[platform.id].border}`}>
+              <div className="flex items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                  <ProductLogo product={platform.id} size={22} />
+                  {platform.id === "quantrion" ? "Quantrion" : platform.id === "vdoc" ? "Vdoc" : "ExoraX"}
+                </span>
+                <span className={`font-mono text-[10px] uppercase tracking-[0.14em] ${productAccents[platform.id].text}`}>
+                  {platform.when}
+                </span>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-zinc-500">{platform.note}</p>
+              <div className="mt-4 space-y-3">
+                {platform.groups.map((group) => (
+                  <div key={group.kind}>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">{group.kind}</p>
+                    <ul className="mt-1.5 space-y-1">
+                      {group.items.map((item) => (
+                        <li key={item} className="text-xs leading-relaxed text-zinc-300">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section>

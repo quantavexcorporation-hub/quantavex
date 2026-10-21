@@ -189,6 +189,100 @@ export const grabStrategies = [
   },
 ] as const
 
+export const laterBanners = [
+  {
+    id: "quantrion" as const,
+    when: "With user grab",
+    note: "Hologram carousel, spotlight, and sponsored rail. Off the product until people are arriving.",
+    groups: [
+      {
+        kind: "Hologram",
+        items: [
+          "AI Interactive Books",
+          "Knowledge DNA",
+          "Performance IQ",
+          "Smart Library",
+          "AI Tutor",
+          "Future Technology",
+        ],
+      },
+      {
+        kind: "Spotlight",
+        items: ["Neural Exam Arena — living simulation, AI opponents adapt to Progress IQ"],
+      },
+      {
+        kind: "Ad slots",
+        items: [
+          "Unlock Full AI Tutor",
+          "Rank Predictor Live",
+          "Intelligence Books",
+          "Frontier Learning Drop",
+        ],
+      },
+    ],
+  },
+  {
+    id: "vdoc" as const,
+    when: "With user grab",
+    note: "Feature rail, premiere spotlight, and sponsored slots. Off the product until people are arriving.",
+    groups: [
+      {
+        kind: "Feature",
+        items: [
+          "Speak. Enter. Shape.",
+          "Cities that rewrite",
+          "Signal, live now",
+          "Ownership is the plot",
+          "Under a minute",
+        ],
+      },
+      {
+        kind: "Spotlight",
+        items: ["Neon Harbor Premiere — live world rewrite"],
+      },
+      {
+        kind: "Ad slots",
+        items: [
+          "Unlock infinite creation",
+          "Creator Stage Pass",
+          "Founders land drop",
+          "Co-author a series",
+          "Tired of endless scroll?",
+        ],
+      },
+    ],
+  },
+  {
+    id: "exorax" as const,
+    when: "With user grab",
+    note: "Feature rail, discount spotlight, and sponsored slots. Visuals: orb, prism, grid, wave.",
+    groups: [
+      {
+        kind: "Feature",
+        items: [
+          "Describe. Discover. Decide.",
+          "Stock that predicts",
+          "Commerce meets markets",
+          "The Future of Brand Creation",
+        ],
+      },
+      {
+        kind: "Spotlight",
+        items: ["Heavy Discount Mesh"],
+      },
+      {
+        kind: "Ad slots",
+        items: [
+          "Unlock Personal Shopper",
+          "Sell & brand on ExoraX",
+          "Luxury corridor access",
+          "Sponsor Discover",
+        ],
+      },
+    ],
+  },
+] as const
+
 export const opex = [
   { name: "Cloud compute & storage", role: "Sessions, DNA, story state, product graph" },
   { name: "Model inference", role: "Pathway, Director, intent and rank" },

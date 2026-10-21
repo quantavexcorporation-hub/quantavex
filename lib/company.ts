@@ -129,7 +129,7 @@ export const company = {
       product: "Grab",
       title: "Six-channel user grab",
       status: "In parallel",
-      detail: "Nine moves off the feed — outreach, trial, partnerships, search, page conversion, email, referral, live demonstrations, search ads. Social stays on the six channels.",
+      detail: "Nine moves off the feed, six social channels, and the futuristic banners stored for this phase. Banners stay off the products until grab is on.",
     },
     {
       period: "M6",
