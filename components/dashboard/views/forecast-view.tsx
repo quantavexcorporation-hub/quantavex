@@ -5,15 +5,12 @@ import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { productAccents } from "@/lib/product-accents"
 import { company } from "@/lib/company"
 import { LaterDisplays } from "@/components/dashboard/later-displays"
-import { grab, grabStrategies, mesh, months, opex, program, roadmap, tracks } from "@/lib/roadmap"
+import { grab, grabStrategies, mesh, months, opex, platformClock, program, quantavexClock, roadmap } from "@/lib/roadmap"
 
-const trackAccent: Record<string, string> = {
+const followAccent: Record<string, string> = {
   quantrion: "border-teal-500/35 bg-teal-400/10 text-teal-100",
   vdoc: "border-rose-500/35 bg-rose-500/10 text-rose-100",
   exorax: "border-zinc-400/35 bg-zinc-400/10 text-zinc-100",
-  mesh: "border-white/20 bg-white/[0.04] text-white",
-  opex: "border-amber-400/25 bg-amber-400/[0.06] text-amber-100",
-  grab: "border-sky-400/30 bg-sky-400/10 text-sky-100",
 }
 
 export function ForecastView() {
@@ -66,10 +63,10 @@ export function ForecastView() {
       <section>
         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Figure · six-month parallel clock</p>
         <div className="overflow-x-auto border border-white/10 bg-[#050506]">
-          <table className="w-full min-w-[720px] border-collapse text-left">
+          <table className="w-full min-w-[760px] border-collapse text-left">
             <thead>
               <tr className="border-b border-white/10">
-                <th className="w-36 px-3 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">Track</th>
+                <th className="w-40 px-3 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">Who</th>
                 {months.map((month) => (
                   <th key={month} className="px-2 py-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">
                     {month}
@@ -78,21 +75,36 @@ export function ForecastView() {
               </tr>
             </thead>
             <tbody>
-              {tracks.map((track) => (
-                <tr key={track.id} className="border-b border-white/[0.06] last:border-0">
+              <tr className="border-b border-white/15 bg-white/[0.03]">
+                <th className="px-3 py-3 text-left">
+                  <p className="text-sm font-semibold text-white">Quantavex</p>
+                  <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">Instruction</p>
+                </th>
+                {quantavexClock.map((step) => (
+                  <td key={step.order} className="px-1.5 py-2">
+                    <div className="border border-white/30 bg-white px-2 py-2 text-center text-black">
+                      <p className="font-mono text-[11px] font-semibold leading-tight">{step.order}</p>
+                      <p className="mt-1 text-[10px] leading-tight text-zinc-700">{step.work}</p>
+                    </div>
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td colSpan={7} className="px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">
+                  Platforms change on that instruction
+                </td>
+              </tr>
+              {platformClock.map((platform) => (
+                <tr key={platform.id} className="border-t border-white/[0.06]">
                   <th className="px-3 py-2.5 text-left text-xs font-medium text-white">
-                    {track.id === "quantrion" || track.id === "vdoc" || track.id === "exorax" ? (
-                      <span className="inline-flex items-center gap-2">
-                        <ProductLogo product={track.id} size={18} />
-                        {track.label}
-                      </span>
-                    ) : (
-                      track.label
-                    )}
+                    <span className="inline-flex items-center gap-2">
+                      <ProductLogo product={platform.id} size={18} />
+                      {platform.id === "quantrion" ? "Quantrion" : platform.id === "vdoc" ? "Vdoc" : "ExoraX"}
+                    </span>
                   </th>
-                  {track.cells.map((cell, index) => (
-                    <td key={`${track.id}-${index}`} className="px-1.5 py-2">
-                      <div className={`border px-2 py-2 text-center font-mono text-[10px] leading-tight sm:text-[11px] ${trackAccent[track.id]}`}>
+                  {platform.cells.map((cell, index) => (
+                    <td key={`${platform.id}-${index}`} className="px-1.5 py-2">
+                      <div className={`border px-2 py-2 text-center font-mono text-[10px] leading-tight sm:text-[11px] ${followAccent[platform.id]}`}>
                         {cell}
                       </div>
                     </td>
@@ -103,7 +115,7 @@ export function ForecastView() {
           </table>
         </div>
         <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">
-          Three product tracks run in the same months. Company infrastructure and operating cost run with them.
+          Quantavex runs infrastructure, APIs, cost, and growth. The three platforms move when that instruction changes.
         </p>
       </section>
 

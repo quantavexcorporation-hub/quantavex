@@ -12,40 +12,27 @@ export const roadmap = {
 
 export const months = ["M1", "M2", "M3", "M4", "M5", "M6"] as const
 
-export const tracks: {
-  id: ProductId | "mesh" | "opex" | "grab"
-  label: string
-  cells: string[]
-}[] = [
+export const quantavexClock = [
+  { order: "Stand the stack", work: "Identity, data, compute" },
+  { order: "Open the APIs", work: "Inside the company stack" },
+  { order: "Turn cost on", work: "Inference, storage, 3PL" },
+  { order: "Start the grab", work: "Instant result" },
+  { order: "Spread the result", work: "Referral and groups" },
+  { order: "Hold the target", work: "90,000 each" },
+] as const
+
+export const platformClock: { id: ProductId; cells: string[] }[] = [
   {
     id: "quantrion",
-    label: "Quantrion",
-    cells: ["Infra", "DNA loop", "API live", "Student OS", "Harden", "Production"],
+    cells: ["DNA on the stack", "Pathway on the API", "Student OS", "Score card travels", "Batch follows", "Production"],
   },
   {
     id: "vdoc",
-    label: "Vdoc",
-    cells: ["Infra", "Story graph", "API live", "Experience OS", "Harden", "Production"],
+    cells: ["Story on the stack", "Director on the API", "Experience OS", "Scene travels", "Room follows", "Production"],
   },
   {
     id: "exorax",
-    label: "ExoraX",
-    cells: ["Infra", "Confidence loop", "API live", "Commerce OS", "Harden", "Production"],
-  },
-  {
-    id: "mesh",
-    label: "Infrastructure",
-    cells: ["Identity", "Data", "Compute", "Products", "Observe", "Operate"],
-  },
-  {
-    id: "opex",
-    label: "Operating cost",
-    cells: ["Cloud", "Inference", "Jobs", "3PL + storage", "Support", "Full burn"],
-  },
-  {
-    id: "grab",
-    label: "User grab",
-    cells: ["Instant use", "Result travels", "Open day", "Referral", "Group pull", "90k each"],
+    cells: ["Loop on the stack", "Intent on the API", "Commerce OS", "Inspect travels", "Buyers follow", "Production"],
   },
 ]
 
