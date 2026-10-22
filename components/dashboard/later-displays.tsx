@@ -20,7 +20,7 @@ export function LaterDisplays() {
       <div>
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Advertising banners · later</p>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          Three platforms. Open a card to see the three displays that return on that dashboard when user grab is on.
+          After the six channels. Open a card to see the three displays that return on that dashboard when user grab is on.
         </p>
       </div>
       <div className="grid gap-3 md:grid-cols-3">

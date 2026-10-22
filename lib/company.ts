@@ -18,7 +18,7 @@ export const company = {
   paperPdf: "/research/quantavex.pdf",
   tam: "First market: India competitive-exam cohort via Quantrion — not a combined global TAM",
   thesis:
-    "After investment, all three platforms are built in parallel on one API plane. First market remains India. 90,000 users on each platform — 270,000 total — is the six-month production target, not live traffic today.",
+    "After investment, all three platforms are built in parallel on Quantavex company infrastructure. First market remains India. 90,000 users on each platform — 270,000 total — is the six-month production target, not live traffic today.",
   proof:
     "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Each dossier links an alpha interface you can open — not live production traffic.",
   geography:
@@ -106,9 +106,9 @@ export const company = {
     {
       period: "M3",
       product: "Quantavex",
-      title: "API mesh",
+      title: "Company infrastructure",
       status: "In parallel",
-      detail: "Connect the three platforms on one identity plane and gateway. Architecture contracts, not three isolated apps.",
+      detail: "Quantavex runs identity, data, compute, and the three products as one company. APIs are inside that stack.",
     },
     {
       period: "M4",
@@ -129,7 +129,7 @@ export const company = {
       product: "Grab",
       title: "Six-channel user grab",
       status: "In parallel",
-      detail: "Nine moves off the feed, six social channels, and the futuristic banners stored for this phase. Banners stay off the products until grab is on.",
+      detail: "Nine speed moves from the ChatGPT, Dropbox, Slack, and Zoom record, then the six social channels, then the three dashboard displays. Banners stay off the products until grab is on.",
     },
     {
       period: "M6",

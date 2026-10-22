@@ -34,7 +34,7 @@ export function getForecast(): {
     kpis: [
       { id: "horizon", label: "Horizon", value: "6 months", delta: "After investment — not live operations", tone: "amber" },
       { id: "posture", label: "Build", value: "Simultaneous", delta: "All three platforms in parallel", tone: "cyan" },
-      { id: "mesh", label: "Connect", value: "API mesh", delta: "Architecture contracts on one plane", tone: "purple" },
+      { id: "mesh", label: "Infrastructure", value: "Full company", delta: "Identity, data, compute, and the three products", tone: "purple" },
       { id: "users", label: "Target", value: "270,000", delta: "90,000 on each platform — not live traffic", tone: "emerald" },
     ],
     mix: [],

@@ -51,7 +51,7 @@ export function ForecastView() {
           {[
             { k: "Clock", v: "6 months", n: "After investment" },
             { k: "Build", v: "Parallel", n: "Quantrion · Vdoc · ExoraX" },
-            { k: "Connect", v: "API mesh", n: "One identity plane" },
+            { k: "Infrastructure", v: "Full company", n: "Identity · data · compute" },
             { k: "Grab", v: "6 channels", n: "YouTube to Reddit" },
           ].map((item) => (
             <div key={item.k} className="px-4 py-4 sm:px-6">
@@ -62,8 +62,6 @@ export function ForecastView() {
           ))}
         </div>
       </section>
-
-      <LaterDisplays />
 
       <section>
         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Figure · six-month parallel clock</p>
@@ -105,13 +103,13 @@ export function ForecastView() {
           </table>
         </div>
         <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">
-          Three product tracks run in the same months. Mesh and operating cost are not afterthoughts.
+          Three product tracks run in the same months. Company infrastructure and operating cost run with them.
         </p>
       </section>
 
       <section className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
         <figure className="border border-white/10 bg-[#050506] p-4 sm:p-5">
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Figure · API mesh</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Figure · company infrastructure</p>
           <MeshFigure />
           <figcaption className="mt-3 space-y-1.5">
             {mesh.map((edge) => (
@@ -140,7 +138,7 @@ export function ForecastView() {
       <section>
         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">User grab · nine strategies</p>
         <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          Ranked for a limited budget. These nine sit beside the six channels. None of them is a social network.
+          Taken from how ChatGPT, Dropbox, Slack, Zoom, and Notion actually filled. The product carries the next user. Social channels come next. Advertising banners come after those.
         </p>
         <ol className="grid gap-2 lg:grid-cols-3">
           {grabStrategies.map((item) => (
@@ -159,7 +157,7 @@ export function ForecastView() {
       <section>
         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Where it runs · six channels</p>
         <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          Social distribution stays on these six marks. The nine strategies above are the rest of the grab.
+          Social distribution stays on these six marks. The nine strategies above are the speed. The banners below wait for the grab.
         </p>
         <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
           {grab.map((channel) => (
@@ -177,6 +175,8 @@ export function ForecastView() {
           Planned distribution. Not live follower counts, paid-reach claims, or current cohorts.
         </p>
       </section>
+
+      <LaterDisplays />
 
       <section>
         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Operating cost</p>
@@ -282,14 +282,14 @@ export function ForecastView() {
 
 function MeshFigure() {
   return (
-    <svg viewBox="0 0 640 340" className="mt-4 h-auto w-full" role="img" aria-label="Quantavex API mesh connecting three platforms">
+    <svg viewBox="0 0 640 340" className="mt-4 h-auto w-full" role="img" aria-label="Quantavex company infrastructure running three platforms">
       <rect width="640" height="340" fill="#050506" />
       <circle cx="320" cy="170" r="58" fill="#09090b" stroke="#fafafa" strokeWidth="1.4" />
       <text x="320" y="164" textAnchor="middle" fill="#fafafa" fontSize="12" fontWeight="600">
         QUANTAVEX
       </text>
       <text x="320" y="182" textAnchor="middle" fill="#a1a1aa" fontSize="10">
-        API plane
+        Infrastructure
       </text>
       <Node cx={120} cy={70} label="Quantrion" stroke="#2dd4bf" />
       <Node cx={520} cy={70} label="Vdoc" stroke="#f43f5e" />
@@ -297,14 +297,14 @@ function MeshFigure() {
       <line x1="168" y1="92" x2="272" y2="138" stroke="#2dd4bf" strokeWidth="1.2" />
       <line x1="472" y1="92" x2="368" y2="138" stroke="#f43f5e" strokeWidth="1.2" />
       <line x1="320" y1="228" x2="320" y2="252" stroke="#d4d4d8" strokeWidth="1.2" />
-      <text x="200" y="128" fill="#5eead4" fontSize="9">
-        identity · DNA
+      <text x="188" y="128" fill="#5eead4" fontSize="9">
+        data · compute
       </text>
-      <text x="390" y="128" fill="#fda4af" fontSize="9">
-        identity · session
+      <text x="392" y="128" fill="#fda4af" fontSize="9">
+        data · compute
       </text>
       <text x="332" y="246" fill="#d4d4d8" fontSize="9">
-        identity · catalog
+        data · compute
       </text>
     </svg>
   )

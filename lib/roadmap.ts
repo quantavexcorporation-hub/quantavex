@@ -7,7 +7,7 @@ export const roadmap = {
   usersNote: "90,000 users on each platform. 270,000 company total at month 6 — a target, not live traffic today.",
   posture: "Simultaneous",
   promise:
-    "All three platforms are built in parallel, connected on one API plane, stood up on architecture-faithful infrastructure, run with real operating cost, and brought to production with 90,000 users on each platform — 270,000 in total — inside six months of investment. Users are grabbed on six high-return channels, not by hoping the product is found.",
+    "All three platforms are built in parallel on Quantavex company infrastructure — identity, data, compute, and the products themselves — with real operating cost, and brought to production with 90,000 users on each platform — 270,000 in total — inside six months of investment. Users are grabbed the way the fastest products filled: the product carries the invite.",
 } as const
 
 export const months = ["M1", "M2", "M3", "M4", "M5", "M6"] as const
@@ -34,8 +34,8 @@ export const tracks: {
   },
   {
     id: "mesh",
-    label: "API mesh",
-    cells: ["Identity", "Contracts", "Three-way", "Gateway", "Observe", "Load"],
+    label: "Infrastructure",
+    cells: ["Identity", "Data", "Compute", "Products", "Observe", "Operate"],
   },
   {
     id: "opex",
@@ -45,7 +45,7 @@ export const tracks: {
   {
     id: "grab",
     label: "User grab",
-    cells: ["Six channels", "Publish", "Communities", "Convert", "Scale", "90k each"],
+    cells: ["Instant use", "Result travels", "Open day", "Referral", "Group pull", "90k each"],
   },
 ]
 
@@ -57,8 +57,8 @@ export const program = [
   },
   {
     n: "02",
-    title: "Connect on software APIs",
-    text: "One identity plane, one gateway, architecture contracts per platform. Three products, one company machine.",
+    title: "Run the company infrastructure",
+    text: "Quantavex runs identity, data, compute, and the three products as one company. APIs sit inside that infrastructure. They are not the whole of it.",
   },
   {
     n: "03",
@@ -68,7 +68,7 @@ export const program = [
   {
     n: "04",
     title: "Pay operating cost",
-    text: "Compute, inference, object storage, API mesh, ExoraX 3PL adapter, and ops. Production has a bill. The plan includes it.",
+    text: "Compute, inference, object storage, company infrastructure, the ExoraX 3PL adapter, and ops. Production has a bill. The plan includes it.",
   },
   {
     n: "05",
@@ -77,8 +77,8 @@ export const program = [
   },
   {
     n: "06",
-    title: "Grab off the feed",
-    text: "Nine moves that are not social channels: direct outreach, a free trial, partnerships, search, a tighter page, email, referral, live demonstrations, and a small search-ad test. The six channels stay a separate surface.",
+    title: "Grab at product speed",
+    text: "Nine moves taken from how ChatGPT, Dropbox, Slack, and Zoom filled: an instant result, a result that travels, one open day, a two-sided referral, a group pull, an embed, a public library, one repeatable sentence, and a second session the next day.",
   },
   {
     n: "07",
@@ -135,57 +135,57 @@ export const grab = [
 export const grabStrategies = [
   {
     n: "01",
-    name: "Direct outreach",
-    move: "First 50–100 by hand",
-    text: "Write to specific students, creators, and shoppers. Say why they were chosen. Ask for one task and honest feedback before any ad spend.",
+    name: "Instant first result",
+    move: "ChatGPT speed",
+    text: "ChatGPT’s public opening reached about a million people in five days because anyone could get a result immediately. Quantrion shows a readiness read, Vdoc a scene, ExoraX an inspect — before a long account wall.",
   },
   {
     n: "02",
-    name: "Free trial",
-    move: "A result before a payment",
-    text: "A useful feature or a short trial, a short signup, and clear limits. The short path is from the site to a real outcome.",
+    name: "The result travels",
+    move: "Zoom link · Figma file",
+    text: "ChatGPT answers, Zoom links, and Figma files recruited the next user. A score card, a scene, or an inspect is the invite. It moves without a post from the company.",
   },
   {
     n: "03",
-    name: "Partnerships",
-    move: "Borrow a trusted audience",
-    text: "Quantrion with coaching institutes. Vdoc with studios and creator networks. ExoraX with merchants and niche publishers. A concrete benefit and a measured pilot.",
+    name: "One open day",
+    move: "A burst, not a drip",
+    text: "ChatGPT did not trickle out. One public opening, all three products usable the same day. Attention compounds when it arrives together.",
   },
   {
     n: "04",
-    name: "Search",
-    move: "Pages for problems people already type",
-    text: "Useful guides, internal links, fast on a phone. A guide on exam preparation can bring someone who then tries Quantrion. This compounds.",
+    name: "Two-sided referral",
+    move: "Dropbox case",
+    text: "Dropbox gave the benefit to the person who invited and the person who joined, and the program became the growth engine. Extra practice, generation, or inspects on both sides.",
   },
   {
     n: "05",
-    name: "Page conversion",
-    move: "More users from the same visits",
-    text: "One headline, one try button above the fold, a real demo, fewer signup steps. Count visitor to signup, and signup to first successful use.",
+    name: "Pull the group",
+    move: "Slack inside a team",
+    text: "Slack spread because one person brought the team. A student brings a batch. A creator brings a room. A merchant brings buyers. The invite lives inside the product.",
   },
   {
     n: "06",
-    name: "Email",
-    move: "An audience you can reach again",
-    text: "A guide, early access, or a product note in exchange for an address. A welcome, a getting-started note, and a follow-up that asks for feedback. Consent, and a way to leave.",
+    name: "Embed outward",
+    move: "ChatGPT API pattern",
+    text: "ChatGPT’s API put the product inside other companies. Coaching institutes, studios, and merchants embed one Quantavex surface. Their audience arrives already in context.",
   },
   {
     n: "07",
-    name: "Referral",
-    move: "A result worth sending",
-    text: "After a user has a real outcome: a simple link, extra use for a successful invite, and a result they are glad to share.",
+    name: "Public artifact library",
+    move: "Notion templates",
+    text: "Notion templates and shared prompts were doors, not posts. Exam plans, worlds, and inspects anyone can open and run. Each artifact is a landing page with a use button.",
   },
   {
     n: "08",
-    name: "Live demonstrations",
-    move: "A room, not a feed",
-    text: "Campus sessions for Quantrion. Creator workshops for Vdoc. Merchant walkthroughs for ExoraX. Show the product to people already in the room.",
+    name: "One repeatable sentence",
+    move: "The demo is the story",
+    text: "ChatGPT’s press line was the demo. One sentence a teacher, journalist, or founder can repeat. That sentence moves faster than a campaign.",
   },
   {
     n: "09",
-    name: "Search ads",
-    move: "A small test on intent",
-    text: "Google only, one audience, one offer, one landing page. Scale only after people who arrive try the product and come back.",
+    name: "Second session, next day",
+    move: "Product-led growth",
+    text: "The research record on product-led growth: the second session is the engine. First successful use, then a return within a day, then scale. Traffic without a second day does not become 90,000.",
   },
 ] as const
 
@@ -276,14 +276,14 @@ export const platformDisplays = [
 export const opex = [
   { name: "Cloud compute & storage", role: "Sessions, DNA, story state, product graph" },
   { name: "Model inference", role: "Pathway, Director, intent and rank" },
-  { name: "API mesh & identity", role: "Gateway, accounts, contracts between platforms" },
+  { name: "Company infrastructure", role: "Identity, data, compute, and the three products on one company stack" },
   { name: "Generation & object jobs", role: "Lectures, media synthesis, 3D twins" },
   { name: "3PL adapter", role: "ExoraX fulfillment instruction — no owned fleet" },
   { name: "Operations", role: "Reliability, support, legal, the people the build needs" },
 ] as const
 
 export const mesh = [
-  { from: "Quantrion", via: "Identity + DNA events", to: "Quantavex API" },
-  { from: "Vdoc", via: "Identity + session / world state", to: "Quantavex API" },
-  { from: "ExoraX", via: "Identity + catalog / order events", to: "Quantavex API" },
+  { from: "Quantrion", via: "Learning system · DNA · sessions", to: "Quantavex infrastructure" },
+  { from: "Vdoc", via: "Experience system · worlds · memory", to: "Quantavex infrastructure" },
+  { from: "ExoraX", via: "Commerce system · catalog · orders", to: "Quantavex infrastructure" },
 ] as const
