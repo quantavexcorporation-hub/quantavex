@@ -74,7 +74,7 @@ export function Investor() {
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
             Quantavex is raising a {company.round} round to take three research-backed
-            platforms from architecture into private alpha.
+            platforms from architecture into an MVP.
           </p>
         </motion.div>
 

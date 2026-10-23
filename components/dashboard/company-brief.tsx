@@ -37,7 +37,7 @@ export function CompanyBrief() {
           goods, services, and capital. Three platforms. One parent company.
         </p>
         <p>
-          Each platform has an alpha interface linked from its dossier. The
+          Each platform has an MVP linked from its dossier. The
           company record is public: three architectures, three papers, one
           venture. The aim is not a demonstration. It is products people
           actually use.

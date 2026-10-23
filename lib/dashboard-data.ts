@@ -57,7 +57,7 @@ export function getProductPanels(): DashboardSnapshot["productPanels"] {
         { label: "Atlas", value: "150+" },
         { label: "Paper", value: "99 pp" },
         { label: "Loop", value: "4-phase" },
-        { label: "Status", value: "Alpha" },
+        { label: "Status", value: "MVP" },
       ],
       preview: { bars: [40, 55, 45, 70, 65, 80, 75, 88], highlight: "Research" },
     },
@@ -69,9 +69,9 @@ export function getProductPanels(): DashboardSnapshot["productPanels"] {
         { label: "Paper", value: "108 pp" },
         { label: "Layers", value: "3" },
         { label: "Entry", value: "Speak" },
-        { label: "Status", value: "Alpha" },
+        { label: "Status", value: "MVP" },
       ],
-      preview: { badges: ["Audience", "Creation", "Economy"], highlight: "Alpha" },
+      preview: { badges: ["Audience", "Creation", "Economy"], highlight: "MVP" },
     },
     {
       id: "exorax",
@@ -81,7 +81,7 @@ export function getProductPanels(): DashboardSnapshot["productPanels"] {
         { label: "Paper", value: "58 pp" },
         { label: "Layers", value: "6" },
         { label: "Categories", value: "6" },
-        { label: "Status", value: "Alpha" },
+        { label: "Status", value: "MVP" },
       ],
       preview: {
         products: [

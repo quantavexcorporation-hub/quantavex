@@ -20,7 +20,7 @@ export const company = {
   thesis:
     "After investment, all three platforms are built in parallel on Quantavex company infrastructure. First market remains India. 90,000 users on each platform — 270,000 total — is the six-month production target, not live traffic today.",
   proof:
-    "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Each dossier links an alpha interface you can open — not live production traffic.",
+    "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Each dossier links an MVP you can open — not live production traffic.",
   geography:
     "Ambitious future plan — not live market data. India first, then expand across 30 high-economy markets beginning with the USA and UK. Scores are predicted GTM priority for the roadmap ahead.",
   founder: {
@@ -115,7 +115,7 @@ export const company = {
       product: "All three",
       title: "Production surfaces",
       status: "In parallel",
-      detail: "Student OS, entertainment OS, and commerce OS leave alpha. Real product, still founder-led.",
+      detail: "Student OS, entertainment OS, and commerce OS leave the MVP. Real product, still founder-led.",
     },
     {
       period: "M5",

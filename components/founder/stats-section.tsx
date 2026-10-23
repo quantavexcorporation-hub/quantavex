@@ -323,7 +323,7 @@ const stats: StatEntry[] = [
     value: 3,
     suffix: "",
     label: "Platforms specified",
-    sublabel: "Quantrion, Vdoc, and ExoraX — three architectures, three alpha interfaces",
+    sublabel: "Quantrion, Vdoc, and ExoraX — three architectures, three MVPs",
     accentGlow: "bg-amber-500/20",
   },
   {
