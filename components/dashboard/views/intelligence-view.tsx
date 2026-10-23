@@ -23,7 +23,7 @@ export function IntelligenceView() {
     <div className="space-y-6 sm:space-y-8">
       <PageHeader
         title="Priority markets"
-        subtitle="India first, then the high-economy corridor. Click a country to read the 2026 size of online education, media, and e-commerce. Industry forecasts — not Quantavex revenue."
+        subtitle="India first, then the high-economy corridor. Click a country to read the 2026 size of education, entertainment, and commerce. Market understanding — not a company figure."
       />
 
       <div className="grid grid-cols-1 divide-y divide-white/10 border border-white/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">

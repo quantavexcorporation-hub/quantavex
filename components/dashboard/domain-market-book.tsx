@@ -1,8 +1,6 @@
 "use client"
 
 import { useEffect, useMemo, useRef } from "react"
-import { ProductLogo } from "@/components/brand/product-logo"
-import { getProductAccent } from "@/lib/product-accents"
 import {
   countryDomainSizes,
   domainSizeSource,
@@ -38,11 +36,8 @@ export function CountryDomainReadout({
         </p>
         <ul className="mt-2 space-y-1.5">
           {fields.map((field) => (
-            <li key={field.id} className="flex items-baseline justify-between gap-3">
-              <span className="min-w-0 truncate text-[11px] text-zinc-400">
-                {field.product}
-                <span className="text-zinc-600"> · {field.field}</span>
-              </span>
+            <li key={field.key} className="flex items-baseline justify-between gap-3">
+              <span className="min-w-0 truncate text-[11px] text-zinc-400">{field.field}</span>
               <span className="shrink-0 font-mono text-xs text-white">{field.label}</span>
             </li>
           ))}
@@ -65,23 +60,16 @@ export function CountryDomainReadout({
 
       <div className="flex flex-col divide-y divide-white/10">
         {fields.map((field) => {
-          const accent = getProductAccent(field.id)
           const width = peak > 0 ? Math.max(8, (field.usdMillions / peak) * 100) : 0
           return (
-            <article key={field.id} className="px-4 py-3 sm:px-5">
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex min-w-0 items-center gap-2.5">
-                  <ProductLogo product={field.id} size={28} />
-                  <div className="min-w-0">
-                    <p className="text-sm font-medium tracking-tight text-white">{field.product}</p>
-                    <p className={`text-[10px] uppercase tracking-[0.16em] ${accent.textSoft}`}>{field.field}</p>
-                  </div>
-                </div>
+            <article key={field.key} className="px-4 py-3 sm:px-5">
+              <div className="flex items-baseline justify-between gap-3">
+                <p className="text-sm font-medium tracking-tight text-white">{field.field}</p>
                 <p className="shrink-0 font-mono text-xl font-semibold tracking-tight text-white">{field.label}</p>
               </div>
               <p className="mt-2 text-[11px] leading-relaxed text-zinc-500">{field.detail}</p>
               <div className="mt-2 h-px bg-white/10">
-                <div className="h-px" style={{ width: `${width}%`, background: accent.hex }} />
+                <div className="h-px bg-white/70" style={{ width: `${width}%` }} />
               </div>
             </article>
           )
@@ -89,7 +77,7 @@ export function CountryDomainReadout({
       </div>
 
       <p className="border-t border-white/10 px-4 py-3 text-[11px] leading-relaxed text-zinc-500 sm:px-5">
-        {domainSizeYear} revenue forecast · {domainSizeSource} · USD. Industry size of the field, not Quantavex sales.
+        {domainSizeYear} revenue forecast · {domainSizeSource} · USD. Field size, not a company figure.
       </p>
     </div>
   )
@@ -124,8 +112,8 @@ export function DomainMarketBook({
           Thirty countries. Three fields.
         </h2>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          Click a country. Quantrion, Vdoc, and ExoraX each show the published {domainSizeYear} size of the field they
-          sit in. Same source, same year, so the countries compare. These are industry forecasts, not company revenue.
+          Click a country. Education, entertainment, and commerce each show their published {domainSizeYear} size.
+          Same source, same year, so the countries compare. This is market understanding, not a company figure.
         </p>
       </div>
 
@@ -134,9 +122,9 @@ export function DomainMarketBook({
           <div className="sticky top-0 z-10 hidden grid-cols-[3.25rem_minmax(0,1.4fr)_repeat(3,minmax(0,1fr))] gap-2 border-b border-white/10 bg-[#09090b] px-4 py-2 sm:grid sm:px-5">
             <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-600">#</span>
             <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-600">Country</span>
-            <span className="text-right font-mono text-[10px] uppercase tracking-[0.14em] text-teal-500/80">Quantrion</span>
-            <span className="text-right font-mono text-[10px] uppercase tracking-[0.14em] text-rose-400/80">Vdoc</span>
-            <span className="text-right font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-400">ExoraX</span>
+            <span className="text-right font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">Education</span>
+            <span className="text-right font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">Entertainment</span>
+            <span className="text-right font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">Commerce</span>
           </div>
           <div className="max-h-[640px] overflow-y-auto">
             {nodes.map((node) => (
@@ -187,9 +175,9 @@ function CountryRow({
       </span>
       <span className="grid grid-cols-3 gap-2 sm:contents">
         {fields.map((field) => (
-          <span key={field.id} className="min-w-0 sm:text-right">
+          <span key={field.key} className="min-w-0 sm:text-right">
             <span className={`block font-mono text-[10px] uppercase tracking-[0.12em] sm:hidden ${selected ? "text-black/45" : "text-zinc-600"}`}>
-              {field.product}
+              {field.field}
             </span>
             <span className={`block font-mono text-[13px] tabular-nums ${selected ? "text-black" : "text-zinc-100"}`}>
               {formatDomainUsd(field.usdMillions)}

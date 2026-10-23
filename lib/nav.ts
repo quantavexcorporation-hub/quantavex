@@ -24,7 +24,7 @@ export const pageMeta: Record<
   },
   "/intelligence": {
     title: "Priority markets",
-    subtitle: "India first. Thirty markets. Three field sizes on each country.",
+    subtitle: "India first. Thirty markets. Education, entertainment, and commerce.",
   },
   "/forecasting": {
     title: "Roadmap",

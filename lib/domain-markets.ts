@@ -1,8 +1,6 @@
-import type { ProductId } from "@/components/brand/product-logo"
-
-/** Published domain revenue, USD millions. Statista Market Insights, 2026 forecast.
- * Not Quantavex sales, users, or live telemetry.
- * education = Online Education. media = Media. commerce = eCommerce (physical goods, B2C).
+/** Published field revenue, USD millions. Statista Market Insights, 2026 forecast.
+ * Market understanding only — not company sales, users, or live telemetry.
+ * education = online education. media = media (shown as entertainment). commerce = e-commerce.
  */
 export const domainSizeYear = 2026
 
@@ -10,24 +8,18 @@ export const domainSizeSource = "Statista Market Insights"
 
 export const domainFields = [
   {
-    id: "quantrion" as ProductId,
     key: "education" as const,
-    product: "Quantrion",
-    field: "Online education",
-    detail: "Learning platforms, online university, certificates, and study preparation.",
+    field: "Education",
+    detail: "Online learning, university courses, certificates, and study preparation.",
   },
   {
-    id: "vdoc" as ProductId,
     key: "media" as const,
-    product: "Vdoc",
-    field: "Media",
+    field: "Entertainment",
     detail: "Video, games, music, cinema, books, and press.",
   },
   {
-    id: "exorax" as ProductId,
     key: "commerce" as const,
-    product: "ExoraX",
-    field: "eCommerce",
+    field: "Commerce",
     detail: "Physical goods sold online to a private consumer.",
   },
 ]
