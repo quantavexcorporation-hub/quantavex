@@ -1,13 +1,16 @@
 "use client"
 
+import { useState } from "react"
 import { PageHeader } from "@/components/dashboard/page-header"
 import { GlobalIntelligenceMap } from "@/components/dashboard/global-intelligence-map"
 import { MarketManifest } from "@/components/dashboard/market-manifest"
+import { DomainMarketBook } from "@/components/dashboard/domain-market-book"
 import { useDashboard } from "@/components/dashboard/dashboard-provider"
 import { getPriorityRegions } from "@/lib/priority-markets"
 
 export function IntelligenceView() {
   const { snapshot } = useDashboard()
+  const [country, setCountry] = useState("IND")
   const regions = Object.values(snapshot?.regions ?? getPriorityRegions())
     .slice()
     .sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99))
@@ -20,7 +23,7 @@ export function IntelligenceView() {
     <div className="space-y-6 sm:space-y-8">
       <PageHeader
         title="Priority markets"
-        subtitle="Build in India. Expand into high-economy countries in a fixed order. This is the operating sequence — not traffic, revenue, or live telemetry."
+        subtitle="India first, then the high-economy corridor. Click a country to read the 2026 size of online education, media, and e-commerce. Industry forecasts — not Quantavex revenue."
       />
 
       <div className="grid grid-cols-1 divide-y divide-white/10 border border-white/10 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
@@ -36,9 +39,16 @@ export function IntelligenceView() {
         ))}
       </div>
 
-      <GlobalIntelligenceMap data={snapshot?.regions} lastSyncSeconds={snapshot?.lastSyncSeconds ?? 0} />
+      <DomainMarketBook selected={country} onSelect={setCountry} />
 
-      <MarketManifest />
+      <GlobalIntelligenceMap
+        data={snapshot?.regions}
+        lastSyncSeconds={snapshot?.lastSyncSeconds ?? 0}
+        selected={country}
+        onSelect={setCountry}
+      />
+
+      <MarketManifest selected={country} onSelect={setCountry} />
     </div>
   )
 }

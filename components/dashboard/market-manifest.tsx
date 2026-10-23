@@ -168,11 +168,22 @@ function ManifestWorldMap({
   )
 }
 
-export function MarketManifest() {
+export function MarketManifest({
+  selected: selectedProp,
+  onSelect,
+}: {
+  selected?: string
+  onSelect?: (code: string) => void
+} = {}) {
   const model = useMemo(() => getManifestModel(), [])
   const [mode, setMode] = useState<"network" | "geo">("network")
   const [band, setBand] = useState<MarketBand | "All">("All")
-  const [selected, setSelected] = useState("IND")
+  const [internalSelected, setInternalSelected] = useState("IND")
+  const selected = selectedProp ?? internalSelected
+  const setSelected = (code: string) => {
+    onSelect?.(code)
+    if (selectedProp === undefined) setInternalSelected(code)
+  }
   const [hovered, setHovered] = useState<string | null>(null)
 
   const byCode = useMemo(() => {

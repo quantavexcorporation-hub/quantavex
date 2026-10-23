@@ -11,6 +11,7 @@ import {
 } from "react-simple-maps"
 import { DashboardSnapshot } from "@/lib/dashboard-types"
 import { getPriorityRegions, marketBand, priorityMarketConnections } from "@/lib/priority-markets"
+import { CountryDomainReadout } from "@/components/dashboard/domain-market-book"
 
 type RegionMap = DashboardSnapshot["regions"]
 type RegionValue = RegionMap[string]
@@ -107,13 +108,18 @@ const NetworkLines = memo(function NetworkLines({
 export function GlobalIntelligenceMap({
   data,
   compact = false,
+  selected,
+  onSelect,
 }: {
   data?: DashboardSnapshot["regions"]
   lastSyncSeconds?: number
   compact?: boolean
+  selected?: string | null
+  onSelect?: (code: string) => void
 }) {
   const regionData = data ?? fallbackRegionData
-  const [selectedRegion, setSelectedRegion] = useState<string | null>("IND")
+  const [internalRegion, setInternalRegion] = useState<string | null>("IND")
+  const selectedRegion = selected !== undefined ? selected : internalRegion
   const [mapReady, setMapReady] = useState(false)
 
   useEffect(() => {
@@ -124,9 +130,16 @@ export function GlobalIntelligenceMap({
     ([, a], [, b]) => (a.priority ?? 99) - (b.priority ?? 99)
   )
 
-  const handleRegionClick = useCallback((code: string) => {
-    setSelectedRegion((prev) => (prev === code ? null : code))
-  }, [])
+  const handleRegionClick = useCallback(
+    (code: string) => {
+      if (onSelect) {
+        onSelect(code)
+        return
+      }
+      setInternalRegion((prev) => (prev === code ? null : code))
+    },
+    [onSelect],
+  )
 
   return (
     <div className="overflow-hidden rounded-none border border-white/10 bg-[#08080a]">
@@ -214,6 +227,7 @@ export function GlobalIntelligenceMap({
             <div className="border-b border-white/10 px-4 py-3">
               <p className="text-[10px] font-medium uppercase tracking-[0.24em] text-zinc-500">Corridor</p>
             </div>
+            {selectedRegion ? <CountryDomainReadout code={selectedRegion} variant="rail" /> : null}
             <div className="max-h-[280px] overflow-y-auto sm:max-h-[360px] lg:max-h-[520px]">
               {sortedRegions.map(([code, data]) => {
                 const selected = selectedRegion === code

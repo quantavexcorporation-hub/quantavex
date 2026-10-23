@@ -24,7 +24,7 @@ export const pageMeta: Record<
   },
   "/intelligence": {
     title: "Priority markets",
-    subtitle: "India first. Thirty markets. One order of operations.",
+    subtitle: "India first. Thirty markets. Three field sizes on each country.",
   },
   "/forecasting": {
     title: "Roadmap",
