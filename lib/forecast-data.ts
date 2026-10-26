@@ -32,10 +32,10 @@ export function getForecast(): {
   return {
     series: [],
     kpis: [
-      { id: "horizon", label: "Horizon", value: "6 months", delta: "After investment — not live operations", tone: "amber" },
-      { id: "posture", label: "Build", value: "Simultaneous", delta: "All three platforms in parallel", tone: "cyan" },
-      { id: "mesh", label: "Infrastructure", value: "Full company", delta: "Identity, data, compute, and the three products", tone: "purple" },
-      { id: "users", label: "Target", value: "270,000", delta: "90,000 on each platform — not live traffic", tone: "emerald" },
+      { id: "horizon", label: "Horizon", value: "18 months", delta: "October 2026 to April 2028 — not live operations", tone: "amber" },
+      { id: "posture", label: "Phases", value: "Four gates", delta: "Value before acquisition spend", tone: "cyan" },
+      { id: "mesh", label: "Infrastructure", value: "Shared", delta: "One company, three growth engines", tone: "purple" },
+      { id: "users", label: "Target", value: "9 million", delta: "3 million registrations on each platform — a stretch target", tone: "emerald" },
     ],
     mix: [],
     milestones: company.milestones.map((item) => ({

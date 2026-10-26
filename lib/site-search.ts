@@ -4,7 +4,7 @@ import { getPriorityRegions } from "@/lib/priority-markets"
 import { productArchitecture } from "@/lib/product-architecture"
 import { productList } from "@/lib/products"
 import { researchPapers } from "@/lib/research"
-import { grab, program, roadmap } from "@/lib/roadmap"
+import { engines, phases, roadmap } from "@/lib/roadmap"
 
 export interface SiteSearchHit {
   id: string
@@ -102,28 +102,28 @@ function buildSiteSearchIndex(): SiteSearchHit[] {
     }),
   ]
 
-  for (const item of program) {
+  for (const phase of phases) {
     entries.push(
       hit({
-        id: `roadmap-${item.n}`,
-        title: item.title,
+        id: `phase-${phase.n}`,
+        title: phase.title,
         kind: "Roadmap",
         href: "/forecasting",
-        detail: item.text,
-        text: `${item.n} ${item.title} ${item.text}`,
+        detail: phase.gate,
+        text: `${phase.window} months ${phase.title} ${phase.points.join(" ")} ${phase.gate}`,
       })
     )
   }
 
-  for (const channel of grab) {
+  for (const engine of engines) {
     entries.push(
       hit({
-        id: `grab-${channel.slug}`,
-        title: channel.name,
+        id: `engine-${engine.id}`,
+        title: `${engine.name} growth`,
         kind: "Roadmap",
         href: "/forecasting",
-        detail: channel.role,
-        text: `${channel.name} ${channel.yield} ${channel.role} user grab`,
+        detail: engine.text,
+        text: `${engine.name} ${engine.target} registrations ${engine.text}`,
       })
     )
   }

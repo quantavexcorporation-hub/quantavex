@@ -1,180 +1,113 @@
-import type { ProductId } from "@/components/brand/product-logo"
-
-export const roadmap = {
-  clock: "6 months after investment",
-  users: "270,000",
-  perPlatform: "90,000",
-  usersNote: "90,000 users on each platform. 270,000 company total at month 6 — a target, not live traffic today.",
-  posture: "Simultaneous",
+﻿export const roadmap = {
+  title: "18-Month Global Expansion Roadmap",
+  clock: "October 2026 to April 2028",
+  targetLabel: "Strategic target",
+  targetDate: "April 2028",
+  start: "October 2026",
+  users: "9 million",
+  perPlatform: "3 million",
+  usersNote:
+    "3 million registrations on Quantrion, Vdoc, and ExoraX each. 9 million company total by April 2028 — a stretch target, not current traction.",
+  posture: "Four phases",
+  mau: "Build meaningful monthly active usage on every platform, with a provisional target of 20–30% of registered users active monthly, subject to retention evidence.",
+  disclaimer:
+    "These are proposed targets, not current traction or guaranteed outcomes. The plan assumes execution begins in October 2026.",
   promise:
-    "All three platforms are built in parallel on Quantavex company infrastructure — identity, data, compute, and the products themselves — with real operating cost, and brought to production with 90,000 users on each platform — 270,000 in total — inside six months of investment. Users are grabbed the way the fastest products filled: the product carries the invite.",
+    "18 months is the execution horizon. Nine million registrations is the stretch target. Monthly active users are a separate engagement target, not interchangeable with registrations.",
 } as const
 
-export const months = ["M1", "M2", "M3", "M4", "M5", "M6"] as const
-
-export const quantavexClock = [
-  { order: "Stand the stack", work: "Identity, data, compute" },
-  { order: "Open the APIs", work: "Inside the company stack" },
-  { order: "Turn cost on", work: "Inference, storage, 3PL" },
-  { order: "Start the grab", work: "Instant result" },
-  { order: "Spread the result", work: "Referral and groups" },
-  { order: "Hold the target", work: "90,000 each" },
-] as const
-
-export const platformClock: { id: ProductId; cells: string[] }[] = [
-  {
-    id: "quantrion",
-    cells: ["DNA on the stack", "Pathway on the API", "Student OS", "Score card travels", "Batch follows", "Production"],
-  },
-  {
-    id: "vdoc",
-    cells: ["Story on the stack", "Director on the API", "Experience OS", "Scene travels", "Room follows", "Production"],
-  },
-  {
-    id: "exorax",
-    cells: ["Loop on the stack", "Intent on the API", "Commerce OS", "Inspect travels", "Buyers follow", "Production"],
-  },
-]
-
-export const program = [
+export const phases = [
   {
     n: "01",
-    title: "Build all three at once",
-    text: "Quantrion, Vdoc, and ExoraX are built as platforms together. No waiting for one product to finish before the others start.",
+    window: "0–3",
+    months: "Months",
+    title: "Foundation and validation",
+    points: [
+      "Make Quantrion's core experience production-ready.",
+      "Test with real target users and measure activation and retention.",
+      "Validate Vdoc and ExoraX's first use cases.",
+      "Launch analytics, landing pages, and focused YouTube campaigns.",
+    ],
+    gate: "Demonstrate real product value before increasing acquisition spend.",
   },
   {
     n: "02",
-    title: "Run the company infrastructure",
-    text: "Quantavex runs identity, data, compute, and the three products as one company. APIs sit inside that infrastructure. They are not the whole of it.",
+    window: "4–6",
+    months: "Months",
+    title: "Product-market validation",
+    points: [
+      "Build Quantrion's exam-specific content and partnership engine.",
+      "Launch Vdoc's creator-led distribution experiments.",
+      "Validate ExoraX within one high-intent product category.",
+      "Test referrals, SEO, and small paid campaigns.",
+    ],
+    gate: "Identify repeatable acquisition channels and returning-user cohorts.",
   },
   {
     n: "03",
-    title: "Infra from the figures",
-    text: "Four-layer exam loop, story graph, six-layer confidence stack. Infrastructure follows the architecture pages — not a generic cloud template.",
+    window: "7–12",
+    months: "Months",
+    title: "Accelerated distribution",
+    points: [
+      "Scale channels that deliver retained users at acceptable cost.",
+      "Expand educational content, creator collaborations, and merchant partnerships.",
+      "Improve onboarding, referrals, localization, and infrastructure.",
+      "Add growth capacity where the data supports it.",
+    ],
+    gate: "Each product must show its own sustainable acquisition and retention evidence.",
   },
   {
     n: "04",
-    title: "Pay operating cost",
-    text: "Compute, inference, object storage, company infrastructure, the ExoraX 3PL adapter, and ops. Production has a bill. The plan includes it.",
-  },
-  {
-    n: "05",
-    title: "Production-ready",
-    text: "A platform is the present release. Month 6 is when those platforms can take real users.",
-  },
-  {
-    n: "06",
-    title: "Grab at product speed",
-    text: "Nine moves taken from how ChatGPT, Dropbox, Slack, and Zoom filled: an instant result, a result that travels, one open day, a two-sided referral, a group pull, an embed, a public library, one repeatable sentence, and a second session the next day.",
-  },
-  {
-    n: "07",
-    title: "90,000 × 3",
-    text: "90,000 users on Quantrion, Vdoc, and ExoraX each. 270,000 company total at the end of the six-month clock — a goal after investment, not a live cohort today.",
+    window: "13–18",
+    months: "Months",
+    title: "Global scale-up",
+    points: [
+      "Expand successful acquisition engines into additional markets.",
+      "Pursue 3 million registrations per platform.",
+      "Track MAU, retention, conversion, and cost per retained user separately.",
+      "Optimize AI and video-generation costs while strengthening reliability.",
+    ],
+    gate: "Report actual performance against the 9 million target transparently.",
   },
 ] as const
 
-export const grab = [
+export const engines = [
   {
-    n: "01",
-    slug: "youtube",
-    name: "YouTube",
-    yield: "Compounding proof",
-    role: "Long-form that keeps working. Exam intelligence, product film, and how the machine works — searched months later.",
+    id: "quantrion" as const,
+    name: "Quantrion",
+    target: "3M",
+    text: "YouTube education content, exam-specific SEO, student communities, educator partnerships, and useful personalized study tools.",
   },
   {
-    n: "02",
-    slug: "instagram",
-    name: "Instagram",
-    yield: "Daily reach",
-    role: "Reels and stills for Vdoc worlds and ExoraX inspect. Fast surface for people who will not watch a lecture.",
+    id: "vdoc" as const,
+    name: "Vdoc",
+    target: "3M",
+    text: "Shareable AI stories, short-form video distribution, creator partnerships, interactive experiences, and repeat content formats.",
   },
   {
-    n: "03",
-    slug: "x",
-    name: "X",
-    yield: "Speed + narrative",
-    role: "Founder voice, build in public, tech and product discourse. Cheap to run. High signal if the work is real.",
-  },
-  {
-    n: "04",
-    slug: "linkedin",
-    name: "LinkedIn",
-    yield: "Trust + hiring",
-    role: "Investors, merchants, educators, the six seats to hire. Professional demand — not vanity likes.",
-  },
-  {
-    n: "05",
-    slug: "whatsapp",
-    name: "WhatsApp",
-    yield: "India close rate",
-    role: "Groups, broadcasts, product links. Highest conversion surface in India. Time invested here returns users, not views.",
-  },
-  {
-    n: "06",
-    slug: "reddit",
-    name: "Reddit",
-    yield: "High intent",
-    role: "Exam threads, product communities, people already asking. Slow, honest, compounding. Worth the hours if the answers are useful.",
+    id: "exorax" as const,
+    name: "ExoraX",
+    target: "3M",
+    text: "Product comparison content, search-led discovery, merchant partnerships, and shopping tools that solve a specific decision problem.",
   },
 ] as const
 
-export const grabStrategies = [
-  {
-    n: "01",
-    name: "Instant first result",
-    move: "ChatGPT speed",
-    text: "ChatGPT’s public opening reached about a million people in five days because anyone could get a result immediately. Quantrion shows a readiness read, Vdoc a scene, ExoraX an inspect — before a long account wall.",
-  },
-  {
-    n: "02",
-    name: "The result travels",
-    move: "Zoom link · Figma file",
-    text: "ChatGPT answers, Zoom links, and Figma files recruited the next user. A score card, a scene, or an inspect is the invite. It moves without a post from the company.",
-  },
-  {
-    n: "03",
-    name: "One open day",
-    move: "A burst, not a drip",
-    text: "ChatGPT did not trickle out. One public opening, all three products usable the same day. Attention compounds when it arrives together.",
-  },
-  {
-    n: "04",
-    name: "Two-sided referral",
-    move: "Dropbox case",
-    text: "Dropbox gave the benefit to the person who invited and the person who joined, and the program became the growth engine. Extra practice, generation, or inspects on both sides.",
-  },
-  {
-    n: "05",
-    name: "Pull the group",
-    move: "Slack inside a team",
-    text: "Slack spread because one person brought the team. A student brings a batch. A creator brings a room. A merchant brings buyers. The invite lives inside the product.",
-  },
-  {
-    n: "06",
-    name: "Embed outward",
-    move: "ChatGPT API pattern",
-    text: "ChatGPT’s API put the product inside other companies. Coaching institutes, studios, and merchants embed one Quantavex surface. Their audience arrives already in context.",
-  },
-  {
-    n: "07",
-    name: "Public artifact library",
-    move: "Notion templates",
-    text: "Notion templates and shared prompts were doors, not posts. Exam plans, worlds, and inspects anyone can open and run. Each artifact is a landing page with a use button.",
-  },
-  {
-    n: "08",
-    name: "One repeatable sentence",
-    move: "The demo is the story",
-    text: "ChatGPT’s press line was the demo. One sentence a teacher, journalist, or founder can repeat. That sentence moves faster than a campaign.",
-  },
-  {
-    n: "09",
-    name: "Second session, next day",
-    move: "Product-led growth",
-    text: "The research record on product-led growth: the second session is the engine. First successful use, then a return within a day, then scale. Traffic without a second day does not become 90,000.",
-  },
-] as const
+export const capital = {
+  initial: "₹3 crore",
+  initialNote:
+    "An initial planning scenario for the 18-month plan, not a sum that guarantees 9 million users.",
+  allocation:
+    "Production engineering, customer validation, AI infrastructure, growth experiments, and essential operations.",
+  release:
+    "Release larger marketing budgets only after cohort retention and acquisition economics are demonstrated.",
+  cac: "₹25",
+  cacNote: "Blended acquisition cost per registration, used as arithmetic — not a measured cost.",
+  nineMillionCost: "₹22.5 crore",
+  nineMillionNote:
+    "At ₹25 per registration, nine million registrations would mathematically cost ₹22.5 crore, before product development and operating expenses.",
+  organic:
+    "Organic distribution, partnerships, referrals, and product-led growth must play a substantial role.",
+} as const
 
 export type DisplayCard = {
   eyebrow: string
@@ -258,19 +191,4 @@ export const platformDisplays = [
       { eyebrow: "Commerce Partners · Partner", headline: "Sponsor Discover", body: "Appear in AI results, category rails, and sponsored search slots.", cta: "Advertise", accent: "#a78bfa" },
     ] satisfies DisplayCard[],
   },
-] as const
-
-export const opex = [
-  { name: "Cloud compute & storage", role: "Sessions, DNA, story state, product graph" },
-  { name: "Model inference", role: "Pathway, Director, intent and rank" },
-  { name: "Company infrastructure", role: "Identity, data, compute, and the three products on one company stack" },
-  { name: "Generation & object jobs", role: "Lectures, media synthesis, 3D twins" },
-  { name: "3PL adapter", role: "ExoraX fulfillment instruction — no owned fleet" },
-  { name: "Operations", role: "Reliability, support, legal, the people the build needs" },
-] as const
-
-export const mesh = [
-  { from: "Quantrion", via: "Learning system · DNA · sessions", to: "Quantavex infrastructure" },
-  { from: "Vdoc", via: "Experience system · worlds · memory", to: "Quantavex infrastructure" },
-  { from: "ExoraX", via: "Commerce system · catalog · orders", to: "Quantavex infrastructure" },
 ] as const

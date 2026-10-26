@@ -28,7 +28,7 @@ export const pageMeta: Record<
   },
   "/forecasting": {
     title: "Roadmap",
-    subtitle: "Six months after investment — 90,000 users on each platform, 270,000 total",
+    subtitle: "18 months to April 2028 — 9 million registrations, 3 million on each platform",
   },
   "/quantrion/architecture": {
     title: "Quantrion architecture",

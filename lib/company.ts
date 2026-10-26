@@ -14,11 +14,11 @@ export const company = {
   valuationNote: "Not a public company mark",
   instrument: "Equity / convertible",
   instrumentNote: "To be finalized",
-  horizon: "6 months after investment",
+  horizon: "18 months · October 2026 to April 2028",
   paperPdf: "/research/quantavex.pdf",
   tam: "First market: India competitive-exam cohort via Quantrion — not a combined global TAM",
   thesis:
-    "After investment, all three platforms are built in parallel on Quantavex company infrastructure. First market remains India. 90,000 users on each platform — 270,000 total — is the six-month production target, not live traffic today.",
+    "All three platforms are built in parallel on Quantavex company infrastructure. The execution horizon is 18 months, from October 2026 to April 2028. Nine million registrations — three million on each platform — is the stretch target, not current traction.",
   proof:
     "Three platforms specified in original monographs — Quantrion, Vdoc, and ExoraX. Each dossier links a platform you can open — not live production traffic.",
   geography:
@@ -134,9 +134,9 @@ export const company = {
     {
       period: "M6",
       product: "Quantavex",
-      title: "90,000 users each",
-      status: "Target",
-      detail: "Quantrion, Vdoc, and ExoraX: 90,000 users on each. 270,000 company total at the end of the six-month clock — not a live cohort today.",
+      title: "9 million registrations",
+      status: "Stretch target",
+      detail: "Quantrion, Vdoc, and ExoraX: 3 million registrations each by April 2028. A proposed target, not current traction.",
     },
   ],
   results: [
