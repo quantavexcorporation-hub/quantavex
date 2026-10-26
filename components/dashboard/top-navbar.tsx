@@ -50,7 +50,7 @@ export function TopNavbar({
           <p className="truncate text-[10px] uppercase tracking-[0.14em] text-gray-500">{page.subtitle}</p>
         </div>
 
-        <div className="hidden min-w-0 lg:block lg:max-w-[240px] xl:max-w-none">
+        <div className="hidden min-w-0 lg:block lg:max-w-xl xl:max-w-none">
           <p className="truncate text-sm font-medium text-white">{page.title}</p>
           <p className="truncate text-[10px] uppercase tracking-[0.18em] text-gray-500">{page.subtitle}</p>
         </div>
