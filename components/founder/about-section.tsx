@@ -8,7 +8,6 @@ import {
   GraduationCap,
   Compass,
 } from "lucide-react"
-import { Carousel3D } from "@/components/founder/carousel-3d"
 import { Reveal } from "@/components/founder/reveal"
 
 const highlights = [
@@ -50,39 +49,6 @@ const highlights = [
   },
 ]
 
-const carouselImages = [
-  {
-    src: "/images/carousel-1.jpg",
-    alt: "Udit Gour presenting Quantavex work",
-    label: "Presentation",
-  },
-  {
-    src: "/images/carousel-2.jpg",
-    alt: "Research and product development",
-    label: "Research",
-  },
-  {
-    src: "/images/carousel-3.jpg",
-    alt: "Quantavex workspace",
-    label: "Studio",
-  },
-  {
-    src: "/images/carousel-4.jpg",
-    alt: "Systems and models",
-    label: "Systems",
-  },
-  {
-    src: "/images/carousel-5.jpg",
-    alt: "Working session",
-    label: "Build",
-  },
-  {
-    src: "/images/carousel-6.jpg",
-    alt: "Infrastructure planning",
-    label: "Infrastructure",
-  },
-]
-
 export function AboutSection() {
   return (
     <section
@@ -100,11 +66,9 @@ export function AboutSection() {
           </h2>
         </div>
 
-        {/* Main layout: Text left, Carousel right on desktop */}
-        <div className="flex flex-col items-start gap-12 lg:flex-row lg:gap-16">
-          {/* Left: About text and highlights */}
-          <div className="w-full flex-1 lg:max-w-[50%]">
-            <div className="flex flex-col gap-5 sm:gap-6">
+        <div className="flex flex-col items-start">
+          <div className="w-full">
+            <div className="flex max-w-3xl flex-col gap-5 sm:gap-6">
               <p className="text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg">
                 Udit Gour is a business researcher and visionary leader. He writes the
                 architecture first — as a monograph — then builds the software
@@ -173,7 +137,7 @@ export function AboutSection() {
             </div>
 
             {/* Highlight cards */}
-            <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4">
+            <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
               {highlights.map((item) => (
                 <div
                   key={item.title}
@@ -188,13 +152,6 @@ export function AboutSection() {
                   </p>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Right: 3D Carousel */}
-          <div className="flex w-full items-center justify-center lg:w-[45%] lg:flex-shrink-0">
-            <div className="w-full max-w-[500px] lg:max-w-none">
-              <Carousel3D images={carouselImages} />
             </div>
           </div>
         </div>

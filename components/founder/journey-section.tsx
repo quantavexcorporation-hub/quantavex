@@ -1,4 +1,38 @@
+import { Carousel3D } from "@/components/founder/carousel-3d"
 import { Reveal } from "@/components/founder/reveal"
+
+const carouselImages = [
+  {
+    src: "/images/carousel-1.jpg",
+    alt: "Udit Gour presenting Quantavex work",
+    label: "Presentation",
+  },
+  {
+    src: "/images/carousel-2.jpg",
+    alt: "Research and product development",
+    label: "Research",
+  },
+  {
+    src: "/images/carousel-3.jpg",
+    alt: "Quantavex workspace",
+    label: "Studio",
+  },
+  {
+    src: "/images/carousel-4.jpg",
+    alt: "Systems and models",
+    label: "Systems",
+  },
+  {
+    src: "/images/carousel-5.jpg",
+    alt: "Working session",
+    label: "Build",
+  },
+  {
+    src: "/images/carousel-6.jpg",
+    alt: "Infrastructure planning",
+    label: "Infrastructure",
+  },
+]
 
 export function JourneySection() {
   return (
@@ -16,19 +50,27 @@ export function JourneySection() {
           </h2>
         </div>
 
-        <div className="max-w-3xl space-y-5 text-sm leading-relaxed text-muted-foreground sm:space-y-6 sm:text-base md:text-lg">
-          <p className="text-base text-foreground sm:text-lg md:text-xl md:leading-relaxed">
-            My journey has been shaped by hands-on experiences across education, entertainment, and commerce.
-          </p>
-          <p>
-            Preparing for competitive examinations gave me firsthand exposure to the challenges students face in learning, preparation, and navigating educational opportunities. Exploring content creation through YouTube channels introduced me to the creative possibilities of digital entertainment and storytelling. Running a kirana shop gave me practical insight into retail operations, customer needs, purchasing behaviour, and the everyday realities of commerce.
-          </p>
-          <p>
-            These experiences helped me understand three distinct markets not just as an observer, but through my own efforts and challenges.
-          </p>
-          <p>
-            Today, I am bringing these perspectives together through Quantavex Corporation, building three AI-driven ventures: Quantrion in education, Vdoc in entertainment, and ExoraX in intelligent commerce. My journey continues with a clear ambition: to transform real-world problems into meaningful technology products that create value for people at scale.
-          </p>
+        <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
+          <div className="w-full flex-1 space-y-5 text-sm leading-relaxed text-muted-foreground sm:space-y-6 sm:text-base md:text-lg lg:max-w-[52%]">
+            <p className="text-base text-foreground sm:text-lg md:text-xl md:leading-relaxed">
+              My journey has been shaped by hands-on experiences across education, entertainment, and commerce.
+            </p>
+            <p>
+              Preparing for competitive examinations gave me firsthand exposure to the challenges students face in learning, preparation, and navigating educational opportunities. Exploring content creation through YouTube channels introduced me to the creative possibilities of digital entertainment and storytelling. Running a kirana shop gave me practical insight into retail operations, customer needs, purchasing behaviour, and the everyday realities of commerce.
+            </p>
+            <p>
+              These experiences helped me understand three distinct markets not just as an observer, but through my own efforts and challenges.
+            </p>
+            <p>
+              Today, I am bringing these perspectives together through Quantavex Corporation, building three AI-driven ventures: Quantrion in education, Vdoc in entertainment, and ExoraX in intelligent commerce. My journey continues with a clear ambition: to transform real-world problems into meaningful technology products that create value for people at scale.
+            </p>
+          </div>
+
+          <div className="flex w-full items-center justify-center lg:w-[45%] lg:flex-shrink-0">
+            <div className="w-full max-w-[500px] lg:max-w-none">
+              <Carousel3D images={carouselImages} />
+            </div>
+          </div>
         </div>
       </Reveal>
     </section>
