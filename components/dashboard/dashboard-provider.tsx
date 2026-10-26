@@ -14,11 +14,7 @@ interface DashboardContextValue {
     mix: { name: string; value: number; color: string }[]
     milestones: CapitalMilestone[]
   }
-  searchResponse: string
-  searchStatus: "idle" | "loading" | "success" | "error"
-  searchError: string | null
   notificationDot: boolean
-  handleSearch: (query: string) => Promise<void>
   handleNotificationsClick: () => Promise<void>
 }
 
@@ -28,9 +24,6 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
   const [snapshot, setSnapshot] = useState<DashboardSnapshot | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [searchResponse, setSearchResponse] = useState("")
-  const [searchStatus, setSearchStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
-  const [searchError, setSearchError] = useState<string | null>(null)
   const [notificationDot, setNotificationDot] = useState(true)
   const forecast = useMemo(() => getForecast(), [])
 
@@ -116,40 +109,6 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
     if (response.ok) setNotificationDot(false)
   }
 
-  const handleSearch = async (query: string) => {
-    setSearchStatus("loading")
-    setSearchError(null)
-    setSearchResponse("")
-
-    try {
-      const response = await fetch("/api/assistant", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
-      })
-
-      if (!response.ok || !response.body) {
-        throw new Error(`Assistant request failed (${response.status})`)
-      }
-
-      const reader = response.body.getReader()
-      const decoder = new TextDecoder()
-      let accumulated = ""
-
-      while (true) {
-        const { done, value } = await reader.read()
-        if (done) break
-        accumulated += decoder.decode(value, { stream: true })
-        setSearchResponse(accumulated.trim())
-      }
-
-      setSearchStatus("success")
-    } catch (searchRequestError) {
-      setSearchStatus("error")
-      setSearchError(searchRequestError instanceof Error ? searchRequestError.message : "Search failed")
-    }
-  }
-
   return (
     <DashboardContext.Provider
       value={{
@@ -157,11 +116,7 @@ export function DashboardProvider({ children }: { children: React.ReactNode }) {
         isLoading,
         error,
         forecast,
-        searchResponse,
-        searchStatus,
-        searchError,
         notificationDot,
-        handleSearch,
         handleNotificationsClick,
       }}
     >

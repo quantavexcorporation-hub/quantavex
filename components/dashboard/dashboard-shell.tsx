@@ -26,7 +26,7 @@ function PortfolioMobileBar() {
 function ShellFrame({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isPortfolio = pathname === "/portfolio"
-  const { handleNotificationsClick, handleSearch, searchResponse, searchStatus, searchError } = useDashboard()
+  const { handleNotificationsClick } = useDashboard()
 
   return (
     <div className="flex h-[100dvh] overflow-hidden bg-[#08080a]">
@@ -37,10 +37,6 @@ function ShellFrame({ children }: { children: React.ReactNode }) {
         ) : (
           <TopNavbar
             onNotificationsClick={handleNotificationsClick}
-            onSearch={handleSearch}
-            searchResponse={searchResponse}
-            searchStatus={searchStatus}
-            searchError={searchError}
           />
         )}
         <main
