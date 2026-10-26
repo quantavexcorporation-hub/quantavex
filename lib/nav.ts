@@ -4,7 +4,7 @@ export const pageMeta: Record<
 > = {
   "/": {
     title: "Parent company",
-    subtitle: "Quantrion, Vdoc, and ExoraX — built simultaneously",
+    subtitle: "Parent and infrastructure company",
   },
   "/portfolio": {
     title: "Udit Gour",

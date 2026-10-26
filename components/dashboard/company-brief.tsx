@@ -8,17 +8,17 @@ export function CompanyBrief() {
         The company
       </p>
       <h2 className="mt-4 max-w-4xl text-xl font-semibold tracking-tight text-balance text-white sm:text-2xl md:text-[1.85rem] md:leading-snug">
-        Quantavex builds AI-driven products for how people learn, create, discover, and transact.
+        Quantavex is the parent company and the infrastructure for Quantrion, Vdoc, and ExoraX.
       </h2>
 
       <div className="mt-5 max-w-3xl space-y-4 text-sm leading-relaxed text-pretty text-gray-300 sm:mt-6 md:text-[15px] md:leading-7">
         <p>
-          Quantavex is a founder-led parent company. It leads, specifies, and
-          manages three platforms — Quantrion, Vdoc, and ExoraX — for
-          high-stakes learning, interactive entertainment, and decision
-          commerce. Not content libraries, catalogs, or storefronts bolted onto
-          chat. The work sits where artificial intelligence, data science, human
-          behavior, digital media, and commerce meet.
+          Quantavex is founder-led. It specifies and operates the company
+          infrastructure — identity, data, and compute — on which the three
+          platforms are built together. Quantrion is high-stakes learning. Vdoc
+          is interactive entertainment. ExoraX is decision commerce. The work
+          sits where artificial intelligence, data science, human behavior,
+          digital media, and commerce meet.
         </p>
         <p>
           The method is research first. Each platform is written as an original
@@ -34,7 +34,7 @@ export function CompanyBrief() {
           enter, shape, and create in, with a virtual economy inside the
           experience. ExoraX is decision commerce: a correct decision before
           value moves — product, price, and risk — including trade across
-          goods, services, and capital. Three platforms. One parent company.
+          goods, services, and capital. Three platforms, built together on one infrastructure.
         </p>
         <p>
           Each platform has an MVP linked from its dossier. The

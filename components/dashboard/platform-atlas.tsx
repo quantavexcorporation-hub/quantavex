@@ -40,10 +40,10 @@ export function PlatformAtlas() {
             Company platforms
           </p>
           <h2 className="mt-2 text-xl font-semibold tracking-tight text-white md:text-2xl">
-            All three platforms, at once.
+            Three platforms. One infrastructure.
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-pretty text-gray-400">
-            Quantrion, Vdoc, and ExoraX are built in parallel on the same parent company.
+            Quantrion, Vdoc, and ExoraX are built together on Quantavex infrastructure.
             Each card links a dossier and an MVP.
           </p>
         </div>
