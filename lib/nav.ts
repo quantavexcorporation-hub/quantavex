@@ -4,7 +4,7 @@ export const pageMeta: Record<
 > = {
   "/": {
     title: "Parent company",
-    subtitle: "Parent Company · Central Vision · API Infrastructure",
+    subtitle: "Parent Company · Central Vision · Shared API Infrastructure",
   },
   "/portfolio": {
     title: "Udit Gour",
