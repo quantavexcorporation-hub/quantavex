@@ -119,7 +119,7 @@ export function AboutSection() {
                 founder-led.
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg">
-                The work is to take those systems from paper into an MVP,
+                The work is to take those systems from paper into a platform,
                 with design partners, and then into products people actually use.
               </p>
 

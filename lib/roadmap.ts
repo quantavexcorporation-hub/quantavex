@@ -40,7 +40,7 @@ export const program = [
   {
     n: "01",
     title: "Build all three at once",
-    text: "Quantrion, Vdoc, and ExoraX leave the MVP together. No waiting for one product to finish before the others start.",
+    text: "Quantrion, Vdoc, and ExoraX are built as platforms together. No waiting for one product to finish before the others start.",
   },
   {
     n: "02",
@@ -60,7 +60,7 @@ export const program = [
   {
     n: "05",
     title: "Production-ready",
-    text: "The MVP is not the destination. Month 6 is three platforms that can take real users.",
+    text: "A platform is the present release. Month 6 is when those platforms can take real users.",
   },
   {
     n: "06",

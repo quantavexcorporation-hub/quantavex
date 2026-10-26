@@ -62,7 +62,7 @@ export function VenturesSection() {
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">
                 Quantavex is a founder-led company. Three product
                 architectures are specified. Three original monographs are
-                public. Each platform has an MVP you can open —
+                public. Each dossier links a platform you can open —
                 not live production traffic.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">

@@ -37,7 +37,7 @@ export function CompanyBrief() {
           goods, services, and capital. Three platforms, built together on one infrastructure.
         </p>
         <p>
-          Each platform has an MVP linked from its dossier. The
+          Each dossier links a platform you can open. The
           company record is public: three architectures, three papers, one
           venture. The aim is not a demonstration. It is products people
           actually use.

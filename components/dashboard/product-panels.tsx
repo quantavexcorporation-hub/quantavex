@@ -172,9 +172,9 @@ export function ProductPanels({
         { label: "Engagement", value: "5x" },
         { label: "Content", value: "Specified" },
         { label: "Retention", value: "Research" },
-        { label: "Quality", value: "MVP" },
+        { label: "Quality", value: "Platform" },
       ],
-      preview: { badges: ["Audience", "Creation", "Economy"], highlight: "MVP" },
+      preview: { badges: ["Audience", "Creation", "Economy"], highlight: "Platform" },
     },
     {
       id: "exorax",
@@ -184,7 +184,7 @@ export function ProductPanels({
         { label: "Target conversion uplift", value: "+35%" },
         { label: "Categories", value: "6" },
         { label: "Architecture", value: "6 layers" },
-        { label: "Status", value: "MVP" },
+        { label: "Status", value: "Platform" },
       ],
       preview: { products: [{ name: "Fashion", score: 82 }, { name: "Electronics", score: 74 }, { name: "Home", score: 68 }], highlight: "Architecture" },
     },
@@ -213,7 +213,7 @@ export function ProductPanels({
         product="vdoc"
         metrics={vdoc.metrics}
       >
-        <VdocPreview badges={vdoc.preview.badges ?? ["Audience", "Creation", "Economy"]} highlight={vdoc.preview.highlight ?? "MVP"} />
+        <VdocPreview badges={vdoc.preview.badges ?? ["Audience", "Creation", "Economy"]} highlight={vdoc.preview.highlight ?? "Platform"} />
       </ProductPanel>
     ) : null,
     !productId || productId === "exorax" ? (

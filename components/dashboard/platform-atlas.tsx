@@ -19,7 +19,7 @@ const previews = {
   },
   vdoc: {
     badges: ["Audience", "Creation", "Economy"],
-    highlight: "MVP",
+    highlight: "Platform",
   },
   exorax: {
     products: [
@@ -44,7 +44,7 @@ export function PlatformAtlas() {
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-pretty text-gray-400">
             Quantrion, Vdoc, and ExoraX are built together on Quantavex infrastructure.
-            Each card links a dossier and an MVP.
+            Each card links a dossier and a platform.
           </p>
         </div>
       </div>
