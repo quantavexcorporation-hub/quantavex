@@ -363,7 +363,8 @@ const stats: StatEntry[] = [
     kind: "highlight",
     icon: User,
     title: "Founder’s Operating Framework",
-    sublabel: "Vision, research, architecture, resources, validation, and execution.",
+    sublabel: "How the founder runs Quantavex. Click to open.",
+    tags: ["Vision", "Research", "Architecture", "Resources", "Validation", "Execution"],
     accentGlow: "bg-primary/30",
   },
   {
