@@ -5,6 +5,7 @@ import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { productAccents } from "@/lib/product-accents"
 import { company } from "@/lib/company"
 import { GrowthSystem } from "@/components/dashboard/growth-system"
+import { OperatingProgram } from "@/components/dashboard/operating-program"
 import { capital, engines, phases, roadmap } from "@/lib/roadmap"
 
 const engineTone: Record<ProductId, string> = {
@@ -66,6 +67,8 @@ export function ForecastView() {
           ))}
         </div>
       </section>
+
+      <OperatingProgram />
 
       <section>
         <div className="mb-4 flex flex-wrap items-end justify-between gap-3">

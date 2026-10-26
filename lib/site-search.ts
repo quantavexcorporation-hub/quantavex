@@ -98,7 +98,7 @@ function buildSiteSearchIndex(): SiteSearchHit[] {
       kind: "Roadmap",
       href: "/forecasting",
       detail: roadmap.usersNote,
-      text: `${roadmap.clock} ${roadmap.promise} ${roadmap.users} ${roadmap.perPlatform} growth engineering experiments linkedin youtube partnerships referrals`,
+      text: `${roadmap.clock} ${roadmap.promise} ${roadmap.users} ${roadmap.perPlatform} growth engineering experiments linkedin youtube whatsapp reddit hire ${company.team.seats.map((seat) => seat.field).join(" ")}`,
     }),
   ]
 
