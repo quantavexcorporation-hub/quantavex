@@ -40,11 +40,11 @@ export function PlatformAtlas() {
             Company platforms
           </p>
           <h2 className="mt-2 text-xl font-semibold tracking-tight text-white md:text-2xl">
-            Quantrion first. Then the company.
+            All three platforms, at once.
           </h2>
           <p className="mt-1 max-w-2xl text-sm text-pretty text-gray-400">
-            Quantrion is the first addressable product — India&apos;s competitive-exam cohort.
-            Vdoc and ExoraX are the next platforms on the same parent company. Each card links a dossier and an MVP.
+            Quantrion, Vdoc, and ExoraX are built in parallel on the same parent company.
+            Each card links a dossier and an MVP.
           </p>
         </div>
       </div>
