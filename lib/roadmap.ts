@@ -109,6 +109,265 @@ export const capital = {
     "Organic distribution, partnerships, referrals, and product-led growth must play a substantial role.",
 } as const
 
+export const growthAdvantages = [
+  {
+    n: "01",
+    title: "Growth engineering, not ordinary marketing",
+    priority: "Highest priority",
+    points: [
+      "Identify the biggest bottleneck in the user journey.",
+      "Generate hypotheses to fix it.",
+      "Run controlled experiments.",
+      "Ship winning changes and measure their lasting effect.",
+    ],
+    example:
+      "Instead of spending more on Quantrion ads, test whether a useful diagnostic before registration improves activation and retention.",
+  },
+  {
+    n: "02",
+    title: "A product users want to return to",
+    priority: "Retention",
+    points: [
+      "Quantrion: personalized study plans, diagnostic progress, and useful revision workflows.",
+      "Vdoc: continuing stories, saved creations, and new episodes.",
+      "ExoraX: saved comparisons, decision histories, and useful price or availability alerts.",
+    ],
+    example: "Improve retained users per 1,000 visitors, not merely registrations per 1,000 visitors.",
+  },
+  {
+    n: "03",
+    title: "A content distribution machine",
+    priority: "Distribution",
+    points: [
+      "Quantrion: exam-specific explanations and learning experiments.",
+      "Vdoc: original cinematic stories and interactive creative challenges.",
+      "ExoraX: practical comparisons and purchase-decision guides.",
+    ],
+    example: "One idea becomes a long video, shorts, a search article, and a product demonstration. Tailor the hook. Do not repost the same cut.",
+  },
+  {
+    n: "04",
+    title: "Borrow distribution through partnerships",
+    priority: "Partners",
+    points: [
+      "Quantrion: educators, coaching institutes, student communities.",
+      "Vdoc: independent filmmakers, animation creators, storytellers.",
+      "ExoraX: niche reviewers, publishers, merchants, and shopping communities.",
+    ],
+    example: "Offer a useful co-created resource. Measure activated and retained users from each partner, not impressions.",
+  },
+  {
+    n: "05",
+    title: "Ethical referral loops",
+    priority: "Sharing",
+    points: [
+      "Quantrion: shareable practice challenges or study resources.",
+      "Vdoc: a story or creation another person can interact with.",
+      "ExoraX: a comparison or shortlist that helps another shopper decide.",
+    ],
+    example: "The user chooses what is shared. Private learning results and shopping history stay private by default.",
+  },
+  {
+    n: "06",
+    title: "High-intent search demand",
+    priority: "Search",
+    points: [
+      "Quantrion: exam-specific practice, explanations, and study resources.",
+      "Vdoc: interactive story collections, creator pages, and original story experiences.",
+      "ExoraX: product comparisons and category-specific buying guides.",
+    ],
+    example: "Useful pages for specific problems. Not thousands of near-duplicate pages. Search growth is slow, so it sits beside faster tests.",
+  },
+  {
+    n: "07",
+    title: "AI multiplies the growth team's output",
+    priority: "Leverage",
+    points: [
+      "Research audience questions.",
+      "Draft content variations.",
+      "Categorize feedback and read funnel data.",
+      "Personalize onboarding.",
+    ],
+    example:
+      "A 2025 study of 20 startup and scale-up cases is evidence for testing these workflows. It does not prove that AI guarantees faster user growth. A person reviews factual claims, educational quality, copyright, and sensitive decisions.",
+  },
+] as const
+
+export const growthMachines = [
+  {
+    id: "quantrion" as const,
+    name: "Quantrion",
+    wedge: "One well-defined exam cohort",
+    steps: [
+      "Publish high-value exam resources and demonstrations.",
+      "Offer a useful diagnostic or personalized study plan.",
+      "Convert users into registered learners.",
+      "Encourage a second meaningful study session.",
+      "Develop educator partnerships and referrals after proving value.",
+    ],
+    advantage: "Recurring student needs can create repeat usage if the product genuinely improves the learning workflow.",
+  },
+  {
+    id: "vdoc" as const,
+    name: "Vdoc",
+    wedge: "One memorable storytelling format",
+    steps: [
+      "Develop a recognizable original series.",
+      "Publish clips optimized for discovery.",
+      "Invite viewers to continue or influence a story.",
+      "Make creations easy to share.",
+      "Turn the most engaging formats into recurring series.",
+    ],
+    advantage: "Entertainment can distribute through the content itself, if quality and generation cost stay sustainable.",
+  },
+  {
+    id: "exorax" as const,
+    name: "ExoraX",
+    wedge: "One category with clear purchase intent",
+    steps: [
+      "Identify a category where shoppers struggle to compare options.",
+      "Create useful comparison tools and guides.",
+      "Acquire visitors through search, creators, and partners.",
+      "Help shoppers save or share shortlists.",
+      "Build merchant relationships and monetize where appropriate.",
+    ],
+    advantage: "A useful purchase decision can connect acquisition to measurable commercial value.",
+  },
+] as const
+
+export const reverseMath = {
+  total: "9,000,000",
+  perMonth: "500,000",
+  perPlatformMonth: "166,667",
+  note: "Simple averages. Early months are for validation. Acceleration comes only if distribution works.",
+  scenarios: [
+    { rate: "2%", visits: "450 million" },
+    { rate: "5%", visits: "180 million" },
+    { rate: "10%", visits: "90 million" },
+  ],
+} as const
+
+export const experiments = [
+  { n: "01", name: "Demo-first onboarding", test: "Show value before asking for signup", signal: "Higher activation per visitor" },
+  { n: "02", name: "Landing-page variants", test: "Different audience-specific messages", signal: "More activated registrations" },
+  { n: "03", name: "Creator collaborations", test: "Relevant niche creators versus broad reach", signal: "Lower cost per retained user" },
+  { n: "04", name: "YouTube content clusters", test: "A series around one specific user problem", signal: "Repeat qualified traffic" },
+  { n: "05", name: "Referral invitation", test: "Invite after the user receives value", signal: "Activated invitees" },
+  { n: "06", name: "Shareable output", test: "A useful result the user can choose to share", signal: "Additional activated users" },
+  { n: "07", name: "Search landing pages", test: "Specific high-intent pages versus generic pages", signal: "Retained organic registrations" },
+  { n: "08", name: "Partner distribution", test: "Educators, creators, or merchants", signal: "Partner-sourced retention" },
+  { n: "09", name: "First-session improvements", test: "A shorter path to the core value event", signal: "Higher activation" },
+  { n: "10", name: "Retention interventions", test: "A relevant reminder versus no reminder", signal: "Incremental return visits" },
+  { n: "11", name: "Pricing experiments", test: "Free access and paid feature boundaries", signal: "Sustainable conversion and retention" },
+  { n: "12", name: "AI cost optimization", test: "Model routing, caching, and generation limits", signal: "Lower cost per valuable activity" },
+] as const
+
+export const operatingCadence = [
+  {
+    when: "Every week",
+    title: "Growth review",
+    text: "Registrations, activation, retention, channel performance, user feedback, and AI cost per meaningful activity.",
+  },
+  {
+    when: "Every week",
+    title: "Prioritized experiments",
+    text: "A manageable number of instrumented tests. Volume rises only when the team can read the results.",
+  },
+  {
+    when: "Every month",
+    title: "Reallocate",
+    text: "Move budget and engineering time toward retained users. Vanity metrics do not earn the next rupee.",
+  },
+  {
+    when: "Always",
+    title: "Protect trust",
+    text: "Platform rules, privacy, consent, copyright, and truthful claims. No fake accounts, spam, purchased engagement, or misleading AI claims.",
+  },
+] as const
+
+export const testSplit = [
+  { share: "70%", name: "Quantrion", text: "One audience, one core promise, a few educational formats." },
+  { share: "20%", name: "Vdoc", text: "A small set of original short-form stories. Measure qualified interest." },
+  { share: "10%", name: "ExoraX", text: "One category-specific message and one landing page." },
+] as const
+
+export const distributionChannels = [
+  {
+    name: "LinkedIn",
+    priority: "Priority 1",
+    role: "Company progress, architecture, research, genuine milestones, hiring, and partnerships. Founder profile beside the company page.",
+    identity: "Quantavex",
+  },
+  {
+    name: "YouTube",
+    priority: "Priority 1",
+    role: "Company channel first. Product channels when each has a plan it can sustain: tutorials, original stories, decision guides.",
+    identity: "Quantavex · Quantrion · Vdoc · ExoraX",
+  },
+  {
+    name: "Instagram",
+    priority: "Priority 1 for Vdoc",
+    role: "Cinematic Vdoc clips, Quantrion demonstrations, visual ExoraX comparisons. Separate accounts only when original content can keep them alive.",
+    identity: "Product accounts when the work can sustain them",
+  },
+  {
+    name: "X",
+    priority: "Build in public",
+    role: "Research notes, short demos, product decisions, and engineering lessons. The founder's voice carries original perspective.",
+    identity: "Founder and company",
+  },
+  {
+    name: "Facebook",
+    priority: "Communities",
+    role: "Student groups and educational communities, inside their rules. Official pages. No mass-posted links.",
+    identity: "Official pages only",
+  },
+  {
+    name: "GitHub",
+    priority: "Technical credibility",
+    role: "Public documentation, example integrations, or utilities that are safe to publish. Private product code stays private.",
+    identity: "Public docs, not the product core",
+  },
+  {
+    name: "Discord",
+    priority: "When there is a reason to return",
+    role: "Testing, story creation, learning challenges, or early access. Open it when people have something to come back for.",
+    identity: "A community, not an empty server",
+  },
+] as const
+
+export const launchPlan = [
+  { window: "Days 1–5", text: "Finalize names, handles, bios, profile graphics, and the official website link." },
+  { window: "Days 6–10", text: "Open priority accounts, secure ownership and recovery, and turn analytics on." },
+  { window: "Days 11–15", text: "Prepare the first demonstrations, educational pieces, and founder posts." },
+  { window: "Days 16–20", text: "Publish the coordinated profiles and the first product-specific work." },
+  { window: "Days 21–25", text: "Test one collaboration, one community, and the landing-page step." },
+  { window: "Days 26–30", text: "Keep time on the channels that produce qualified, returning users." },
+] as const
+
+export const researchSources = [
+  {
+    title: "Growth hacking: A scientific approach for data-driven decision making",
+    detail: "Journal of Business Research, 2025. Cristofaro, Giardino, and Barboni.",
+    href: "https://doi.org/10.1016/j.jbusres.2024.115030",
+  },
+  {
+    title: "Structuring experimentation: Implementing Growth Hacking in new ventures",
+    detail: "Journal of Business Research, 2025.",
+    href: "https://www.sciencedirect.com/science/article/pii/S0148296324005885",
+  },
+  {
+    title: "Generative AI for growth hacking: How startups use generative AI in their growth strategies",
+    detail: "Journal of Business Research, 2025. Twenty startup and scale-up cases.",
+    href: "https://www.sciencedirect.com/science/article/pii/S0148296325001432",
+  },
+  {
+    title: "A Scientific Method for Startups",
+    detail: "Felin, Gambardella, Novelli, and Zenger, 2024.",
+    href: "https://doi.org/10.1177/01492063231226136",
+  },
+] as const
+
 export type DisplayCard = {
   eyebrow: string
   headline: string

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { productAccents } from "@/lib/product-accents"
 import { company } from "@/lib/company"
+import { GrowthSystem } from "@/components/dashboard/growth-system"
 import { capital, engines, phases, roadmap } from "@/lib/roadmap"
 
 const engineTone: Record<ProductId, string> = {
@@ -25,7 +26,7 @@ export function ForecastView() {
             {roadmap.title}
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-base">
-            Execution begins {roadmap.start}. The horizon closes {roadmap.targetDate}. Registrations and monthly active users are counted apart.
+            Research-informed growth engineering, {roadmap.start} to {roadmap.targetDate}. The goal is activated users, returning users, and referrals — not three advertised websites. Registrations and monthly active users are counted apart.
           </p>
 
           <div className="mt-8 border border-white/10 bg-black/50 p-5 sm:p-7">
@@ -159,6 +160,8 @@ export function ForecastView() {
         </div>
         <p className="border-t border-white/10 px-5 py-5 text-sm leading-relaxed text-zinc-200 sm:px-8">{roadmap.promise}</p>
       </section>
+
+      <GrowthSystem />
 
       <div className="flex flex-wrap gap-2 border border-white/10 bg-[#09090b] p-5">
         <Link href="/#contact" className="inline-flex border border-white/20 bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-zinc-200">
