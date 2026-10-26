@@ -232,6 +232,45 @@ type StatEntry =
       tags?: string[]
     }
 
+const operatingFramework = [
+  {
+    n: "01",
+    name: "Vision & Strategic Direction",
+    detail:
+      "Defining the long-term vision, identifying meaningful problems, setting priorities, and aligning Quantrion, Vdoc, and ExoraX under Quantavex.",
+  },
+  {
+    n: "02",
+    name: "Research & Intelligence",
+    detail:
+      "Studying markets, analysing problems, developing original research, forming hypotheses, and translating insights into product specifications.",
+  },
+  {
+    n: "03",
+    name: "AI & Product Architecture",
+    detail:
+      "Defining platform architecture, selecting AI models and APIs, designing workflows, and connecting research to software implementation.",
+  },
+  {
+    n: "04",
+    name: "Venture & Resource Management",
+    detail:
+      "Allocating time, capital, technology, and talent across three ventures while setting milestones and managing priorities.",
+  },
+  {
+    n: "05",
+    name: "Market & User Validation",
+    detail:
+      "Testing assumptions, collecting customer feedback, evaluating demand, measuring product usage, and improving based on evidence.",
+  },
+  {
+    n: "06",
+    name: "Execution & Continuous Improvement",
+    detail:
+      "Converting plans into deliverables, tracking progress, learning from failures, refining systems, and moving each venture toward production and sustainable growth.",
+  },
+] as const
+
 const learningDomains = [
   {
     name: "Human Psychology & Resources",
@@ -329,9 +368,9 @@ const stats: StatEntry[] = [
   {
     kind: "highlight",
     icon: User,
-    title: "Founder-led",
-    sublabel: "Udit Gour builds Quantavex from original research. Click to open the working fields.",
-    tags: [...learningDomains.map((domain) => domain.name)],
+    title: "Founder’s Operating Framework",
+    sublabel: "How the founder runs Quantavex across the three ventures. Click to open the six responsibilities.",
+    tags: operatingFramework.map((item) => `${item.n} ${item.name}`),
     accentGlow: "bg-primary/30",
   },
   {
@@ -442,7 +481,7 @@ export function StatsSection({ embedded = false }: { embedded?: boolean }) {
                 />
               )
             }
-            const opensFields = stat.title === "Founder-led"
+            const opensFields = stat.title === "Founder’s Operating Framework"
             const opensLeaders = stat.title === "Inspirational leaders"
             return (
               <StatHighlightCard
@@ -490,29 +529,36 @@ export function StatsSection({ embedded = false }: { embedded?: boolean }) {
         <DialogContent className="max-h-[85vh] max-w-3xl overflow-y-auto border-border/40 bg-background">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">
-              {modalKind === "leaders" ? "Inspirational leaders" : "Working fields"}
+              {modalKind === "leaders" ? "Inspirational leaders" : "Founder’s Operating Framework"}
             </DialogTitle>
             <DialogDescription className="text-sm leading-relaxed">
               {modalKind === "leaders"
                 ? "Builders whose work sets the bar for product, scale, and long-term thinking. They are inspirational figures — not advisors, investors, or affiliates of Quantavex."
-                : "The founder works these fields. This is craft, not a hired team."}
+                : "Six responsibilities Udit Gour holds while building Quantavex, Quantrion, Vdoc, and ExoraX."}
             </DialogDescription>
           </DialogHeader>
 
           <div className="grid gap-4 py-2">
-            {(modalKind === "leaders" ? inspirationalLeaders : learningDomains).map(
-              (item) => (
-                <div
-                  key={item.name}
-                  className="rounded-lg border border-border/40 bg-background/40 p-5 transition-all duration-300 hover:border-primary/30 hover:bg-background/60"
-                >
-                  <h3 className="font-semibold text-foreground">{item.name}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                    {item.detail}
-                  </p>
-                </div>
-              )
-            )}
+            {modalKind === "leaders"
+              ? inspirationalLeaders.map((item) => (
+                  <div
+                    key={item.name}
+                    className="rounded-lg border border-border/40 bg-background/40 p-5 transition-all duration-300 hover:border-primary/30 hover:bg-background/60"
+                  >
+                    <h3 className="font-semibold text-foreground">{item.name}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.detail}</p>
+                  </div>
+                ))
+              : operatingFramework.map((item) => (
+                  <div
+                    key={item.n}
+                    className="rounded-lg border border-border/40 bg-background/40 p-5 transition-all duration-300 hover:border-primary/30 hover:bg-background/60"
+                  >
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{item.n}</p>
+                    <h3 className="mt-1.5 font-semibold text-foreground">{item.name}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.detail}</p>
+                  </div>
+                ))}
           </div>
         </DialogContent>
       </Dialog>

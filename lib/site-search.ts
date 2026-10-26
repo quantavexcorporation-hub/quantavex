@@ -69,6 +69,14 @@ function buildSiteSearchIndex(): SiteSearchHit[] {
       text: "Udit Gour business researcher visionary leader monograph software machine AI engine data Quantrion competitive learning Vdoc entertainment ExoraX decision commerce founder-led",
     }),
     hit({
+      id: "framework",
+      title: "Founder’s Operating Framework",
+      kind: "Portfolio",
+      href: "/portfolio#record",
+      detail: "Vision, research, architecture, resources, validation, and execution.",
+      text: "Founder operating framework vision strategic direction research intelligence AI product architecture venture resource management market user validation execution continuous improvement",
+    }),
+    hit({
       id: "vision",
       title: "Vision",
       kind: "Portfolio",
