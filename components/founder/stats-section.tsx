@@ -234,37 +234,31 @@ type StatEntry =
 
 const operatingFramework = [
   {
-    n: "01",
     name: "Vision & Strategic Direction",
     detail:
       "Defining the long-term vision, identifying meaningful problems, setting priorities, and aligning Quantrion, Vdoc, and ExoraX under Quantavex.",
   },
   {
-    n: "02",
     name: "Research & Intelligence",
     detail:
       "Studying markets, analysing problems, developing original research, forming hypotheses, and translating insights into product specifications.",
   },
   {
-    n: "03",
     name: "AI & Product Architecture",
     detail:
       "Defining platform architecture, selecting AI models and APIs, designing workflows, and connecting research to software implementation.",
   },
   {
-    n: "04",
     name: "Venture & Resource Management",
     detail:
       "Allocating time, capital, technology, and talent across three ventures while setting milestones and managing priorities.",
   },
   {
-    n: "05",
     name: "Market & User Validation",
     detail:
       "Testing assumptions, collecting customer feedback, evaluating demand, measuring product usage, and improving based on evidence.",
   },
   {
-    n: "06",
     name: "Execution & Continuous Improvement",
     detail:
       "Converting plans into deliverables, tracking progress, learning from failures, refining systems, and moving each venture toward production and sustainable growth.",
@@ -369,8 +363,7 @@ const stats: StatEntry[] = [
     kind: "highlight",
     icon: User,
     title: "Founder’s Operating Framework",
-    sublabel: "How the founder runs Quantavex across the three ventures. Click to open the six responsibilities.",
-    tags: operatingFramework.map((item) => `${item.n} ${item.name}`),
+    sublabel: "Vision, research, architecture, resources, validation, and execution.",
     accentGlow: "bg-primary/30",
   },
   {
@@ -551,11 +544,10 @@ export function StatsSection({ embedded = false }: { embedded?: boolean }) {
                 ))
               : operatingFramework.map((item) => (
                   <div
-                    key={item.n}
+                    key={item.name}
                     className="rounded-lg border border-border/40 bg-background/40 p-5 transition-all duration-300 hover:border-primary/30 hover:bg-background/60"
                   >
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{item.n}</p>
-                    <h3 className="mt-1.5 font-semibold text-foreground">{item.name}</h3>
+                    <h3 className="font-semibold text-foreground">{item.name}</h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.detail}</p>
                   </div>
                 ))}
