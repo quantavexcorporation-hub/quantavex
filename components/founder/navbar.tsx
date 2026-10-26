@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { FOUNDER_PORTFOLIO_PATH } from "@/lib/site"
 
 const navLinks = [
+  { label: "Journey", href: "#journey" },
   { label: "About", href: "#about" },
   { label: "Research", href: "#research" },
   { label: "Ventures", href: "#ventures" },
