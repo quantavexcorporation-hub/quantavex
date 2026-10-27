@@ -24,7 +24,7 @@ export function RegistrationGoal() {
         <div className="min-w-0">
           <h3 className="text-sm font-medium text-white">Registration goal</h3>
           <p className="mt-0.5 text-xs text-pretty text-gray-500">
-            April 2028 stretch target. Registrations, not market size.
+            Targeted 12 million users by April 2028.
           </p>
         </div>
         <div className="shrink-0 text-right">
