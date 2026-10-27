@@ -2,7 +2,7 @@
 
 import { PageHeader } from "@/components/dashboard/page-header"
 import { ComparativeTable } from "@/components/dashboard/comparative-table"
-import { MarketVisualization } from "@/components/dashboard/market-visualization"
+import { RegistrationGoal } from "@/components/dashboard/registration-goal"
 import { ActivityFeed } from "@/components/dashboard/activity-feed"
 import { GlobalIntelligenceMap } from "@/components/dashboard/global-intelligence-map"
 import { useDashboard } from "@/components/dashboard/dashboard-provider"
@@ -32,7 +32,7 @@ export function OverviewView() {
           <ComparativeTable data={snapshot?.comparisons} />
         </div>
         <div className="min-h-[280px] sm:h-[300px] xl:h-[320px]">
-          <MarketVisualization data={snapshot?.markets} />
+          <RegistrationGoal />
         </div>
         <div className="min-h-[240px] sm:h-[300px] lg:col-span-2 xl:col-span-1 xl:h-[320px]">
           <ActivityFeed data={snapshot?.activities} loading={isLoading} error={error} />
