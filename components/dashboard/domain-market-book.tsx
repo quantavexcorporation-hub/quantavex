@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef } from "react"
+import { MarketVisualization } from "@/components/dashboard/market-visualization"
 import {
   countryDomainSizes,
   domainSizeSource,
@@ -8,6 +9,7 @@ import {
   formatDomainUsd,
 } from "@/lib/domain-markets"
 import { getManifestModel, type ManifestNode } from "@/lib/priority-markets"
+import type { DashboardSnapshot } from "@/lib/dashboard-types"
 
 function pad(n: number) {
   return String(n).padStart(2, "0")
@@ -86,9 +88,11 @@ export function CountryDomainReadout({
 export function DomainMarketBook({
   selected,
   onSelect,
+  markets,
 }: {
   selected: string
   onSelect: (code: string) => void
+  markets?: DashboardSnapshot["markets"]
 }) {
   const nodes = useMemo(() => getManifestModel().nodes.slice().sort((a, b) => a.priority - b.priority), [])
   const readoutRef = useRef<HTMLElement>(null)
@@ -132,12 +136,12 @@ export function DomainMarketBook({
             ))}
           </div>
         </div>
-        <aside
-          ref={readoutRef}
-          className="order-1 border-b border-white/10 bg-[#08080a] lg:order-2 lg:border-b-0 lg:border-l lg:sticky lg:top-0 lg:max-h-[720px] lg:overflow-y-auto"
-        >
-          <CountryDomainReadout code={selected} />
-        </aside>
+        <div className="order-1 flex min-w-0 flex-col border-b border-white/10 bg-[#08080a] lg:order-2 lg:border-b-0 lg:border-l">
+          <aside ref={readoutRef}>
+            <CountryDomainReadout code={selected} />
+          </aside>
+          <MarketVisualization data={markets} embedded />
+        </div>
       </div>
     </section>
   )

@@ -10,14 +10,24 @@ const fallbackMarkets = [
   { name: "Commerce", value: 6000, color: "#a1a1aa", growth: "$6T" },
 ]
 
-export function MarketVisualization({ data }: { data?: DashboardSnapshot["markets"] }) {
+export function MarketVisualization({
+  data,
+  embedded = false,
+}: {
+  data?: DashboardSnapshot["markets"]
+  embedded?: boolean
+}) {
   const markets = data ?? fallbackMarkets
   const max = Math.max(...markets.map((market) => market.value), 1)
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex h-auto flex-col border border-white/10 bg-[#09090b] p-4 sm:h-full"
+      className={
+        embedded
+          ? "flex h-auto flex-col border-t border-white/10 bg-[#08080a] p-4"
+          : "flex h-auto flex-col border border-white/10 bg-[#09090b] p-4 sm:h-full"
+      }
     >
       <div className="mb-4 flex shrink-0 items-start justify-between gap-3">
         <div className="min-w-0">
@@ -32,9 +42,15 @@ export function MarketVisualization({ data }: { data?: DashboardSnapshot["market
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col gap-4 sm:min-h-0 sm:flex-row sm:items-center sm:gap-6">
+      <div
+        className={
+          embedded
+            ? "flex flex-col gap-4"
+            : "flex flex-1 flex-col gap-4 sm:min-h-0 sm:flex-row sm:items-center sm:gap-6"
+        }
+      >
         {/* Pie Chart */}
-        <div className="mx-auto h-36 w-36 shrink-0 sm:mx-0 sm:h-32 sm:w-32">
+        <div className={embedded ? "mx-auto h-32 w-32 shrink-0" : "mx-auto h-36 w-36 shrink-0 sm:mx-0 sm:h-32 sm:w-32"}>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
