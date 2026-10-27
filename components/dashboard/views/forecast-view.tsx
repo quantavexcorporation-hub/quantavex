@@ -36,14 +36,24 @@ export function ForecastView() {
             <p className="mt-2 text-sm text-zinc-400">company total · stretch target</p>
           </div>
 
-          <ul className="mt-3 grid gap-3 sm:grid-cols-3">
+          <ul className="mt-3 grid gap-3 lg:grid-cols-2">
             {engines.map((engine) => (
-              <li key={engine.id} className={`border bg-black/40 p-4 ${engineTone[engine.id]}`}>
-                <span className="flex items-center gap-2">
-                  <ProductLogo product={engine.id} size={22} />
-                  <span className="text-sm font-medium text-white">{engine.name}</span>
+              <li
+                key={engine.id}
+                className={`border bg-black/40 p-4 ${engineTone[engine.id]} ${engine.featured ? "lg:col-span-2" : ""}`}
+              >
+                <span className="flex items-center justify-between gap-3">
+                  <span className="flex items-center gap-2">
+                    <ProductLogo product={engine.id} size={22} />
+                    <span className="text-sm font-medium text-white">{engine.name}</span>
+                  </span>
+                  {engine.featured ? (
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">Half the company target</span>
+                  ) : null}
                 </span>
-                <p className="mt-3 font-mono text-4xl font-semibold tracking-tight text-white">{engine.target}</p>
+                <p className={`mt-3 font-mono font-semibold tracking-tight text-white ${engine.featured ? "text-6xl sm:text-7xl" : "text-4xl"}`}>
+                  {engine.target}
+                </p>
                 <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-zinc-500">registrations</p>
               </li>
             ))}
@@ -57,7 +67,7 @@ export function ForecastView() {
             { k: "Start", v: roadmap.start, n: "Plan begins" },
             { k: "Horizon", v: "18 months", n: "Execution window" },
             { k: "Close", v: roadmap.targetDate, n: "Strategic target" },
-            { k: "Platforms", v: "3 × 3M", n: "Quantrion · Vdoc · ExoraX" },
+            { k: "Split", v: "6 · 3 · 3", n: "ExoraX · Quantrion · Vdoc" },
           ].map((item) => (
             <div key={item.k} className="px-4 py-4 sm:px-6">
               <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500">{item.k}</p>
@@ -156,8 +166,8 @@ export function ForecastView() {
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">
               Arithmetic at {capital.cac} per registration
             </p>
-            <p className="mt-3 font-mono text-5xl font-semibold tracking-tight text-white sm:text-6xl">{capital.nineMillionCost}</p>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-400">{capital.nineMillionNote}</p>
+            <p className="mt-3 font-mono text-5xl font-semibold tracking-tight text-white sm:text-6xl">{capital.registrationCost}</p>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-400">{capital.registrationNote}</p>
             <p className="mt-4 text-sm leading-relaxed text-zinc-300">{capital.organic}</p>
           </div>
         </div>

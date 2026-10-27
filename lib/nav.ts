@@ -28,7 +28,7 @@ export const pageMeta: Record<
   },
   "/forecasting": {
     title: "Roadmap",
-    subtitle: "18 months to April 2028 — 9 million registrations, 3 million on each platform",
+    subtitle: "18 months to April 2028 — 12 million registrations, ExoraX 6 million",
   },
   "/quantrion/architecture": {
     title: "Quantrion architecture",

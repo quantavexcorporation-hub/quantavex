@@ -42,7 +42,7 @@ export function OperatingProgram() {
       <section>
         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Figure · first six months</p>
         <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          The opening window inside the 18-month plan. The registration target stays 9 million by April 2028.
+          The opening window inside the 18-month plan. The registration target stays 12 million by April 2028.
         </p>
         <div className="overflow-x-auto border border-white/10 bg-[#050506]">
           <table className="w-full min-w-[760px] border-collapse text-left">
@@ -233,7 +233,7 @@ export function OperatingProgram() {
           <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Constraints</p>
           <ul className="mt-4 space-y-2 text-sm leading-relaxed text-zinc-400">
             <li>
-              <span className="text-white">Target, not telemetry.</span> Nine million registrations by April 2028 is the stretch target. The six-month clock is the first window, not a second user goal.
+              <span className="text-white">Target, not telemetry.</span> Twelve million registrations by April 2028 is the stretch target: 6 million on ExoraX, 3 million on Quantrion, 3 million on Vdoc. The six-month clock is the first window.
             </li>
             <li>
               <span className="text-white">Founder-led.</span> {company.founder.name} builds this. The six fields above are hires — not a team already in place.

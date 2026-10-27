@@ -56,7 +56,7 @@ function sprint(constraint: Constraint, budget: Budget, focus: Focus) {
         ? "One audience, a few content formats, and one small paid test with a cost limit and a decision date."
         : budget === "mid"
           ? "Add one creator or partner test. The success signal is cost per retained user, not reach."
-          : "A larger budget still waits on evidence. More experiments only after each one is instrumented. Funding does not purchase the 9 million."
+          : "A larger budget still waits on evidence. More experiments only after each one is instrumented. Funding does not purchase the 12 million."
 
   const weeks =
     constraint === "discover"
@@ -143,7 +143,7 @@ export function GrowthSystem() {
           Three engines that turn attention into people who come back.
         </h2>
         <p className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400 sm:text-base">
-          The work is not to advertise three websites. It is to combine product engineering, distribution, creator networks, partnerships, and experiments. Nine million registrations in 18 months remains a stretch goal. This system is how the company finds out which moves actually work.
+          The work is not to advertise three websites. It is to combine product engineering, distribution, creator networks, partnerships, and experiments. Twelve million registrations in 18 months remains a stretch goal. This system is how the company finds out which moves actually work.
         </p>
       </section>
 
@@ -202,21 +202,23 @@ export function GrowthSystem() {
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">18-month arithmetic</p>
             <p className="mt-3 font-mono text-4xl font-semibold tracking-tight text-white sm:text-5xl">{reverseMath.total}</p>
             <p className="mt-2 text-sm text-zinc-400">registrations, worked backward</p>
-            <dl className="mt-6 grid grid-cols-2 gap-4">
-              <div>
+            <dl className="mt-6 grid grid-cols-3 gap-4">
+              <div className="col-span-3">
                 <dt className="text-[10px] uppercase tracking-[0.16em] text-zinc-500">Combined / month</dt>
                 <dd className="mt-1 font-mono text-2xl text-white">{reverseMath.perMonth}</dd>
               </div>
-              <div>
-                <dt className="text-[10px] uppercase tracking-[0.16em] text-zinc-500">Per platform / month</dt>
-                <dd className="mt-1 font-mono text-2xl text-white">{reverseMath.perPlatformMonth}</dd>
-              </div>
+              {reverseMath.splits.map((split) => (
+                <div key={split.name}>
+                  <dt className="text-[10px] uppercase tracking-[0.16em] text-zinc-500">{split.name} / month</dt>
+                  <dd className="mt-1 font-mono text-2xl text-white">{split.month}</dd>
+                </div>
+              ))}
             </dl>
             <p className="mt-4 text-xs leading-relaxed text-zinc-500">{reverseMath.note}</p>
           </div>
           <div className="p-5 sm:p-8">
             <p className="text-sm leading-relaxed text-zinc-300">
-              Qualified visits required for 9 million registrations. Illustrative scenarios, not industry benchmarks. A repeat visit is not a new person. A person on all three platforms is not three company-wide people.
+              Qualified visits required for 12 million registrations. Illustrative scenarios, not industry benchmarks. A repeat visit is not a new person. A person on all three platforms is not three company-wide people.
             </p>
             <table className="mt-5 w-full text-left">
               <thead>

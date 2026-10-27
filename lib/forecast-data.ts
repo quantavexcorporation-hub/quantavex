@@ -35,7 +35,7 @@ export function getForecast(): {
       { id: "horizon", label: "Horizon", value: "18 months", delta: "October 2026 to April 2028 — not live operations", tone: "amber" },
       { id: "posture", label: "Phases", value: "Four gates", delta: "Value before acquisition spend", tone: "cyan" },
       { id: "mesh", label: "Infrastructure", value: "Shared", delta: "One company, three growth engines", tone: "purple" },
-      { id: "users", label: "Target", value: "9 million", delta: "3 million registrations on each platform — a stretch target", tone: "emerald" },
+      { id: "users", label: "Target", value: "12 million", delta: "ExoraX 6 million · Quantrion 3 million · Vdoc 3 million — a stretch target", tone: "emerald" },
     ],
     mix: [],
     milestones: company.milestones.map((item) => ({

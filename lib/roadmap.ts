@@ -6,16 +6,16 @@ export const roadmap = {
   targetLabel: "Strategic target",
   targetDate: "April 2028",
   start: "October 2026",
-  users: "9 million",
-  perPlatform: "3 million",
+  users: "12 million",
+  perPlatform: "6 million ExoraX · 3 million Quantrion · 3 million Vdoc",
   usersNote:
-    "3 million registrations on Quantrion, Vdoc, and ExoraX each. 9 million company total by April 2028 — a stretch target, not current traction.",
+    "6 million registrations on ExoraX. 3 million on Quantrion and 3 million on Vdoc. 12 million company total by April 2028 — a stretch target, not current traction.",
   posture: "Four phases",
   mau: "Build meaningful monthly active usage on every platform, with a provisional target of 20–30% of registered users active monthly, subject to retention evidence.",
   disclaimer:
     "These are proposed targets, not current traction or guaranteed outcomes. The plan assumes execution begins in October 2026.",
   promise:
-    "18 months is the execution horizon. Nine million registrations is the stretch target. Monthly active users are a separate engagement target, not interchangeable with registrations.",
+    "18 months is the execution horizon. Twelve million registrations is the stretch target — 6 million on ExoraX, 3 million on Quantrion, 3 million on Vdoc. Monthly active users are a separate engagement target, not interchangeable with registrations.",
 } as const
 
 export const phases = [
@@ -65,48 +65,51 @@ export const phases = [
     title: "Global scale-up",
     points: [
       "Expand successful acquisition engines into additional markets.",
-      "Pursue 3 million registrations per platform.",
+      "Pursue 6 million registrations on ExoraX, and 3 million each on Quantrion and Vdoc.",
       "Track MAU, retention, conversion, and cost per retained user separately.",
       "Optimize AI and video-generation costs while strengthening reliability.",
     ],
-    gate: "Report actual performance against the 9 million target transparently.",
+    gate: "Report actual performance against the 12 million target transparently.",
   },
 ] as const
 
 export const engines = [
   {
+    id: "exorax" as const,
+    name: "ExoraX",
+    target: "6M",
+    featured: true,
+    text: "The commerce engine carries half the company target. Product comparison content, search-led discovery, merchant partnerships, and shopping tools that solve a specific decision problem.",
+  },
+  {
     id: "quantrion" as const,
     name: "Quantrion",
     target: "3M",
+    featured: false,
     text: "YouTube education content, exam-specific SEO, student communities, educator partnerships, and useful personalized study tools.",
   },
   {
     id: "vdoc" as const,
     name: "Vdoc",
     target: "3M",
+    featured: false,
     text: "Shareable AI stories, short-form video distribution, creator partnerships, interactive experiences, and repeat content formats.",
-  },
-  {
-    id: "exorax" as const,
-    name: "ExoraX",
-    target: "3M",
-    text: "Product comparison content, search-led discovery, merchant partnerships, and shopping tools that solve a specific decision problem.",
   },
 ] as const
 
 export const capital = {
   initial: "₹3 crore",
   initialNote:
-    "An initial planning scenario for the 18-month plan, not a sum that guarantees 9 million users.",
+    "An initial planning scenario for the 18-month plan, not a sum that guarantees 12 million users.",
   allocation:
     "Production engineering, customer validation, AI infrastructure, growth experiments, and essential operations.",
   release:
     "Release larger marketing budgets only after cohort retention and acquisition economics are demonstrated.",
   cac: "₹25",
   cacNote: "Blended acquisition cost per registration, used as arithmetic — not a measured cost.",
-  nineMillionCost: "₹22.5 crore",
-  nineMillionNote:
-    "At ₹25 per registration, nine million registrations would mathematically cost ₹22.5 crore, before product development and operating expenses.",
+  registrationCost: "₹30 crore",
+  registrationNote:
+    "At ₹25 per registration, twelve million registrations would mathematically cost ₹30 crore, before product development and operating expenses.",
   organic:
     "Organic distribution, partnerships, referrals, and product-led growth must play a substantial role.",
 } as const
@@ -238,14 +241,18 @@ export const growthMachines = [
 ] as const
 
 export const reverseMath = {
-  total: "9,000,000",
-  perMonth: "500,000",
-  perPlatformMonth: "166,667",
-  note: "Simple averages. Early months are for validation. Acceleration comes only if distribution works.",
+  total: "12,000,000",
+  perMonth: "666,667",
+  note: "Simple averages across 18 months. ExoraX is half the target. Early months are for validation. Acceleration comes only if distribution works.",
+  splits: [
+    { name: "ExoraX", month: "333,333" },
+    { name: "Quantrion", month: "166,667" },
+    { name: "Vdoc", month: "166,667" },
+  ],
   scenarios: [
-    { rate: "2%", visits: "450 million" },
-    { rate: "5%", visits: "180 million" },
-    { rate: "10%", visits: "90 million" },
+    { rate: "2%", visits: "600 million" },
+    { rate: "5%", visits: "240 million" },
+    { rate: "10%", visits: "120 million" },
   ],
 } as const
 
@@ -430,7 +437,7 @@ export const program = [
   {
     n: "07",
     title: "Then the 18-month horizon",
-    text: "The six-month clock is the first window. The company target remains 9 million registrations by April 2028 — a stretch goal, not a live cohort.",
+    text: "The six-month clock is the first window. The company target remains 12 million registrations by April 2028 — 6 million on ExoraX, 3 million on Quantrion, 3 million on Vdoc. A stretch goal, not a live cohort.",
   },
 ] as const
 
