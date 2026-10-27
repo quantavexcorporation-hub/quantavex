@@ -46,8 +46,8 @@ const navGroups: { label: string; items: NavItem[] }[] = [
   {
     label: "Insights",
     items: [
-      { href: "/intelligence", label: "Priority markets", icon: Zap },
       { href: "/forecasting", label: "Roadmap", icon: Route },
+      { href: "/intelligence", label: "Priority markets", icon: Zap },
     ],
   },
 ]
