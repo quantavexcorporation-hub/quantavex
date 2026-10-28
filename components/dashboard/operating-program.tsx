@@ -53,49 +53,50 @@ export function OperatingProgram() {
           </p>
         </div>
 
-        <div className="hidden lg:grid lg:grid-cols-[9.5rem_repeat(6,minmax(0,1fr))]">
-          <div className="px-3 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">Who</div>
-          {months.map((month) => (
-            <div
-              key={month}
-              className="border-l border-white/10 px-2 py-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500"
-            >
-              {month}
-            </div>
-          ))}
+        <div className="hidden px-4 py-6 lg:block sm:px-5">
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">Quantavex · Instruction</p>
+          <ol className="relative mt-5 grid grid-cols-6 gap-3">
+            <div className="pointer-events-none absolute left-[8%] right-[8%] top-[6px] h-px bg-white/30" />
+            {months.map((month, index) => {
+              const step = quantavexClock[index]
+              return (
+                <li key={month} className="relative">
+                  <span className="relative z-10 mx-auto block h-3.5 w-3.5 rounded-full border border-white bg-[#050506]" />
+                  <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">{month}</p>
+                  <div className="mt-2 bg-white px-2 py-2.5 text-center text-black">
+                    <p className="font-mono text-[11px] font-semibold leading-tight">{step.order}</p>
+                    <p className="mt-1 text-[10px] leading-tight text-zinc-600">{step.work}</p>
+                  </div>
+                </li>
+              )
+            })}
+          </ol>
 
-          <div className="border-t border-white/15 bg-white/[0.03] px-3 py-3">
-            <p className="text-sm font-semibold text-white">Quantavex</p>
-            <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">Instruction</p>
-          </div>
-          {quantavexClock.map((step) => (
-            <div key={step.order} className="border-t border-l border-white/15 bg-white/[0.03] p-1.5">
-              <div className="flex h-full flex-col justify-center border border-white/30 bg-white px-2 py-2 text-center text-black">
-                <p className="font-mono text-[11px] font-semibold leading-tight">{step.order}</p>
-                <p className="mt-1 text-[10px] leading-tight text-zinc-700">{step.work}</p>
-              </div>
-            </div>
-          ))}
-
-          <p className="col-span-7 border-t border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">
+          <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">
             Platforms change on that instruction
           </p>
-
-          {platformClock.map((platform) => (
-            <div key={platform.id} className="contents">
-              <div className="flex items-center gap-2 border-t border-white/[0.06] px-3 py-2.5 text-xs font-medium text-white">
-                <ProductLogo product={platform.id} size={18} decorative />
+          <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+            {platformClock.map((platform) => (
+              <li key={platform.id} className="inline-flex items-center gap-2 text-xs text-white">
+                <ProductLogo product={platform.id} size={16} decorative />
                 {platformName[platform.id]}
-              </div>
-              {platform.cells.map((cell, index) => (
-                <div key={`${platform.id}-${index}`} className="border-t border-l border-white/[0.06] p-1.5">
-                  <div className={`flex h-full items-center justify-center border px-2 py-2 text-center font-mono text-[10px] leading-tight xl:text-[11px] ${followAccent[platform.id]}`}>
-                    {cell}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ))}
+              </li>
+            ))}
+          </ul>
+          <ol className="mt-3 grid grid-cols-6 gap-3">
+            {months.map((month, index) => (
+              <li key={month} className="space-y-1.5">
+                {platformClock.map((platform) => (
+                  <p
+                    key={platform.id}
+                    className={`border px-2 py-1.5 text-center font-mono text-[10px] leading-tight ${followAccent[platform.id]}`}
+                  >
+                    {platform.cells[index]}
+                  </p>
+                ))}
+              </li>
+            ))}
+          </ol>
         </div>
 
         <ol className="lg:hidden">
