@@ -25,17 +25,19 @@ export function ProductLogo({
   product,
   size = 24,
   className,
+  decorative = false,
 }: {
   product: ProductId
   size?: number
   className?: string
+  decorative?: boolean
 }) {
   const logo = logos[product]
 
   return (
     <Image
       src={logo.src}
-      alt={logo.alt}
+      alt={decorative ? "" : logo.alt}
       width={size}
       height={size}
       className={cn("shrink-0", logo.shape, className)}

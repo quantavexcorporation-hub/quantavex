@@ -20,6 +20,12 @@ const followAccent: Record<string, string> = {
   exorax: "border-zinc-400/35 bg-zinc-400/10 text-zinc-100",
 }
 
+const platformName: Record<ProductId, string> = {
+  quantrion: "Quantrion",
+  vdoc: "Vdoc",
+  exorax: "ExoraX",
+}
+
 export function OperatingProgram() {
   return (
     <div className="space-y-8 sm:space-y-10">
@@ -39,67 +45,90 @@ export function OperatingProgram() {
         </ul>
       </section>
 
-      <section>
-        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Figure · first six months</p>
-        <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-400">
-          The opening window inside the 18-month plan. The registration target stays 12 million by April 2028.
-        </p>
-        <div className="overflow-x-auto border border-white/10 bg-[#050506]">
-          <table className="w-full min-w-[760px] border-collapse text-left">
-            <thead>
-              <tr className="border-b border-white/10">
-                <th className="w-40 px-3 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">Who</th>
-                {months.map((month) => (
-                  <th key={month} className="px-2 py-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">
-                    {month}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-white/15 bg-white/[0.03]">
-                <th className="px-3 py-3 text-left">
-                  <p className="text-sm font-semibold text-white">Quantavex</p>
-                  <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">Instruction</p>
-                </th>
-                {quantavexClock.map((step) => (
-                  <td key={step.order} className="px-1.5 py-2">
-                    <div className="border border-white/30 bg-white px-2 py-2 text-center text-black">
-                      <p className="font-mono text-[11px] font-semibold leading-tight">{step.order}</p>
-                      <p className="mt-1 text-[10px] leading-tight text-zinc-700">{step.work}</p>
-                    </div>
-                  </td>
-                ))}
-              </tr>
-              <tr>
-                <td colSpan={7} className="px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">
-                  Platforms change on that instruction
-                </td>
-              </tr>
-              {platformClock.map((platform) => (
-                <tr key={platform.id} className="border-t border-white/[0.06]">
-                  <th className="px-3 py-2.5 text-left text-xs font-medium text-white">
-                    <span className="inline-flex items-center gap-2">
-                      <ProductLogo product={platform.id} size={18} />
-                      {platform.id === "quantrion" ? "Quantrion" : platform.id === "vdoc" ? "Vdoc" : "ExoraX"}
-                    </span>
-                  </th>
-                  {platform.cells.map((cell, index) => (
-                    <td key={`${platform.id}-${index}`} className="px-1.5 py-2">
-                      <div className={`border px-2 py-2 text-center font-mono text-[10px] leading-tight sm:text-[11px] ${followAccent[platform.id]}`}>
-                        {cell}
-                      </div>
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <figure className="overflow-hidden border border-white/10 bg-[#050506]">
+        <div className="border-b border-white/10 px-4 py-4 sm:px-5">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Figure · first six months</p>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-400">
+            The opening window inside the 18-month plan. The registration target stays 12 million by April 2028.
+          </p>
         </div>
-        <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">
+
+        <div className="hidden lg:grid lg:grid-cols-[9.5rem_repeat(6,minmax(0,1fr))]">
+          <div className="px-3 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">Who</div>
+          {months.map((month) => (
+            <div
+              key={month}
+              className="border-l border-white/10 px-2 py-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500"
+            >
+              {month}
+            </div>
+          ))}
+
+          <div className="border-t border-white/15 bg-white/[0.03] px-3 py-3">
+            <p className="text-sm font-semibold text-white">Quantavex</p>
+            <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">Instruction</p>
+          </div>
+          {quantavexClock.map((step) => (
+            <div key={step.order} className="border-t border-l border-white/15 bg-white/[0.03] p-1.5">
+              <div className="flex h-full flex-col justify-center border border-white/30 bg-white px-2 py-2 text-center text-black">
+                <p className="font-mono text-[11px] font-semibold leading-tight">{step.order}</p>
+                <p className="mt-1 text-[10px] leading-tight text-zinc-700">{step.work}</p>
+              </div>
+            </div>
+          ))}
+
+          <p className="col-span-7 border-t border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">
+            Platforms change on that instruction
+          </p>
+
+          {platformClock.map((platform) => (
+            <div key={platform.id} className="contents">
+              <div className="flex items-center gap-2 border-t border-white/[0.06] px-3 py-2.5 text-xs font-medium text-white">
+                <ProductLogo product={platform.id} size={18} decorative />
+                {platformName[platform.id]}
+              </div>
+              {platform.cells.map((cell, index) => (
+                <div key={`${platform.id}-${index}`} className="border-t border-l border-white/[0.06] p-1.5">
+                  <div className={`flex h-full items-center justify-center border px-2 py-2 text-center font-mono text-[10px] leading-tight xl:text-[11px] ${followAccent[platform.id]}`}>
+                    {cell}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        <ol className="lg:hidden">
+          {months.map((month, index) => (
+            <li key={month} className="border-b border-white/10 px-4 py-4 last:border-0">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">{month}</p>
+              <div className="mt-2 border border-white/30 bg-white px-3 py-2.5 text-black">
+                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">Quantavex · Instruction</p>
+                <p className="mt-1 font-mono text-sm font-semibold leading-tight">{quantavexClock[index].order}</p>
+                <p className="mt-1 text-xs leading-snug text-zinc-700">{quantavexClock[index].work}</p>
+              </div>
+              <ul className="mt-2 space-y-1.5">
+                {platformClock.map((platform) => (
+                  <li
+                    key={platform.id}
+                    className={`flex items-center justify-between gap-3 border px-2.5 py-2 ${followAccent[platform.id]}`}
+                  >
+                    <span className="inline-flex min-w-0 items-center gap-2 text-xs font-medium">
+                      <ProductLogo product={platform.id} size={16} decorative />
+                      {platformName[platform.id]}
+                    </span>
+                    <span className="text-right font-mono text-[11px] leading-tight">{platform.cells[index]}</span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+
+        <figcaption className="border-t border-white/10 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600 sm:px-5">
           Quantavex runs infrastructure, APIs, cost, and growth. The three platforms move when that instruction changes.
-        </p>
-      </section>
+        </figcaption>
+      </figure>
 
       <section className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
         <figure className="border border-white/10 bg-[#050506] p-4 sm:p-5">
