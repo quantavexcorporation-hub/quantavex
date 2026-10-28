@@ -4,7 +4,7 @@ import { getPriorityRegions } from "@/lib/priority-markets"
 import { productArchitecture } from "@/lib/product-architecture"
 import { productList } from "@/lib/products"
 import { researchPapers } from "@/lib/research"
-import { engines, phases, roadmap } from "@/lib/roadmap"
+import { coreLayers, corePrinciples, engines, phases, roadmap } from "@/lib/roadmap"
 
 export interface SiteSearchHit {
   id: string
@@ -106,7 +106,7 @@ function buildSiteSearchIndex(): SiteSearchHit[] {
       kind: "Roadmap",
       href: "/forecasting",
       detail: roadmap.usersNote,
-      text: `${roadmap.clock} ${roadmap.promise} ${roadmap.users} ${roadmap.perPlatform} growth engineering experiments linkedin youtube whatsapp reddit hire ${company.team.seats.map((seat) => seat.field).join(" ")}`,
+      text: `${roadmap.clock} ${roadmap.promise} ${roadmap.users} ${roadmap.perPlatform} quantavex core infrastructure api ${coreLayers.map((layer) => `${layer.layer} ${layer.cells.join(" ")}`).join(" ")} ${corePrinciples.map((item) => `${item.name} ${item.text}`).join(" ")} growth engineering experiments linkedin youtube whatsapp reddit hire ${company.team.seats.map((seat) => seat.field).join(" ")}`,
     }),
   ]
 

@@ -1,17 +1,20 @@
+import type { ReactNode } from "react"
 import Link from "next/link"
 import { ProductLogo, type ProductId } from "@/components/brand/product-logo"
 import { LaterDisplays } from "@/components/dashboard/later-displays"
 import { productAccents } from "@/lib/product-accents"
 import { company } from "@/lib/company"
 import {
+  coreLayers,
+  corePlatforms,
+  corePrinciples,
   grab,
   grabStrategies,
   mesh,
   months,
   opex,
-  platformClock,
   program,
-  quantavexClock,
+  sixMonthCore,
 } from "@/lib/roadmap"
 
 const followAccent: Record<string, string> = {
@@ -47,87 +50,60 @@ export function OperatingProgram() {
 
       <figure className="overflow-hidden border border-white/10 bg-[#050506]">
         <div className="border-b border-white/10 px-4 py-4 sm:px-5">
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">Figure · first six months</p>
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-400">
-            The opening window inside the 18-month plan. The registration target stays 12 million by April 2028.
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">{sixMonthCore.kicker}</p>
+          <h2 className="mt-2 max-w-3xl text-xl font-semibold tracking-tight text-white sm:text-2xl">{sixMonthCore.title}</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-400">{sixMonthCore.lead}</p>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-400">
+            <span className="font-medium text-white">Strategic objective. </span>
+            {sixMonthCore.objective}
           </p>
         </div>
 
-        <div className="hidden px-4 py-6 lg:block sm:px-5">
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">Quantavex · Instruction</p>
-          <ol className="relative mt-5 grid grid-cols-6 gap-3">
-            <div className="pointer-events-none absolute left-[8%] right-[8%] top-[6px] h-px bg-white/30" />
-            {months.map((month, index) => {
-              const step = quantavexClock[index]
-              return (
-                <li key={month} className="relative">
-                  <span className="relative z-10 mx-auto block h-3.5 w-3.5 rounded-full border border-white bg-[#050506]" />
-                  <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">{month}</p>
-                  <div className="mt-2 bg-white px-2 py-2.5 text-center text-black">
-                    <p className="font-mono text-[11px] font-semibold leading-tight">{step.order}</p>
-                    <p className="mt-1 text-[10px] leading-tight text-zinc-600">{step.work}</p>
-                  </div>
-                </li>
-              )
-            })}
-          </ol>
+        <div className="border-b border-white/10 px-4 py-4 sm:px-5">
+          <h3 className="text-sm font-medium text-white">{sixMonthCore.infraTitle}</h3>
+          <MonthTable
+            label="Infrastructure layer"
+            rows={coreLayers.map((layer) => ({
+              key: layer.layer,
+              name: layer.layer,
+              cells: layer.cells,
+              featured: layer.layer === "Quantavex Core",
+            }))}
+          />
+        </div>
 
-          <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">
-            Platforms change on that instruction
-          </p>
-          <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
-            {platformClock.map((platform) => (
-              <li key={platform.id} className="inline-flex items-center gap-2 text-xs text-white">
-                <ProductLogo product={platform.id} size={16} decorative />
-                {platformName[platform.id]}
+        <div className="border-b border-white/10 px-4 py-4 sm:px-5">
+          <h3 className="text-sm font-medium text-white">{sixMonthCore.platformTitle}</h3>
+          <MonthTable
+            label="Platform"
+            rows={corePlatforms.map((platform) => ({
+              key: platform.id,
+              name: (
+                <span className="inline-flex items-center gap-2">
+                  <ProductLogo product={platform.id} size={16} decorative />
+                  {platformName[platform.id]}
+                </span>
+              ),
+              cells: platform.cells,
+              tone: followAccent[platform.id],
+            }))}
+          />
+        </div>
+
+        <div className="px-4 py-4 sm:px-5">
+          <h3 className="text-sm font-medium text-white">{sixMonthCore.principlesTitle}</h3>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+            {corePrinciples.map((item) => (
+              <li key={item.name} className="border border-white/10 bg-black/20 p-3">
+                <p className="text-sm font-medium text-white">{item.name}</p>
+                <p className="mt-1 text-xs leading-relaxed text-zinc-400">{item.text}</p>
               </li>
             ))}
           </ul>
-          <ol className="mt-3 grid grid-cols-6 gap-3">
-            {months.map((month, index) => (
-              <li key={month} className="space-y-1.5">
-                {platformClock.map((platform) => (
-                  <p
-                    key={platform.id}
-                    className={`border px-2 py-1.5 text-center font-mono text-[10px] leading-tight ${followAccent[platform.id]}`}
-                  >
-                    {platform.cells[index]}
-                  </p>
-                ))}
-              </li>
-            ))}
-          </ol>
         </div>
 
-        <ol className="lg:hidden">
-          {months.map((month, index) => (
-            <li key={month} className="border-b border-white/10 px-4 py-4 last:border-0">
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">{month}</p>
-              <div className="mt-2 border border-white/30 bg-white px-3 py-2.5 text-black">
-                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">Quantavex · Instruction</p>
-                <p className="mt-1 font-mono text-sm font-semibold leading-tight">{quantavexClock[index].order}</p>
-                <p className="mt-1 text-xs leading-snug text-zinc-700">{quantavexClock[index].work}</p>
-              </div>
-              <ul className="mt-2 space-y-1.5">
-                {platformClock.map((platform) => (
-                  <li
-                    key={platform.id}
-                    className={`flex items-center justify-between gap-3 border px-2.5 py-2 ${followAccent[platform.id]}`}
-                  >
-                    <span className="inline-flex min-w-0 items-center gap-2 text-xs font-medium">
-                      <ProductLogo product={platform.id} size={16} decorative />
-                      {platformName[platform.id]}
-                    </span>
-                    <span className="text-right font-mono text-[11px] leading-tight">{platform.cells[index]}</span>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ol>
-
-        <figcaption className="border-t border-white/10 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600 sm:px-5">
-          Quantavex runs infrastructure, APIs, cost, and growth. The three platforms move when that instruction changes.
+        <figcaption className="border-t border-white/10 px-4 py-3 text-xs leading-relaxed text-zinc-500 sm:px-5">
+          {sixMonthCore.disclaimer}
         </figcaption>
       </figure>
 
@@ -277,6 +253,56 @@ export function OperatingProgram() {
           </ul>
         </section>
       </div>
+    </div>
+  )
+}
+
+function MonthTable({
+  label,
+  rows,
+}: {
+  label: string
+  rows: { key: string; name: ReactNode; cells: readonly string[]; featured?: boolean; tone?: string }[]
+}) {
+  return (
+    <div className="mt-3 overflow-x-auto">
+      <table className="w-full min-w-[880px] border-collapse text-left">
+        <thead>
+          <tr className="border-b border-white/10">
+            <th className="sticky left-0 z-10 bg-[#050506] px-3 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-600">
+              {label}
+            </th>
+            {months.map((month) => (
+              <th key={month} className="px-3 py-2 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">
+                {month}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.key} className="border-b border-white/[0.06] last:border-0">
+              <th
+                className={`sticky left-0 z-10 bg-[#050506] px-3 py-2.5 text-left text-xs font-medium text-white ${
+                  row.featured ? "text-white" : ""
+                }`}
+              >
+                {row.tone ? <span className={`inline-flex rounded-sm border px-1.5 py-1 ${row.tone}`}>{row.name}</span> : row.name}
+              </th>
+              {row.cells.map((cell, index) => (
+                <td
+                  key={`${row.key}-${index}`}
+                  className={`px-3 py-2.5 text-center text-[11px] leading-snug ${
+                    row.featured ? "font-medium text-white" : "text-zinc-400"
+                  }`}
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }

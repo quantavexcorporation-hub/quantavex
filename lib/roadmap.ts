@@ -379,29 +379,50 @@ export const researchSources = [
 
 export const months = ["M1", "M2", "M3", "M4", "M5", "M6"] as const
 
-export const quantavexClock = [
-  { order: "Stand the stack", work: "Identity, data, compute" },
-  { order: "Open the APIs", work: "Inside the company stack" },
-  { order: "Turn cost on", work: "Inference, storage, 3PL" },
-  { order: "Start the grab", work: "Instant result" },
-  { order: "Spread the result", work: "Referral and groups" },
-  { order: "Hold the gate", work: "Users who return" },
-] as const
+export const sixMonthCore = {
+  kicker: "Figure · first six months",
+  title: "Quantavex Core — Unified Software, AI & API Infrastructure",
+  lead: "The first six months establish the shared technology foundation powering Quantrion, Vdoc, and ExoraX. Quantavex Core connects AI models, application services, external APIs, cloud infrastructure, immersive technologies, and emerging decentralized systems through a secure, modular, and extensible architecture.",
+  objective:
+    "Build once at the infrastructure layer, integrate across platforms, and scale capabilities without duplicating core engineering.",
+  infraTitle: "Shared infrastructure roadmap",
+  platformTitle: "Platform integration roadmap",
+  principlesTitle: "Infrastructure principles",
+  disclaimer:
+    "Roadmap entries are planned engineering milestones, not claims that integrations already exist or that every technology will reach production within six months. Implementation priorities depend on product requirements, budget, provider availability, and validation results.",
+} as const
 
-export const platformClock: { id: ProductId; cells: string[] }[] = [
-  {
-    id: "quantrion",
-    cells: ["DNA on the stack", "Pathway on the API", "Student OS", "Score card travels", "Batch follows", "Production"],
-  },
-  {
-    id: "vdoc",
-    cells: ["Story on the stack", "Director on the API", "Experience OS", "Scene travels", "Room follows", "Production"],
-  },
-  {
-    id: "exorax",
-    cells: ["Loop on the stack", "Intent on the API", "Commerce OS", "Inspect travels", "Buyers follow", "Production"],
-  },
+export const coreLayers: { layer: string; cells: readonly string[] }[] = [
+  { layer: "Quantavex Core", cells: ["System architecture", "Core foundation", "Shared services", "Platform integration", "Reliability testing", "Release readiness"] },
+  { layer: "API Infrastructure", cells: ["API standards", "API gateway", "REST / webhooks", "Versioning & SDKs", "Rate limits & retries", "Developer documentation"] },
+  { layer: "AI & Model APIs", cells: ["Provider selection", "LLM integrations", "AI orchestration", "Embeddings & retrieval", "Evaluation & optimization", "Monitored AI services"] },
+  { layer: "AI Media APIs", cells: ["Media requirements", "Image generation", "Video & audio integration", "Speech & transcription", "Editing workflows", "Media pipeline readiness"] },
+  { layer: "AR / 3D APIs", cells: ["Use-case definition", "SDK evaluation", "3D asset pipeline", "AR prototype integration", "Device testing", "Prototype readiness"] },
+  { layer: "Blockchain APIs", cells: ["Use-case assessment", "Network & provider selection", "RPC / wallet integration", "Smart-contract sandbox", "Security review", "Controlled pilot readiness"] },
+  { layer: "Data & Database APIs", cells: ["Data architecture", "Database services", "Event ingestion", "Analytics pipelines", "Data governance", "Unified data services"] },
+  { layer: "Identity & Authentication", cells: ["Identity model", "Authentication", "OAuth / SSO", "Roles & permissions", "Access audits", "Unified identity services"] },
+  { layer: "Commerce & Payments APIs", cells: ["Requirements", "Provider integration", "Catalog & checkout sandbox", "Payment / order workflows", "Reconciliation testing", "Controlled pilot readiness"] },
+  { layer: "Communication APIs", cells: ["Channel requirements", "Email / notification services", "SMS / messaging integration", "Event-driven notifications", "Delivery monitoring", "Shared messaging services"] },
+  { layer: "Cloud & DevOps", cells: ["Environment setup", "CI/CD foundation", "Automated testing", "Monitoring & logging", "Backup & recovery", "Deployment readiness"] },
+  { layer: "Security & Governance", cells: ["Threat modeling", "Secrets management", "Encryption & access controls", "Privacy safeguards", "Vulnerability testing", "Release security review"] },
+  { layer: "Analytics & Observability", cells: ["Event definitions", "Usage instrumentation", "Service dashboards", "Funnel analytics", "Cost & latency analysis", "Unified observability"] },
+  { layer: "Developer Platform", cells: ["API conventions", "Internal SDK foundation", "Shared documentation", "Integration templates", "Developer tooling", "Reusable integration catalogue"] },
 ]
+
+export const corePlatforms: { id: ProductId; cells: string[] }[] = [
+  { id: "quantrion", cells: ["Learning architecture", "AI learning APIs", "Student workspace", "Practice & progress", "Beta validation", "Production candidate"] },
+  { id: "vdoc", cells: ["Media architecture", "Generation APIs", "Creator workspace", "Video / audio workflows", "Creator testing", "Prototype readiness"] },
+  { id: "exorax", cells: ["Commerce architecture", "Search & intent APIs", "Discovery workspace", "Product comparison", "Buyer testing", "MVP readiness"] },
+]
+
+export const corePrinciples = [
+  { name: "Provider-agnostic", text: "Support replaceable AI models and external service providers." },
+  { name: "API-first", text: "Expose reusable, documented interfaces between shared infrastructure and product modules." },
+  { name: "Secure by design", text: "Apply authentication, authorization, encryption, secrets management, and audit logging." },
+  { name: "Modular and extensible", text: "Add new integrations without redesigning the entire system." },
+  { name: "Observable and cost-aware", text: "Track reliability, latency, usage, and per-feature infrastructure costs." },
+  { name: "Production-led", text: "Advance each capability through testing, security review, and measurable readiness gates." },
+] as const
 
 export const program = [
   {
