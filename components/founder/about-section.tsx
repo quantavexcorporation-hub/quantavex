@@ -39,7 +39,7 @@ const highlights = [
     icon: GraduationCap,
     title: "Knowledge",
     description:
-      "Interdisciplinary fields: psychology and resources, finance, AI and data, media, growth, and product strategy.",
+      "Interdisciplinary fields: customer psychology and human resources, finance, AI and data, media, growth, and product strategy.",
   },
   {
     icon: Compass,
@@ -119,7 +119,7 @@ export function AboutSection() {
 
               <div className="mt-4 flex flex-wrap gap-1.5 sm:mt-5">
                 {[
-                  "Human Psychology & Resources",
+                  "Customer Psychology & Human Resources",
                   "Finance & Economics",
                   "AI & Data Science",
                   "Media & Content",

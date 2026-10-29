@@ -9,7 +9,7 @@ import { productList } from "@/lib/products"
 
 const researchFields = [
   {
-    title: "Human Psychology & Resources",
+    title: "Customer Psychology & Human Resources",
     description:
       "How people learn, decide, and stay engaged — and how resources are allocated around that.",
   },

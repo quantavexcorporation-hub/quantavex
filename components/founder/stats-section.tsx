@@ -267,7 +267,7 @@ const operatingFramework = [
 
 const learningDomains = [
   {
-    name: "Human Psychology & Resources",
+    name: "Customer Psychology & Human Resources",
     detail: "How people learn, decide, and stay engaged — and how resources are allocated around that.",
   },
   {

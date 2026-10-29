@@ -35,7 +35,7 @@ export const company = {
     hiring: "Each field is a required hire as the products are built.",
     seats: [
       {
-        field: "Human Psychology & Resources",
+        field: "Customer Psychology & Human Resources",
         role: "To hire",
         detail: "How people learn, decide, and stay engaged — and how people and resources are allocated.",
       },
